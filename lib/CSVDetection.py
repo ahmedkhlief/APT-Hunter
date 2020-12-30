@@ -174,7 +174,7 @@ def detect_events_security_log(file_name='deep-blue-secuity.csv',winevent=False)
         else:
             list2 = csv.DictReader(csvfile,
                                fieldnames=('Event ID',"MachineName","Data","Index","Category","CategoryNumber","EntryType","Details","Source","ReplacementStrings","InstanceId", 'Date and Time',"TimeWritten","UserName","Site","Container"))
-        
+
         """
         if open(file_name,"r").read(1000).find("\"InstanceId\",\"TimeGenerated\"")>0:
             list2 = csv.DictReader(csvfile,
@@ -1305,7 +1305,7 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name='powershell
                               "MachineName", "UserId", "Date and Time", "ActivityId", "RelatedActivityId",
                               "ContainerLog", "MatchedQueryIds", "Bookmark", "LevelDisplayName", "OpcodeDisplayName",
                               "TaskDisplayName", "KeywordsDisplayNames", "Properties"))
-                              
+
         """
 
 
@@ -1385,8 +1385,8 @@ def detect_events_Microsoft_Windows_WinRM_CSV_log(file_name='powershell-logs.csv
                               "MachineName", "UserId", "Date and Time", "ActivityId", "RelatedActivityId",
                               "ContainerLog", "MatchedQueryIds", "Bookmark", "LevelDisplayName", "OpcodeDisplayName",
                               "TaskDisplayName", "KeywordsDisplayNames", "Properties"))
-            
-            
+
+
         """
 
         if open(file_name,"r").read(1000).find("\"Message\",\"Id\",\"Version\"")>0:
@@ -1484,7 +1484,7 @@ def detect_events_Sysmon_log(file_name='sysmon-logs.csv',winevent=False):
                               "MachineName", "UserId", "Date and Time", "ActivityId", "RelatedActivityId",
                               "ContainerLog", "MatchedQueryIds", "Bookmark", "LevelDisplayName", "OpcodeDisplayName",
                               "TaskDisplayName", "KeywordsDisplayNames", "Properties"))
-                              
+
         """
 
         if open(file_name,"r").read(1000).find("\"Message\",\"Id\",\"Version\"")>0:
@@ -1699,64 +1699,3 @@ def detect_events_Sysmon_log(file_name='sysmon-logs.csv',winevent=False):
                 Sysmon_events[0]['Event Description'].append(Event_desc)
                 Sysmon_events[0]['Event ID'].append(row['Event ID'])
                 Sysmon_events[0]['Original Event Log'].append(str(row['Details']).replace("\r"," "))
-"""
-detect_events_powershell_operational_log("wineventlog/Powershell_Operational.csv",True)
-detect_events_powershell_log("wineventlog/Windows_PowerShell.csv",True)
-detect_events_TerminalServices_LocalSessionManager_log("wineventlog/LocalSessionManager.csv",True)
-detect_events_security_log("wineventlog/Security.csv",True)
-detect_events_scheduled_task_log("wineventlog/task-scheduler.csv",True)
-detect_events_system_log("wineventlog/System.csv",True)
-"""
-"""
-detect_events_powershell_operational_log("wineventlog/Powershell_Operational.csv")
-detect_events_powershell_log("wineventlog/Windows_PowerShell.csv")
-detect_events_TerminalServices_LocalSessionManager_log("wineventlog/LocalSessionManager.csv")
-detect_events_security_log("wineventlog/Security.csv")
-#detect_events_scheduled_task_log("wineventlog/task-scheduler.csv")
-#detect_events_security_log("security-nournet.csv")
-detect_events_windows_defender_log("wineventlog/Windows_Defender.csv")
-detect_events_Microsoft_Windows_WinRM_CSV_log("wineventlog/WinRM.csv")
-#detect_events_Microsoft_Windows_WinRM_XML_log("winrm.xml")
-#detect_events_windows_defender_log("wineventlog/windows-defender.csv",True)
-#account_operations("deep-blue-secuity.csv")
-detect_events_Sysmon_log("wineventlog/Sysmon.csv")
-detect_events_system_log("wineventlog/System.csv")
-"""
-"""
-detect_events_system_log("wineventlog/System.csv")
-detect_events_security_log("wineventlog/Security.csv")
-Sysmon = pd.DataFrame(Sysmon_events[0])
-System=pd.DataFrame(System_events[0])
-Powershell=pd.DataFrame(Powershell_events[0])
-Powershell_Operational=pd.DataFrame(Powershell_Operational_events[0])
-Security=pd.DataFrame(Security_events[0])
-TerminalServices=pd.DataFrame(TerminalServices_events[0])
-WinRM=pd.DataFrame(WinRM_events[0])
-Windows_Defender=pd.DataFrame(Windows_Defender_events[0])
-ScheduledTask=pd.DataFrame(ScheduledTask_events[0])
-Terminal_Services_Summary=pd.DataFrame(TerminalServices_Summary[0])
-Authentication_Summary=pd.DataFrame(Security_Authentication_Summary[0])
-
-#allresults=pd.DataFrame([TerminalServices,Powershell_Operational],columns=['Date and Time', 'Detection Rule','Detection Domain','Severity','Event Description','Event ID','Original Event Log'])
-allresults=pd.concat([ScheduledTask,Powershell_Operational,Sysmon,System,Powershell,Security,TerminalServices,WinRM,Windows_Defender], join="inner",ignore_index=True)
-allresults=allresults.rename(columns={'Date and Time': 'datetime','Detection Rule':'message'})
-allresults['timestamp_desc']=""
-allresults=allresults[['message','datetime','timestamp_desc','Detection Domain','Severity','Event Description','Event ID','Original Event Log']]
-allresults.to_csv(r'test-all.csv',index=False)
-#Sysmon=Sysmon.reset_index()
-#Sysmon=Sysmon.drop(['index'],axis=1)
-writer = pd.ExcelWriter('Result-full.xlsx', engine='xlsxwriter',options={'encoding':'utf-8'})
-System.to_excel(writer, sheet_name='System Events', index=False)
-Powershell.to_excel(writer, sheet_name='Powershell Events', index=False)
-Powershell_Operational.to_excel(writer, sheet_name='Powershell_Operational Events', index=False)
-Security.to_excel(writer, sheet_name='Security Events', index=False)
-TerminalServices.to_excel(writer, sheet_name='TerminalServices Events', index=False)
-WinRM.to_excel(writer, sheet_name='WinRM Events', index=False)
-Windows_Defender.to_excel(writer, sheet_name='Windows_Defender Events', index=False)
-ScheduledTask.to_excel(writer, sheet_name='ScheduledTask Events', index=False)
-Terminal_Services_Summary.to_excel(writer, sheet_name='Terminal Services Logon Summary', index=False)
-Authentication_Summary.to_excel(writer, sheet_name='Security Authentication Summary', index=False)
-writer.save()
-
-
-"""
