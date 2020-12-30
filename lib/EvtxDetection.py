@@ -9,7 +9,7 @@ from dateutil.parser import parse
 minlength=1000
 
 account_op={}
-
+PasswordSpray=[{'User':[],'Number of Failed Logins':[],'Target Users':[]]
 Suspicious_executables=['pl.exe','nc.exe','nmap.exe','psexec.exe','plink.exe','mimikatz','procdump.exe',' dcom.exe',' Inveigh.exe',' LockLess.exe',' Logger.exe',' PBind.exe',' PS.exe',' Rubeus.exe',' RunasCs.exe',' RunAs.exe',' SafetyDump.exe',' SafetyKatz.exe',' Seatbelt.exe',' SExec.exe',' SharpApplocker.exe',' SharpChrome.exe',' SharpCOM.exe',' SharpDPAPI.exe',' SharpDump.exe',' SharpEdge.exe',' SharpEDRChecker.exe',' SharPersist.exe',' SharpHound.exe',' SharpLogger.exe',' SharpPrinter.exe',' SharpRoast.exe',' SharpSC.exe',' SharpSniper.exe',' SharpSocks.exe',' SharpSSDP.exe',' SharpTask.exe',' SharpUp.exe',' SharpView.exe',' SharpWeb.exe',' SharpWMI.exe',' Shhmon.exe',' SweetPotato.exe',' Watson.exe',' WExec.exe','7zip.exe']
 
 Suspicious_powershell_commands=['DomainPasswordSpray','PasswordSpray','Password','Get-WMIObject','Get-GPPPassword','Get-Keystrokes','Get-TimedScreenshot','Get-VaultCredential','Get-ServiceUnquoted','Get-ServiceEXEPerms','Get-ServicePerms','Get-RegAlwaysInstallElevated','Get-RegAutoLogon','Get-UnattendedInstallFiles','Get-Webconfig','Get-ApplicationHost','Get-PassHashes','Get-LsaSecret','Get-Information','Get-PSADForestInfo','Get-KerberosPolicy','Get-PSADForestKRBTGTInfo','Get-PSADForestInfo','Get-KerberosPolicy','Invoke-Command','Invoke-Expression','iex','Invoke-Shellcode','Invoke--Shellcode','Invoke-ShellcodeMSIL','Invoke-MimikatzWDigestDowngrade','Invoke-NinjaCopy','Invoke-CredentialInjection','Invoke-TokenManipulation','Invoke-CallbackIEX','Invoke-PSInject','Invoke-DllEncode','Invoke-ServiceUserAdd','Invoke-ServiceCMD','Invoke-ServiceStart','Invoke-ServiceStop','Invoke-ServiceEnable','Invoke-ServiceDisable','Invoke-FindDLLHijack','Invoke-FindPathHijack','Invoke-AllChecks','Invoke-MassCommand','Invoke-MassMimikatz','Invoke-MassSearch','Invoke-MassTemplate','Invoke-MassTokens','Invoke-ADSBackdoor','Invoke-CredentialsPhish','Invoke-BruteForce','Invoke-PowerShellIcmp','Invoke-PowerShellUdp','Invoke-PsGcatAgent','Invoke-PoshRatHttps','Invoke-PowerShellTcp','Invoke-PoshRatHttp','Invoke-PowerShellWmi','Invoke-PSGcat','Invoke-Encode','Invoke-Decode','Invoke-CreateCertificate','Invoke-NetworkRelay','EncodedCommand','New-ElevatedPersistenceOption','wsman','Enter-PSSession','DownloadString','DownloadFile','Out-Word','Out-Excel','Out-Java','Out-Shortcut','Out-CHM','Out-HTA','Out-Minidump','HTTP-Backdoor','Find-AVSignature','DllInjection','ReflectivePEInjection','Base64','System.Reflection','System.Management','Restore-ServiceEXE','Add-ScrnSaveBackdoor','Gupt-Backdoor','Execute-OnTime','DNS_TXT_Pwnage','Write-UserAddServiceBinary','Write-CMDServiceBinary','Write-UserAddMSI','Write-ServiceEXE','Write-ServiceEXECMD','Enable-DuplicateToken','Remove-Update','Execute-DNSTXT-Code','Download-Execute-PS','Execute-Command-MSSQL','Download_Execute','Copy-VSS','Check-VM','Create-MultipleSessions','Run-EXEonRemote','Port-Scan','Remove-PoshRat','TexttoEXE','Base64ToString','StringtoBase64','Do-Exfiltration','Parse_Keys','Add-Exfiltration','Add-Persistence','Remove-Persistence','Find-PSServiceAccounts','Discover-PSMSSQLServers','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Mimikatz','powercat','powersploit','PowershellEmpire','GetProcAddress','ICM','.invoke',' -e ','hidden','-w hidden']
@@ -39,98 +39,98 @@ Timesketch_events=[{'message':[],'datetime':[],'timestamp_desc':[],'Event Descri
 
 EventID_rex = re.compile('<EventID.*>(.*)<\/EventID>', re.IGNORECASE)
 
-Logon_Type_rex = re.compile('<Data Name=\"LogonType\">(.*)</Data>', re.IGNORECASE)
+Logon_Type_rex = re.compile('<Data Name=\"LogonType\">(.*)</Data>|<LogonType>(.*)</LogonType>', re.IGNORECASE)
 
 
-Account_Name_rex = re.compile('<Data Name=\"SubjectUserName\">(.*)</Data>', re.IGNORECASE)
-Account_Name_Target_rex = re.compile('<Data Name=\"TargetUserName\">(.*)</Data>', re.IGNORECASE)
+Account_Name_rex = re.compile('<Data Name=\"SubjectUserName\">(.*)</Data>|<SubjectUserName>(.*)</SubjectUserName>', re.IGNORECASE)
+Account_Name_Target_rex = re.compile('<Data Name=\"TargetUserName\">(.*)</Data>|<TargetUserName>(.*)</TargetUserName>', re.IGNORECASE)
 
-Security_ID_rex = re.compile('<Data Name=\"SubjectUserSid\">(.*)</Data>', re.IGNORECASE)
-Security_ID_Target_rex = re.compile('<Data Name=\"TargetUserSid\">(.*)</Data>', re.IGNORECASE)
+Security_ID_rex = re.compile('<Data Name=\"SubjectUserSid\">(.*)</Data>|<SubjectUserSid>(.*)</SubjectUserSid>', re.IGNORECASE)
+Security_ID_Target_rex = re.compile('<Data Name=\"TargetUserSid\">(.*)</Data>|<TargetUserSid>(.*)</TargetUserSid>', re.IGNORECASE)
 
-Account_Domain_rex = re.compile('<Data Name=\"SubjectDomainName\">(.*)</Data>', re.IGNORECASE)
-Account_Domain_Target_rex = re.compile('<Data Name=\"TargetDomainName\">(.*)</Data>', re.IGNORECASE)
+Account_Domain_rex = re.compile('<Data Name=\"SubjectDomainName\">(.*)</Data>|<SubjectDomainName>(.*)</SubjectDomainName>', re.IGNORECASE)
+Account_Domain_Target_rex = re.compile('<Data Name=\"TargetDomainName\">(.*)</Data>|<TargetDomainName>(.*)</TargetDomainName>', re.IGNORECASE)
 
-Workstation_Name_rex = re.compile('<Data Name=\"WorkstationName\">(.*)</Data>', re.IGNORECASE)
+Workstation_Name_rex = re.compile('<Data Name=\"WorkstationName\">(.*)</Data>|<WorkstationName>(.*)</WorkstationName>', re.IGNORECASE)
 
-Source_Network_Address_rex = re.compile('<Data Name=\"IpAddress\">(.*)</Data>', re.IGNORECASE)
+Source_Network_Address_rex = re.compile('<Data Name=\"IpAddress\">(.*)</Data>|<IpAddress>(.*)</IpAddress>', re.IGNORECASE)
 
-Logon_Process_rex = re.compile('<Data Name=\"LogonProcessName\">(.*)</Data>', re.IGNORECASE)
+Logon_Process_rex = re.compile('<Data Name=\"LogonProcessName\">(.*)</Data>|<LogonProcessName>(.*)</LogonProcessName>', re.IGNORECASE)
 
-Key_Length_rex = re.compile('<Data Name=\"KeyLength\">(.*)</Data>', re.IGNORECASE)
+Key_Length_rex = re.compile('<Data Name=\"KeyLength\">(.*)</Data>|<KeyLength>(.*)</KeyLength>', re.IGNORECASE)
 
-Process_Command_Line_rex=re.compile('<Data Name=\"CommandLine\">(.*)</Data>', re.IGNORECASE)
+Process_Command_Line_rex=re.compile('<Data Name=\"CommandLine\">(.*)</Data>|<CommandLine>(.*)</CommandLine>', re.IGNORECASE)
 
-TicketOptions_rex=re.compile('<Data Name=\"TicketOptions\">(.*)</Data>', re.IGNORECASE)
-TicketEncryptionType_rex=re.compile('<Data Name=\"TicketEncryptionType\">(.*)</Data>', re.IGNORECASE)
-ServiceName_rex=re.compile('<Data Name=\"ServiceName\">(.*)</Data>', re.IGNORECASE)
+TicketOptions_rex=re.compile('<Data Name=\"TicketOptions\">(.*)</Data>|<TicketOptions>(.*)</TicketOptions>', re.IGNORECASE)
+TicketEncryptionType_rex=re.compile('<Data Name=\"TicketEncryptionType\">(.*)</Data>|<TicketEncryptionType>(.*)</TicketEncryptionType>', re.IGNORECASE)
+ServiceName_rex=re.compile('<Data Name=\"ServiceName\">(.*)</Data>|<ServiceName>(.*)</ServiceName>', re.IGNORECASE)
 
-Group_Name_rex=re.compile('<Data Name=\"TargetUserName\">(.*)</Data>', re.IGNORECASE)
+Group_Name_rex=re.compile('<Data Name=\"TargetUserName\">(.*)</Data>|<TargetUserName>(.*)</TargetUserName>', re.IGNORECASE)
 
-Task_Name_rex=re.compile('<Data Name=\"TaskName\">(.*)</Data>', re.IGNORECASE)
+Task_Name_rex=re.compile('<Data Name=\"TaskName\">(.*)</Data>|<TaskName>(.*)</TaskName>', re.IGNORECASE)
 
 Task_Command_rex=re.compile('<Command>(.*)</Command>', re.IGNORECASE)
 
 Task_args_rex=re.compile('<Arguments>(.*)</Arguments>', re.IGNORECASE)
 
-Process_Name_sec_rex = re.compile('<Data Name=\"CallerProcessName\">(.*)</Data>', re.IGNORECASE)
+Process_Name_sec_rex = re.compile('<Data Name=\"CallerProcessName\">(.*)</Data>|<CallerProcessName>(.*)</CallerProcessName>', re.IGNORECASE)
 
-Parent_Process_Name_sec_rex=re.compile('<Data Name=\"ParentProcessName\">(.*)</Data>', re.IGNORECASE)
+Parent_Process_Name_sec_rex=re.compile('<Data Name=\"ParentProcessName\">(.*)</Data>|<ParentProcessName>(.*)</ParentProcessName>', re.IGNORECASE)
 
 
-Category_sec_rex= re.compile('<Data Name=\"CategoryId\">(.*)</Data>', re.IGNORECASE)
+Category_sec_rex= re.compile('<Data Name=\"CategoryId\">(.*)</Data>|<CategoryId>(.*)</CategoryId>', re.IGNORECASE)
 
-Subcategory_rex= re.compile('<Data Name=\"SubcategoryId\">(.*)</Data>', re.IGNORECASE)
+Subcategory_rex= re.compile('<Data Name=\"SubcategoryId\">(.*)</Data>|<SubcategoryId>(.*)</LogonType>', re.IGNORECASE)
 
-Changes_rex= re.compile('<Data Name=\"AuditPolicyChanges\">(.*)</Data>', re.IGNORECASE)
+Changes_rex= re.compile('<Data Name=\"AuditPolicyChanges\">(.*)</Data>|<AuditPolicyChanges>(.*)</AuditPolicyChanges>', re.IGNORECASE)
 
-Member_Name_rex = re.compile('<Data Name=\"MemberName\">(.*)</Data>', re.IGNORECASE)
-Member_Sid_rex = re.compile('<Data Name=\"MemberSid\">(.*)</Data>', re.IGNORECASE)
+Member_Name_rex = re.compile('<Data Name=\"MemberName\">(.*)</Data>|<MemberName>(.*)</MemberName>', re.IGNORECASE)
+Member_Sid_rex = re.compile('<Data Name=\"MemberSid\">(.*)</Data>|<MemberSid>(.*)</MemberSid>', re.IGNORECASE)
 
 #=======================
 #Regex for windows defender logs
 
-Name_rex = re.compile('<Data Name=\"Threat Name\">(.*)</Data>', re.IGNORECASE)
+Name_rex = re.compile('<Data Name=\"Threat Name\">(.*)</Data>|<Threat Name>(.*)</Threat Name>', re.IGNORECASE)
 
-Severity_rex = re.compile('<Data Name=\"Severity Name\">(.*)</Data>', re.IGNORECASE)
+Severity_rex = re.compile('<Data Name=\"Severity Name\">(.*)</Data>|<Severity Name>(.*)</Severity Name>', re.IGNORECASE)
 
-Category_rex = re.compile('<Data Name=\"Category Name\">(.*)</Data>', re.IGNORECASE)
+Category_rex = re.compile('<Data Name=\"Category Name\">(.*)</Data>|<Category Name>(.*)</Category Name>', re.IGNORECASE)
 
-Path_rex = re.compile('<Data Name=\"Path\">(.*)</Data>', re.IGNORECASE)
+Path_rex = re.compile('<Data Name=\"Path\">(.*)</Data>|<Path>(.*)</Path>', re.IGNORECASE)
 
-Defender_Remediation_User_rex = re.compile('<Data Name=\"Remediation User\">(.*)</Data>', re.IGNORECASE)
+Defender_Remediation_User_rex = re.compile('<Data Name=\"Remediation User\">(.*)</Data>|<Remediation User>(.*)</Remediation User>', re.IGNORECASE)
 
-Defender_User_rex = re.compile('<Data Name=\"User\">(.*)</Data>', re.IGNORECASE)
+Defender_User_rex = re.compile('<Data Name=\"User\">(.*)</Data>|<User>(.*)</User>', re.IGNORECASE)
 
-Process_Name_rex = re.compile('<Data Name=\"Process Name\">(.*)</Data>', re.IGNORECASE)
+Process_Name_rex = re.compile('<Data Name=\"Process Name\">(.*)</Data>|<Process Name>(.*)</Process Name>', re.IGNORECASE)
 
-Action_rex = re.compile('<Data Name=\"Action ID\">(.*)</Data>', re.IGNORECASE)
+Action_rex = re.compile('<Data Name=\"Action ID\">(.*)</Data>|<Action ID>(.*)</Action ID>', re.IGNORECASE)
 
 #=======================
 #Regex for system logs
 
-Service_Name_rex = re.compile('<Data Name=\"ServiceName\">(.*)</Data>', re.IGNORECASE)
-Service_File_Name_rex = re.compile('<Data Name=\"ImagePath\">(.*)</Data>', re.IGNORECASE)
-Service_Type_rex = re.compile('<Data Name=\"ServiceType\">(.*)</Data>', re.IGNORECASE)
-Service_Account_rex = re.compile('<Data Name=\"AccountName\">(.*)</Data>', re.IGNORECASE)
-State_Service_Name_rex = re.compile('<Data Name=\"param1\">(.*)</Data>', re.IGNORECASE)
-State_Service_rex = re.compile('<Data Name=\"param2\">(.*)</Data>', re.IGNORECASE)
-Service_Start_Type_rex = re.compile('<Data Name=\"StartType\">(.*)</Data>', re.IGNORECASE)
+Service_Name_rex = re.compile('<Data Name=\"ServiceName\">(.*)</Data>|<ServiceName>(.*)</ServiceName>', re.IGNORECASE)
+Service_File_Name_rex = re.compile('<Data Name=\"ImagePath\">(.*)</Data>|<ImagePath>(.*)</ImagePath>', re.IGNORECASE)
+Service_Type_rex = re.compile('<Data Name=\"ServiceType\">(.*)</Data>|<ServiceType>(.*)</ServiceType>', re.IGNORECASE)
+Service_Account_rex = re.compile('<Data Name=\"AccountName\">(.*)</Data>|<AccountName>(.*)</AccountName>', re.IGNORECASE)
+State_Service_Name_rex = re.compile('<Data Name=\"param1\">(.*)</Data>|<param1>(.*)</param1>', re.IGNORECASE)
+State_Service_rex = re.compile('<Data Name=\"param2\">(.*)</Data>|<param2>(.*)</param2>', re.IGNORECASE)
+Service_Start_Type_rex = re.compile('<Data Name=\"StartType\">(.*)</Data>|<StartType>(.*)</StartType>', re.IGNORECASE)
 
 
 #=======================
 #Regex for task scheduler logs
-Task_Name = re.compile('<Data Name=\"TaskName\">(.*)</Data>', re.IGNORECASE)
-Task_Registered_User_rex = re.compile('<Data Name=\"UserContext\">(.*)</Data>', re.IGNORECASE)
-Task_Deleted_User_rex = re.compile('<Data Name=\"UserName\">(.*)</Data>', re.IGNORECASE)
+Task_Name = re.compile('<Data Name=\"TaskName\">(.*)</Data>|<TaskName>(.*)</TaskName>', re.IGNORECASE)
+Task_Registered_User_rex = re.compile('<Data Name=\"UserContext\">(.*)</Data>|<UserContext>(.*)</UserContext>', re.IGNORECASE)
+Task_Deleted_User_rex = re.compile('<Data Name=\"UserName\">(.*)</Data>|<UserName>(.*)</UserName>', re.IGNORECASE)
 
 
 #======================
 #Regex for powershell operational logs
-Powershell_ContextInfo= re.compile('<Data Name=\"ContextInfo\">(.*)</Data>', re.IGNORECASE)
-Powershell_Payload= re.compile('<Data Name=\"Payload\">(.*)</Data>', re.IGNORECASE)
-Powershell_ScriptBlockText= re.compile('<Data Name=\"ScriptBlockText\">(.*)</Data>', re.IGNORECASE)
-Powershell_Path= re.compile('<Data Name=\"Path\">(.*)</Data>', re.IGNORECASE)
+Powershell_ContextInfo= re.compile('<Data Name=\"ContextInfo\">(.*)</Data>|<ContextInfo>(.*)</ContextInfo>', re.IGNORECASE)
+Powershell_Payload= re.compile('<Data Name=\"Payload\">(.*)</Data>|<Payload>(.*)</Payload>', re.IGNORECASE)
+Powershell_ScriptBlockText= re.compile('<Data Name=\"ScriptBlockText\">(.*)</Data>|<ScriptBlockText>(.*)</ScriptBlockText>', re.IGNORECASE)
+Powershell_Path= re.compile('<Data Name=\"Path\">(.*)</Data>|<Path>(.*)</Path>', re.IGNORECASE)
 
 Host_Application_rex = re.compile('Host Application = (.*)')
 Command_Name_rex = re.compile('Command Name = (.*)')
@@ -157,42 +157,42 @@ User_Terminal_rex=re.compile('User>(.*)</User>')
 Session_ID_rex=re.compile('<SessionID>(.*)</SessionID>')
 #======================
 #Microsoft-Windows-WinRM logs
-Connection_rex=re.compile('<Data Name=\"connection\">(.*)</Data>', re.IGNORECASE)
+Connection_rex=re.compile('<Data Name=\"connection\">(.*)</Data>|<connection>(.*)</connection>', re.IGNORECASE)
 Winrm_UserID_rex=re.compile('<Security UserID=\"(.*)\"', re.IGNORECASE)
 
 #User_ID_rex=re.compile("""<Security UserID=\'(?<UserID>.*)\'\/><\/System>""")
 #src_device_rex=re.compile("""<Computer>(?<src>.*)<\/Computer>""")
 #======================
 #Sysmon Logs
-Sysmon_CommandLine_rex=re.compile("<Data Name=\"CommandLine\">(.*)</Data>")
-Sysmon_ProcessGuid_rex=re.compile("<Data Name=\"ProcessGuid\">(.*)</Data>")
-Sysmon_ProcessId_rex=re.compile("<Data Name=\"ProcessId\">(.*)</Data>")
-Sysmon_Image_rex=re.compile("<Data Name=\"Image\">(.*)</Data>")
-Sysmon_FileVersion_rex=re.compile("<Data Name=\"FileVersion\">(.*)</Data>")
-Sysmon_Company_rex=re.compile("<Data Name=\"Company\">(.*)</Data>")
-Sysmon_Product_rex=re.compile("<Data Name=\"Product\">(.*)</Data>")
-Sysmon_Description_rex=re.compile("<Data Name=\"Description\">(.*)</Data>")
-Sysmon_User_rex=re.compile("<Data Name=\"User\">(.*)</Data>")
-Sysmon_LogonGuid_rex=re.compile("<Data Name=\"LogonGuid\">(.*)</Data>")
-Sysmon_TerminalSessionId_rex=re.compile("<Data Name=\"TerminalSessionId\">(.*)</Data>")
+Sysmon_CommandLine_rex=re.compile("<Data Name=\"CommandLine\">(.*)</Data>|<CommandLine>(.*)</CommandLine>")
+Sysmon_ProcessGuid_rex=re.compile("<Data Name=\"ProcessGuid\">(.*)</Data>|<ProcessGuid>(.*)</ProcessGuid>")
+Sysmon_ProcessId_rex=re.compile("<Data Name=\"ProcessId\">(.*)</Data>|<ProcessId>(.*)</ProcessId>")
+Sysmon_Image_rex=re.compile("<Data Name=\"Image\">(.*)</Data>|<Image>(.*)</Image>")
+Sysmon_FileVersion_rex=re.compile("<Data Name=\"FileVersion\">(.*)</Data>|<FileVersion>(.*)</FileVersion>")
+Sysmon_Company_rex=re.compile("<Data Name=\"Company\">(.*)</Data>|<Company>(.*)</Company>")
+Sysmon_Product_rex=re.compile("<Data Name=\"Product\">(.*)</Data>|<Product>(.*)</Product>")
+Sysmon_Description_rex=re.compile("<Data Name=\"Description\">(.*)</Data>|<Description>(.*)</Description>")
+Sysmon_User_rex=re.compile("<Data Name=\"User\">(.*)</Data>|<User>(.*)</User>")
+Sysmon_LogonGuid_rex=re.compile("<Data Name=\"LogonGuid\">(.*)</Data>|<LogonGuid>(.*)</LogonGuid>")
+Sysmon_TerminalSessionId_rex=re.compile("<Data Name=\"TerminalSessionId\">(.*)</Data>|<TerminalSessionId>(.*)</TerminalSessionId>")
 Sysmon_Hashes_MD5_rex=re.compile("<Data Name=\"MD5=(.*),")
 Sysmon_Hashes_SHA256_rex=re.compile("<Data Name=\"SHA256=(.*)")
-Sysmon_ParentProcessGuid_rex=re.compile("<Data Name=\"ParentProcessGuid\">(.*)</Data>")
-Sysmon_ParentProcessId_rex=re.compile("<Data Name=\"ParentProcessId\">(.*)</Data>")
-Sysmon_ParentImage_rex=re.compile("<Data Name=\"ParentImage\">(.*)</Data>")
-Sysmon_ParentCommandLine_rex=re.compile("<Data Name=\"ParentCommandLine\">(.*)</Data>")
-Sysmon_CurrentDirectory_rex=re.compile("<Data Name=\"CurrentDirectory\">(.*)</Data>")
-Sysmon_OriginalFileName_rex=re.compile("<Data Name=\"OriginalFileName\">(.*)</Data>")
-Sysmon_TargetObject_rex=re.compile("<Data Name=\"TargetObject\">(.*)</Data>")
+Sysmon_ParentProcessGuid_rex=re.compile("<Data Name=\"ParentProcessGuid\">(.*)</Data>|<ParentProcessGuid>(.*)</ParentProcessGuid>")
+Sysmon_ParentProcessId_rex=re.compile("<Data Name=\"ParentProcessId\">(.*)</Data>|<ParentProcessId>(.*)</ParentProcessId>")
+Sysmon_ParentImage_rex=re.compile("<Data Name=\"ParentImage\">(.*)</Data>|<ParentImage>(.*)</ParentImage>")
+Sysmon_ParentCommandLine_rex=re.compile("<Data Name=\"ParentCommandLine\">(.*)</Data>|<ParentCommandLine>(.*)</ParentCommandLine>")
+Sysmon_CurrentDirectory_rex=re.compile("<Data Name=\"CurrentDirectory\">(.*)</Data>|<CurrentDirectory>(.*)</CurrentDirectory>")
+Sysmon_OriginalFileName_rex=re.compile("<Data Name=\"OriginalFileName\">(.*)</Data>|<OriginalFileName>(.*)</OriginalFileName>")
+Sysmon_TargetObject_rex=re.compile("<Data Name=\"TargetObject\">(.*)</Data>|<TargetObject>(.*)</TargetObject>")
 #########
 #Sysmon  event ID 3
-Sysmon_Protocol_rex=re.compile("<Data Name=\"Protocol\">(.*)</Data>")
-Sysmon_SourceIp_rex=re.compile("<Data Name=\"SourceIp\">(.*)</Data>")
-Sysmon_SourceHostname_rex=re.compile("<Data Name=\"SourceHostname\">(.*)</Data>")
-Sysmon_SourcePort_rex=re.compile("<Data Name=\"SourcePort\">(.*)</Data>")
-Sysmon_DestinationIp_rex=re.compile("<Data Name=\"DestinationIp\">(.*)</Data>")
-Sysmon_DestinationHostname_rex=re.compile("<Data Name=\"DestinationHostname\">(.*)</Data>")
-Sysmon_DestinationPort_rex=re.compile("<Data Name=\"DestinationPort\">(.*)</Data>")
+Sysmon_Protocol_rex=re.compile("<Data Name=\"Protocol\">(.*)</Data>|<Protocol>(.*)</Protocol>")
+Sysmon_SourceIp_rex=re.compile("<Data Name=\"SourceIp\">(.*)</Data>|<SourceIp>(.*)</SourceIp>")
+Sysmon_SourceHostname_rex=re.compile("<Data Name=\"SourceHostname\">(.*)</Data>|<SourceHostname>(.*)</SourceHostname>")
+Sysmon_SourcePort_rex=re.compile("<Data Name=\"SourcePort\">(.*)</Data>|<SourcePort>(.*)</SourcePort>")
+Sysmon_DestinationIp_rex=re.compile("<Data Name=\"DestinationIp\">(.*)</Data>|<DestinationIp>(.*)</DestinationIp>")
+Sysmon_DestinationHostname_rex=re.compile("<Data Name=\"DestinationHostname\">(.*)</Data>|<DestinationHostname>(.*)</DestinationHostname>")
+Sysmon_DestinationPort_rex=re.compile("<Data Name=\"DestinationPort\">(.*)</Data>|<DestinationPort>(.*)</DestinationPort>")
 
 def detect_events_security_log(file_name):
     #global Logon_Type_rex,Account_Name_rex,Account_Domain_rex,Workstation_Name_rex,Source_Network_Address_rex
@@ -491,6 +491,7 @@ def detect_events_security_log(file_name):
                 Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             if EventID[0] == "4625" :
+
                 if Target_Account_Name[0].strip() not in Security_Authentication_Summary[0]['User']:
                     Security_Authentication_Summary[0]['User'].append(Target_Account_Name[0].strip())
                     Security_Authentication_Summary[0]['Number of Failed Logins'].append(1)
@@ -509,6 +510,7 @@ def detect_events_security_log(file_name):
 
 #and (Logon_Type[0].strip()=="3" or Logon_Type[0].strip()=="10" or Logon_Type[0].strip()=="2" or Logon_Type[0].strip()=="8")
             if EventID[0] == "4624" :
+
                 if Target_Account_Name[0].strip() not in Security_Authentication_Summary[0]['User']:
                     Security_Authentication_Summary[0]['User'].append(Target_Account_Name[0].strip())
                     Security_Authentication_Summary[0]['Number of Successful Logins'].append(1)
@@ -518,6 +520,8 @@ def detect_events_security_log(file_name):
                         Security_Authentication_Summary[0]['User'].index(Target_Account_Name[0].strip())] = \
                     Security_Authentication_Summary[0]['Number of Successful Logins'][
                         Security_Authentication_Summary[0]['User'].index(Target_Account_Name[0].strip())] + 1
+
+
 
             #detect pass the hash
             if EventID[0] == "4625" or EventID[0] == "4624":
@@ -544,8 +548,17 @@ def detect_events_security_log(file_name):
                             "Audit log cleared by user ( %s )" % (
                             Account_Name[0].strip()))
                     """
-                    Event_desc = "Audit log cleared by user ( %s )" % (
-                            Account_Name[0].strip())
+                    try:
+                        if (len(Account_Name[0][0].strip())>1):
+                            Event_desc = "Audit log cleared by user ( %s )" % (
+                            Account_Name[0][0].strip())
+                        else:
+                            Event_desc = "Audit log cleared by user ( %s )" % (
+                        Account_Name[0][1].strip())
+
+                    except:
+                        Event_desc = "Audit log cleared by user"
+
                     Security_events[0]['Date and Time'].append(record["timestamp"])
                     Security_events[0]['Detection Rule'].append("Audit log cleared")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -1524,60 +1537,3 @@ def detect_events_Sysmon_log(file_name):
                 Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
         else:
             print(record['data'])
-"""
-detect_events_security_log("DC-01-Security-202011251648.evtx")
-detect_events_windows_defender_log("defender.evtx")
-detect_events_scheduled_task_log("scheduler.evtx")
-detect_events_system_log("system.evtx")
-detect_events_powershell_operational_log("powershell-operational.evtx")
-detect_events_powershell_log("powershell.evtx")
-detect_events_Microsoft_Windows_WinRM("winrm.evtx")
-detect_events_Sysmon_log("sysmon.evtx")
-"""
-"""
-
-detect_events_powershell_operational_log("wineventlog/Powershell_Operational.evtx")
-detect_events_powershell_log("wineventlog/Windows_PowerShell.evtx")
-detect_events_TerminalServices_LocalSessionManager_log("wineventlog/LocalSessionManager.evtx")
-detect_events_security_log("wineventlog/Security.evtx")
-detect_events_scheduled_task_log("wineventlog/TaskScheduler.evtx")
-detect_events_windows_defender_log("wineventlog/Windows_Defender.evtx")
-detect_events_Microsoft_Windows_WinRM("wineventlog/WinRM.evtx")
-#detect_events_Sysmon_log("wineventlog/Sysmon.evtx")
-detect_events_system_log("wineventlog/System.evtx")
-
-
-Sysmon = pd.DataFrame(Sysmon_events[0])
-System=pd.DataFrame(System_events[0])
-Powershell=pd.DataFrame(Powershell_events[0])
-Powershell_Operational=pd.DataFrame(Powershell_Operational_events[0])
-Security=pd.DataFrame(Security_events[0])
-TerminalServices=pd.DataFrame(TerminalServices_events[0])
-WinRM=pd.DataFrame(WinRM_events[0])
-Windows_Defender=pd.DataFrame(Windows_Defender_events[0])
-ScheduledTask=pd.DataFrame(ScheduledTask_events[0])
-Terminal_Services_Summary=pd.DataFrame(TerminalServices_Summary[0])
-Authentication_Summary=pd.DataFrame(Security_Authentication_Summary[0])
-
-#allresults=pd.DataFrame([TerminalServices,Powershell_Operational],columns=['Date and Time', 'Detection Rule','Detection Domain','Severity','Event Description','Event ID','Original Event Log'])
-allresults=pd.concat([ScheduledTask,Powershell_Operational,Sysmon,System,Powershell,Security,TerminalServices,WinRM,Windows_Defender], join="inner",ignore_index=True)
-allresults=allresults.rename(columns={'Date and Time': 'datetime','Detection Rule':'message'})
-allresults['timestamp_desc']=""
-allresults=allresults[['message','datetime','timestamp_desc','Detection Domain','Severity','Event Description','Event ID','Original Event Log']]
-allresults.to_csv(r'test-all.csv',index=False)
-#Sysmon=Sysmon.reset_index()
-#Sysmon=Sysmon.drop(['index'],axis=1)
-writer = pd.ExcelWriter('Result-full-evtx.xlsx', engine='xlsxwriter',options={'encoding':'utf-8'})
-System.to_excel(writer, sheet_name='System Events', index=False)
-Powershell.to_excel(writer, sheet_name='Powershell Events', index=False)
-Powershell_Operational.to_excel(writer, sheet_name='Powershell_Operational Events', index=False)
-Security.to_excel(writer, sheet_name='Security Events', index=False)
-TerminalServices.to_excel(writer, sheet_name='TerminalServices Events', index=False)
-WinRM.to_excel(writer, sheet_name='WinRM Events', index=False)
-Windows_Defender.to_excel(writer, sheet_name='Windows_Defender Events', index=False)
-ScheduledTask.to_excel(writer, sheet_name='ScheduledTask Events', index=False)
-Terminal_Services_Summary.to_excel(writer, sheet_name='Terminal Services Logon Summary', index=False)
-Authentication_Summary.to_excel(writer, sheet_name='Security Authentication Summary', index=False)
-writer.save()
-
-"""
