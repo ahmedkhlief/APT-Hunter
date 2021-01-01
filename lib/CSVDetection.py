@@ -555,7 +555,8 @@ def detect_events_security_log(file_name='deep-blue-secuity.csv',winevent=False)
                     Security_events[0]['Original Event Log'].append(str(row['Details']).replace("\r"," "))
 
             #System audit policy was changed
-            if row['Event ID'] == "4719" and Security_ID[0].strip()!="S-1-5-18" :
+            
+            if row['Event ID'] == "4719" and len(Security_ID)>0 and Security_ID[0].strip()!="S-1-5-18" and Security_ID[0].strip()!="SYSTEM"  :
                     """print("##### " + row['Date and Time'] + " ####  ", end='')
                     print(
                             "System audit policy was changed by user ( %s ) , Audit Poricly category ( %s ) , Subcategory ( %s ) with changes ( %s )" % (
