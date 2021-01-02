@@ -12,7 +12,7 @@ account_op={}
 PasswordSpray2={}
 Suspicious_executables=['pl.exe','nc.exe','nmap.exe','psexec.exe','plink.exe','mimikatz','procdump.exe',' dcom.exe',' Inveigh.exe',' LockLess.exe',' Logger.exe',' PBind.exe',' PS.exe',' Rubeus.exe',' RunasCs.exe',' RunAs.exe',' SafetyDump.exe',' SafetyKatz.exe',' Seatbelt.exe',' SExec.exe',' SharpApplocker.exe',' SharpChrome.exe',' SharpCOM.exe',' SharpDPAPI.exe',' SharpDump.exe',' SharpEdge.exe',' SharpEDRChecker.exe',' SharPersist.exe',' SharpHound.exe',' SharpLogger.exe',' SharpPrinter.exe',' SharpRoast.exe',' SharpSC.exe',' SharpSniper.exe',' SharpSocks.exe',' SharpSSDP.exe',' SharpTask.exe',' SharpUp.exe',' SharpView.exe',' SharpWeb.exe',' SharpWMI.exe',' Shhmon.exe',' SweetPotato.exe',' Watson.exe',' WExec.exe','7zip.exe']
 
-Suspicious_powershell_commands=['DomainPasswordSpray','PasswordSpray','Password','Get-WMIObject','Get-GPPPassword','Get-Keystrokes','Get-TimedScreenshot','Get-VaultCredential','Get-ServiceUnquoted','Get-ServiceEXEPerms','Get-ServicePerms','Get-RegAlwaysInstallElevated','Get-RegAutoLogon','Get-UnattendedInstallFiles','Get-Webconfig','Get-ApplicationHost','Get-PassHashes','Get-LsaSecret','Get-Information','Get-PSADForestInfo','Get-KerberosPolicy','Get-PSADForestKRBTGTInfo','Get-PSADForestInfo','Get-KerberosPolicy','Invoke-Command','Invoke-Expression','iex','Invoke-Shellcode','Invoke--Shellcode','Invoke-ShellcodeMSIL','Invoke-MimikatzWDigestDowngrade','Invoke-NinjaCopy','Invoke-CredentialInjection','Invoke-TokenManipulation','Invoke-CallbackIEX','Invoke-PSInject','Invoke-DllEncode','Invoke-ServiceUserAdd','Invoke-ServiceCMD','Invoke-ServiceStart','Invoke-ServiceStop','Invoke-ServiceEnable','Invoke-ServiceDisable','Invoke-FindDLLHijack','Invoke-FindPathHijack','Invoke-AllChecks','Invoke-MassCommand','Invoke-MassMimikatz','Invoke-MassSearch','Invoke-MassTemplate','Invoke-MassTokens','Invoke-ADSBackdoor','Invoke-CredentialsPhish','Invoke-BruteForce','Invoke-PowerShellIcmp','Invoke-PowerShellUdp','Invoke-PsGcatAgent','Invoke-PoshRatHttps','Invoke-PowerShellTcp','Invoke-PoshRatHttp','Invoke-PowerShellWmi','Invoke-PSGcat','Invoke-Encode','Invoke-Decode','Invoke-CreateCertificate','Invoke-NetworkRelay','EncodedCommand','New-ElevatedPersistenceOption','wsman','Enter-PSSession','DownloadString','DownloadFile','Out-Word','Out-Excel','Out-Java','Out-Shortcut','Out-CHM','Out-HTA','Out-Minidump','HTTP-Backdoor','Find-AVSignature','DllInjection','ReflectivePEInjection','Base64','System.Reflection','System.Management','Restore-ServiceEXE','Add-ScrnSaveBackdoor','Gupt-Backdoor','Execute-OnTime','DNS_TXT_Pwnage','Write-UserAddServiceBinary','Write-CMDServiceBinary','Write-UserAddMSI','Write-ServiceEXE','Write-ServiceEXECMD','Enable-DuplicateToken','Remove-Update','Execute-DNSTXT-Code','Download-Execute-PS','Execute-Command-MSSQL','Download_Execute','Copy-VSS','Check-VM','Create-MultipleSessions','Run-EXEonRemote','Port-Scan','Remove-PoshRat','TexttoEXE','Base64ToString','StringtoBase64','Do-Exfiltration','Parse_Keys','Add-Exfiltration','Add-Persistence','Remove-Persistence','Find-PSServiceAccounts','Discover-PSMSSQLServers','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Mimikatz','powercat','powersploit','PowershellEmpire','GetProcAddress','ICM','.invoke',' -e ','hidden','-w hidden']
+Suspicious_powershell_commands=['DomainPasswordSpray','PasswordSpray','Password','Get-WMIObject','Get-GPPPassword','Get-Keystrokes','Get-TimedScreenshot','Get-VaultCredential','Get-ServiceUnquoted','Get-ServiceEXEPerms','Get-ServicePerms','Get-RegAlwaysInstallElevated','Get-RegAutoLogon','Get-UnattendedInstallFiles','Get-Webconfig','Get-ApplicationHost','Get-PassHashes','Get-LsaSecret','Get-Information','Get-PSADForestInfo','Get-KerberosPolicy','Get-PSADForestKRBTGTInfo','Get-PSADForestInfo','Get-KerberosPolicy','Invoke-Command','Invoke-Expression','iex','Invoke-Shellcode','Invoke--Shellcode','Invoke-ShellcodeMSIL','Invoke-MimikatzWDigestDowngrade','Invoke-NinjaCopy','Invoke-CredentialInjection','Invoke-TokenManipulation','Invoke-CallbackIEX','Invoke-PSInject','Invoke-DllEncode','Invoke-ServiceUserAdd','Invoke-ServiceCMD','Invoke-ServiceStart','Invoke-ServiceStop','Invoke-ServiceEnable','Invoke-ServiceDisable','Invoke-FindDLLHijack','Invoke-FindPathHijack','Invoke-AllChecks','Invoke-MassCommand','Invoke-MassMimikatz','Invoke-MassSearch','Invoke-MassTemplate','Invoke-MassTokens','Invoke-ADSBackdoor','Invoke-CredentialsPhish','Invoke-BruteForce','Invoke-PowerShellIcmp','Invoke-PowerShellUdp','Invoke-PsGcatAgent','Invoke-PoshRatHttps','Invoke-PowerShellTcp','Invoke-PoshRatHttp','Invoke-PowerShellWmi','Invoke-PSGcat','Invoke-Encode','Invoke-Decode','Invoke-CreateCertificate','Invoke-NetworkRelay','EncodedCommand','New-ElevatedPersistenceOption','wsman','Enter-PSSession','DownloadString','DownloadFile','Out-Word','Out-Excel','Out-Java','Out-Shortcut','Out-CHM','Out-HTA','Out-Minidump','HTTP-Backdoor','Find-AVSignature','DllInjection','ReflectivePEInjection','Base64','System.Reflection','System.Management','Restore-ServiceEXE','Add-ScrnSaveBackdoor','Gupt-Backdoor','Execute-OnTime','DNS_TXT_Pwnage','Write-UserAddServiceBinary','Write-CMDServiceBinary','Write-UserAddMSI','Write-ServiceEXE','Write-ServiceEXECMD','Enable-DuplicateToken','Remove-Update','Execute-DNSTXT-Code','Download-Execute-PS','Execute-Command-MSSQL','Download_Execute','Copy-VSS','Check-VM','Create-MultipleSessions','Run-EXEonRemote','Port-Scan','Remove-PoshRat','TexttoEXE','Base64ToString','StringtoBase64','Do-Exfiltration','Parse_Keys','Add-Exfiltration','Add-Persistence','Remove-Persistence','Find-PSServiceAccounts','Discover-PSMSSQLServers','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Mimikatz','powercat','powersploit','PowershellEmpire','GetProcAddress','ICM','.invoke',' -e ','hidden','-w hidden','Invoke-Obfuscation-master','Out-EncodedWhitespaceCommand','Out-Encoded']
 
 Suspicious_powershell_Arguments=["-EncodedCommand","-enc","-w hidden","[Convert]::FromBase64String","iex(","New-Object","Net.WebClient","-windowstyle hidden","DownloadFile","DownloadString","Invoke-Expression","Net.WebClient","-Exec bypass" ,"-ExecutionPolicy bypass"]
 
@@ -127,10 +127,10 @@ Task_Deleted_User_rex = re.compile('<Data Name=\"UserName\">(.*)</Data>|<UserNam
 
 #======================
 #Regex for powershell operational logs
-Powershell_ContextInfo= re.compile('<Data Name=\"ContextInfo\">(.*)</Data>|<ContextInfo>(.*)</ContextInfo>', re.IGNORECASE)
-Powershell_Payload= re.compile('<Data Name=\"Payload\">(.*)</Data>|<Payload>(.*)</Payload>', re.IGNORECASE)
-Powershell_ScriptBlockText= re.compile('<Data Name=\"ScriptBlockText\">(.*)</Data>|<ScriptBlockText>(.*)</ScriptBlockText>', re.IGNORECASE)
-Powershell_Path= re.compile('<Data Name=\"Path\">(.*)</Data>|<Path>(.*)</Path>', re.IGNORECASE)
+Powershell_ContextInfo= re.compile('<Data Name=\"ContextInfo\">(.*)</Data>', re.IGNORECASE)
+Powershell_Payload= re.compile('<Data Name=\"Payload\">(.*)</Data>', re.IGNORECASE)
+Powershell_ScriptBlockText= re.compile('<Data Name=\"ScriptBlockText\">(.*)</Data>', re.IGNORECASE)
+Powershell_Path= re.compile('<Data Name=\"Path\">(.*)</Data>', re.IGNORECASE)
 
 Host_Application_rex = re.compile('Host Application = (.*)')
 Command_Name_rex = re.compile('Command Name = (.*)')
@@ -164,35 +164,35 @@ Winrm_UserID_rex=re.compile('<Security UserID=\"(.*)\"', re.IGNORECASE)
 #src_device_rex=re.compile("""<Computer>(?<src>.*)<\/Computer>""")
 #======================
 #Sysmon Logs
-Sysmon_CommandLine_rex=re.compile("<Data Name=\"CommandLine\">(.*)</Data>|<CommandLine>(.*)</CommandLine>")
-Sysmon_ProcessGuid_rex=re.compile("<Data Name=\"ProcessGuid\">(.*)</Data>|<ProcessGuid>(.*)</ProcessGuid>")
-Sysmon_ProcessId_rex=re.compile("<Data Name=\"ProcessId\">(.*)</Data>|<ProcessId>(.*)</ProcessId>")
-Sysmon_Image_rex=re.compile("<Data Name=\"Image\">(.*)</Data>|<Image>(.*)</Image>")
-Sysmon_FileVersion_rex=re.compile("<Data Name=\"FileVersion\">(.*)</Data>|<FileVersion>(.*)</FileVersion>")
-Sysmon_Company_rex=re.compile("<Data Name=\"Company\">(.*)</Data>|<Company>(.*)</Company>")
-Sysmon_Product_rex=re.compile("<Data Name=\"Product\">(.*)</Data>|<Product>(.*)</Product>")
-Sysmon_Description_rex=re.compile("<Data Name=\"Description\">(.*)</Data>|<Description>(.*)</Description>")
-Sysmon_User_rex=re.compile("<Data Name=\"User\">(.*)</Data>|<User>(.*)</User>")
-Sysmon_LogonGuid_rex=re.compile("<Data Name=\"LogonGuid\">(.*)</Data>|<LogonGuid>(.*)</LogonGuid>")
-Sysmon_TerminalSessionId_rex=re.compile("<Data Name=\"TerminalSessionId\">(.*)</Data>|<TerminalSessionId>(.*)</TerminalSessionId>")
+Sysmon_CommandLine_rex=re.compile("<Data Name=\"CommandLine\">(.*)</Data>")
+Sysmon_ProcessGuid_rex=re.compile("<Data Name=\"ProcessGuid\">(.*)</Data>")
+Sysmon_ProcessId_rex=re.compile("<Data Name=\"ProcessId\">(.*)</Data>")
+Sysmon_Image_rex=re.compile("<Data Name=\"Image\">(.*)</Data>")
+Sysmon_FileVersion_rex=re.compile("<Data Name=\"FileVersion\">(.*)</Data>")
+Sysmon_Company_rex=re.compile("<Data Name=\"Company\">(.*)</Data>")
+Sysmon_Product_rex=re.compile("<Data Name=\"Product\">(.*)</Data>")
+Sysmon_Description_rex=re.compile("<Data Name=\"Description\">(.*)</Data>")
+Sysmon_User_rex=re.compile("<Data Name=\"User\">(.*)</Data>")
+Sysmon_LogonGuid_rex=re.compile("<Data Name=\"LogonGuid\">(.*)</Data>")
+Sysmon_TerminalSessionId_rex=re.compile("<Data Name=\"TerminalSessionId\">(.*)</Data>")
 Sysmon_Hashes_MD5_rex=re.compile("<Data Name=\"MD5=(.*),")
 Sysmon_Hashes_SHA256_rex=re.compile("<Data Name=\"SHA256=(.*)")
-Sysmon_ParentProcessGuid_rex=re.compile("<Data Name=\"ParentProcessGuid\">(.*)</Data>|<ParentProcessGuid>(.*)</ParentProcessGuid>")
-Sysmon_ParentProcessId_rex=re.compile("<Data Name=\"ParentProcessId\">(.*)</Data>|<ParentProcessId>(.*)</ParentProcessId>")
-Sysmon_ParentImage_rex=re.compile("<Data Name=\"ParentImage\">(.*)</Data>|<ParentImage>(.*)</ParentImage>")
-Sysmon_ParentCommandLine_rex=re.compile("<Data Name=\"ParentCommandLine\">(.*)</Data>|<ParentCommandLine>(.*)</ParentCommandLine>")
-Sysmon_CurrentDirectory_rex=re.compile("<Data Name=\"CurrentDirectory\">(.*)</Data>|<CurrentDirectory>(.*)</CurrentDirectory>")
-Sysmon_OriginalFileName_rex=re.compile("<Data Name=\"OriginalFileName\">(.*)</Data>|<OriginalFileName>(.*)</OriginalFileName>")
-Sysmon_TargetObject_rex=re.compile("<Data Name=\"TargetObject\">(.*)</Data>|<TargetObject>(.*)</TargetObject>")
+Sysmon_ParentProcessGuid_rex=re.compile("<Data Name=\"ParentProcessGuid\">(.*)</Data>")
+Sysmon_ParentProcessId_rex=re.compile("<Data Name=\"ParentProcessId\">(.*)</Data>")
+Sysmon_ParentImage_rex=re.compile("<Data Name=\"ParentImage\">(.*)</Data>")
+Sysmon_ParentCommandLine_rex=re.compile("<Data Name=\"ParentCommandLine\">(.*)</Data>")
+Sysmon_CurrentDirectory_rex=re.compile("<Data Name=\"CurrentDirectory\">(.*)</Data>")
+Sysmon_OriginalFileName_rex=re.compile("<Data Name=\"OriginalFileName\">(.*)</Data>")
+Sysmon_TargetObject_rex=re.compile("<Data Name=\"TargetObject\">(.*)</Data>")
 #########
 #Sysmon  event ID 3
-Sysmon_Protocol_rex=re.compile("<Data Name=\"Protocol\">(.*)</Data>|<Protocol>(.*)</Protocol>")
-Sysmon_SourceIp_rex=re.compile("<Data Name=\"SourceIp\">(.*)</Data>|<SourceIp>(.*)</SourceIp>")
-Sysmon_SourceHostname_rex=re.compile("<Data Name=\"SourceHostname\">(.*)</Data>|<SourceHostname>(.*)</SourceHostname>")
-Sysmon_SourcePort_rex=re.compile("<Data Name=\"SourcePort\">(.*)</Data>|<SourcePort>(.*)</SourcePort>")
-Sysmon_DestinationIp_rex=re.compile("<Data Name=\"DestinationIp\">(.*)</Data>|<DestinationIp>(.*)</DestinationIp>")
-Sysmon_DestinationHostname_rex=re.compile("<Data Name=\"DestinationHostname\">(.*)</Data>|<DestinationHostname>(.*)</DestinationHostname>")
-Sysmon_DestinationPort_rex=re.compile("<Data Name=\"DestinationPort\">(.*)</Data>|<DestinationPort>(.*)</DestinationPort>")
+Sysmon_Protocol_rex=re.compile("<Data Name=\"Protocol\">(.*)</Data>")
+Sysmon_SourceIp_rex=re.compile("<Data Name=\"SourceIp\">(.*)</Data>")
+Sysmon_SourceHostname_rex=re.compile("<Data Name=\"SourceHostname\">(.*)</Data>")
+Sysmon_SourcePort_rex=re.compile("<Data Name=\"SourcePort\">(.*)</Data>")
+Sysmon_DestinationIp_rex=re.compile("<Data Name=\"DestinationIp\">(.*)</Data>")
+Sysmon_DestinationHostname_rex=re.compile("<Data Name=\"DestinationHostname\">(.*)</Data>")
+Sysmon_DestinationPort_rex=re.compile("<Data Name=\"DestinationPort\">(.*)</Data>")
 
 def detect_events_security_log(file_name):
     #global Logon_Type_rex,Account_Name_rex,Account_Domain_rex,Workstation_Name_rex,Source_Network_Address_rex
@@ -243,75 +243,98 @@ def detect_events_security_log(file_name):
             Process_Command_Line = Process_Command_Line_rex.findall(record['data'])
             #User Cretion using Net command
             if EventID[0]=="4688":
+                try:
+                    if len(Account_Name[0][0])>1:
+                        user=Account_Name[0][0].strip()
+                        process_command_line=Process_Command_Line[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        user=Account_Name[0][1].strip()
+                        process_command_line=Process_Command_Line[0][1].strip()
 
-                if len(re.findall('.*user.*/add.*',record['data']))>0:
-                    #print("test")
-
-                    #print("##### " + record["timestamp"] + " ####  ", end='')
-                    #print("## High ## User Added using Net Command ",end='')
-                    #print("User Name : ( %s ) "%Account_Name[0][0].strip(),end='')
-                    #print("with Command Line : ( " + Process_Command_Line[0][0].strip()+" )")
-
-                    Event_desc ="User Name : ( %s ) "%Account_Name[0][0].strip()+"with Command Line : ( " + Process_Command_Line[0][0].strip()+" )"
-                    Security_events[0]['Date and Time'].append(record["timestamp"])
-                    Security_events[0]['Detection Rule'].append("User Added using Net Command")
-                    Security_events[0]['Detection Domain'].append("Audit")
-                    Security_events[0]['Severity'].append("Critical")
-                    Security_events[0]['Event Description'].append(Event_desc)
-                    Security_events[0]['Event ID'].append(EventID[0])
-                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
-                if len(Process_Command_Line)>0:
-                    if Process_Command_Line[0][0].strip().find("\\temp\\")>-1 or  Process_Command_Line[0][0].strip().find("\\tmp\\")>-1:
-                        # print("test")
+                    if len(re.findall('.*user.*/add.*',record['data']))>0:
+                        #print("test")
 
                         #print("##### " + record["timestamp"] + " ####  ", end='')
-                        #print("## Process running in temp ", end='')
-                        #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
-                        #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
-                        # print("###########")
-                        Event_desc ="User Name : ( %s ) " % Account_Name[0][0].strip()+" with Command Line : ( " + Process_Command_Line[0][0].strip() + " )"
+                        #print("## High ## User Added using Net Command ",end='')
+                        #print("User Name : ( %s ) "%Account_Name[0][0].strip(),end='')
+                        #print("with Command Line : ( " + Process_Command_Line[0][0].strip()+" )")
+
+                        Event_desc ="User Name : ( %s ) "%user+"with Command Line : ( " + process_command_line+" )"
                         Security_events[0]['Date and Time'].append(record["timestamp"])
-                        Security_events[0]['Detection Rule'].append("Process running in temp")
-                        Security_events[0]['Detection Domain'].append("Threat")
+                        Security_events[0]['Detection Rule'].append("User Added using Net Command")
+                        Security_events[0]['Detection Domain'].append("Audit")
                         Security_events[0]['Severity'].append("Critical")
                         Security_events[0]['Event Description'].append(Event_desc)
                         Security_events[0]['Event ID'].append(EventID[0])
                         Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
-
-                    for i in Suspicious_executables:
-
-                        if Process_Command_Line[0][0].strip().lower().find(i.lower())>-1:
+                    if len(process_command_line)>0:
+                        if process_command_line.find("\\temp\\")>-1 or  process_command_line.find("\\tmp\\")>-1:
+                            # print("test")
 
                             #print("##### " + record["timestamp"] + " ####  ", end='')
-                            #print("## Found Suspicios Process ", end='')
+                            #print("## Process running in temp ", end='')
                             #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
                             #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
                             # print("###########")
-                            Event_desc ="User Name : ( %s ) " % Account_Name[0][0].strip()+"with Command Line : ( " + Process_Command_Line[0][0].strip() + " )"
+                            Event_desc ="User Name : ( %s ) " % user+" with Command Line : ( " + process_command_line.strip() + " )"
                             Security_events[0]['Date and Time'].append(record["timestamp"])
-                            Security_events[0]['Detection Rule'].append("Suspicious Process Found")
+                            Security_events[0]['Detection Rule'].append("Process running in temp")
                             Security_events[0]['Detection Domain'].append("Threat")
                             Security_events[0]['Severity'].append("Critical")
                             Security_events[0]['Event Description'].append(Event_desc)
                             Security_events[0]['Event ID'].append(EventID[0])
                             Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
 
+                        for i in Suspicious_executables:
+
+                            if process_command_line.lower().find(i.lower())>-1:
+
+                                #print("##### " + record["timestamp"] + " ####  ", end='')
+                                #print("## Found Suspicios Process ", end='')
+                                #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
+                                #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
+                                # print("###########")
+                                Event_desc ="User Name : ( %s ) " % user+"with Command Line : ( " + process_command_line + " )"
+                                Security_events[0]['Date and Time'].append(record["timestamp"])
+                                Security_events[0]['Detection Rule'].append("Suspicious Process Found")
+                                Security_events[0]['Detection Domain'].append("Threat")
+                                Security_events[0]['Severity'].append("Critical")
+                                Security_events[0]['Event Description'].append(Event_desc)
+                                Security_events[0]['Event ID'].append(EventID[0])
+                                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+                except:
+                    print("Error Handling EventID (%s) with Event Content %s"%(EventID[0],record['data']))
 
             # User Created through management interface
             if EventID[0]=="4720":
-                #print("##### " + record["timestamp"] + " ####  ", end='')
-                #print("User Name ( " + Account_Name[0][0].strip() + " )", end='')
-                #print(" Created User Name ( " + Account_Name[1].strip()+ " )")
+                try:
+                    if len(Account_Name[0][0])>1:
+                        user=Account_Name[0][0].strip()
+                        target_account_name=Target_Account_Name[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        user=Account_Name[0][1].strip()
+                        target_account_name=Target_Account_Name[0][1].strip()
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("User Name ( " + Account_Name[0][0].strip() + " )", end='')
+                    #print(" Created User Name ( " + Account_Name[1].strip()+ " )")
 
-                Event_desc="User Name ( " + Account_Name[0][0].strip() + " )" + " Created User Name ( " + Target_Account_Name[0][0].strip()+ " )"
-                Security_events[0]['Date and Time'].append(record["timestamp"])
-                Security_events[0]['Detection Rule'].append("User Created through management interface")
-                Security_events[0]['Detection Domain'].append("Audit")
-                Security_events[0]['Severity'].append("Medium")
-                Security_events[0]['Event Description'].append(Event_desc)
-                Security_events[0]['Event ID'].append(EventID[0])
-                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
-
+                    Event_desc="User Name ( " + user + " )" + " Created User Name ( " + target_account_name+ " )"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Created through management interface")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("Medium")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                except:
+                    Event_desc="User Created through management interface"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Created through management interface")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("Medium")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             # Windows is shutting down
             if EventID[0]=="4609":
@@ -333,160 +356,317 @@ def detect_events_security_log(file_name):
 
             # User added to local group
             if EventID[0]=="4732":
+                try:
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("User ( " + Account_Name[0][0].strip() + " ) added User ( "+Security_ID[1].strip(), end='')
+                    #print(" to local group ( " + Group_Name[0][0].strip() + " )")
+                    if len(Account_Name[0][0])>1:
+                        user=Account_Name[0][0].strip()
+                        member_name=Member_Name[0][0].strip()
+                        group_name=Group_Name[0][0].strip()
+                        member_sid=Member_Sid[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        user=Account_Name[0][1].strip()
+                        member_name=Member_Name[0][1].strip()
+                        group_name=Group_Name[0][1].strip()
+                        member_sid=Member_Sid[0][1].strip()
 
-                #print("##### " + record["timestamp"] + " ####  ", end='')
-                #print("User ( " + Account_Name[0][0].strip() + " ) added User ( "+Security_ID[1].strip(), end='')
-                #print(" to local group ( " + Group_Name[0][0].strip() + " )")
+                    try :
+                        Event_desc="User ( " + user + " ) added User ( "+member_name+" to local group ( " + group_name + " )"
+                    except:
+                        Event_desc = "User ( " + user + " ) added User ( " + member_sid + " to Global group ( " + group_name + " )"
 
 
-                try :
-                    Event_desc="User ( " + Account_Name[0][0].strip() + " ) added User ( "++Member_Name[0][0].strip()+" to local group ( " + Group_Name[0][0].strip() + " )"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User added to local group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
                 except:
-                    Event_desc = "User ( " + Account_Name[0][0].strip() + " ) added User ( " + Member_Sid[0][0].strip() + " to Global group ( " + Group_Name[0][0].strip() + " )"
-
-
-                Security_events[0]['Date and Time'].append(record["timestamp"])
-                Security_events[0]['Detection Rule'].append("User added to local group")
-                Security_events[0]['Detection Domain'].append("Audit")
-                Security_events[0]['Severity'].append("High")
-                Security_events[0]['Event Description'].append(Event_desc)
-                Security_events[0]['Event ID'].append(EventID[0])
-                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                    Event_desc="User added to local group"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User added to local group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             #add user to global group
             if EventID[0] == "4728":
-
-                #print("##### " + record["timestamp"] + " ####  ", end='')
-                #print("User ( " + Account_Name[0][0].strip() + " ) added User ( "+Security_ID[1].strip(), end='')
-                #print(" to Global group ( " + Group_Name[0][0].strip() + " )")
-                try :
-                    Event_desc="User ( " + Account_Name[0][0].strip() + " ) added User ( "+Member_Name[0][0].strip()+" to Global group ( " + Group_Name[0][0].strip() + " )"
+                try:
+                    if len(Account_Name[0][0])>1:
+                        user=Account_Name[0][0].strip()
+                        member_name=Member_Name[0][0].strip()
+                        group_name=Group_Name[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        user=Account_Name[0][1].strip()
+                        member_name=Member_Name[0][1].strip()
+                        group_name=Group_Name[0][1].strip()
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("User ( " + Account_Name[0][0].strip() + " ) added User ( "+Security_ID[1].strip(), end='')
+                    #print(" to Global group ( " + Group_Name[0][0].strip() + " )")
+                    try :
+                        Event_desc="User ( " + user + " ) added User ( "+member_name+" to Global group ( " + group_name + " )"
+                    except:
+                        Event_desc = "User ( " + user + " ) added User ( " + member_name + " to Global group ( " + group_name + " )"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User added to global group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
                 except:
-                    Event_desc = "User ( " + Account_Name[0][0].strip() + " ) added User ( " + Member_Sid[0][0].strip() + " to Global group ( " + Group_Name[0][0].strip() + " )"
-                Security_events[0]['Date and Time'].append(record["timestamp"])
-                Security_events[0]['Detection Rule'].append("User added to global group")
-                Security_events[0]['Detection Domain'].append("Audit")
-                Security_events[0]['Severity'].append("High")
-                Security_events[0]['Event Description'].append(Event_desc)
-                Security_events[0]['Event ID'].append(EventID[0])
-                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                    Event_desc="User added to global group"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User added to global group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
 
             #add user to universal group
             if EventID[0] == "4756":
+                try:
+                    if len(Account_Name[0][0])>1:
+                        user=Account_Name[0][0].strip()
+                        member_name=Member_Name[0][0].strip()
+                        group_name=Group_Name[0][0].strip()
+                        target_account_name=Target_Account_Name[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        user=Account_Name[0][1].strip()
+                        member_name=Member_Name[0][1].strip()
+                        group_name=Group_Name[0][1].strip()
+                        target_account_name=Target_Account_Name[0][1].strip()
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("User ( " + Account_Name[0][0].strip() + " ) added User ( "+Security_ID[1].strip(), end='')
+                    Event_desc ="User ( " + user + " ) added User ( "+member_name
+                    if len(group_name)>0:
+                        #print(" to Universal group ( " + Group_Name[0][0].strip() + " )")
+                        Event_desc=Event_desc+" to Universal group ( " + group_name + " )"
+                    else:
+                        Event_desc = Event_desc +" to Universal group ( " + target_account_name + " )"
+                        #print(" to Universal group ( " + Account_Name[1].strip() + " )")
 
-                #print("##### " + record["timestamp"] + " ####  ", end='')
-                #print("User ( " + Account_Name[0][0].strip() + " ) added User ( "+Security_ID[1].strip(), end='')
-                Event_desc ="User ( " + Account_Name[0][0].strip() + " ) added User ( "+Member_Name[0][0].strip()
-                if len(Group_Name[0])>0:
-                    #print(" to Universal group ( " + Group_Name[0][0].strip() + " )")
-                    Event_desc=Event_desc+" to Universal group ( " + Group_Name[0][0].strip() + " )"
-                else:
-                    Event_desc = Event_desc +" to Universal group ( " + Target_Account_Name[0][0].strip() + " )"
-                    #print(" to Universal group ( " + Account_Name[1].strip() + " )")
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User added to Universal group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
-
-                Security_events[0]['Date and Time'].append(record["timestamp"])
-                Security_events[0]['Detection Rule'].append("User added to Universal group")
-                Security_events[0]['Detection Domain'].append("Audit")
-                Security_events[0]['Severity'].append("High")
-                Security_events[0]['Event Description'].append(Event_desc)
-                Security_events[0]['Event ID'].append(EventID[0])
-                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                except:
+                    Event_desc ="User added to Universal group"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User added to Universal group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             #remove user from global group
             if EventID[0] == "4729":
+                try:
+                    if len(Account_Name[0][0])>1:
+                        user=Account_Name[0][0].strip()
+                        member_name=Member_Name[0][0].strip()
+                        group_name=Group_Name[0][0].strip()
+                        target_account_name=Target_Account_Name[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        user=Account_Name[0][1].strip()
+                        member_name=Member_Name[0][1].strip()
+                        group_name=Group_Name[0][1].strip()
+                        target_account_name=Target_Account_Name[0][1].strip()
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("User ( " + Account_Name[0][0].strip() + " ) removed User ( "+Security_ID[1].strip(), end='')
+                    Event_desc ="User ( " +user + " ) removed User ( "+member_name
+                    if len(group_name)>0:
+                        #print(") from Global group ( " + Group_Name[0][0].strip() + " )")
+                        Event_desc = Event_desc +") from Global group ( " + group_name + " )"
+                    else:
+                        Event_desc = Event_desc +") from Global group ( " + target_account_name + " )"
+                        #print(") from Global group ( " + Account_Name[1].strip() + " )")
 
-                #print("##### " + record["timestamp"] + " ####  ", end='')
-                #print("User ( " + Account_Name[0][0].strip() + " ) removed User ( "+Security_ID[1].strip(), end='')
-                Event_desc ="User ( " + Account_Name[0][0].strip() + " ) removed User ( "+Member_Name[0][0].strip()
-                if len(Group_Name[0])>0:
-                    #print(") from Global group ( " + Group_Name[0][0].strip() + " )")
-                    Event_desc = Event_desc +") from Global group ( " + Group_Name[0][0].strip() + " )"
-                else:
-                    Event_desc = Event_desc +") from Global group ( " + Target_Account_Name[0][0].strip() + " )"
-                    #print(") from Global group ( " + Account_Name[1].strip() + " )")
 
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Removed from Global Group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
-                Security_events[0]['Date and Time'].append(record["timestamp"])
-                Security_events[0]['Detection Rule'].append("User Removed from Global Group")
-                Security_events[0]['Detection Domain'].append("Audit")
-                Security_events[0]['Severity'].append("High")
-                Security_events[0]['Event Description'].append(Event_desc)
-                Security_events[0]['Event ID'].append(EventID[0])
-                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                except:
+                    Event_desc ="User Removed from Global Group"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Removed from Global Group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             #remove user from universal group
             if EventID[0] == "4757":
-                #print("##### " + record["timestamp"] + " ####  ", end='')
-                #print("User ( " + Account_Name[0][0].strip() + " ) removed User ( "+Security_ID[1].strip(), end='')
-                Event_desc ="User ( " + Account_Name[0][0].strip() + " ) removed User ( "+Member_Name[0][0].strip()
-                if len(Group_Name[0])>0:
-                    #print(") from Universal group ( " + Group_Name[0][0].strip() + " )")
-                    Event_desc = Event_desc+") from Universal group ( " + Group_Name[0][0].strip() + " )"
-                else:
-                    #print(") from Universal group ( " + Account_Name[1].strip() + " )")
-                    Event_desc = Event_desc +") from Universal group ( " + Target_Account_Name[0][0].strip() + " )"
+                try:
+                    if len(Account_Name[0][0])>1:
+                        user=Account_Name[0][0].strip()
+                        member_name=Member_Name[0][0].strip()
+                        group_name=Group_Name[0][0].strip()
+                        target_account_name=Target_Account_Name[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        user=Account_Name[0][1].strip()
+                        member_name=Member_Name[0][1].strip()
+                        group_name=Group_Name[0][1].strip()
+                        target_account_name=Target_Account_Name[0][1].strip()
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("User ( " + Account_Name[0][0].strip() + " ) removed User ( "+Security_ID[1].strip(), end='')
+                    Event_desc ="User ( " + user + " ) removed User ( "+member_name
+                    if len(group_name)>0:
+                        #print(") from Universal group ( " + Group_Name[0][0].strip() + " )")
+                        Event_desc = Event_desc+") from Universal group ( " + group_name + " )"
+                    else:
+                        #print(") from Universal group ( " + Account_Name[1].strip() + " )")
+                        Event_desc = Event_desc +") from Universal group ( " + target_account_name + " )"
 
-                Security_events[0]['Date and Time'].append(record["timestamp"])
-                Security_events[0]['Detection Rule'].append("User Removed from Universal Group")
-                Security_events[0]['Detection Domain'].append("Audit")
-                Security_events[0]['Severity'].append("High")
-                Security_events[0]['Event Description'].append(Event_desc)
-                Security_events[0]['Event ID'].append(EventID[0])
-                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Removed from Universal Group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+                except:
+                    Event_desc ="User Removed from Universal Group"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Removed from Universal Group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             #remove user from local group
             if EventID[0] == "4733":
-                #print("##### " + record["timestamp"] + " ####  ", end='')
-                #print("User ( " + Account_Name[0][0].strip() + " ) removed User ( "+Security_ID[1].strip(), end='')
-                Event_desc ="User ( " + Account_Name[0][0].strip() + " ) removed User ( "+Member_Name[0][0].strip()
-                if len(Group_Name[0])>0:
-                    #print(") from Local group ( " + Group_Name[0][0].strip() + " )")
-                    Event_desc = Event_desc +") from Local group ( " + Group_Name[0][0].strip() + " )"
-                else:
-                    #print(") from Local group ( " + Account_Name[1].strip() + " )")
-                    Event_desc = Event_desc +") from Local group ( " + Target_Account_Name[0][0].strip() + " )"
 
+                try:
+                    if len(Account_Name[0][0])>1:
+                        user=Account_Name[0][0].strip()
+                        member_name=Member_Name[0][0].strip()
+                        group_name=Group_Name[0][0].strip()
+                        target_account_name=Target_Account_Name[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        user=Account_Name[0][1].strip()
+                        member_name=Member_Name[0][1].strip()
+                        group_name=Group_Name[0][1].strip()
+                        target_account_name=Target_Account_Name[0][1].strip()
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("User ( " + Account_Name[0][0].strip() + " ) removed User ( "+Security_ID[1].strip(), end='')
+                    Event_desc ="User ( " + user + " ) removed User ( "+member_name
+                    if len(group_name)>0:
+                        #print(") from Local group ( " + Group_Name[0][0].strip() + " )")
+                        Event_desc = Event_desc +") from Local group ( " + group_name + " )"
+                    else:
+                        #print(") from Local group ( " + Account_Name[1].strip() + " )")
+                        Event_desc = Event_desc +") from Local group ( " + target_account_name + " )"
 
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Removed from Local Group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
-                Security_events[0]['Date and Time'].append(record["timestamp"])
-                Security_events[0]['Detection Rule'].append("User Removed from Local Group")
-                Security_events[0]['Detection Domain'].append("Audit")
-                Security_events[0]['Severity'].append("High")
-                Security_events[0]['Event Description'].append(Event_desc)
-                Security_events[0]['Event ID'].append(EventID[0])
-                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                except:
+                    Event_desc ="User Removed from Local Group"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Removed from Local Group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
 
             #user removed group
             if EventID[0] == "4730":
-                print("##### " + record["timestamp"] + " ####  ", end='')
-                print("User ( " + Account_Name[0][0].strip() + " ) removed Group ( ", end='')
-                Event_desc ="User ( " + Account_Name[0][0].strip() + " ) removed Group ( "+Target_Account_Name[0][0].strip()+ " )"
 
+                try:
+                    if len(Account_Name[0][0])>1:
+                        user=Account_Name[0][0].strip()
+                        member_name=Member_Name[0][0].strip()
+                        group_name=Group_Name[0][0].strip()
+                        target_account_name=Target_Account_Name[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        user=Account_Name[0][1].strip()
+                        member_name=Member_Name[0][1].strip()
+                        group_name=Group_Name[0][1].strip()
+                        target_account_name=Target_Account_Name[0][1].strip()
 
-                Security_events[0]['Date and Time'].append(record["timestamp"])
-                Security_events[0]['Detection Rule'].append("User Removed Group")
-                Security_events[0]['Detection Domain'].append("Audit")
-                Security_events[0]['Severity'].append("High")
-                Security_events[0]['Event Description'].append(Event_desc)
-                Security_events[0]['Event ID'].append(EventID[0])
-                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("User ( " + Account_Name[0][0].strip() + " ) removed Group ( ", end='')
+
+                    Event_desc ="User ( " + user + " ) removed Group ( "+target_account_name+ " )"
+
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Removed Group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+                except:
+                    Event_desc ="User Removed Group"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Removed Group")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
 
             #user account removed
             if EventID[0] == "4726":
                 #print("##### " + record["timestamp"] + " ####  ", end='')
                 #print("User ( " + Account_Name[0][0].strip() + " ) removed user ", end='')
                 #print("( " + Account_Name[1].strip() + " )")
+                try:
+                    if len(Account_Name[0][0])>1:
+                        user=Account_Name[0][0].strip()
+                        target_account_name=Target_Account_Name[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        user=Account_Name[0][1].strip()
+                        target_account_name=Target_Account_Name[0][1].strip()
 
-                Event_desc ="User ( " + Account_Name[0][0].strip() + " ) removed user "+"( " + Target_Account_Name[0][0].strip() + " )"
-                Security_events[0]['Date and Time'].append(record["timestamp"])
-                Security_events[0]['Detection Rule'].append("User Account Removed")
-                Security_events[0]['Detection Domain'].append("Audit")
-                Security_events[0]['Severity'].append("High")
-                Security_events[0]['Event Description'].append(Event_desc)
-                Security_events[0]['Event ID'].append(EventID[0])
-                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                    Event_desc ="User ( " + user + " ) removed user "+"( " + target_account_name + " )"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Account Removed")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+                except:
+                    Event_desc ="User Account Removed"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("User Account Removed")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             if EventID[0] == "4625" :
                 try:
@@ -558,21 +738,50 @@ def detect_events_security_log(file_name):
 
             #detect pass the hash
             if EventID[0] == "4625" or EventID[0] == "4624":
-                if Logon_Type[0][0].strip() == "3" and Target_Account_Name[0][0].strip() != "ANONYMOUS LOGON" and Target_Account_Name[0][0].strip().find("$")==-1 and Logon_Process[0].strip() == "NtLmSsp" and Key_Length[0].strip() == "0":
-                    #print("##### " + record["timestamp"] + " ####  ", end='')
-                    #print(
-                    #        "Pass the hash attempt Detected : user name ( %s ) domain name ( %s ) from  IP ( %s ) and machine name ( %s )" % (
-                    #        Account_Name[1].strip(), Account_Domain[1].strip(), Source_IP[0][0].strip(), Workstation_Name[0][0].strip()))
+                try:
+                    if len(Account_Name[0][0])>1:
+                        logon_type=Logon_Type[0][0].strip()
+                        user=Account_Name[0][0].strip()
+                        target_account_name=Target_Account_Name[0][0].strip()
+                        logon_process=Logon_Process[0][0].strip()
+                        key_length=Key_Length[0][0].strip()
+                        target_account_domain=Target_Account_Domain[0][0].strip()
+                        source_ip=Source_IP[0][0].strip()
+                        workstation_name=Workstation_Name[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        logon_type=Logon_Type[0][1].strip()
+                        target_account_name=Target_Account_Name[0][1].strip()
+                        logon_process=Logon_Process[0][1].strip()
+                        key_length=Key_Length[0][1].strip()
+                        target_account_domain=Target_Account_Domain[0][1].strip()
+                        source_ip=Source_IP[0][1].strip()
+                        workstation_name=Workstation_Name[0][1].strip()
 
-                    Event_desc ="Pass the hash attempt Detected : user name ( %s ) domain name ( %s ) from  IP ( %s ) and machine name ( %s )" % (
-                        Target_Account_Name[0][0].strip(), Target_Account_Domain[0][0].strip(), Source_IP[0][0].strip(), Workstation_Name[0][0].strip())
-                    Security_events[0]['Date and Time'].append(record["timestamp"])
-                    Security_events[0]['Detection Rule'].append("Pass the hash attempt Detected")
-                    Security_events[0]['Detection Domain'].append("Threat")
-                    Security_events[0]['Severity'].append("Critical")
-                    Security_events[0]['Event Description'].append(Event_desc)
-                    Security_events[0]['Event ID'].append(EventID[0])
-                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                    if logon_type == "3" and target_account_name != "ANONYMOUS LOGON" and target_account_name.find("$")==-1 and logon_process == "NtLmSsp" and key_length == "0":
+                        #print("##### " + record["timestamp"] + " ####  ", end='')
+                        #print(
+                        #        "Pass the hash attempt Detected : user name ( %s ) domain name ( %s ) from  IP ( %s ) and machine name ( %s )" % (
+                        #        Account_Name[1].strip(), Account_Domain[1].strip(), Source_IP[0][0].strip(), Workstation_Name[0][0].strip()))
+
+                        Event_desc ="Pass the hash attempt Detected : user name ( %s ) domain name ( %s ) from  IP ( %s ) and machine name ( %s )" % (
+                            target_account_name, target_account_domain, source_ip, workstation_name)
+                        Security_events[0]['Date and Time'].append(record["timestamp"])
+                        Security_events[0]['Detection Rule'].append("Pass the hash attempt Detected")
+                        Security_events[0]['Detection Domain'].append("Threat")
+                        Security_events[0]['Severity'].append("Critical")
+                        Security_events[0]['Event Description'].append(Event_desc)
+                        Security_events[0]['Event ID'].append(EventID[0])
+                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                except:
+                        Event_desc ="Pass the hash attempt Detected "
+                        Security_events[0]['Date and Time'].append(record["timestamp"])
+                        Security_events[0]['Detection Rule'].append("Pass the hash attempt Detected")
+                        Security_events[0]['Detection Domain'].append("Threat")
+                        Security_events[0]['Severity'].append("Critical")
+                        Security_events[0]['Event Description'].append(Event_desc)
+                        Security_events[0]['Event ID'].append(EventID[0])
+                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
 
             #Audit log cleared
             if EventID[0] == "517" or EventID[0] == "1102":
@@ -607,14 +816,32 @@ def detect_events_security_log(file_name):
                             "Suspicious Attempt to enumerate groups by user ( %s ) using process ( %s )" % (
                             Account_Name[0][0].strip(),Process_Name[0][0].strip()))
                     """
-                    Event_desc ="Suspicious Attempt to enumerate groups by user ( %s ) using process ( %s )" % (Account_Name[0][0].strip(),Process_Name[0][0].strip())
-                    Security_events[0]['Date and Time'].append(record["timestamp"])
-                    Security_events[0]['Detection Rule'].append("Suspicious Attempt to enumerate groups")
-                    Security_events[0]['Detection Domain'].append("Audit")
-                    Security_events[0]['Severity'].append("High")
-                    Security_events[0]['Event Description'].append(Event_desc)
-                    Security_events[0]['Event ID'].append(EventID[0])
-                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                    try:
+                        if len(Account_Name[0][0])>1:
+                            process_name=Process_Name[0][0].strip()
+                            user=Account_Name[0][0].strip()
+                        if len(Account_Name[0][1])>1:
+                            process_name=Process_Name[0][1].strip()
+                            user=Account_Name[0][1].strip()
+
+                        Event_desc ="Suspicious Attempt to enumerate groups by user ( %s ) using process ( %s )" % (user,process_name)
+                        Security_events[0]['Date and Time'].append(record["timestamp"])
+                        Security_events[0]['Detection Rule'].append("Suspicious Attempt to enumerate groups")
+                        Security_events[0]['Detection Domain'].append("Audit")
+                        Security_events[0]['Severity'].append("High")
+                        Security_events[0]['Event Description'].append(Event_desc)
+                        Security_events[0]['Event ID'].append(EventID[0])
+                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+                    except:
+                        Event_desc ="Suspicious Attempt to enumerate groups by user"
+                        Security_events[0]['Date and Time'].append(record["timestamp"])
+                        Security_events[0]['Detection Rule'].append("Suspicious Attempt to enumerate groups")
+                        Security_events[0]['Detection Domain'].append("Audit")
+                        Security_events[0]['Severity'].append("High")
+                        Security_events[0]['Event Description'].append(Event_desc)
+                        Security_events[0]['Event ID'].append(EventID[0])
+                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             #System audit policy was changed
             if EventID[0] == "4719" and Security_ID[0][0].strip()!="S-1-5-18" and Security_ID[0][0].strip()!="SYSTEM" :
@@ -623,8 +850,20 @@ def detect_events_security_log(file_name):
                             "System audit policy was changed by user ( %s ) , Audit Poricly category ( %s ) , Subcategory ( %s ) with changes ( %s )" % (
                             Account_Name[0][0].strip(),Category[0].strip(),Subcategory[0].strip(),Changes[0].strip()))
                     """
+
                     try :
-                        Event_desc ="System audit policy was changed by user ( %s ) , Audit Poricly category ( %s ) , Subcategory ( %s ) with changes ( %s )" % (Account_Name[0][0].strip(),Category[0].strip(),Subcategory[0].strip(),Changes[0].strip())
+                        if len(Account_Name[0][0])>1:
+                            category=Category[0][0].strip()
+                            user=Account_Name[0][0].strip()
+                            subcategory=Subcategory[0][0].strip()
+                            changes=Changes[0][0].strip()
+                        if len(Account_Name[0][1])>1:
+                            category=Category[0][1].strip()
+                            subcategory=Subcategory[0][1].strip()
+                            changes=Changes[0][1].strip()
+                            user=Account_Name[0][1].strip()
+
+                        Event_desc ="System audit policy was changed by user ( %s ) , Audit Poricly category ( %s ) , Subcategory ( %s ) with changes ( %s )" % (user,category,subcategory,changes)
                     except :
                         Event_desc = "System audit policy was changed by user"
                     Security_events[0]['Date and Time'].append(record["timestamp"])
@@ -640,17 +879,29 @@ def detect_events_security_log(file_name):
                 #print("##### " + record["timestamp"] + " ####  ", end='')
 
                 #print("schedule task created by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % ( Account_Name[0][0].strip(),Task_Name[0][0].strip(),Task_Command[0][0],Task_args[0][0]))
-                try:
-                    Event_desc ="schedule task created by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % ( Account_Name[0][0].strip(),Task_Name[0][0].strip(),Task_Command[0][0],Task_args[0][0])
-                except:
-                    Event_desc = "schedule task created by user"
-                Security_events[0]['Date and Time'].append(record["timestamp"])
-                Security_events[0]['Detection Rule'].append("schedule task created")
-                Security_events[0]['Detection Domain'].append("Audit")
-                Security_events[0]['Severity'].append("Critical")
-                Security_events[0]['Event Description'].append(Event_desc)
-                Security_events[0]['Event ID'].append(EventID[0])
-                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+                    try:
+                        if len(Account_Name[0][0])>1:
+                            task_command=Task_Command[0][0].strip()
+                            user=Account_Name[0][0].strip()
+                            task_name=Task_Name[0][0].strip()
+                            task_args=Task_args[0][0].strip()
+                        if len(Account_Name[0][1])>1:
+                            task_command=Task_Command[0][1].strip()
+                            user=Account_Name[0][1].strip()
+                            task_name=Task_Name[0][1].strip()
+                            task_args=Task_args[0][1].strip()
+
+                        Event_desc ="schedule task created by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % ( user,task_name,task_command,task_args)
+                    except:
+                        Event_desc = "schedule task created by user"
+                    Security_events[0]['Date and Time'].append(record["timestamp"])
+                    Security_events[0]['Detection Rule'].append("schedule task created")
+                    Security_events[0]['Detection Domain'].append("Audit")
+                    Security_events[0]['Severity'].append("Critical")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             #scheduled task deleted
             if EventID[0]=="1699" :
@@ -658,7 +909,17 @@ def detect_events_security_log(file_name):
 
                 #print("schedule task deleted by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % ( Account_Name[0][0].strip(),Task_Name[0][0].strip(),Task_Command[0][0],Task_args[0][0]))
                 try :
-                    Event_desc ="schedule task deleted by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % ( Account_Name[0][0].strip(),Task_Name[0][0].strip(),Task_Command[0][0],Task_args[0][0])
+                    if len(Account_Name[0][0])>1:
+                        task_command=Task_Command[0][0].strip()
+                        user=Account_Name[0][0].strip()
+                        task_name=Task_Name[0][0].strip()
+                        task_args=Task_args[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        task_command=Task_Command[0][1].strip()
+                        user=Account_Name[0][1].strip()
+                        task_name=Task_Name[0][1].strip()
+                        task_args=Task_args[0][1].strip()
+                    Event_desc ="schedule task deleted by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % ( user,task_name,task_command,task_args)
                 except:
                     Event_desc = "schedule task deleted by user"
                 Security_events[0]['Date and Time'].append(record["timestamp"])
@@ -675,7 +936,17 @@ def detect_events_security_log(file_name):
 
                 #print("schedule task updated by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % ( Account_Name[0][0].strip(),Task_Name[0][0].strip(),Task_Command[0][0],Task_args[0][0]))
                 try:
-                    Event_desc ="schedule task updated by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % ( Account_Name[0][0].strip(),Task_Name[0][0].strip(),Task_Command[0][0],Task_args[0][0])
+                    if len(Account_Name[0][0])>1:
+                        task_command=Task_Command[0][0].strip()
+                        user=Account_Name[0][0].strip()
+                        task_name=Task_Name[0][0].strip()
+                        task_args=Task_args[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        task_command=Task_Command[0][1].strip()
+                        user=Account_Name[0][1].strip()
+                        task_name=Task_Name[0][1].strip()
+                        task_args=Task_args[0][1].strip()
+                    Event_desc ="schedule task updated by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % (  user,task_name,task_command,task_args)
                 except:
                     Event_desc = "schedule task updated by user"
                 Security_events[0]['Date and Time'].append(record["timestamp"])
@@ -692,7 +963,17 @@ def detect_events_security_log(file_name):
 
                 #print("schedule task enabled by user ( %s ) with task name ( %s )  " % ( Account_Name[0][0].strip(),Task_Name[0][0].strip(),Task_Command[0][0],Task_args[0][0]))
                 try :
-                    Event_desc ="schedule task enabled by user ( %s ) with task name ( %s )  " % ( Account_Name[0][0].strip(),Task_Name[0][0].strip(),Task_Command[0][0],Task_args[0][0])
+                    if len(Account_Name[0][0])>1:
+                        task_command=Task_Command[0][0].strip()
+                        user=Account_Name[0][0].strip()
+                        task_name=Task_Name[0][0].strip()
+                        task_args=Task_args[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        task_command=Task_Command[0][1].strip()
+                        user=Account_Name[0][1].strip()
+                        task_name=Task_Name[0][1].strip()
+                        task_args=Task_args[0][1].strip()
+                    Event_desc ="schedule task enabled by user ( %s ) with task name ( %s )  " % (  user,task_name,task_command,task_args)
                 except:
                     Event_desc = "schedule task enabled by user"
                 Security_events[0]['Date and Time'].append(record["timestamp"])
@@ -709,7 +990,17 @@ def detect_events_security_log(file_name):
 
                 #print("schedule task disabled by user ( %s ) with task name ( %s ) " % ( Account_Name[0][0].strip(),Task_Name[0][0].strip(),Task_Command[0][0],Task_args[0][0]))
                 try :
-                    Event_desc ="schedule task disabled by user ( %s ) with task name ( %s ) " % ( Account_Name[0][0].strip(),Task_Name[0][0].strip(),Task_Command[0][0],Task_args[0][0])
+                    if len(Account_Name[0][0])>1:
+                        task_command=Task_Command[0][0].strip()
+                        user=Account_Name[0][0].strip()
+                        task_name=Task_Name[0][0].strip()
+                        task_args=Task_args[0][0].strip()
+                    if len(Account_Name[0][1])>1:
+                        task_command=Task_Command[0][1].strip()
+                        user=Account_Name[0][1].strip()
+                        task_name=Task_Name[0][1].strip()
+                        task_args=Task_args[0][1].strip()
+                    Event_desc ="schedule task disabled by user ( %s ) with task name ( %s ) " % (  user,task_name,task_command,task_args)
                 except:
                     Event_desc = "schedule task disabled by user"
                 Security_events[0]['Date and Time'].append(record["timestamp"])
@@ -754,9 +1045,28 @@ def detect_events_windows_defender_log(file_name):
 
             #Windows Defender took action against Malware
             if EventID[0]=="1117" or EventID[0]=="1007" :
+                try :
+                    if  len(Severity[0][0])>1:
+                        severity=Severity[0][0].strip()
+                        name=Name[0][0].strip()
+                        action=Action[0][0].strip()
+                        category=Category[0][0].strip()
+                        path=Path[0][0].strip()
+                        process_name=Process_Name[0][0].strip()
+                        remediation_user=Remediation_User[0][0].strip()
+                    if  len(Severity[0][1])>1:
+                        severity=Severity[0][1].strip()
+                        name=Name[0][1].strip()
+                        action=Action[0][1].strip()
+                        category=Category[0][1].strip()
+                        path=Path[0][1].strip()
+                        process_name=Process_Name[0][1].strip()
+                        remediation_user=Remediation_User[0][1].strip()
                 #print("##### " + record["timestamp"] + " ####  ", end='')
                 #print(" Windows Defender took action against Malware - details : Severity ( %s ) , Name ( %s ) , Action ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(Severity[0].strip(),Name[0].strip(),Action[0].strip(),Category[0].strip(),Path[0].strip(),Process_Name[0][0].strip(),User[0]))
-                Event_desc="Windows Defender took action against Malware - details : Severity ( %s ) , Name ( %s ) , Action ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(Severity[0].strip(),Name[0].strip(),Action[0].strip(),Category[0].strip(),Path[0].strip(),Process_Name[0][0].strip(),Remediation_User[0].strip())
+                    Event_desc="Windows Defender took action against Malware - details : Severity ( %s ) , Name ( %s ) , Action ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(severity,name,action,category,path,process_name,remediation_user)
+                except:
+                    Event_desc="Windows Defender took action against Malware"
                 Windows_Defender_events[0]['Date and Time'].append(record["timestamp"])
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender took action against Malware")
                 Windows_Defender_events[0]['Detection Domain'].append("Threat")
@@ -770,7 +1080,27 @@ def detect_events_windows_defender_log(file_name):
                 #print("##### " + record["timestamp"] + " ####  ", end='')
                 #print("Windows Defender failed to take action against Malware - details : Severity ( %s ) , Name ( %s ) , Action ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(Severity[0].strip(),Name[0].strip(),Action[0].strip(),Category[0].strip(),Path[0].strip(),Process_Name[0][0].strip(),User[0]))
 
-                Event_desc="Windows Defender failed to take action against Malware - details : Severity ( %s ) , Name ( %s ) , Action ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(Severity[0].strip(),Name[0].strip(),Action[0].strip(),Category[0].strip(),Path[0].strip(),Process_Name[0][0].strip(),Remediation_User[0])
+                try :
+                    if  len(Severity[0][0])>1:
+                        severity=Severity[0][0].strip()
+                        name=Name[0][0].strip()
+                        action=Action[0][0].strip()
+                        category=Category[0][0].strip()
+                        path=Path[0][0].strip()
+                        process_name=Process_Name[0][0].strip()
+                        remediation_user=Remediation_User[0][0].strip()
+                    if  len(Severity[0][1])>1:
+                        severity=Severity[0][1].strip()
+                        name=Name[0][1].strip()
+                        action=Action[0][1].strip()
+                        category=Category[0][1].strip()
+                        path=Path[0][1].strip()
+                        process_name=Process_Name[0][1].strip()
+                        remediation_user=Remediation_User[0][1].strip()
+
+                    Event_desc="Windows Defender failed to take action against Malware - details : Severity ( %s ) , Name ( %s ) , Action ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(severity,name,action,category,path,process_name,remediation_user)
+                except:
+                    Event_desc="Windows Defender failed to take action against Malware"
 
                 Windows_Defender_events[0]['Date and Time'].append(record["timestamp"])
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender failed to take action against Malware")
@@ -783,8 +1113,25 @@ def detect_events_windows_defender_log(file_name):
             if EventID[0] == "1116" or EventID[0]=="1006":
                 #print("##### " + record["timestamp"] + " ####  ", end='')
                 #print(" Windows Defender Found Malware - details : Severity ( %s ) , Name ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(Severity[0].strip(),Name[0].strip(),Category[0].strip(),Path[0].strip(),Process_Name[0][0].strip(),User[0]))
+                try :
+                    if  len(Severity[0][0])>1:
+                        severity=Severity[0][0].strip()
+                        name=Name[0][0].strip()
+                        category=Category[0][0].strip()
+                        path=Path[0][0].strip()
+                        process_name=Process_Name[0][0].strip()
+                        remediation_user=Remediation_User[0][0].strip()
+                    if  len(Severity[0][1])>1:
+                        severity=Severity[0][1].strip()
+                        name=Name[0][1].strip()
+                        category=Category[0][1].strip()
+                        path=Path[0][1].strip()
+                        process_name=Process_Name[0][1].strip()
+                        remediation_user=Remediation_User[0][1].strip()
 
-                Event_desc="Windows Defender Found Malware - details : Severity ( %s ) , Name ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(Severity[0].strip(),Name[0].strip(),Category[0].strip(),Path[0].strip(),Process_Name[0][0].strip(),Remediation_User[0])
+                    Event_desc="Windows Defender Found Malware - details : Severity ( %s ) , Name ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(severity,name,category,path,process_name,remediation_user)
+                except:
+                    Event_desc="Windows Defender Found Malware"
                 Windows_Defender_events[0]['Date and Time'].append(record["timestamp"])
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender Found Malware")
                 Windows_Defender_events[0]['Detection Domain'].append("Threat")
@@ -796,8 +1143,14 @@ def detect_events_windows_defender_log(file_name):
             if  EventID[0]=="1013":
                 #print("##### " + record["timestamp"] + " ####  ", end='')
                 #print(" Windows Defender deleted history of malwares - details : User ( %s ) "%(User[0]))
-
-                Event_desc=" Windows Defender deleted history of malwares - details : User ( %s ) "%(User[0])
+                try:
+                    if  len(User[0][0])>1:
+                        user=User[0][0]
+                    if  len(User[0][1])>1:
+                        user=User[0][1]
+                    Event_desc=" Windows Defender deleted history of malwares - details : User ( %s ) "%(user)
+                except:
+                    Event_desc=" Windows Defender deleted history of malwares"
                 Windows_Defender_events[0]['Date and Time'].append(record["timestamp"])
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender deleted history of malwares")
                 Windows_Defender_events[0]['Detection Domain'].append("Audit")
@@ -809,8 +1162,26 @@ def detect_events_windows_defender_log(file_name):
             if  EventID[0] == "1015" :
                 #print("##### " + record["timestamp"] + " ####  ", end='')
                 #print(" Windows Defender detected suspicious behavious Malware - details : Severity ( %s ) , Name ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(Severity[0].strip(),Name[0].strip(),Category[0].strip(),Path[0].strip(),Process_Name[0][0].strip(),User[0]))
+                try :
+                    if  len(Severity[0][0])>1:
+                        severity=Severity[0][0].strip()
+                        name=Name[0][0].strip()
+                        category=Category[0][0].strip()
+                        path=Path[0][0].strip()
+                        process_name=Process_Name[0][0].strip()
+                        remediation_user=Remediation_User[0][0].strip()
+                    if  len(Severity[0][1])>1:
+                        severity=Severity[0][1].strip()
+                        name=Name[0][1].strip()
+                        category=Category[0][1].strip()
+                        path=Path[0][1].strip()
+                        process_name=Process_Name[0][1].strip()
+                        remediation_user=Remediation_User[0][1].strip()
 
-                Event_desc="Windows Defender detected suspicious behavior Malware - details : Severity ( %s ) , Name ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(Severity[0].strip(),Name[0].strip(),Category[0].strip(),Path[0].strip(),Process_Name[0][0].strip(),Remediation_User[0])
+                    Event_desc="Windows Defender detected suspicious behavior Malware - details : Severity ( %s ) , Name ( %s ) , Catgeory ( %s ) , Path ( %s ) , Process Name ( %s ) , User ( %s ) "%(severity,name,category,path,process_name,remediation_user)
+                except:
+                    Event_desc="Windows Defender detected suspicious behavior Malware"
+
                 Windows_Defender_events[0]['Date and Time'].append(record["timestamp"])
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender detected suspicious behavior Malware")
                 Windows_Defender_events[0]['Detection Domain'].append("Threat")
@@ -872,8 +1243,8 @@ def detect_events_windows_defender_log(file_name):
                 Windows_Defender_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             if  EventID[0] == "5012" :
-                print("##### " + record["timestamp"] + " ####  ", end='')
-                print(" Windows Defender scanning for viruses is disabled")
+                #print("##### " + record["timestamp"] + " ####  ", end='')
+                #print(" Windows Defender scanning for viruses is disabled")
 
                 Event_desc="Windows Defender scanning for viruses is disabled"
                 Windows_Defender_events[0]['Date and Time'].append(record["timestamp"])
@@ -899,8 +1270,16 @@ def detect_events_scheduled_task_log(file_name):
             #schedule task registered
             if EventID[0]=="106" :
 
-                Event_desc ="schedule task registered with Name ( %s ) by user ( %s ) " % (Task_Name[0][0], Register_User[0])
-
+                try:
+                    if len(Task_Name[0][0])>1:
+                        task_name=Task_Name[0][0]
+                        register_user=Register_User[0][0]
+                    if len(Task_Name[0][1])>1:
+                        task_name=Task_Name[0][1]
+                        register_user=Register_User[0][1]
+                    Event_desc ="schedule task registered with Name ( %s ) by user ( %s ) " % (task_name, register_user)
+                except:
+                    Event_desc ="schedule task registered"
 
                 ScheduledTask_events[0]['Date and Time'].append(record["timestamp"])
                 ScheduledTask_events[0]['Detection Rule'].append("schedule task registered")
@@ -913,7 +1292,17 @@ def detect_events_scheduled_task_log(file_name):
 
             #schedule task updated
             if EventID[0]=="140" :
-                Event_desc ="schedule task updated with Name ( %s ) by user ( %s ) " % (Task_Name[0][0], Delete_User[0])
+
+                try:
+                    if len(Task_Name[0][0])>1:
+                        task_name=Task_Name[0][0]
+                        delete_user=Delete_User[0][0]
+                    if len(Task_Name[0][1])>1:
+                        task_name=Task_Name[0][1]
+                        delete_user=Delete_User[0][1]
+                    Event_desc ="schedule task updated with Name ( %s ) by user ( %s ) " % (task_name, delete_user)
+                except:
+                    Event_desc ="schedule task updated"
 
                 ScheduledTask_events[0]['Date and Time'].append(record["timestamp"])
                 ScheduledTask_events[0]['Detection Rule'].append("schedule task updated")
@@ -926,8 +1315,16 @@ def detect_events_scheduled_task_log(file_name):
 
             # schedule task deleted
             if EventID[0]=="141" :
-
-                Event_desc ="schedule task deleted with Name ( %s ) by user ( %s ) " % (Task_Name[0][0], Delete_User[0])
+                try:
+                    if len(Task_Name[0][0])>1:
+                        task_name=Task_Name[0][0]
+                        delete_user=Delete_User[0][0]
+                    if len(Task_Name[0][1])>1:
+                        task_name=Task_Name[0][1]
+                        delete_user=Delete_User[0][1]
+                    Event_desc ="schedule task deleted with Name ( %s ) by user ( %s ) " % (task_name, delete_user)
+                except:
+                    Event_desc ="schedule task deleted"
 
                 ScheduledTask_events[0]['Date and Time'].append(record["timestamp"])
                 ScheduledTask_events[0]['Detection Rule'].append("schedule task deleted")
@@ -976,12 +1373,20 @@ def detect_events_system_log(file_name):
             if EventID[0].strip()=="7045" or EventID[0].strip()=="601" :
                 #print("##### " + record["timestamp"] + " ####  ", end='')
                 #print("Service installed in the system with Name ( %s ) , File Name ( %s ) , Service Type ( %s ) , Service Start Type ( %s ) , Service Account ( %s )"%(Service_Name[0].strip(),Service_File_Name[0].strip(),Service_Type[0].strip(),Service_Start_Type[0].strip(),Service_Account[0]))
-
-                if Service_Name[0].strip().lower() in whitelisted    or  Service_File_Name[0].strip() in whitelisted   :
-                    Severity="Low"
-                else:
-                    Severity = "High"
-                Event_desc="Service installed in the system with Name ( %s ) , File Name ( %s ) , Service Type ( %s ) , Service Start Type ( %s ) , Service Account ( %s )"%(Service_Name[0].strip(),Service_File_Name[0].strip(),Service_Type[0].strip(),Service_Start_Type[0].strip(),Service_Account[0])
+                try:
+                    if len(Service_Name[0][0])>1:
+                        service_name=Service_Name[0][0].strip()
+                        service_file_name=Service_File_Name[0][0].strip()
+                    if len(Service_Name[0][1])>1:
+                        service_name=Service_Name[0][1].strip()
+                        service_file_name=Service_File_Name[0][1].strip()
+                    if service_name.lower() in whitelisted    or  service_file_name in whitelisted   :
+                        Severity="Low"
+                    else:
+                        Severity = "High"
+                    Event_desc="Service installed in the system with Name ( %s ) , File Name ( %s ) , Service Type ( %s ) , Service Start Type ( %s ) , Service Account ( %s )"%(Service_Name[0].strip(),Service_File_Name[0].strip(),Service_Type[0].strip(),Service_Start_Type[0].strip(),Service_Account[0])
+                except:
+                    Event_desc="Service installed in the system "
                 #System_events[0]['Date and Time'].append(datetime.strptime(record["timestamp"],'%Y-%m-%d %I:%M:%S.%f %Z').isoformat())
                 System_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                 System_events[0]['Detection Rule'].append("Service installed in the system")
@@ -993,20 +1398,30 @@ def detect_events_system_log(file_name):
                 System_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             # Service entered new state
-            if EventID[0]=="7036" and Service_State_Name[0].strip() in critical_services and Service_State_Name[0].strip()=="stopped" :
+            if EventID[0]=="7036" :
                 #print("##### " + record["timestamp"] + " ####  ", end='')
                 #print("Service with Name ( %s ) entered ( %s ) state "%(Service_and_state.group(1),Service_and_state.group(2)))
+                try:
+                    if len(Service_State_Name[0][0])>1:
+                        service_state=Service_State[0][0].strip()
+                        service_state_name=Service_State_Name[0][0].strip()
+                    if len(Service_State_Name[0][1])>1:
+                        service_state=Service_State[0][1].strip()
+                        service_state_name=Service_State_Name[0][1].strip()
 
-                Event_desc="Service with Name ( %s ) entered ( %s ) state "%(Service_State_Name[0],Service_State[0])
-                #System_events[0]['Date and Time'].append(datetime.strptime(record["timestamp"],'%Y-%m-%d %I:%M:%S.%f %Z').isoformat())
-                System_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
-                System_events[0]['Detection Rule'].append("Service State Changed")
-                System_events[0]['Detection Domain'].append("Audit")
-                System_events[0]['Severity'].append("Medium")
-                System_events[0]['Service Name'].append(Service_State_Name[0].strip())
-                System_events[0]['Event Description'].append(Event_desc)
-                System_events[0]['Event ID'].append(EventID[0])
-                System_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                    if service_state_name in critical_services and service_state=="stopped"
+                        Event_desc="Service with Name ( %s ) entered ( %s ) state "%(Service_State_Name[0],Service_State[0])
+                        #System_events[0]['Date and Time'].append(datetime.strptime(record["timestamp"],'%Y-%m-%d %I:%M:%S.%f %Z').isoformat())
+                        System_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        System_events[0]['Detection Rule'].append("Service State Changed")
+                        System_events[0]['Detection Domain'].append("Audit")
+                        System_events[0]['Severity'].append("Medium")
+                        System_events[0]['Service Name'].append(Service_State_Name[0].strip())
+                        System_events[0]['Event Description'].append(Event_desc)
+                        System_events[0]['Event ID'].append(EventID[0])
+                        System_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                except:
+                    continue
         else:
             print(record['data'])
 def detect_events_powershell_operational_log(file_name):
