@@ -94,6 +94,7 @@ Service_File_Name_rex = re.compile('Service File Name: (.*)', re.IGNORECASE)
 Service_Type_rex = re.compile('Service Type: (.*)', re.IGNORECASE)
 Service_Account_rex = re.compile('Service Account: (.*)', re.IGNORECASE)
 Service_and_state_rex = re.compile('The (.*) service entered the (.*) state\.', re.IGNORECASE)
+StartType_rex = re.compile('The start type of the (.*) service was changed', re.IGNORECASE)
 Service_Start_Type_rex = re.compile('Service Start Type: (.*)', re.IGNORECASE)
 
 
@@ -541,15 +542,15 @@ def detect_events_security_log(file_name='deep-blue-secuity.csv',winevent=False)
                             print(Security_Authentication_Summary[0])
                 except:
                     continue
-
+            #password spray detection
             if row['Event ID'] == "4648" :
                 try:
 
                     if Account_Name[0].strip() not in PasswordSpray:
                         PasswordSpray[Account_Name[0].strip()]=[]
                         PasswordSpray[Account_Name[0].strip()].append(Account_Name[1].strip())
-                    else:
-                        PasswordSpray[Account_Name[0].strip()].append(Account_Name[1].strip())
+                    #else:
+                    #    PasswordSpray[Account_Name[0].strip()].append(Account_Name[1].strip())
                     if Account_Name[1].strip() not in PasswordSpray[Account_Name[0].strip()] :
                         PasswordSpray[Account_Name[0].strip()].append(Account_Name[1].strip())
                 except:
@@ -1028,8 +1029,9 @@ def detect_events_system_log(file_name='system-logs.csv',winevent=False):
             Service_File_Name = Service_File_Name_rex.findall(row['Details'])
             Service_Type = Service_Type_rex.findall(row['Details'])
             Service_Name = Service_Name_rex.findall(row['Details'])
-            Service_and_state=Service_and_state_rex.match(row['Details'])
+            Service_and_state=Service_and_state_rex.findall(row['Details'])
             Service_Start_Type=Service_Start_Type_rex.findall(row['Details'])
+            Start_Type_Service_Name=StartType_rex.findall(row['Details'])
 
             # System Logs cleared
             if (row['Event ID']=="104") :
@@ -1040,6 +1042,7 @@ def detect_events_system_log(file_name='system-logs.csv',winevent=False):
                     "System Logs Cleared")
                 System_events[0]['Detection Domain'].append("Audit")
                 System_events[0]['Severity'].append("Critical")
+                System_events[0]['Service Name'].append("N/A")
                 System_events[0]['Event Description'].append(Event_desc)
                 System_events[0]['Event ID'].append(row['Event ID'])
                 System_events[0]['Original Event Log'].append(str(row['Details']).replace("\r", " "))
@@ -1051,6 +1054,7 @@ def detect_events_system_log(file_name='system-logs.csv',winevent=False):
                 System_events[0]['Detection Rule'].append(
                     "Service Installed with executable in TEMP Folder ")
                 System_events[0]['Detection Domain'].append("Threat")
+                System_events[0]['Service Name'].append(Service_Name[0].strip())
                 System_events[0]['Severity'].append("Critical")
                 System_events[0]['Event Description'].append(Event_desc)
                 System_events[0]['Event ID'].append(row['Event ID'])
@@ -1073,19 +1077,37 @@ def detect_events_system_log(file_name='system-logs.csv',winevent=False):
                 System_events[0]['Original Event Log'].append(str(row['Details']).replace("\r"," "))
 
             # Service entered new state
-            if (row['Event ID']=="7036" or row['Event ID']=="7040") and Service_and_state.group(1).strip() in critical_services and ( Service_and_state.group(2).strip()=="stopped" or Service_and_state.group(2).strip()=="disabled" ) :
+            #if (row['Event ID']=="7036" or row['Event ID']=="7040") and Service_and_state[0][0].strip() in critical_services and ( Service_and_state[0][1].strip()=="stopped" or Service_and_state[0][1].strip()=="disabled" ) :
+            if row['Event ID']=="7036" and Service_and_state[0][0].strip() in critical_services and ( Service_and_state[0][1].strip()=="stopped" or Service_and_state[0][1].strip()=="disabled" ) :
                 #print("##### " + row['Date and Time'] + " ####  ", end='')
                 #print("Service with Name ( %s ) entered ( %s ) state "%(Service_and_state.group(1),Service_and_state.group(2)))
-
-                Event_desc="Service with Name ( %s ) entered ( %s ) state "%(Service_and_state.group(1),Service_and_state.group(2))
+                #print(str(row['Details']).replace("\r"," "))
+                Event_desc="Service with Name ( %s ) entered ( %s ) state "%(Service_and_state[0][1].strip(),Service_and_state[0][1].strip())
                 System_events[0]['Date and Time'].append(datetime.strptime(row['Date and Time'],'%m/%d/%Y %I:%M:%S %p').isoformat())
                 System_events[0]['Detection Rule'].append("Service State Changed")
                 System_events[0]['Detection Domain'].append("Audit")
                 System_events[0]['Severity'].append("Medium")
-                System_events[0]['Service Name'].append(Service_and_state.group(1).strip())
+                System_events[0]['Service Name'].append(Service_and_state[0][1].strip())
                 System_events[0]['Event Description'].append(Event_desc)
                 System_events[0]['Event ID'].append(row['Event ID'])
                 System_events[0]['Original Event Log'].append(str(row['Details']).replace("\r"," "))
+
+            #Service Start Type Changed
+            if (row['Event ID']=="7040"  ) :
+                #print("##### " + row['Date and Time'] + " ####  ", end='')
+                #print("Service with Name ( %s ) entered ( %s ) state "%(Service_and_state.group(1),Service_and_state.group(2)))
+                #print(str(row['Details']).replace("\r"," "))
+                Event_desc="Service with Name ( %s ) changed start type"%(Start_Type_Service_Name[0].strip())
+                System_events[0]['Date and Time'].append(datetime.strptime(row['Date and Time'],'%m/%d/%Y %I:%M:%S %p').isoformat())
+                System_events[0]['Detection Rule'].append("Service Start Type Changed")
+                System_events[0]['Detection Domain'].append("Audit")
+                System_events[0]['Severity'].append("Medium")
+                System_events[0]['Service Name'].append(Start_Type_Service_Name[0].strip())
+                System_events[0]['Event Description'].append(Event_desc)
+                System_events[0]['Event ID'].append(row['Event ID'])
+                System_events[0]['Original Event Log'].append(str(row['Details']).replace("\r"," "))
+
+
 
 def detect_events_powershell_operational_log(file_name='powershell-logs.csv',winevent=False):
 
@@ -1389,7 +1411,7 @@ def detect_events_powershell_log(file_name='powershell-logs.csv',winevent=False)
 
                 if len(Suspicious)>0:
                     Event_desc ="Found  Suspicious PowerShell commands that include (" + ",".join(Suspicious) + ") in event "
-                    Powershell_events[0]['Date and Time'].append(record["timestamp"])
+                    Powershell_events[0]['Date and Time'].append(row['Date and Time'])
                     Powershell_events[0]['Detection Rule'].append("Suspicious PowerShell commands Detected")
                     Powershell_events[0]['Detection Domain'].append("Threat")
                     Powershell_events[0]['Severity'].append("Critical")
