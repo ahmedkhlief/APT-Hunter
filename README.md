@@ -1,7 +1,7 @@
 # APT-Hunter
 APT-Hunter is Threat Hunting tool which made by purple team mindset to provide initial indication of compromise and decrease the time to uncover suspicious activity without the need to have complicated solution for parsing and detecting events like SIEM solutions and log collectors . If you are a Threat Hunter , Incident Responder or forensic investigator , i assure you will enjoy using this tool , why ? i will discuss the reason in this article and how it will make your life easy just it made mine . Kindly note this tool is heavily tested but still a beta version and may contain bugs .
 
-Full information about the tool and how its used in this article : [introducing-apt-hunter-threat-hunting-tool-using-windows-event-log](https://shells.systems/introducing-apt-hunter-threat-hunting-tool-using-windows-event-log/)
+Full information about the tool and how its used in this article : [introducing-apt-hunter-threat-hunting-tool-using-windows-event-log](https://shells.systems/introducing-apt-hunter-threat-hunting-tool-via-windows-event-log/)
 
 Author :
 
