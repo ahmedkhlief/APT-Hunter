@@ -70,7 +70,7 @@ The remaining arguments if you want to analyze single type of logs.
  
 `python3 APT-Hunter.py  -t csv  -p /opt/wineventlogs/  -o Project1`
  
-`python3 APT-Hunter.py  -t evtx  --security evtx/security.evtx -o Project2`
+`python3 APT-Hunter.py  -t evtx  --security evtx/security.evtx --powershell evtx/powershell.evtx -o Project2`
 
 # The result will be available in two sheets :
 
