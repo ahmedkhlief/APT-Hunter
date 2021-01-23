@@ -56,15 +56,15 @@ APT-Hunter is easy to use you just use the argument -h to print help to see the 
   
 `  --sysmon SYSMON       Path to Sysmon Logs`
 
--p : provide path to directory containing the extracted using the powershell log collectors ( windows-log-collector-full-v3-CSV.ps1 , windows-log-collector-full-v3-EVTX.ps1 ) .
+` -p : provide path to directory containing the extracted using the powershell log collectors ( windows-log-collector-full-v3-CSV.ps1 , windows-log-collector-full-v3-EVTX.ps1 ) .`
 
--o : name of the project which will be used in the generated output sheets
+` -o : name of the project which will be used in the generated output sheets`
 
--t : the log type if its CSV or EVTX
+` -t : the log type if its CSV or EVTX`
 
 The remaining arguments if you want to analyze single type of logs.
 
-Exmaples :
+# Exmaples :
 	
 `python3 APT-Hunter.py  -t evtx  -p /opt/wineventlogs/  -o Project1`
  
@@ -72,7 +72,7 @@ Exmaples :
  
 `python3 APT-Hunter.py  -t evtx  --security evtx/security.evtx -o Project2`
 
-The result will be available in two sheets :
+# The result will be available in two sheets :
 
 Project1_Report.xlsx : this excel sheet will include all the events detected from every windows logs provided to APT-Hunter
 
