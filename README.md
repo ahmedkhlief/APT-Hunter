@@ -1,7 +1,7 @@
-#APT-Hunter
+# APT-Hunter
 APT-Hunter is Threat Hunting tool which made by purple team mindset to provide initial indication of compromise and decrease the time to uncover suspicious activity without the need to have complicated solution for parsing and detecting events like SIEM solutions and log collectors . If you are a Threat Hunter , Incident Responder or forensic investigator , i assure you will enjoy using this tool , why ? i will discuss the reason in this article and how it will make your life easy just it made mine . Kindly note this tool is heavily tested but still a beta version and may contain bugs .
 
-#How to Use APT-Hunter
+# How to Use APT-Hunter
 
 The first thing to do is to collect the logs if you didn’t and with powershell log collectors its easy to collect the needed logs automatically you just run the powershell scripts as administrator .
 
