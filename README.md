@@ -19,7 +19,7 @@ APT-Hunter is easy to use you just use the argument -h to print help to see the 
 
 ` python3 APT-Hunter.py -h`
  
-usage: APT-Hunter.py [-h] [-p PATH] [-o OUT] [-t {csv,evtx}]
+`usage: APT-Hunter.py [-h] [-p PATH] [-o OUT] [-t {csv,evtx}]
                      [--security SECURITY] [--system SYSTEM]
                      [--scheduledtask SCHEDULEDTASK] [--defender DEFENDER]
                      [--powershell POWERSHELL] [--powershellop POWERSHELLOP]
@@ -45,7 +45,7 @@ optional arguments:
   --terminal TERMINAL   Path to TerminalServices LocalSessionManager Logs
   --winrm WINRM         Path to Winrm Logs
   --sysmon SYSMON       Path to Sysmon Logs
-
+`
 -p : provide path to directory containing the extracted using the powershell log collectors ( windows-log-collector-full-v3-CSV.ps1 , windows-log-collector-full-v3-EVTX.ps1 ) .
 
 -o : name of the project which will be used in the generated output sheets
