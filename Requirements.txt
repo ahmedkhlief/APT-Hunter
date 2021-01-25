@@ -1,2 +1,8 @@
-netaddr
 evtx
+netaddr
+numpy
+pandas
+python-dateutil
+pytz
+six
+XlsxWriter

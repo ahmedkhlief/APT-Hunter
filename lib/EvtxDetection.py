@@ -1084,7 +1084,7 @@ def detect_events_security_log(file_name):
     for user in PasswordSpray:
         if len(PasswordSpray[user])>3:
             Event_desc = "Password Spray Detected by user ( "+user+" )"
-            Security_events[0]['Date and Time'].append(datetime.now())
+            Security_events[0]['Date and Time'].append(record["timestamp"])
             Security_events[0]['Detection Rule'].append("Password Spray Detected")
             Security_events[0]['Detection Domain'].append("Threat")
             Security_events[0]['Severity'].append("High")
