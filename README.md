@@ -19,6 +19,8 @@ windows-log-collector-full-v3-EVTX.ps1
 To collect the logs in CSV format use :
 windows-log-collector-full-v3-CSV.ps1
 
+**For Windows users please use the latest release :** [Latest Release](https://github.com/ahmedkhlief/APT-Hunter/releases) 
+
 APT-Hunter built using python3 so in order to use the tool you need to install the required libraries ( **python3.9 is not supported yet**).
 
 `python3 -m pip install -r Requirements.txt`
