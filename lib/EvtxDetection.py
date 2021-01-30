@@ -293,7 +293,7 @@ def detect_events_security_log(file_name):
 
                     #process runing in temp
                     if len(process_command_line)>0:
-                        if process_command_line.lower().find("\\temp\\")>-1 or  process_command_line.lower().find("\\tmp\\")>-1 or process_command_line.lower().find("\\program data\\"):
+                        if process_command_line.lower().find("\\temp\\")>-1 or  process_command_line.lower().find("\\tmp\\")>-1 or process_command_line.lower().find("\\program data\\")>-1:
                             # print("test")
 
                             #print("##### " + record["timestamp"] + " ####  ", end='')
