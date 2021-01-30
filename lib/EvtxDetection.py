@@ -260,6 +260,7 @@ def detect_events_security_log(file_name):
             #User Creation using Net command
             if EventID[0]=="4688":
                 try:
+                    process_command_line=" "
                     if len(Account_Name[0][0])>0:
                         user=Account_Name[0][0].strip()
 
@@ -270,8 +271,14 @@ def detect_events_security_log(file_name):
 
                     if len(Process_Command_Line)>0:
                         process_command_line=Process_Command_Line[0][0].strip()
-                    elif len(New_Process_Name[0])>0:
-                        process_command_line=New_Process_Name[0].strip()
+
+                    if len(New_Process_Name)>0:
+                        process_name=New_Process_Name[0].strip()
+
+                    if len(Process_Name)>1:
+                        process_name=Process_Name[0][1].strip()
+                    elif len(Process_Name)>0:
+                        process_name=Process_Name[0][0].strip()
 
 
                     if len(re.findall('.*user.*/add.*',record['data']))>0:
@@ -291,24 +298,27 @@ def detect_events_security_log(file_name):
                         Security_events[0]['Event ID'].append(EventID[0])
                         Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
 
-                    #process runing in temp
-                    if len(process_command_line)>0:
-                        if process_command_line.lower().find("\\temp\\")>-1 or  process_command_line.lower().find("\\tmp\\")>-1 or process_command_line.lower().find("\\program data\\")>-1:
-                            # print("test")
+                    #process runing in suspicious location
+                    
+                    if process_name.lower().find("\\temp\\")>-1 or  process_name.lower().find("\\tmp\\")>-1 or process_name.lower().find("\\program data\\")>-1:
+                        # print("test")
+                        #print("##### " + record["timestamp"] + " ####  ", end='')
+                        #print("## Process running in temp ", end='')
+                        #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
+                        #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
+                        # print("###########")
+                        Event_desc ="User Name : ( %s ) " % user+" with process : ( " + process_name.strip() + " )"
+                        Security_events[0]['Date and Time'].append(record["timestamp"])
+                        Security_events[0]['Detection Rule'].append("Process running in suspicious location")
+                        Security_events[0]['Detection Domain'].append("Threat")
+                        Security_events[0]['Severity'].append("Critical")
+                        Security_events[0]['Event Description'].append(Event_desc)
+                        Security_events[0]['Event ID'].append(EventID[0])
+                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
 
-                            #print("##### " + record["timestamp"] + " ####  ", end='')
-                            #print("## Process running in temp ", end='')
-                            #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
-                            #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
-                            # print("###########")
-                            Event_desc ="User Name : ( %s ) " % user+" with Command Line : ( " + process_command_line.strip() + " )"
-                            Security_events[0]['Date and Time'].append(record["timestamp"])
-                            Security_events[0]['Detection Rule'].append("Process running in suspicious location")
-                            Security_events[0]['Detection Domain'].append("Threat")
-                            Security_events[0]['Severity'].append("Critical")
-                            Security_events[0]['Event Description'].append(Event_desc)
-                            Security_events[0]['Event ID'].append(EventID[0])
-                            Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+
+                    if len(Process_Command_Line)>0:
+
                         #detect suspicious executables
                         for i in Suspicious_executables:
 
@@ -363,7 +373,7 @@ def detect_events_security_log(file_name):
 
                 except Exception as e:
                     print("Error (%s) , Handling EventID (%s) with Event Content %s"%(e,EventID[0],record['data']))
-                    print(process_command_line)
+                    #print(process_command_line)
             # User Created through management interface
             if EventID[0]=="4720":
                 try:
