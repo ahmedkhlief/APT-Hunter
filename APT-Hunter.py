@@ -5,7 +5,7 @@ import argparse
 import pandas as pd
 import lib.EvtxDetection as EvtxDetection
 import lib.CSVDetection as CSVDetection
-
+from sys import exit
 
 Output=""
 Path=""
