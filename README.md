@@ -3,6 +3,8 @@ APT-Hunter is Threat Hunting tool for windows event logs which made by purple te
 
 Full information about the tool and how its used in this article : [introducing-apt-hunter-threat-hunting-tool-using-windows-event-log](https://shells.systems/introducing-apt-hunter-threat-hunting-tool-via-windows-event-log/)
 
+[Latest Release](https://github.com/ahmedkhlief/APT-Hunter/releases) 
+
 Author :
 
 Twitter : [@ahmed_khlief](https://twitter.com/ahmed_khlief)
