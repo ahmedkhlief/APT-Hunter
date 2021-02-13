@@ -606,7 +606,7 @@ def detect_events_security_log(file_name='deep-blue-secuity.csv',winevent=False)
                     Security_events[0]['Original Event Log'].append(str(row['Details']).replace("\r"," "))
 
             #Suspicious Attempt to enumerate users or groups
-            if row['Event ID'] == "4798" or row['Event ID'] == "4799":
+            if row['Event ID'] == "4798" or row['Event ID'] == "4799" and row['Details'].find("System32\\svchost.exe")==-1:
                     """print("##### " + row['Date and Time'] + " ####  ", end='')
                     print(
                             "Suspicious Attempt to enumerate groups by user ( %s ) using process ( %s )" % (
