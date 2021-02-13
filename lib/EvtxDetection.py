@@ -887,7 +887,7 @@ def detect_events_security_log(file_name):
                     Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
             #Suspicious Attempt to enumerate users or groups
-            if EventID[0] == "4798" or EventID[0] == "4799":
+            if EventID[0] == "4798" or EventID[0] == "4799" and record['data'].find("System32\\svchost.exe")==-1:
                     """print("##### " + record["timestamp"] + " ####  ", end='')
                     print(
                             "Suspicious Attempt to enumerate groups by user ( %s ) using process ( %s )" % (
