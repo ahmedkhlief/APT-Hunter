@@ -299,7 +299,7 @@ def detect_events_security_log(file_name):
                         Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
 
                     #process runing in suspicious location
-                    
+
                     if process_name.lower().find("\\temp\\")>-1 or  process_name.lower().find("\\tmp\\")>-1 or process_name.lower().find("\\program data\\")>-1:
                         # print("test")
                         #print("##### " + record["timestamp"] + " ####  ", end='')
@@ -1929,9 +1929,16 @@ def detect_events_Microsoft_Windows_WinRM(file_name):
             #connection is initiated using WinRM - Powershell remoting
             if EventID[0]=="6":
 
-                #print("##### " + record["timestamp"] + " #### EventID=" + EventID[0].strip() + " ### connection is initiated using WinRM from this machine - Powershell remoting  #### ", end='')
-                #print("User Connected to ("+ Connection[0].strip() +") using WinRM - powershell remote ")
-                Event_desc="User ("+User_ID[0].strip()+") Connected to ("+ Connection[0].strip() +") using WinRM - powershell remote "
+                try:
+                    if len(Connection[0])>1:
+                        connection=Connection[0][1].strip()
+                    else:
+                        connection=Connection[0][0].strip()
+                    #print("##### " + record["timestamp"] + " #### EventID=" + EventID[0].strip() + " ### connection is initiated using WinRM from this machine - Powershell remoting  #### ", end='')
+                    #print("User Connected to ("+ Connection[0].strip() +") using WinRM - powershell remote ")
+                    Event_desc="User ("+User_ID[0].strip()+") Connected to ("+ connection.strip() +") using WinRM - powershell remote "
+                except:
+                    Event_desc="User Connected to another machine using WinRM - powershell remote "
                 WinRM_events[0]['Date and Time'].append(record["timestamp"])
                 WinRM_events[0]['Detection Rule'].append("connection is initiated using WinRM from this machine - Powershell remoting")
                 WinRM_events[0]['Detection Domain'].append("Audit")
@@ -1946,8 +1953,10 @@ def detect_events_Microsoft_Windows_WinRM(file_name):
 
                 #print("##### " + record["timestamp"] + " #### EventID=" + EventID[0].strip() + " ### connection is initiated using WinRM to this machine - Powershell remoting  #### ", end='')
                 #print("User Connected to this machine using WinRM - powershell remote - check the system logs for more information")
-
-                Event_desc="User ("+User_ID[0].strip()+") Connected to this machine using WinRM - powershell remote - check eventlog viewer"
+                try:
+                    Event_desc="User ("+User_ID[0].strip()+") Connected to this machine using WinRM - powershell remote - check eventlog viewer"
+                except:
+                    Event_desc="User Connected to this machine using WinRM - powershell remote - check eventlog viewer"
                 WinRM_events[0]['Date and Time'].append(record["timestamp"])
                 WinRM_events[0]['Detection Rule'].append("connection is initiated using WinRM to this machine - Powershell remoting")
                 WinRM_events[0]['Detection Domain'].append("Audit")
