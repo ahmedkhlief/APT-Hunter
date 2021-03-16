@@ -1853,7 +1853,7 @@ def detect_events_Sysmon_log(file_name='sysmon-logs.csv',winevent=False):
                 Sysmon_events[0]['Severity'].append("Critical")
                 Sysmon_events[0]['Event Description'].append(Event_desc)
                 Sysmon_events[0]['Event ID'].append(row['Event ID'])
-                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                Sysmon_events[0]['Original Event Log'].append(str(row['Details']).replace("\r"," "))
 
             #  [T1117] Bypassing Application Whitelisting with Regsvr32
             if row['Event ID']=="1" and ( Image[0].strip().find("regsvr32.exe")>-1 or Image[0].strip().find("rundll32.exe")>-1 or Image[0].strip().find("certutil.exe")>-1 ):
@@ -1865,4 +1865,4 @@ def detect_events_Sysmon_log(file_name='sysmon-logs.csv',winevent=False):
                 Sysmon_events[0]['Severity'].append("High")
                 Sysmon_events[0]['Event Description'].append(Event_desc)
                 Sysmon_events[0]['Event ID'].append(row['Event ID'])
-                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                Sysmon_events[0]['Original Event Log'].append(str(row['Details']).replace("\r"," "))
