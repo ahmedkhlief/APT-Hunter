@@ -155,7 +155,7 @@ ErrorMessage_rex = re.compile('ErrorMessage=(.*)')
 #Source_Network_Address_Terminal_rex= re.compile('Source Network Address: (.*)')
 #Source_Network_Address_Terminal_rex= re.compile('<Address>(.*)</Address>')
 Source_Network_Address_Terminal_rex= re.compile('<Address>((\d{1,3}\.){3}\d{1,3})</Address>')
-
+Source_Network_Address_Terminal_NotIP_rex= re.compile('<Address>(.*)</Address>')
 User_Terminal_rex=re.compile('User>(.*)</User>')
 Session_ID_rex=re.compile('<SessionID>(.*)</SessionID>')
 #======================
@@ -1858,6 +1858,7 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name):
 
             User =User_Terminal_rex.findall(record['data'])
             Source_Network_Address=Source_Network_Address_Terminal_rex.findall(record['data'])
+            Source_Network_Address_Terminal_NotIP=Source_Network_Address_Terminal_NotIP_rex.findall(record['data'])
 
             if (EventID[0]=="21" or EventID[0]=="25" ) :
                 if User[0].strip() not in TerminalServices_Summary[0]['User']:
@@ -1911,6 +1912,20 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name):
                         TerminalServices_events[0]['Event ID'].append(EventID[0])
                         TerminalServices_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
 
+            # Remote Desktop Services: Session logon succeeded
+            if EventID[0]=="21" or EventID[0]=="25" :
+                #print(Source_Network_Address[0][0])
+                #print(len(Source_Network_Address))
+                if len(Source_Network_Address)<1:
+                    #print(IPAddress(Source_Network_Address[0][0].strip()).is_private())
+                    Event_desc ="Found User ("+User[0].strip()+") connecting from ( "+Source_Network_Address_Terminal_NotIP[0]+" ) "
+                    TerminalServices_events[0]['Date and Time'].append(record["timestamp"])
+                    TerminalServices_events[0]['Detection Rule'].append("User Loggedon to machine")
+                    TerminalServices_events[0]['Detection Domain'].append("Access")
+                    TerminalServices_events[0]['Severity'].append("Low")
+                    TerminalServices_events[0]['Event Description'].append(Event_desc)
+                    TerminalServices_events[0]['Event ID'].append(EventID[0])
+                    TerminalServices_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
         else:
             print(record['data'])
 def detect_events_Microsoft_Windows_WinRM(file_name):
