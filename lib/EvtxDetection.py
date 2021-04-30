@@ -6,6 +6,7 @@ import pandas as pd
 from datetime import datetime
 from evtx import PyEvtxParser
 from dateutil.parser import parse
+from dateutil.parser import isoparse
 minlength=1000
 
 account_op={}
@@ -23,16 +24,16 @@ critical_services=["Software Protection","Network List Service","Network Locatio
 
 whitelisted=['MpKslDrv','CreateExplorerShellUnelevatedTask']
 
-Sysmon_events=[{'Date and Time':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-WinRM_events=[{'Date and Time':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-Security_events=[{'Date and Time':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-System_events=[{'Date and Time':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Service Name':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-ScheduledTask_events=[{'Date and Time':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Schedule Task Name':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-Powershell_events=[{'Date and Time':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-Powershell_Operational_events=[{'Date and Time':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-TerminalServices_events=[{'Date and Time':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-Windows_Defender_events=[{'Date and Time':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-Timesketch_events=[{'message':[],'datetime':[],'timestamp_desc':[],'Event Description':[],'Severity':[],'Detection Domain':[],'Event ID':[],'Original Event Log':[]}]
+Sysmon_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
+WinRM_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
+Security_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
+System_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Service Name':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
+ScheduledTask_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Schedule Task Name':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
+Powershell_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
+Powershell_Operational_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
+TerminalServices_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
+Windows_Defender_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
+Timesketch_events=[{'message':[],'timestamp':[],'datetime':[],'timestamp_desc':[],'Event Description':[],'Severity':[],'Detection Domain':[],'Event ID':[],'Original Event Log':[]}]
 
 #=======================
 #Regex for security logs
@@ -290,6 +291,7 @@ def detect_events_security_log(file_name):
                         #print("with Command Line : ( " + Process_Command_Line[0][0].strip()+" )")
 
                         Event_desc ="User Name : ( %s ) "%user+"with Command Line : ( " + process_command_line+" )"
+                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                         Security_events[0]['Detection Rule'].append("User Added using Net Command")
                         Security_events[0]['Detection Domain'].append("Audit")
@@ -308,6 +310,7 @@ def detect_events_security_log(file_name):
                         #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
                         # print("###########")
                         Event_desc ="User Name : ( %s ) " % user+" with process : ( " + process_name.strip() + " )"
+                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                         Security_events[0]['Detection Rule'].append("Process running in suspicious location")
                         Security_events[0]['Detection Domain'].append("Threat")
@@ -330,6 +333,7 @@ def detect_events_security_log(file_name):
                                 #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
                                 # print("###########")
                                 Event_desc ="User Name : ( %s ) " % user+"with Command Line : ( " + process_command_line + " ) contain suspicious command ( %s)"%i
+                                Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                                 Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                                 Security_events[0]['Detection Rule'].append("Suspicious Process Found")
                                 Security_events[0]['Detection Domain'].append("Threat")
@@ -350,6 +354,7 @@ def detect_events_security_log(file_name):
                                 # print("###########")
 
                                 Event_desc ="User Name : ( %s ) " % user+"with Command Line : ( " + process_command_line + " ) contain suspicious command ( %s)"%i
+                                Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                                 Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                                 Security_events[0]['Detection Rule'].append("Suspicious Powershell commands Process Found")
                                 Security_events[0]['Detection Domain'].append("Threat")
@@ -363,6 +368,7 @@ def detect_events_security_log(file_name):
                         if len(re.findall(r"cmd.exe /c echo [a-z]{6} > \\\.\\pipe\\\w{1,10}",process_command_line.lower().strip()))>0 or len(re.findall(r"cmd.exe /c echo \w{1,10} .* \\\\\.\\pipe\\\w{1,10}",process_command_line.lower().strip()))>0:
                                 #print("detected",process_command_line.lower().strip())
                                 Event_desc ="User Name : ( %s ) " % user+"conducting Named PIPE privilege escalation with Command Line : ( " + process_command_line + " ) "
+                                Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                                 Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                                 Security_events[0]['Detection Rule'].append("Suspected privielge Escalation attempt using NAMED PIPE")
                                 Security_events[0]['Detection Domain'].append("Threat")
@@ -388,6 +394,7 @@ def detect_events_security_log(file_name):
                     #print(" Created User Name ( " + Account_Name[1].strip()+ " )")
 
                     Event_desc="User Name ( " + user + " )" + " Created User Name ( " + target_account_name+ " )"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Created through management interface")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -397,6 +404,7 @@ def detect_events_security_log(file_name):
                     Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
                 except:
                     Event_desc="User Created through management interface"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Created through management interface")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -449,6 +457,7 @@ def detect_events_security_log(file_name):
                         Event_desc = "User ( " + user + " ) added User ( " + member_sid + " ) to local group ( " + group_name + " )"
 
 
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User added to local group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -458,6 +467,7 @@ def detect_events_security_log(file_name):
                     Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
                 except:
                     Event_desc="User added to local group"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User added to local group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -488,6 +498,7 @@ def detect_events_security_log(file_name):
                             Event_desc = "User ( " + user + " ) added User ( " + member_sid + " ) to Global group ( " + group_name + " )"
                     except:
                         Event_desc = "User ( " + user + " ) added User ( " + member_name + " ) to Global group ( " + group_name + " )"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User added to global group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -497,6 +508,7 @@ def detect_events_security_log(file_name):
                     Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
                 except:
                     Event_desc="User added to global group"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User added to global group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -529,6 +541,7 @@ def detect_events_security_log(file_name):
                         Event_desc = Event_desc +" to Universal group ( " + target_account_name + " )"
                         #print(" to Universal group ( " + Account_Name[1].strip() + " )")
 
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User added to Universal group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -539,6 +552,7 @@ def detect_events_security_log(file_name):
 
                 except:
                     Event_desc ="User added to Universal group"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User added to Universal group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -571,6 +585,7 @@ def detect_events_security_log(file_name):
                         #print(") from Global group ( " + Account_Name[1].strip() + " )")
 
 
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Removed from Global Group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -581,6 +596,7 @@ def detect_events_security_log(file_name):
 
                 except:
                     Event_desc ="User Removed from Global Group"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Removed from Global Group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -612,6 +628,7 @@ def detect_events_security_log(file_name):
                         #print(") from Universal group ( " + Account_Name[1].strip() + " )")
                         Event_desc = Event_desc +") from Universal group ( " + target_account_name + " )"
 
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Removed from Universal Group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -622,6 +639,7 @@ def detect_events_security_log(file_name):
 
                 except:
                     Event_desc ="User Removed from Universal Group"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Removed from Universal Group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -654,6 +672,7 @@ def detect_events_security_log(file_name):
                         #print(") from Local group ( " + Account_Name[1].strip() + " )")
                         Event_desc = Event_desc +") from Local group ( " + target_account_name + " )"
 
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Removed from Local Group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -664,6 +683,7 @@ def detect_events_security_log(file_name):
 
                 except:
                     Event_desc ="User Removed from Local Group"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Removed from Local Group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -693,6 +713,7 @@ def detect_events_security_log(file_name):
 
                     Event_desc ="User ( " + user + " ) removed Group ( "+target_account_name+ " )"
 
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Removed Group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -703,6 +724,7 @@ def detect_events_security_log(file_name):
 
                 except:
                     Event_desc ="User Removed Group"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Removed Group")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -726,6 +748,7 @@ def detect_events_security_log(file_name):
                         target_account_name=Target_Account_Name[0][1].strip()
 
                     Event_desc ="User ( " + user + " ) removed user "+"( " + target_account_name + " )"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Account Removed")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -736,6 +759,7 @@ def detect_events_security_log(file_name):
 
                 except:
                     Event_desc ="User Account Removed"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("User Account Removed")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -842,6 +866,7 @@ def detect_events_security_log(file_name):
 
                         Event_desc ="Pass the hash attempt Detected : user name ( %s ) domain name ( %s ) from  IP ( %s ) and machine name ( %s )" % (
                             target_account_name, target_account_domain, source_ip, workstation_name)
+                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                         Security_events[0]['Detection Rule'].append("Pass the hash attempt Detected")
                         Security_events[0]['Detection Domain'].append("Threat")
@@ -851,6 +876,7 @@ def detect_events_security_log(file_name):
                         Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
                 except:
                         Event_desc ="Pass the hash attempt Detected "
+                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                         Security_events[0]['Detection Rule'].append("Pass the hash attempt Detected")
                         Security_events[0]['Detection Domain'].append("Threat")
@@ -878,6 +904,7 @@ def detect_events_security_log(file_name):
                     except:
                         Event_desc = "Audit log cleared by user"
 
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("Audit log cleared")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -902,6 +929,7 @@ def detect_events_security_log(file_name):
                             user=Account_Name[0][1].strip()
 
                         Event_desc ="Suspicious Attempt to enumerate groups by user ( %s ) using process ( %s )" % (user,process_name)
+                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                         Security_events[0]['Detection Rule'].append("Suspicious Attempt to enumerate groups")
                         Security_events[0]['Detection Domain'].append("Audit")
@@ -912,6 +940,7 @@ def detect_events_security_log(file_name):
 
                     except:
                         Event_desc ="Suspicious Attempt to enumerate groups by user"
+                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                         Security_events[0]['Detection Rule'].append("Suspicious Attempt to enumerate groups")
                         Security_events[0]['Detection Domain'].append("Audit")
@@ -943,6 +972,7 @@ def detect_events_security_log(file_name):
                         Event_desc ="System audit policy was changed by user ( %s ) , Audit Poricly category ( %s ) , Subcategory ( %s ) with changes ( %s )" % (user,category,subcategory,changes)
                     except :
                         Event_desc = "System audit policy was changed by user"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("System audit policy was changed")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -972,6 +1002,7 @@ def detect_events_security_log(file_name):
                         Event_desc ="schedule task created by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % ( user,task_name,task_command,task_args)
                     except:
                         Event_desc = "schedule task created by user"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                     Security_events[0]['Detection Rule'].append("schedule task created")
                     Security_events[0]['Detection Domain'].append("Audit")
@@ -999,6 +1030,7 @@ def detect_events_security_log(file_name):
                     Event_desc ="schedule task deleted by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % ( user,task_name,task_command,task_args)
                 except:
                     Event_desc = "schedule task deleted by user"
+                Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                 Security_events[0]['Detection Rule'].append("schedule task deleted")
                 Security_events[0]['Detection Domain'].append("Audit")
@@ -1026,6 +1058,7 @@ def detect_events_security_log(file_name):
                     Event_desc ="schedule task updated by user ( %s ) with task name ( %s ) , Command ( %s ) and Argument ( %s )  " % (  user,task_name,task_command,task_args)
                 except:
                     Event_desc = "schedule task updated by user"
+                Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                 Security_events[0]['Detection Rule'].append("schedule task updated")
                 Security_events[0]['Detection Domain'].append("Audit")
@@ -1053,6 +1086,7 @@ def detect_events_security_log(file_name):
                     Event_desc ="schedule task enabled by user ( %s ) with task name ( %s )  " % (  user,task_name,task_command,task_args)
                 except:
                     Event_desc = "schedule task enabled by user"
+                Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                 Security_events[0]['Detection Rule'].append("schedule task enabled")
                 Security_events[0]['Detection Domain'].append("Audit")
@@ -1080,6 +1114,7 @@ def detect_events_security_log(file_name):
                     Event_desc ="schedule task disabled by user ( %s ) with task name ( %s ) " % (  user,task_name,task_command,task_args)
                 except:
                     Event_desc = "schedule task disabled by user"
+                Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                 Security_events[0]['Detection Rule'].append("schedule task disabled")
                 Security_events[0]['Detection Domain'].append("Audit")
@@ -1094,6 +1129,7 @@ def detect_events_security_log(file_name):
     for user in PasswordSpray:
         if len(PasswordSpray[user])>3:
             Event_desc = "Password Spray Detected by user ( "+user+" )"
+            Security_events[0]['timestamp'].append(datetime.timestamp(datetime.now()))
             Security_events[0]['Date and Time'].append(datetime.now().isoformat())
             Security_events[0]['Detection Rule'].append("Password Spray Detected")
             Security_events[0]['Detection Domain'].append("Threat")
@@ -1145,6 +1181,7 @@ def detect_events_windows_defender_log(file_name):
                 except:
                     Event_desc="Windows Defender took action against Malware"
                 Windows_Defender_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Windows_Defender_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender took action against Malware")
                 Windows_Defender_events[0]['Detection Domain'].append("Threat")
                 Windows_Defender_events[0]['Severity'].append("Critical")
@@ -1180,6 +1217,7 @@ def detect_events_windows_defender_log(file_name):
                     Event_desc="Windows Defender failed to take action against Malware"
 
                 Windows_Defender_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Windows_Defender_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender failed to take action against Malware")
                 Windows_Defender_events[0]['Detection Domain'].append("Threat")
                 Windows_Defender_events[0]['Severity'].append("Critical")
@@ -1211,6 +1249,7 @@ def detect_events_windows_defender_log(file_name):
                 except:
                     Event_desc="Windows Defender Found Malware"
                 Windows_Defender_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Windows_Defender_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender Found Malware")
                 Windows_Defender_events[0]['Detection Domain'].append("Threat")
                 Windows_Defender_events[0]['Severity'].append("Critical")
@@ -1231,6 +1270,7 @@ def detect_events_windows_defender_log(file_name):
                 except:
                     Event_desc=" Windows Defender deleted history of malwares"
                 Windows_Defender_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Windows_Defender_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender deleted history of malwares")
                 Windows_Defender_events[0]['Detection Domain'].append("Audit")
                 Windows_Defender_events[0]['Severity'].append("High")
@@ -1263,6 +1303,7 @@ def detect_events_windows_defender_log(file_name):
                     Event_desc="Windows Defender detected suspicious behavior Malware"
 
                 Windows_Defender_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Windows_Defender_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender detected suspicious behavior Malware")
                 Windows_Defender_events[0]['Detection Domain'].append("Threat")
                 Windows_Defender_events[0]['Severity'].append("Critical")
@@ -1276,6 +1317,7 @@ def detect_events_windows_defender_log(file_name):
 
                 Event_desc="Windows Defender real-time protection disabled"
                 Windows_Defender_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Windows_Defender_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender real-time protection disabled")
                 Windows_Defender_events[0]['Detection Domain'].append("Audit")
                 Windows_Defender_events[0]['Severity'].append("Critical")
@@ -1289,6 +1331,7 @@ def detect_events_windows_defender_log(file_name):
 
                 Event_desc="Windows Defender real-time protection configuration changed"
                 Windows_Defender_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Windows_Defender_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender real-time protection configuration changed")
                 Windows_Defender_events[0]['Detection Domain'].append("Audit")
                 Windows_Defender_events[0]['Severity'].append("High")
@@ -1302,6 +1345,7 @@ def detect_events_windows_defender_log(file_name):
 
                 Event_desc="Windows Defender antimalware platform configuration changed"
                 Windows_Defender_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Windows_Defender_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender antimalware platform configuration changed")
                 Windows_Defender_events[0]['Detection Domain'].append("Audit")
                 Windows_Defender_events[0]['Severity'].append("High")
@@ -1315,6 +1359,7 @@ def detect_events_windows_defender_log(file_name):
 
                 Event_desc="Windows Defender scanning for malware is disabled"
                 Windows_Defender_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Windows_Defender_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender scanning for malware is disabled")
                 Windows_Defender_events[0]['Detection Domain'].append("Audit")
                 Windows_Defender_events[0]['Severity'].append("Critical")
@@ -1328,6 +1373,7 @@ def detect_events_windows_defender_log(file_name):
 
                 Event_desc="Windows Defender scanning for viruses is disabled"
                 Windows_Defender_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Windows_Defender_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Windows_Defender_events[0]['Detection Rule'].append("Windows Defender scanning for viruses is disabled")
                 Windows_Defender_events[0]['Detection Domain'].append("Audit")
                 Windows_Defender_events[0]['Severity'].append("Critical")
@@ -1362,6 +1408,7 @@ def detect_events_scheduled_task_log(file_name):
                     Event_desc ="schedule task registered"
 
                 ScheduledTask_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                ScheduledTask_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 ScheduledTask_events[0]['Detection Rule'].append("schedule task registered")
                 ScheduledTask_events[0]['Detection Domain'].append("Audit")
                 ScheduledTask_events[0]['Severity'].append("High")
@@ -1385,6 +1432,7 @@ def detect_events_scheduled_task_log(file_name):
                     Event_desc ="schedule task updated"
 
                 ScheduledTask_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                ScheduledTask_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 ScheduledTask_events[0]['Detection Rule'].append("schedule task updated")
                 ScheduledTask_events[0]['Detection Domain'].append("Audit")
                 ScheduledTask_events[0]['Severity'].append("Medium")
@@ -1407,6 +1455,7 @@ def detect_events_scheduled_task_log(file_name):
                     Event_desc ="schedule task deleted"
 
                 ScheduledTask_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                ScheduledTask_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 ScheduledTask_events[0]['Detection Rule'].append("schedule task deleted")
                 ScheduledTask_events[0]['Detection Domain'].append("Audit")
                 ScheduledTask_events[0]['Severity'].append("High")
@@ -1440,6 +1489,7 @@ def detect_events_system_log(file_name):
                 Event_desc="System Logs Cleared"
                 #System_events[0]['Date and Time'].append(datetime.strptime(record["timestamp"],'%Y-%m-%d %I:%M:%S.%f %Z').isoformat())
                 System_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                System_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 System_events[0]['Detection Rule'].append(
                     "System Logs Cleared")
                 System_events[0]['Detection Domain'].append("Audit")
@@ -1454,6 +1504,7 @@ def detect_events_system_log(file_name):
                 Event_desc="Service Installed with executable in TEMP Folder"
                 #System_events[0]['Date and Time'].append(datetime.strptime(record["timestamp"],'%Y-%m-%d %I:%M:%S.%f %Z').isoformat())
                 System_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                System_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 System_events[0]['Detection Rule'].append(
                     "Service Installed with executable in TEMP Folder ")
                 System_events[0]['Detection Domain'].append("Threat")
@@ -1491,6 +1542,7 @@ def detect_events_system_log(file_name):
                     print("issue parsing event : ",str(record['data']).replace("\r"," "))
                 #System_events[0]['Date and Time'].append(datetime.strptime(record["timestamp"],'%Y-%m-%d %I:%M:%S.%f %Z').isoformat())
                 System_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                System_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 System_events[0]['Detection Rule'].append("Service installed in the system")
                 System_events[0]['Detection Domain'].append("Audit")
                 System_events[0]['Severity'].append(Severity)
@@ -1519,6 +1571,7 @@ def detect_events_system_log(file_name):
                         #System_events[0]['Date and Time'].append(datetime.strptime(record["timestamp"],'%Y-%m-%d %I:%M:%S.%f %Z').isoformat())
                         System_events[0]['Service Name'].append(service_state_name)
                         System_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        System_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         System_events[0]['Detection Rule'].append("Service start type changed")
                         System_events[0]['Detection Domain'].append("Audit")
                         System_events[0]['Severity'].append("Medium")
@@ -1529,6 +1582,7 @@ def detect_events_system_log(file_name):
                         Event_desc="Service start type changed"
                         System_events[0]['Service Name'].append("NONE")
                         System_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        System_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         System_events[0]['Detection Rule'].append("Service start type changed")
                         System_events[0]['Detection Domain'].append("Audit")
                         System_events[0]['Severity'].append("Medium")
@@ -1556,6 +1610,7 @@ def detect_events_system_log(file_name):
                         #System_events[0]['Date and Time'].append(datetime.strptime(record["timestamp"],'%Y-%m-%d %I:%M:%S.%f %Z').isoformat())
                         System_events[0]['Service Name'].append(service_state_name)
                         System_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        System_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         System_events[0]['Detection Rule'].append("Service State Changed")
                         System_events[0]['Detection Domain'].append("Audit")
                         System_events[0]['Severity'].append("Medium")
@@ -1567,6 +1622,7 @@ def detect_events_system_log(file_name):
                         Event_desc="Service State Changed"
                         System_events[0]['Service Name'].append("NONE")
                         System_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        System_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         System_events[0]['Detection Rule'].append("Service State Changed")
                         System_events[0]['Detection Domain'].append("Audit")
                         System_events[0]['Severity'].append("Medium")
@@ -1601,6 +1657,7 @@ def detect_events_powershell_operational_log(file_name):
                     "\\tmp\\") > -1:
                 Event_desc="Powershell  Operation including TEMP Folder"
                 Powershell_Operational_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Powershell_Operational_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Powershell_Operational_events[0]['Detection Rule'].append(
                     "Powershell Module logging - Operation including TEMP folder ")
                 Powershell_Operational_events[0]['Detection Domain'].append("Threat")
@@ -1636,6 +1693,7 @@ def detect_events_powershell_operational_log(file_name):
                         #print("")
 
                     Powershell_Operational_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Powershell_Operational_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Powershell_Operational_events[0]['Detection Rule'].append("Powershell Module logging - Malicious Commands Detected")
                     Powershell_Operational_events[0]['Detection Domain'].append("Threat")
                     Powershell_Operational_events[0]['Severity'].append("Critical")
@@ -1656,6 +1714,7 @@ def detect_events_powershell_operational_log(file_name):
 
                     Event_desc ="Found Suspicious PowerShell commands that include ("+",".join(Suspicious)+") , check event details "#+record['data']
                     Powershell_Operational_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Powershell_Operational_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Powershell_Operational_events[0]['Detection Rule'].append("powershell script block - Found Suspicious PowerShell commands ")
                     Powershell_Operational_events[0]['Detection Domain'].append("Threat")
                     Powershell_Operational_events[0]['Severity'].append("Critical")
@@ -1677,6 +1736,7 @@ def detect_events_powershell_operational_log(file_name):
 
                     Event_desc ="Found Suspicious PowerShell commands that include ("+",".join(Suspicious)+") , check event details "+record['data']
                     Powershell_Operational_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Powershell_Operational_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Powershell_Operational_events[0]['Detection Rule'].append("PowerShell ISE Operation - Found Suspicious PowerShell commands")
                     Powershell_Operational_events[0]['Detection Domain'].append("Threat")
                     Powershell_Operational_events[0]['Severity'].append("Critical")
@@ -1709,6 +1769,7 @@ def detect_events_powershell_operational_log(file_name):
                     #else:
                         #print("")
                     Powershell_Operational_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Powershell_Operational_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Powershell_Operational_events[0]['Detection Rule'].append("Powershell Executing Pipeline - Suspicious Powershell Commands detected")
                     Powershell_Operational_events[0]['Detection Domain'].append("Threat")
                     Powershell_Operational_events[0]['Severity'].append("Critical")
@@ -1728,6 +1789,7 @@ def detect_events_powershell_operational_log(file_name):
                         #print("")
 
                     Powershell_Operational_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Powershell_Operational_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Powershell_Operational_events[0]['Detection Rule'].append("Powershell Executing Pipeline - User Powershell Commands ")
                     Powershell_Operational_events[0]['Detection Domain'].append("Audit")
                     Powershell_Operational_events[0]['Severity'].append("High")
@@ -1759,6 +1821,7 @@ def detect_events_powershell_log(file_name):
                     "\\tmp\\") > -1:
                 Event_desc="Powershell Operation including TEMP Folder"
                 Powershell_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Powershell_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Powershell_events[0]['Detection Rule'].append(
                     "Powershell Executing Pipeline - Operation including TEMP folder ")
                 Powershell_events[0]['Detection Domain'].append("Threat")
@@ -1789,6 +1852,7 @@ def detect_events_powershell_log(file_name):
                     #    print("")
 
                     Powershell_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Powershell_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Powershell_events[0]['Detection Rule'].append("Powershell Executing Pipeline - Suspicious Powershell Commands detected")
                     Powershell_events[0]['Detection Domain'].append("Threat")
                     Powershell_events[0]['Severity'].append("Critical")
@@ -1820,6 +1884,7 @@ def detect_events_powershell_log(file_name):
                     #else:
                     #    print("")
                     Powershell_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Powershell_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Powershell_events[0]['Detection Rule'].append("Suspicious PowerShell commands Detected")
                     Powershell_events[0]['Detection Domain'].append("Threat")
                     Powershell_events[0]['Severity'].append("Critical")
@@ -1837,6 +1902,7 @@ def detect_events_powershell_log(file_name):
                 if len(Suspicious)>0:
                     Event_desc ="Found  Suspicious PowerShell commands that include (" + ",".join(Suspicious) + ") in event "
                     Powershell_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Powershell_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Powershell_events[0]['Detection Rule'].append("Suspicious PowerShell commands Detected")
                     Powershell_events[0]['Detection Domain'].append("Threat")
                     Powershell_events[0]['Severity'].append("Critical")
@@ -1880,6 +1946,7 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name):
 
                         Event_desc ="Found User ("+User[0].strip()+") connecting from Local Host ( 127.0.0.1 ) which means attacker is using tunnel to connect RDP "
                         TerminalServices_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        TerminalServices_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         TerminalServices_events[0]['Detection Rule'].append("User connected RDP from Local host - Possible Socks Proxy being used")
                         TerminalServices_events[0]['Detection Domain'].append("Threat")
                         TerminalServices_events[0]['Severity'].append("Critical")
@@ -1893,6 +1960,7 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name):
 
                         Event_desc ="Found User ("+User[0].strip()+") connecting from public IP (" +Source_Network_Address[0][0].strip()+") "
                         TerminalServices_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        TerminalServices_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         TerminalServices_events[0]['Detection Rule'].append("User Connecting RDP from Public IP")
                         TerminalServices_events[0]['Detection Domain'].append("Audit")
                         TerminalServices_events[0]['Severity'].append("Critical")
@@ -1904,6 +1972,7 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name):
                         Event_desc = "Found User (" + User[
                             0].strip() + ") connecting from IP (" +Source_Network_Address[0][0]+ ") "
                         TerminalServices_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        TerminalServices_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                         TerminalServices_events[0]['Detection Rule'].append(
                             "User connected RDP to this machine")
                         TerminalServices_events[0]['Detection Domain'].append("Threat")
@@ -1920,6 +1989,7 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name):
                     #print(IPAddress(Source_Network_Address[0][0].strip()).is_private())
                     Event_desc ="Found User ("+User[0].strip()+") connecting from ( "+Source_Network_Address_Terminal_NotIP[0]+" ) "
                     TerminalServices_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    TerminalServices_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     TerminalServices_events[0]['Detection Rule'].append("User Loggedon to machine")
                     TerminalServices_events[0]['Detection Domain'].append("Access")
                     TerminalServices_events[0]['Severity'].append("Low")
@@ -1955,6 +2025,7 @@ def detect_events_Microsoft_Windows_WinRM(file_name):
                 except:
                     Event_desc="User Connected to another machine using WinRM - powershell remote "
                 WinRM_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                WinRM_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 WinRM_events[0]['Detection Rule'].append("connection is initiated using WinRM from this machine - Powershell remoting")
                 WinRM_events[0]['Detection Domain'].append("Audit")
                 WinRM_events[0]['Severity'].append("High")
@@ -1973,6 +2044,7 @@ def detect_events_Microsoft_Windows_WinRM(file_name):
                 except:
                     Event_desc="User Connected to this machine using WinRM - powershell remote - check eventlog viewer"
                 WinRM_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                WinRM_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 WinRM_events[0]['Detection Rule'].append("connection is initiated using WinRM to this machine - Powershell remoting")
                 WinRM_events[0]['Detection Domain'].append("Audit")
                 WinRM_events[0]['Severity'].append("High")
@@ -2048,6 +2120,7 @@ def detect_events_Sysmon_log(file_name):
                                 Suspicious) + ") in event with Command Line (" + CommandLine[
                                 0].strip() + ") and Parent Image :"+ ParentImage[0].strip()+" , Parent CommandLine (" + ParentCommandLine[0].strip() + ") " +"in directory : ( "+CurrentDirectory[0].strip() + " )"
                     Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                     Sysmon_events[0]['Detection Rule'].append('[ T1086 ]  Powershell with Suspicious Argument')
                     Sysmon_events[0]['Detection Domain'].append("Threat")
                     Sysmon_events[0]['Severity'].append("Critical")
@@ -2067,6 +2140,7 @@ def detect_events_Sysmon_log(file_name):
                 Event_desc="Found User (" + User[0].strip() + ") Trying to manipulate windows services usign Sc.exe with Command Line (" + CommandLine[
                         0].strip() + ") and Parent Image :"+ ParentImage[0].strip()+" , Parent CommandLine (" + ParentCommandLine[0].strip() + ") " +"in directory : ( "+CurrentDirectory[0].strip() + " )"
                 Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Sysmon_events[0]['Detection Rule'].append('[  T1543 ] Sc.exe manipulating windows services')
                 Sysmon_events[0]['Detection Domain'].append("Threat")
                 Sysmon_events[0]['Severity'].append("High")
@@ -2085,6 +2159,7 @@ def detect_events_Sysmon_log(file_name):
                 Event_desc="Found User (" + User[0].strip() + ") Trying to run wscript or cscript with Command Line (" + CommandLine[
                         0].strip() + ") and Parent Image :"+ ParentImage[0].strip()+" , Parent CommandLine (" + ParentCommandLine[0].strip() + ") " +"in directory : ( "+CurrentDirectory[0].strip() + " )"
                 Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Sysmon_events[0]['Detection Rule'].append('[ T1059 ] wscript or cscript runing script')
                 Sysmon_events[0]['Detection Domain'].append("Threat")
                 Sysmon_events[0]['Severity'].append("High")
@@ -2104,6 +2179,7 @@ def detect_events_Sysmon_log(file_name):
                 Event_desc="Found User (" + User[0].strip() + ") Trying to run mshta with Command Line (" + CommandLine[
                         0].strip() + ") and Parent Image :"+ ParentImage[0].strip()+" , Parent CommandLine (" + ParentCommandLine[0].strip() + ") " +"in directory : ( "+CurrentDirectory[0].strip() + " )"
                 Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Sysmon_events[0]['Detection Rule'].append('[ T1218.005 ] Mshta found running in the system')
                 Sysmon_events[0]['Detection Domain'].append("Threat")
                 Sysmon_events[0]['Severity'].append("High")
@@ -2121,6 +2197,7 @@ def detect_events_Sysmon_log(file_name):
 
                 Event_desc="Found User (" + User[0].strip() + ") Trying to run psexec with process Image :" + Image[0].strip()
                 Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Sysmon_events[0]['Detection Rule'].append('Psexec Detected in the system')
                 Sysmon_events[0]['Detection Domain'].append("Threat")
                 Sysmon_events[0]['Severity'].append("Critical")
@@ -2142,6 +2219,7 @@ def detect_events_Sysmon_log(file_name):
                         0].strip() + ") and Parent Image :"+ ParentImage[0].strip()+" , Parent CommandLine (" + ParentCommandLine[0].strip() + ") " +"in directory : ( "+CurrentDirectory[0].strip() + " )"
 
                 Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Sysmon_events[0]['Detection Rule'].append('[T1053] Scheduled Task manipulation ')
                 Sysmon_events[0]['Detection Domain'].append("Threat")
                 Sysmon_events[0]['Severity'].append("Medium")
@@ -2160,6 +2238,7 @@ def detect_events_Sysmon_log(file_name):
 
                 Event_desc="User (" + User[0].strip() + ") run process "+Image[0].strip()+" and initiated network connection from hostname ( "+ SourceHostname[0].strip()+" and IP ( "+SourceIp[0].strip() +" ) to hostname ( "+ DestinationHostname[0].strip()+" ) , IP ( " +DestinationIp[0].strip()+" ) and port ( "+DestinationPort[0].strip()+" )"
                 Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Sysmon_events[0]['Detection Rule'].append('Prohibited Process connecting to internet')
                 Sysmon_events[0]['Detection Domain'].append("Threat")
                 Sysmon_events[0]['Severity'].append("Critical")
@@ -2173,6 +2252,7 @@ def detect_events_Sysmon_log(file_name):
                 Event_desc="User (" + User[0].strip() + ") run command through WMI with process ("+Image[0].strip()+ ") and commandline ( "+CommandLine[
                         0].strip() +" )"
                 Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Sysmon_events[0]['Detection Rule'].append('Command run remotely Using WMI')
                 Sysmon_events[0]['Detection Domain'].append("Threat")
                 Sysmon_events[0]['Severity'].append("Critical")
@@ -2186,6 +2266,7 @@ def detect_events_Sysmon_log(file_name):
                 Event_desc="IIS run command with user (" + User[0].strip() + ") and process name ("+Image[0].strip()+ ") and commandline ( "+CommandLine[
                         0].strip() +" )"
                 Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Sysmon_events[0]['Detection Rule'].append('Detect IIS/Exchange Exploitation')
                 Sysmon_events[0]['Detection Domain'].append("Threat")
                 Sysmon_events[0]['Severity'].append("Critical")
@@ -2198,6 +2279,7 @@ def detect_events_Sysmon_log(file_name):
 
                 Event_desc="System Information Discovery Process ( %s) ith commandline ( %s) "%(Image[0],CommandLine[0])
                 Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Sysmon_events[0]['Detection Rule'].append('[T1082] System Information Discovery')
                 Sysmon_events[0]['Detection Domain'].append("Threat")
                 Sysmon_events[0]['Severity'].append("Critical")
@@ -2210,6 +2292,7 @@ def detect_events_Sysmon_log(file_name):
 
                 Event_desc="[T1117] Bypassing Application Whitelisting with Regsvr32 , Process ( %s) with commandline ( %s)"%(Image[0],CommandLine[0])
                 Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Sysmon_events[0]['Detection Rule'].append('[T1117] Bypassing Application Whitelisting with Regsvr32')
                 Sysmon_events[0]['Detection Domain'].append("Threat")
                 Sysmon_events[0]['Severity'].append("High")
@@ -2222,6 +2305,7 @@ def detect_events_Sysmon_log(file_name):
 
                 Event_desc="Process ( %s) attempted process injection on process ( %s)"%(SourceImage,TargetImage)
                 Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Sysmon_events[0]['Detection Rule'].append('[T1055] Process Injection')
                 Sysmon_events[0]['Detection Domain'].append("Threat")
                 Sysmon_events[0]['Severity'].append("Critical")
