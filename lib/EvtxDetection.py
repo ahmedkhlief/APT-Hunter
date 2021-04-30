@@ -3,7 +3,7 @@ import re
 from netaddr import *
 import xml.etree.ElementTree as ET
 import pandas as pd
-from datetime import datetime
+from datetime import datetime , timezone
 from evtx import PyEvtxParser
 from dateutil.parser import parse
 from dateutil.parser import isoparse
@@ -420,6 +420,7 @@ def detect_events_security_log(file_name):
                 #print(" Created User Name ( " + Account_Name[1].strip()+ " )")
 
                 Event_desc="Windows is shutting down )"
+                Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
                 Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
                 Security_events[0]['Detection Rule'].append("Windows is shutting down")
                 Security_events[0]['Detection Domain'].append("Audit")
@@ -478,7 +479,7 @@ def detect_events_security_log(file_name):
 
             #add user to global group
             if EventID[0] == "4728":
-                print("4728")
+
                 try:
                     if len(Account_Name[0][0])>0:
                         user=Account_Name[0][0].strip()
@@ -1129,8 +1130,8 @@ def detect_events_security_log(file_name):
     for user in PasswordSpray:
         if len(PasswordSpray[user])>3:
             Event_desc = "Password Spray Detected by user ( "+user+" )"
-            Security_events[0]['timestamp'].append(datetime.timestamp(datetime.now()))
-            Security_events[0]['Date and Time'].append(datetime.now().isoformat())
+            Security_events[0]['timestamp'].append(datetime.timestamp(datetime.now(timezone.utc)))
+            Security_events[0]['Date and Time'].append(datetime.now(timezone.utc).isoformat())
             Security_events[0]['Detection Rule'].append("Password Spray Detected")
             Security_events[0]['Detection Domain'].append("Threat")
             Security_events[0]['Severity'].append("High")
