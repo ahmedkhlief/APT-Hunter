@@ -587,7 +587,7 @@ def detect_events_security_log(file_name='deep-blue-secuity.csv',winevent=False)
                     continue
             #detect pass the hash
             if row['Event ID'] == "4625" or row['Event ID'] == "4624":
-                if Logon_Type[0].strip() == "3" and Account_Name[1].strip() != "ANONYMOUS LOGON" and Account_Name[1].strip().find("$")==-1 and Logon_Process[0].strip() == "NtLmSsp" and Key_Length[0].strip() == "0":
+                if Logon_Type[0].strip() == "3" and Account_Name[1].strip() != "ANONYMOUS LOGON" and Account_Name[1].strip().find("$")==-1 and Logon_Process[0].strip() == "NtLmSsp" :#and Key_Length[0].strip() == "0":
                     #print("##### " + row['Date and Time'] + " ####  ", end='')
                     #print(
                     #        "Pass the hash attempt Detected : user name ( %s ) domain name ( %s ) from  IP ( %s ) and machine name ( %s )" % (
