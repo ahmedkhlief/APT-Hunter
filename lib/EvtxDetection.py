@@ -860,7 +860,7 @@ def detect_events_security_log(file_name,input_timzone):
                         source_ip=Source_IP[0][1].strip()
                         workstation_name=Workstation_Name[0][1].strip()
 
-                    if logon_type == "3" and target_account_name != "ANONYMOUS LOGON" and target_account_name.find("$")==-1 and logon_process == "NtLmSsp" and key_length == "0":
+                    if logon_type == "3" and target_account_name != "ANONYMOUS LOGON" and target_account_name.find("$")==-1 and logon_process == "NtLmSsp" : #and key_length == "0":
                         #print("##### " + record["timestamp"] + " ####  ", end='')
                         #print(
                         #        "Pass the hash attempt Detected : user name ( %s ) domain name ( %s ) from  IP ( %s ) and machine name ( %s )" % (
