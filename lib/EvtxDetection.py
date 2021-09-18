@@ -438,6 +438,29 @@ def detect_events_security_log(file_name,input_timzone):
                     print("issue parsing log : "+str(record['data']))
 
 
+            # Detect Dcshadow attack
+            if EventID[0]=="4742":
+                try:
+                    if len(Account_Name[0][0])>0:
+                        user=Account_Name[0][0].strip()
+                    else:
+                        user=""
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("User Name ( " + Account_Name[0][0].strip() + " )", end='')
+                    #print(" Created User Name ( " + Account_Name[1].strip()+ " )")
+                    if user.find("$")<0 and  str(record['data']).find("E3514235-4B06-11D1-AB04-00C04FC2DCD2")>0 and str(record['data']).find(r"GC/.*/.*")>0:
+                        Event_desc="User Name ( " + user + " ) is suspected doing dcshadow attack "
+                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                        Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                        Security_events[0]['Detection Rule'].append("dcshadow Attack detected")
+                        Security_events[0]['Detection Domain'].append("Threat")
+                        Security_events[0]['Severity'].append("High")
+                        Security_events[0]['Event Description'].append(Event_desc)
+                        Security_events[0]['Event ID'].append(EventID[0])
+                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                except:
+                    print("issue parsing log : "+str(record['data']))
+
 
             # Windows is shutting down
             if EventID[0]=="4609" or EventID[0]=="1100":
