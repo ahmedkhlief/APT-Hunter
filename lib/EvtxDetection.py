@@ -91,6 +91,11 @@ Changes_rex= re.compile('<Data Name=\"AuditPolicyChanges\">(.*)</Data>|<AuditPol
 Member_Name_rex = re.compile('<Data Name=\"MemberName\">(.*)</Data>|<MemberName>(.*)</MemberName>', re.IGNORECASE)
 Member_Sid_rex = re.compile('<Data Name=\"MemberSid\">(.*)</Data>|<MemberSid>(.*)</MemberSid>', re.IGNORECASE)
 
+ShareName_rex = re.compile('<Data Name=\"ShareName\">(.*)</Data>|<shareName>(.*)</shareName>', re.IGNORECASE)
+
+ShareLocalPath_rex = re.compile('<Data Name=\"ShareLocalPath\">(.*)</Data>|<ShareLocalPath>(.*)</ShareLocalPath>', re.IGNORECASE)
+
+
 #=======================
 #Regex for windows defender logs
 
@@ -259,6 +264,11 @@ def detect_events_security_log(file_name,input_timzone):
             Changes=Changes_rex.findall(record['data'])
 
             Process_Command_Line = Process_Command_Line_rex.findall(record['data'])
+
+            ShareName = ShareName_rex.findall(record['data'])
+
+            ShareLocalPath = ShareLocalPath_rex.findall(record['data'])
+
             #User Creation using Net command
             if EventID[0]=="4688":
                 try:
@@ -460,6 +470,37 @@ def detect_events_security_log(file_name,input_timzone):
                         Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
                 except:
                     print("issue parsing log : "+str(record['data']))
+
+
+            # Detect A network share object was added.
+            if EventID[0]=="5142":
+                try:
+                    if len(Account_Name[0][0])>0:
+                        user=Account_Name[0][0].strip()
+                    else:
+                        user=""
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("User Name ( " + Account_Name[0][0].strip() + " )", end='')
+                    #print(" Created User Name ( " + Account_Name[1].strip()+ " )")
+                    Event_desc="User Name ( " + user + " ) add new share ( "+ShareName[0][0].strip()+" ) with path ( "+ShareLocalPath+" )"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                    Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                    Security_events[0]['Detection Rule'].append("network share object was added")
+                    Security_events[0]['Detection Domain'].append("Threat")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                except:
+                    Event_desc="network share object was added"
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                    Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                    Security_events[0]['Detection Rule'].append("network share object was added")
+                    Security_events[0]['Detection Domain'].append("Threat")
+                    Security_events[0]['Severity'].append("High")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
 
             # Windows is shutting down
