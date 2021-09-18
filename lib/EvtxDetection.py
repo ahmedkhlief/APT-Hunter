@@ -414,6 +414,31 @@ def detect_events_security_log(file_name,input_timzone):
                     Security_events[0]['Event ID'].append(EventID[0])
                     Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
+            # Detect Dcsync attack
+            if EventID[0]=="5136" or EventID[0]=="4662":
+                try:
+                    if len(Account_Name[0][0])>0:
+                        user=Account_Name[0][0].strip()
+                    else:
+                        user=""
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("User Name ( " + Account_Name[0][0].strip() + " )", end='')
+                    #print(" Created User Name ( " + Account_Name[1].strip()+ " )")
+                    if user.find("$")<0 and ( str(record['data']).find("Replicating Directory Changes all")>0 or str(record['data']).find("1131f6ad-9c07-11d1-f79f-00c04fc2dcd2")>0 or str(record['data']).find("1131f6aa-9c07-11d1-f79f-00c04fc2dcd2")>0 or str(record['data']).find("9923a32a-3607-11d2-b9be-0000f87a36b2")>0):
+                        Event_desc="User Name ( " + user + " ) is suspected doing dcsync attack "
+                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                        Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                        Security_events[0]['Detection Rule'].append("Dcsync Attack detected")
+                        Security_events[0]['Detection Domain'].append("Threat")
+                        Security_events[0]['Severity'].append("High")
+                        Security_events[0]['Event Description'].append(Event_desc)
+                        Security_events[0]['Event ID'].append(EventID[0])
+                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                except:
+                    print("issue parsing log : "+str(record['data']))
+
+
+
             # Windows is shutting down
             if EventID[0]=="4609" or EventID[0]=="1100":
                 #print("##### " + record["timestamp"] + " ####  ", end='')
