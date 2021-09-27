@@ -2089,7 +2089,7 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name,input_timzo
                     TerminalServices_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
         else:
             print(record['data'])
-def detect_events_Microsoft_Windows_WinRM(file_name,input_timezone):
+def detect_events_Microsoft_Windows_WinRM(file_name,input_timzone):
 
     parser = PyEvtxParser(file_name)
     for record in parser.records():
@@ -2115,7 +2115,7 @@ def detect_events_Microsoft_Windows_WinRM(file_name,input_timezone):
                     Event_desc="User ("+User_ID[0].strip()+") Connected to ("+ connection.strip() +") using WinRM - powershell remote "
                 except:
                     Event_desc="User Connected to another machine using WinRM - powershell remote "
-                WinRM_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timezone).isoformat())
+                WinRM_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
                 WinRM_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
                 WinRM_events[0]['Detection Rule'].append("connection is initiated using WinRM from this machine - Powershell remoting")
                 WinRM_events[0]['Detection Domain'].append("Audit")
@@ -2134,7 +2134,7 @@ def detect_events_Microsoft_Windows_WinRM(file_name,input_timezone):
                     Event_desc="User ("+User_ID[0].strip()+") Connected to this machine using WinRM - powershell remote - check eventlog viewer"
                 except:
                     Event_desc="User Connected to this machine using WinRM - powershell remote - check eventlog viewer"
-                WinRM_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timezone).isoformat())
+                WinRM_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
                 WinRM_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
                 WinRM_events[0]['Detection Rule'].append("connection is initiated using WinRM to this machine - Powershell remoting")
                 WinRM_events[0]['Detection Domain'].append("Audit")
