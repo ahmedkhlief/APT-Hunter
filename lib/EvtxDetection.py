@@ -415,6 +415,23 @@ def detect_events_security_log(file_name,input_timzone):
                 except Exception as e:
                     print("Error (%s) , Handling EventID (%s) with Event Content %s"%(e,EventID[0],record['data']))
                     #print(process_command_line)
+
+            #Summary of process Execution
+            if EventID[0]=="4688" or EventID[0]=="4648" or EventID[0]=="4673":
+                try:
+                    process_name=" "
+
+                    if len(Process_Name)>1:
+                        process_name=Process_Name[0][1].strip()
+                    elif len(Process_Name)>0:
+                        process_name=Process_Name[0][0].strip()
+
+                    if process_name not in Executed_Process_Summary[0]['Process Name']:
+                        Executed_Process_Summary[0]['Process Name'].append(User[0].strip())
+                        Executed_Process_Summary[0]['Number of Execution'].append(1)
+                    else :
+                        Executed_Process_Summary[0]['Number of Execution'][Executed_Process_Summary[0]['Process Name'].index(User[0].strip())]=Executed_Process_Summary[0]['Number of Execution'][Executed_Process_Summary[0]['Process Name'].index(User[0].strip())]+1
+
             # User Created through management interface
             if EventID[0]=="4720":
                 try:
