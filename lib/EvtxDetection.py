@@ -18,8 +18,11 @@ Suspicious_powershell_commands=['FromBase64String','DomainPasswordSpray','Passwo
 
 Suspicious_powershell_Arguments=["-EncodedCommand","-enc","-w hidden","[Convert]::FromBase64String","iex(","New-Object","Net.WebClient","-windowstyle hidden","DownloadFile","DownloadString","Invoke-Expression","Net.WebClient","-Exec bypass" ,"-ExecutionPolicy bypass"]
 
+all_suspicious=["\\csc.exe",'whoami.exe','\\pl.exe','\\nc.exe','nmap.exe','psexec.exe','plink.exe','mimikatz','procdump.exe',' dcom.exe',' Inveigh.exe',' LockLess.exe',' Logger.exe',' PBind.exe',' PS.exe',' Rubeus.exe',' RunasCs.exe',' RunAs.exe',' SafetyDump.exe',' SafetyKatz.exe',' Seatbelt.exe',' SExec.exe',' SharpApplocker.exe',' SharpChrome.exe',' SharpCOM.exe',' SharpDPAPI.exe',' SharpDump.exe',' SharpEdge.exe',' SharpEDRChecker.exe',' SharPersist.exe',' SharpHound.exe',' SharpLogger.exe',' SharpPrinter.exe',' SharpRoast.exe',' SharpSC.exe',' SharpSniper.exe',' SharpSocks.exe',' SharpSSDP.exe',' SharpTask.exe',' SharpUp.exe',' SharpView.exe',' SharpWeb.exe',' SharpWMI.exe',' Shhmon.exe',' SweetPotato.exe',' Watson.exe',' WExec.exe','7zip.exe','FromBase64String','DomainPasswordSpray','PasswordSpray','Password','Get-WMIObject','Get-GPPPassword','Get-Keystrokes','Get-TimedScreenshot','Get-VaultCredential','Get-ServiceUnquoted','Get-ServiceEXEPerms','Get-ServicePerms','Get-RegAlwaysInstallElevated','Get-RegAutoLogon','Get-UnattendedInstallFiles','Get-Webconfig','Get-ApplicationHost','Get-PassHashes','Get-LsaSecret','Get-Information','Get-PSADForestInfo','Get-KerberosPolicy','Get-PSADForestKRBTGTInfo','Get-PSADForestInfo','Get-KerberosPolicy','Invoke-Command','Invoke-Expression','iex(','Invoke-Shellcode','Invoke--Shellcode','Invoke-ShellcodeMSIL','Invoke-MimikatzWDigestDowngrade','Invoke-NinjaCopy','Invoke-CredentialInjection','Invoke-TokenManipulation','Invoke-CallbackIEX','Invoke-PSInject','Invoke-DllEncode','Invoke-ServiceUserAdd','Invoke-ServiceCMD','Invoke-ServiceStart','Invoke-ServiceStop','Invoke-ServiceEnable','Invoke-ServiceDisable','Invoke-FindDLLHijack','Invoke-FindPathHijack','Invoke-AllChecks','Invoke-MassCommand','Invoke-MassMimikatz','Invoke-MassSearch','Invoke-MassTemplate','Invoke-MassTokens','Invoke-ADSBackdoor','Invoke-CredentialsPhish','Invoke-BruteForce','Invoke-PowerShellIcmp','Invoke-PowerShellUdp','Invoke-PsGcatAgent','Invoke-PoshRatHttps','Invoke-PowerShellTcp','Invoke-PoshRatHttp','Invoke-PowerShellWmi','Invoke-PSGcat','Invoke-Encode','Invoke-Decode','Invoke-CreateCertificate','Invoke-NetworkRelay','EncodedCommand','New-ElevatedPersistenceOption','wsman','Enter-PSSession','DownloadString','DownloadFile','Out-Word','Out-Excel','Out-Java','Out-Shortcut','Out-CHM','Out-HTA','Out-Minidump','HTTP-Backdoor','Find-AVSignature','DllInjection','ReflectivePEInjection','Base64','System.Reflection','System.Management','Restore-ServiceEXE','Add-ScrnSaveBackdoor','Gupt-Backdoor','Execute-OnTime','DNS_TXT_Pwnage','Write-UserAddServiceBinary','Write-CMDServiceBinary','Write-UserAddMSI','Write-ServiceEXE','Write-ServiceEXECMD','Enable-DuplicateToken','Remove-Update','Execute-DNSTXT-Code','Download-Execute-PS','Execute-Command-MSSQL','Download_Execute','Copy-VSS','Check-VM','Create-MultipleSessions','Run-EXEonRemote','Port-Scan','Remove-PoshRat','TexttoEXE','Base64ToString','StringtoBase64','Do-Exfiltration','Parse_Keys','Add-Exfiltration','Add-Persistence','Remove-Persistence','Find-PSServiceAccounts','Discover-PSMSSQLServers','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Mimikatz','powercat','powersploit','PowershellEmpire','GetProcAddress','ICM','.invoke',' -e ','hidden','-w hidden','Invoke-Obfuscation-master','Out-EncodedWhitespaceCommand','Out-Encoded',"-EncodedCommand","-enc","-w hidden","[Convert]::FromBase64String","iex(","New-Object","Net.WebClient","-windowstyle hidden","DownloadFile","DownloadString","Invoke-Expression","Net.WebClient","-Exec bypass" ,"-ExecutionPolicy bypass","-EncodedCommand","-enc","-w hidden","[Convert]::FromBase64String","iex(","New-Object","Net.WebClient","-windowstyle hidden","DownloadFile","DownloadString","Invoke-Expression","Net.WebClient","-Exec bypass" ,"-ExecutionPolicy bypass"]
+
 TerminalServices_Summary=[{'User':[],'Number of Logins':[]}]
 Security_Authentication_Summary=[{'User':[],'Number of Failed Logins':[],'Number of Successful Logins':[]}]
+Executed_Process_Summary=[{'Process Name':[],'Number of Execution':[]}]
 
 critical_services=["Software Protection","Network List Service","Network Location Awareness","Windows Event Log"]
 
@@ -268,6 +271,27 @@ def detect_events_security_log(file_name,input_timzone):
             ShareName = ShareName_rex.findall(record['data'])
 
             ShareLocalPath = ShareLocalPath_rex.findall(record['data'])
+
+            #Detect any log that contain suspicious process name or argument
+            for i in all_suspicious:
+
+                if record['data'].lower().find(i.lower())>-1:
+
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("## Found Suspicios Process ", end='')
+                    #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
+                    #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
+                    # print("###########")
+
+                    Event_desc ="Found a log contain suspicious powershell command ( %s)"%i
+                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                    Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                    Security_events[0]['Detection Rule'].append("Suspicious Command or process found in the log")
+                    Security_events[0]['Detection Domain'].append("Threat")
+                    Security_events[0]['Severity'].append("Critical")
+                    Security_events[0]['Event Description'].append(Event_desc)
+                    Security_events[0]['Event ID'].append(EventID[0])
+                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
 
             #User Creation using Net command
             if EventID[0]=="4688":
@@ -1247,6 +1271,27 @@ def detect_events_windows_defender_log(file_name,input_timzone):
             Process_Name = Process_Name_rex.findall(record['data'])
             Action = Action_rex.findall(record['data'])
 
+            #Detect any log that contain suspicious process name or argument
+            for i in all_suspicious:
+
+                if record['data'].lower().find(i.lower())>-1:
+
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("## Found Suspicios Process ", end='')
+                    #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
+                    #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
+                    # print("###########")
+
+                    Event_desc ="Found a log contain suspicious powershell command ( %s)"%i
+                    Windows_Defender_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                    Windows_Defender_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                    Windows_Defender_events[0]['Detection Rule'].append("Suspicious Command or process found in the log")
+                    Windows_Defender_events[0]['Detection Domain'].append("Threat")
+                    Windows_Defender_events[0]['Severity'].append("Critical")
+                    Windows_Defender_events[0]['Event Description'].append(Event_desc)
+                    Windows_Defender_events[0]['Event ID'].append(EventID[0])
+                    Windows_Defender_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+                    break
             #Windows Defender took action against Malware
             if EventID[0]=="1117" or EventID[0]=="1007" :
                 try :
@@ -1484,6 +1529,27 @@ def detect_events_scheduled_task_log(file_name,input_timzone):
             Register_User = Task_Registered_User_rex.findall(record['data'])
             Delete_User = Task_Deleted_User_rex.findall(record['data'])
 
+            #Detect any log that contain suspicious process name or argument
+            for i in all_suspicious:
+
+                if record['data'].lower().find(i.lower())>-1:
+
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("## Found Suspicios Process ", end='')
+                    #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
+                    #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
+                    # print("###########")
+
+                    Event_desc ="Found a log contain suspicious powershell command ( %s)"%i
+                    ScheduledTask_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                    ScheduledTask_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                    ScheduledTask_events[0]['Detection Rule'].append("Suspicious Command or process found in the log")
+                    ScheduledTask_events[0]['Detection Domain'].append("Threat")
+                    ScheduledTask_events[0]['Severity'].append("Critical")
+                    ScheduledTask_events[0]['Event Description'].append(Event_desc)
+                    ScheduledTask_events[0]['Event ID'].append(EventID[0])
+                    ScheduledTask_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+                    break
             #schedule task registered
             if EventID[0]=="106" :
 
@@ -1575,6 +1641,27 @@ def detect_events_system_log(file_name,input_timzone):
             Service_State_Name = State_Service_Name_rex.findall(record['data'])
             Service_Start_Type=Service_Start_Type_rex.findall(record['data'])
 
+            #Detect any log that contain suspicious process name or argument
+            for i in all_suspicious:
+
+                if record['data'].lower().find(i.lower())>-1:
+
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("## Found Suspicios Process ", end='')
+                    #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
+                    #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
+                    # print("###########")
+
+                    Event_desc ="Found a log contain suspicious powershell command ( %s)"%i
+                    System_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                    System_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                    System_events[0]['Detection Rule'].append("Suspicious Command or process found in the log")
+                    System_events[0]['Detection Domain'].append("Threat")
+                    System_events[0]['Severity'].append("Critical")
+                    System_events[0]['Event Description'].append(Event_desc)
+                    System_events[0]['Event ID'].append(EventID[0])
+                    System_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+                    break
             # System Logs cleared
             if (EventID[0]=="104") :
                 Event_desc="System Logs Cleared"
@@ -1757,7 +1844,27 @@ def detect_events_powershell_operational_log(file_name,input_timzone):
                 Powershell_Operational_events[0]['Event ID'].append(EventID[0])
                 Powershell_Operational_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
 
+            #Detect any log that contain suspicious process name or argument
+            for i in Suspicious_executables:
 
+                if record['data'].lower().find(i.lower())>-1:
+
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("## Found Suspicios Process ", end='')
+                    #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
+                    #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
+                    # print("###########")
+
+                    Event_desc ="Found a log contain suspicious powershell command ( %s)"%i
+                    Powershell_Operational_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                    Powershell_Operational_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                    Powershell_Operational_events[0]['Detection Rule'].append("Suspicious Command or process found in the log")
+                    Powershell_Operational_events[0]['Detection Domain'].append("Threat")
+                    Powershell_Operational_events[0]['Severity'].append("Critical")
+                    Powershell_Operational_events[0]['Event Description'].append(Event_desc)
+                    Powershell_Operational_events[0]['Event ID'].append(EventID[0])
+                    Powershell_Operational_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+                    break
             #Powershell Module logging will record portions of scripts, some de-obfuscated code
             if EventID[0]=="4103" :
                 if len(Host_Application) == 0:
@@ -1922,6 +2029,27 @@ def detect_events_powershell_log(file_name,input_timzone):
                 Powershell_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
 
 
+            #Detect any log that contain suspicious process name or argument
+            for i in Suspicious_executables:
+
+                if record['data'].lower().find(i.lower())>-1:
+
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("## Found Suspicios Process ", end='')
+                    #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
+                    #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
+                    # print("###########")
+
+                    Event_desc ="Found a log contain suspicious powershell command ( %s)"%i
+                    Powershell_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                    Powershell_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                    Powershell_events[0]['Detection Rule'].append("Suspicious Command or process found in the log")
+                    Powershell_events[0]['Detection Domain'].append("Threat")
+                    Powershell_events[0]['Severity'].append("Critical")
+                    Powershell_events[0]['Event Description'].append(Event_desc)
+                    Powershell_events[0]['Event ID'].append(EventID[0])
+                    Powershell_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+                    break
 
             if EventID[0]=="800" :
                 if len(Host_Application) == 0:
