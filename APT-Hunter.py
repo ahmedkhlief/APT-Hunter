@@ -5,10 +5,11 @@ import argparse
 import pandas as pd
 import lib.EvtxDetection as EvtxDetection
 import lib.CSVDetection as CSVDetection
+import lib.EvtxHunt as EvtxHunt
 from sys import exit
 from pytz import timezone
 from dateutil import tz
-
+import glob
 
 Output=""
 Path=""
@@ -223,6 +224,21 @@ def csvdetect(winevent):
     TerminalServices_Summary=CSVDetection.TerminalServices_Summary
     Security_Authentication_Summary =CSVDetection.Security_Authentication_Summary
 
+def threat_hunt(path,str_regex):
+    global input_timezone, Output
+    import os
+
+    if os.path.isdir(path):
+        files=glob.glob(path+"*.evtx")
+    elif os.path.isfile(path):
+        files=glob.glob(path)
+
+    else:
+        print("Issue with the path" )
+        return
+    print("hunting ( %s ) in files ( %s )"%(str_regex,files))
+    #user_string = input('please enter a string to convert to regex: ')
+    EvtxHunt.Evtx_hunt(files,str_regex,input_timezone,Output)
 
 def report():
     global Output
@@ -288,6 +304,7 @@ def main():
     parser.add_argument("--winrm", help="Path to Winrm Logs")
     parser.add_argument("--sysmon", help="Path to Sysmon Logs")
     parser.add_argument("-tz","--timezone", help="default Timezone is UTC , you can enter ( 'local' : for local timzone , <Country time zone> : like (Asia/Dubai) )")
+    parser.add_argument("-hunt","--hunt", help="String or regex to be searched in evtx log path")
 
 
     args = parser.parse_args()
@@ -296,12 +313,15 @@ def main():
     if (args.path is None and args.security is None and args.system is None and args.scheduledtask is None and args.defender is None and args.powershell is None and args.powershellop is None and args.terminal is None and args.winrm is None and args.sysmon is None):
         print("You didn't specify a path for any log \nuse --help to print help message")
         exit()
-    if args.type is None:
+    if args.type is None and args.hunt is None:
         print("log type must be defined using -t \ncsv( logs from get-eventlog or windows event log GUI or logs from Get-WinEvent ) , evtx ( EVTX extension windows event log )\nuse --help to print help message")
         exit()
     else:
         if args.path is not None:
             Path=args.path
+            if args.hunt is not None:
+                threat_hunt(Path,args.hunt)
+                return
             if args.type=="evtx":
                 Security_path=Path+"/Security.evtx"
                 system_path =Path+"/System.evtx"
