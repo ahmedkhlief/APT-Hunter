@@ -17,6 +17,7 @@ Suspicious_powershell_Arguments=["-EncodedCommand","-enc","-w hidden","[Convert]
 
 TerminalServices_Summary=[{'User':[],'Number of Logins':[]}]
 Security_Authentication_Summary=[{'User':[],'Number of Failed Logins':[],'Number of Successful Logins':[]}]
+Executed_Process_Summary=[{'Process Name':[],'Number of Execution':[]}]
 
 critical_services=["Software Protection","Network List Service","Network Location Awareness","Windows Event Log"]
 
@@ -540,6 +541,17 @@ def detect_events_security_log(file_name='deep-blue-secuity.csv',winevent=False)
                 Security_events[0]['Event ID'].append(row['Event ID'])
                 Security_events[0]['Original Event Log'].append(str(row['Details']).replace("\r"," "))
 
+            #Summary of process Execution
+            if row['Event ID']=="4688":
+                try:
+
+                    if Process_Command_Line[0] not in Executed_Process_Summary[0]['Process Name']:
+                        Executed_Process_Summary[0]['Process Name'].append(Process_Command_Line[0].strip())
+                        Executed_Process_Summary[0]['Number of Execution'].append(1)
+                    else :
+                        Executed_Process_Summary[0]['Number of Execution'][Executed_Process_Summary[0]['Process Name'].index(Process_Command_Line[0].strip())]=Executed_Process_Summary[0]['Number of Execution'][Executed_Process_Summary[0]['Process Name'].index(Process_Command_Line[0].strip())]+1
+                except:
+                    continue 
             if row['Event ID'] == "4625" :
                 try:
                     if Account_Name[1].strip() not in Security_Authentication_Summary[0]['User']:
