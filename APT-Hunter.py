@@ -24,7 +24,7 @@ winrm_path=""
 sysmon_path=""
 input_timezone=timezone("UTC")
 
-
+Executed_Process_Summary=[{'Process Name':[],'Number of Execution':[]}]
 TerminalServices_Summary=[{'User':[],'Number of Logins':[]}]
 Sysmon_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
 WinRM_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
@@ -41,7 +41,7 @@ Timesketch_events=[{'message':[],'timestamp':[],'datetime':[],'timestamp_desc':[
 
 
 def evtxdetect():
-    global input_timezone,TerminalServices_Summary,Security_Authentication_Summary,Sysmon_events,WinRM_events,Security_events,System_events,ScheduledTask_events,Powershell_events,Powershell_Operational_events,TerminalServices_events,Windows_Defender_events,Timesketch_events,TerminalServices_Summary,Security_Authentication_Summary
+    global input_timezone,Executed_Process_Summary,TerminalServices_Summary,Security_Authentication_Summary,Sysmon_events,WinRM_events,Security_events,System_events,ScheduledTask_events,Powershell_events,Powershell_Operational_events,TerminalServices_events,Windows_Defender_events,Timesketch_events,TerminalServices_Summary,Security_Authentication_Summary
     try:
         print(Security_path)
         EvtxDetection.detect_events_security_log(Security_path,input_timezone)
@@ -130,10 +130,11 @@ def evtxdetect():
     Windows_Defender_events =EvtxDetection.Windows_Defender_events
     Timesketch_events =EvtxDetection.Timesketch_events
     TerminalServices_Summary=EvtxDetection.TerminalServices_Summary
+    Executed_Process_Summary=EvtxDetection.Executed_Process_Summary
     Security_Authentication_Summary =EvtxDetection.Security_Authentication_Summary
 
 def csvdetect(winevent):
-    global TerminalServices_Summary,Security_Authentication_Summary,Sysmon_events,WinRM_events,Security_events,System_events,ScheduledTask_events,Powershell_events,Powershell_Operational_events,TerminalServices_events,Windows_Defender_events,Timesketch_events,TerminalServices_Summary,Security_Authentication_Summary
+    global Executed_Process_Summary,TerminalServices_Summary,Security_Authentication_Summary,Sysmon_events,WinRM_events,Security_events,System_events,ScheduledTask_events,Powershell_events,Powershell_Operational_events,TerminalServices_events,Windows_Defender_events,Timesketch_events,TerminalServices_Summary,Security_Authentication_Summary
     try:
         #print(Security_path,winevent)
         CSVDetection.detect_events_security_log(Security_path,winevent)
@@ -222,7 +223,9 @@ def csvdetect(winevent):
     Windows_Defender_events =CSVDetection.Windows_Defender_events
     Timesketch_events =CSVDetection.Timesketch_events
     TerminalServices_Summary=CSVDetection.TerminalServices_Summary
+    Executed_Process_Summary=CSVDetection.Executed_Process_Summary
     Security_Authentication_Summary =CSVDetection.Security_Authentication_Summary
+
 
 def threat_hunt(path,str_regex):
     global input_timezone, Output
@@ -255,7 +258,7 @@ def report():
     ScheduledTask = pd.DataFrame(ScheduledTask_events[0])
     Terminal_Services_Summary = pd.DataFrame(TerminalServices_Summary[0])
     Authentication_Summary = pd.DataFrame(Security_Authentication_Summary[0])
-
+    ExecutedProcess_Summary=pd.DataFrame(Executed_Process_Summary[0])
     # allresults=pd.DataFrame([TerminalServices,Powershell_Operational],columns=['Date and Time', 'Detection Rule','Detection Domain','Severity','Event Description','Event ID','Original Event Log'])
     allresults = pd.concat(
         [ScheduledTask, Powershell_Operational, Sysmon, System, Powershell, Security, TerminalServices, WinRM,
@@ -281,6 +284,7 @@ def report():
     ScheduledTask.to_excel(writer, sheet_name='ScheduledTask Events', index=False)
     Terminal_Services_Summary.to_excel(writer, sheet_name='Terminal Services Logon Summary', index=False)
     Authentication_Summary.to_excel(writer, sheet_name='Security Authentication Summary', index=False)
+    ExecutedProcess_Summary.to_excel(writer, sheet_name='Executed Process Summary', index=False)
     writer.save()
     print("Report saved as "+Report)
 
