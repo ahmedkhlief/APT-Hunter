@@ -20,6 +20,10 @@ Suspicious_powershell_Arguments=["-EncodedCommand","-enc","-w hidden","[Convert]
 
 all_suspicious=["\\csc.exe",'whoami.exe','\\pl.exe','\\nc.exe','nmap.exe','psexec.exe','plink.exe','mimikatz','procdump.exe',' dcom.exe',' Inveigh.exe',' LockLess.exe',' Logger.exe',' PBind.exe',' PS.exe',' Rubeus.exe',' RunasCs.exe',' RunAs.exe',' SafetyDump.exe',' SafetyKatz.exe',' Seatbelt.exe',' SExec.exe',' SharpApplocker.exe',' SharpChrome.exe',' SharpCOM.exe',' SharpDPAPI.exe',' SharpDump.exe',' SharpEdge.exe',' SharpEDRChecker.exe',' SharPersist.exe',' SharpHound.exe',' SharpLogger.exe',' SharpPrinter.exe',' SharpRoast.exe',' SharpSC.exe',' SharpSniper.exe',' SharpSocks.exe',' SharpSSDP.exe',' SharpTask.exe',' SharpUp.exe',' SharpView.exe',' SharpWeb.exe',' SharpWMI.exe',' Shhmon.exe',' SweetPotato.exe',' Watson.exe',' WExec.exe','7zip.exe','FromBase64String','DomainPasswordSpray','PasswordSpray','Password','Get-WMIObject','Get-GPPPassword','Get-Keystrokes','Get-TimedScreenshot','Get-VaultCredential','Get-ServiceUnquoted','Get-ServiceEXEPerms','Get-ServicePerms','Get-RegAlwaysInstallElevated','Get-RegAutoLogon','Get-UnattendedInstallFiles','Get-Webconfig','Get-ApplicationHost','Get-PassHashes','Get-LsaSecret','Get-Information','Get-PSADForestInfo','Get-KerberosPolicy','Get-PSADForestKRBTGTInfo','Get-PSADForestInfo','Get-KerberosPolicy','Invoke-Command','Invoke-Expression','iex(','Invoke-Shellcode','Invoke--Shellcode','Invoke-ShellcodeMSIL','Invoke-MimikatzWDigestDowngrade','Invoke-NinjaCopy','Invoke-CredentialInjection','Invoke-TokenManipulation','Invoke-CallbackIEX','Invoke-PSInject','Invoke-DllEncode','Invoke-ServiceUserAdd','Invoke-ServiceCMD','Invoke-ServiceStart','Invoke-ServiceStop','Invoke-ServiceEnable','Invoke-ServiceDisable','Invoke-FindDLLHijack','Invoke-FindPathHijack','Invoke-AllChecks','Invoke-MassCommand','Invoke-MassMimikatz','Invoke-MassSearch','Invoke-MassTemplate','Invoke-MassTokens','Invoke-ADSBackdoor','Invoke-CredentialsPhish','Invoke-BruteForce','Invoke-PowerShellIcmp','Invoke-PowerShellUdp','Invoke-PsGcatAgent','Invoke-PoshRatHttps','Invoke-PowerShellTcp','Invoke-PoshRatHttp','Invoke-PowerShellWmi','Invoke-PSGcat','Invoke-Encode','Invoke-Decode','Invoke-CreateCertificate','Invoke-NetworkRelay','EncodedCommand','New-ElevatedPersistenceOption','wsman','Enter-PSSession','DownloadString','DownloadFile','Out-Word','Out-Excel','Out-Java','Out-Shortcut','Out-CHM','Out-HTA','Out-Minidump','HTTP-Backdoor','Find-AVSignature','DllInjection','ReflectivePEInjection','Base64','System.Reflection','System.Management','Restore-ServiceEXE','Add-ScrnSaveBackdoor','Gupt-Backdoor','Execute-OnTime','DNS_TXT_Pwnage','Write-UserAddServiceBinary','Write-CMDServiceBinary','Write-UserAddMSI','Write-ServiceEXE','Write-ServiceEXECMD','Enable-DuplicateToken','Remove-Update','Execute-DNSTXT-Code','Download-Execute-PS','Execute-Command-MSSQL','Download_Execute','Copy-VSS','Check-VM','Create-MultipleSessions','Run-EXEonRemote','Port-Scan','Remove-PoshRat','TexttoEXE','Base64ToString','StringtoBase64','Do-Exfiltration','Parse_Keys','Add-Exfiltration','Add-Persistence','Remove-Persistence','Find-PSServiceAccounts','Discover-PSMSSQLServers','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Mimikatz','powercat','powersploit','PowershellEmpire','GetProcAddress','ICM','.invoke',' -e ','hidden','-w hidden','Invoke-Obfuscation-master','Out-EncodedWhitespaceCommand','Out-Encoded',"-EncodedCommand","-enc","-w hidden","[Convert]::FromBase64String","iex(","New-Object","Net.WebClient","-windowstyle hidden","DownloadFile","DownloadString","Invoke-Expression","Net.WebClient","-Exec bypass" ,"-ExecutionPolicy bypass","-EncodedCommand","-enc","-w hidden","[Convert]::FromBase64String","iex(","New-Object","Net.WebClient","-windowstyle hidden","DownloadFile","DownloadString","Invoke-Expression","Net.WebClient","-Exec bypass" ,"-ExecutionPolicy bypass"]
 
+Suspicious_Path=['\\temp\\','//temp//','/temp/','//windows//temp//','/windows/temp/','\\windows\\temp\\','\\appdata\\','/appdata/','//appdata//','//programdata//','\\programdata\\','/programdata/']
+Usual_Path=['\\Windows\\','/Windows/','//Windows//','Program Files','\\Windows\\SysWOW64\\','/Windows/SysWOW64/','//Windows//SysWOW64//','\\Windows\\Cluster\\','/Windows/Cluster/','//Windows//Cluster//']
+Pass_the_hash_users=[{'User':[],'Number of Logins':[],'Reached':[]}]
+
 TerminalServices_Summary=[{'User':[],'Number of Logins':[]}]
 Security_Authentication_Summary=[{'User':[],'Number of Failed Logins':[],'Number of Successful Logins':[]}]
 Executed_Process_Summary=[{'Process Name':[],'Number of Execution':[]}]
@@ -64,6 +68,8 @@ Logon_Process_rex = re.compile('<Data Name=\"LogonProcessName\">(.*)</Data>|<Log
 
 Key_Length_rex = re.compile('<Data Name=\"KeyLength\">(.*)</Data>|<KeyLength>(.*)</KeyLength>', re.IGNORECASE)
 
+AccessMask_rex = re.compile('<Data Name=\"AccessMask\">(.*)</Data>|<AccessMask>(.*)</AccessMask>', re.IGNORECASE)
+
 Process_Command_Line_rex=re.compile('<Data Name=\"CommandLine\">(.*)</Data>|<CommandLine>(.*)</CommandLine>', re.IGNORECASE)
 
 New_Process_Name_rex=re.compile('<Data Name=\"NewProcessName\">(.*)</Data>', re.IGNORECASE)
@@ -80,7 +86,7 @@ Task_Command_rex=re.compile('<Command>(.*)</Command>', re.IGNORECASE)
 
 Task_args_rex=re.compile('<Arguments>(.*)</Arguments>', re.IGNORECASE)
 
-Process_Name_sec_rex = re.compile('<Data Name=\"CallerProcessName\">(.*)</Data>|<CallerProcessName>(.*)</CallerProcessName>', re.IGNORECASE)
+Process_Name_sec_rex = re.compile('<Data Name=\"CallerProcessName\">(.*)</Data>|<CallerProcessName>(.*)</CallerProcessName>|<Data Name=\"ProcessName\">(.*)</Data>|<Data Name=\"NewProcessName\">(.*)</Data>', re.IGNORECASE)
 
 Parent_Process_Name_sec_rex=re.compile('<Data Name=\"ParentProcessName\">(.*)</Data>|<ParentProcessName>(.*)</ParentProcessName>', re.IGNORECASE)
 
@@ -97,6 +103,11 @@ Member_Sid_rex = re.compile('<Data Name=\"MemberSid\">(.*)</Data>|<MemberSid>(.*
 ShareName_rex = re.compile('<Data Name=\"ShareName\">(.*)</Data>|<shareName>(.*)</shareName>', re.IGNORECASE)
 
 ShareLocalPath_rex = re.compile('<Data Name=\"ShareLocalPath\">(.*)</Data>|<ShareLocalPath>(.*)</ShareLocalPath>', re.IGNORECASE)
+Object_Name_rex = re.compile('<Data Name=\"ObjectName\">(.*)</Data>|<ObjectName>(.*)</ObjectName>', re.IGNORECASE)
+
+ObjectType_rex = re.compile('<Data Name=\"ObjectType\">(.*)</Data>|<ObjectType>(.*)</ObjectType>', re.IGNORECASE)
+
+ObjectServer_rex = re.compile('<Data Name=\"ObjectServer\">(.*)</Data>|<ObjectServer>(.*)</ObjectServer>', re.IGNORECASE)
 
 
 #=======================
@@ -218,6 +229,18 @@ Sysmon_SourceProcessGuid_rex=re.compile("<Data Name=\"SourceProcessGuid\">(.*)</
 Sysmon_TargetProcessGuid_rex=re.compile("<Data Name=\"TargetProcessGuid\">(.*)</Data>")
 Sysmon_TargetProcessId_rex=re.compile("<Data Name=\"TargetProcessId\">(.*)</Data>")
 
+#########
+Sysmon_ImageLoaded_rex=re.compile("<Data Name=\"ImageLoaded\">(.*)</Data>")
+Sysmon_GrantedAccess_rex=re.compile("<Data Name=\"GrantedAccess\">(.*)</Data>")
+Sysmon_CallTrace_rex=re.compile("<Data Name=\"CallTrace\">(.*)</Data>")
+Sysmon_Details_rex=re.compile("<Data Name=\"Details\">(.*)</Data>")
+Sysmon_PipeName_rex=re.compile("<Data Name=\"PipeName\">(.*)</Data>")
+
+Sysmon_ImageLoaded_rex=re.compile("<Data Name=\"ImageLoaded\">(.*)</Data>")
+Sysmon_GrantedAccess_rex=re.compile("<Data Name=\"GrantedAccess\">(.*)</Data>")
+Sysmon_CallTrace_rex=re.compile("<Data Name=\"CallTrace\">(.*)</Data>")
+Sysmon_Details_rex=re.compile("<Data Name=\"Details\">(.*)</Data>")
+Sysmon_PipeName_rex=re.compile("<Data Name=\"PipeName\">(.*)</Data>")
 
 def detect_events_security_log(file_name,input_timzone):
     #global Logon_Type_rex,Account_Name_rex,Account_Domain_rex,Workstation_Name_rex,Source_Network_Address_rex
@@ -272,29 +295,35 @@ def detect_events_security_log(file_name,input_timzone):
 
             ShareLocalPath = ShareLocalPath_rex.findall(record['data'])
 
+            Object_Name = Object_Name_rex.findall(record['data'])
+
+            Object_Type = ObjectType_rex.findall(record['data'])
+            ObjectServer = ObjectServer_rex.findall(record['data'])
+            AccessMask = AccessMask_rex.findall(record['data'])
             #Detect any log that contain suspicious process name or argument
-            for i in all_suspicious:
+            if EventID[0]=="4688" or EventID[0]=="4648" or EventID[0]=="4673":
+                for i in all_suspicious:
 
-                if record['data'].lower().find(i.lower())>-1:
+                    if record['data'].lower().find(i.lower())>-1:
 
-                    #print("##### " + record["timestamp"] + " ####  ", end='')
-                    #print("## Found Suspicios Process ", end='')
-                    #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
-                    #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
-                    # print("###########")
+                        #print("##### " + record["timestamp"] + " ####  ", end='')
+                        #print("## Found Suspicios Process ", end='')
+                        #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
+                        #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
+                        # print("###########")
 
-                    Event_desc ="Found a log contain suspicious powershell command ( %s)"%i
-                    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
-                    Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
-                    Security_events[0]['Detection Rule'].append("Suspicious Command or process found in the log")
-                    Security_events[0]['Detection Domain'].append("Threat")
-                    Security_events[0]['Severity'].append("Critical")
-                    Security_events[0]['Event Description'].append(Event_desc)
-                    Security_events[0]['Event ID'].append(EventID[0])
-                    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
-
+                        Event_desc ="Found a log contain suspicious command or process ( %s)"%i
+                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                        Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                        Security_events[0]['Detection Rule'].append("Suspicious Command or process found in the log")
+                        Security_events[0]['Detection Domain'].append("Threat")
+                        Security_events[0]['Severity'].append("Critical")
+                        Security_events[0]['Event Description'].append(Event_desc)
+                        Security_events[0]['Event ID'].append(EventID[0])
+                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+                        break
             #User Creation using Net command
-            if EventID[0]=="4688":
+            if EventID[0]=="4688" or EventID[0]=="4648" or EventID[0]=="4673":
                 try:
                     process_command_line=" "
                     if len(Account_Name[0][0])>0:
@@ -307,15 +336,18 @@ def detect_events_security_log(file_name,input_timzone):
 
                     if len(Process_Command_Line)>0:
                         process_command_line=Process_Command_Line[0][0].strip()
-
+                    """
                     if len(New_Process_Name)>0:
                         process_name=New_Process_Name[0].strip()
 
-                    if len(Process_Name)>1:
+                    elif len(Process_Name[0])>1:
                         process_name=Process_Name[0][1].strip()
-                    elif len(Process_Name)>0:
+                    elif len(Process_Name[0])>0:
                         process_name=Process_Name[0][0].strip()
-
+                    """
+                    for i in Process_Name[0]:
+                        if len(i)>0:
+                            process_name=i
 
                     if len(re.findall('.*user.*/add.*',record['data']))>0:
                         #print("test")
@@ -336,25 +368,53 @@ def detect_events_security_log(file_name,input_timzone):
                         Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
 
                     #process runing in suspicious location
+                    for i in Suspicious_Path:
+                        if str(record['data']).lower().find(i.lower())>-1:#process_name.strip().lower().find(i.lower())>-1 or process_command_line.lower().find(i.lower())>-1 :
+                            # print("test")
+                            #print("##### " + record["timestamp"] + " ####  ", end='')
+                            #print("## Process running in temp ", end='')
+                            #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
+                            #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
+                            # print("###########")
+                            try:
+                                Event_desc ="User Name : ( %s ) " % user+" with process : ( " + process_name.strip() + " ) run from suspcious location"
+                            except:
+                                Event_desc =" Process run from suspicious location "
+                            Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                            Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                            Security_events[0]['Detection Rule'].append("Process running in suspicious location")
+                            Security_events[0]['Detection Domain'].append("Threat")
+                            Security_events[0]['Severity'].append("Critical")
+                            Security_events[0]['Event Description'].append(Event_desc)
+                            Security_events[0]['Event ID'].append(EventID[0])
+                            Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
 
-                    if process_name.lower().find("\\temp\\")>-1 or  process_name.lower().find("\\tmp\\")>-1 or process_name.lower().find("\\program data\\")>-1:
-                        # print("test")
-                        #print("##### " + record["timestamp"] + " ####  ", end='')
-                        #print("## Process running in temp ", end='')
-                        #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
-                        #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
-                        # print("###########")
-                        Event_desc ="User Name : ( %s ) " % user+" with process : ( " + process_name.strip() + " )"
+                    #process runing in suspicious location
+                    found=0
+                    for i in Usual_Path:
+                        if len(process_name)>5 and (process_name.lower().find(i.lower())>-1 or process_command_line.lower().find(i.lower())>-1) :
+                            found=1
+                            break
+                            # print("test")
+                            #print("##### " + record["timestamp"] + " ####  ", end='')
+                            #print("## Process running in temp ", end='')
+                            #print("User Name : ( %s ) " % Account_Name[0][0].strip(), end='')
+                            #print("with Command Line : ( " + Process_Command_Line[0][0].strip() + " )")
+                            # print("###########")
+                    if found==0 and ( len(process_name)>5 or len(process_command_line)>5) :
+                        try:
+                            Event_desc ="User Name : ( %s ) " % user+" with process : ( " + process_name.strip() + " ) run from Unusual location"
+                        except:
+                            Event_desc =" Process run from Unusual location "
                         Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
                         Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
-                        Security_events[0]['Detection Rule'].append("Process running in suspicious location")
+                        Security_events[0]['Detection Rule'].append("Process running in Unusual location")
                         Security_events[0]['Detection Domain'].append("Threat")
                         Security_events[0]['Severity'].append("Critical")
                         Security_events[0]['Event Description'].append(Event_desc)
                         Security_events[0]['Event ID'].append(EventID[0])
                         Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
-
-
+                    found=0
                     if len(Process_Command_Line)>0:
 
                         #detect suspicious executables
@@ -419,18 +479,54 @@ def detect_events_security_log(file_name,input_timzone):
             #Summary of process Execution
             if EventID[0]=="4688" or EventID[0]=="4648" or EventID[0]=="4673":
                 try:
-                    process_name=" "
-
-                    if len(Process_Name)>1:
+                    #process_name=" "
+                    for i in Process_Name[0]:
+                        if len(i)>0:
+                            process_name=i
+                    """if len(Process_Name[0])>2 and Process_Name[0][1].strip() is None and Process_Name[0][0].strip() is None:
+                        process_name=Process_Name[0][2].strip()
+                    if len(Process_Name[0])>1 and  Process_Name[0][0].strip() is None:
                         process_name=Process_Name[0][1].strip()
-                    elif len(Process_Name)>0:
+                    elif len(Process_Name[0])<2:
                         process_name=Process_Name[0][0].strip()
-
+                    """
+                    #print(process_name)
+                    #print(len(Process_Name[0]),Process_Name[0])
                     if process_name not in Executed_Process_Summary[0]['Process Name']:
-                        Executed_Process_Summary[0]['Process Name'].append(User[0].strip())
+                        Executed_Process_Summary[0]['Process Name'].append(process_name.strip())
                         Executed_Process_Summary[0]['Number of Execution'].append(1)
                     else :
-                        Executed_Process_Summary[0]['Number of Execution'][Executed_Process_Summary[0]['Process Name'].index(User[0].strip())]=Executed_Process_Summary[0]['Number of Execution'][Executed_Process_Summary[0]['Process Name'].index(User[0].strip())]+1
+                        Executed_Process_Summary[0]['Number of Execution'][Executed_Process_Summary[0]['Process Name'].index(process_name.strip())]=Executed_Process_Summary[0]['Number of Execution'][Executed_Process_Summary[0]['Process Name'].index(process_name.strip())]+1
+                except:
+                    pass
+
+            # non-interactive powershell being executed by another application in the background
+            if EventID[0]=="4688" :
+                try:
+                    #process_name=" "
+                    for i in New_Process_Name[0]:
+                        if len(i)>0:
+                            process_name=i
+
+                    for i in Parent_Process_Name[0]:
+                        if len(i)>0:
+                            parent_process_name=i
+
+                    if process_name[0].lower().find("powershell.exe")>-1 and parent_process_name[0].lower().find("explorer.exe")==-1:
+                        try:
+                            Event_desc ="User Name : ( %s ) "%user+" executed non-interactive ( " + New_Process_Name[0] + " ) through  : ( " + Parent_Process_Name[0] + " ) ."
+                        except:
+                            Event_desc = "user executed non interactive process through process."
+                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                        Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        Security_events[0]['Detection Rule'].append("non-interactive powershell being executed by another application in the background")
+                        Security_events[0]['Detection Domain'].append("Audit")
+                        Security_events[0]['Severity'].append("High")
+                        Security_events[0]['Event Description'].append(Event_desc)
+                        Security_events[0]['Event ID'].append(EventID[0])
+                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                except:
+                    pass
 
             # User Created through management interface
             if EventID[0]=="4720":
@@ -990,33 +1086,71 @@ def detect_events_security_log(file_name,input_timzone):
                         source_ip=Source_IP[0][1].strip()
                         workstation_name=Workstation_Name[0][1].strip()
 
+
+
+
                     if logon_type == "3" and target_account_name != "ANONYMOUS LOGON" and target_account_name.find("$")==-1 and logon_process == "NtLmSsp" and key_length == "0":
                         #print("##### " + record["timestamp"] + " ####  ", end='')
                         #print(
                         #        "Pass the hash attempt Detected : user name ( %s ) domain name ( %s ) from  IP ( %s ) and machine name ( %s )" % (
                         #        Account_Name[1].strip(), Account_Domain[1].strip(), Source_IP[0][0].strip(), Workstation_Name[0][0].strip()))
+                        try:
 
-                        Event_desc ="Pass the hash attempt Detected : user name ( %s ) domain name ( %s ) from  IP ( %s ) and machine name ( %s )" % (
-                            target_account_name, target_account_domain, source_ip, workstation_name)
-                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
-                        Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
-                        Security_events[0]['Detection Rule'].append("Pass the hash attempt Detected")
-                        Security_events[0]['Detection Domain'].append("Threat")
-                        Security_events[0]['Severity'].append("Critical")
-                        Security_events[0]['Event Description'].append(Event_desc)
-                        Security_events[0]['Event ID'].append(EventID[0])
-                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                            #print(Pass_the_hash_users)
+                            #
+
+                            #print(target_account_name)
+                            if target_account_name.strip() not in Pass_the_hash_users[0]['User']:
+                                #print("user not in pass the hash observed")
+                                Pass_the_hash_users[0]['User'].append(target_account_name)
+                                Pass_the_hash_users[0]['Number of Logins'].append(1)
+                                Pass_the_hash_users[0]['Reached'].append(0)
+                            elif Pass_the_hash_users[0]['Reached'][Pass_the_hash_users[0]['User'].index(target_account_name)]<1 :
+                                Pass_the_hash_users[0]['Number of Logins'][
+                                        Pass_the_hash_users[0]['User'].index(target_account_name)] = \
+                                    Pass_the_hash_users[0]['Number of Logins'][
+                                    Pass_the_hash_users[0]['User'].index(target_account_name)] + 1
+                            #print(Pass_the_hash_users[0]['Number of Logins'][Pass_the_hash_users[0]['User'].index(target_account_name)])
+                            if Pass_the_hash_users[0]['Reached'][Pass_the_hash_users[0]['User'].index(target_account_name)]>0:
+                                #print("True observed")
+                                continue
+                            if Pass_the_hash_users[0]['Number of Logins'][Pass_the_hash_users[0]['User'].index(target_account_name)]>200:
+                                Pass_the_hash_users[0]['Reached'][Pass_the_hash_users[0]['User'].index(target_account_name)]=1
+                                Event_desc ="High number of Pass the hash attempt Detected from user name ( %s ) domain name ( %s ) . detection will be paused for this user to not flood the detection list" % (
+                                    target_account_name, target_account_domain)
+                                Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                                Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                                Security_events[0]['Detection Rule'].append("High number of Pass the hash attempt Detected . detection will be paused for this user to not flood the detection list")
+                                Security_events[0]['Detection Domain'].append("Threat")
+                                Security_events[0]['Severity'].append("Critical")
+                                Security_events[0]['Event Description'].append(Event_desc)
+                                Security_events[0]['Event ID'].append(EventID[0])
+                                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                                continue
+
+                            Event_desc ="Pass the hash attempt Detected : user name ( %s ) domain name ( %s ) from  IP ( %s ) and machine name ( %s )" % (
+                                target_account_name, target_account_domain, source_ip, workstation_name)
+                            Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                            Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                            Security_events[0]['Detection Rule'].append("Pass the hash attempt Detected")
+                            Security_events[0]['Detection Domain'].append("Threat")
+                            Security_events[0]['Severity'].append("Critical")
+                            Security_events[0]['Event Description'].append(Event_desc)
+                            Security_events[0]['Event ID'].append(EventID[0])
+                            Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                            #print(Event_desc)
+                        except:
+                            Event_desc ="Pass the hash attempt Detected "
+                            Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                            Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                            Security_events[0]['Detection Rule'].append("Pass the hash attempt Detected")
+                            Security_events[0]['Detection Domain'].append("Threat")
+                            Security_events[0]['Severity'].append("Critical")
+                            Security_events[0]['Event Description'].append(Event_desc)
+                            Security_events[0]['Event ID'].append(EventID[0])
+                            Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
                 except:
-                        Event_desc ="Pass the hash attempt Detected "
-                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
-                        Security_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
-                        Security_events[0]['Detection Rule'].append("Pass the hash attempt Detected")
-                        Security_events[0]['Detection Domain'].append("Threat")
-                        Security_events[0]['Severity'].append("Critical")
-                        Security_events[0]['Event Description'].append(Event_desc)
-                        Security_events[0]['Event ID'].append(EventID[0])
-                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
-
+                    print("Error parsing Event")
 
             #Audit log cleared
             if EventID[0] == "517" or EventID[0] == "1102":
@@ -1255,6 +1389,75 @@ def detect_events_security_log(file_name,input_timzone):
                 Security_events[0]['Event ID'].append(EventID[0])
                 Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
+            # user accessing directory service objects with replication permissions
+            if EventID[0]=="4662" :
+                try :
+
+
+
+                    if len(Account_Name[0][0])>0:
+                        user        = Account_Name[0][0].strip()
+                        processname = Process_Name[0][0].strip()
+                        objectname  = Object_Name[0][0].strip()
+                        objecttype  = Object_Type[0][0].strip()
+                        objectserver = ObjectServer[0][1].strip()
+                        AccessMask = AccessMask[0][1].strip()
+                    if len(Account_Name[0][1])>0:
+                        user        = Account_Name[0][1].strip()
+                        processname = Process_Name[0][1].strip()
+                        objectname  = Object_Name[0][1].strip()
+                        objecttype  = Object_Type[0][1].strip()
+                        objectserver = ObjectServer[0][1].strip()
+                        accessmask = AccessMask[0][1].strip()
+
+                    if ( objectserver.lower().find("DS")>-1 and accessmask.lower().find("0x40000")>-1 and objecttype.lower().find("19195a5b_6da0_11d0_afd3_00c04fd930c9")>-1 ) :
+                        try:
+                            Event_desc = "Non-system account ( %s ) with process ( %s ) got access to object ( %s ) of type ( %s )" % (user,processname,objectname,objecttype)
+                        except:
+                            Event_desc = "Non-system account with process got access to object"
+                        Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                        Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        Security_events[0]['Detection Rule'].append("non-system accounts getting a handle to and accessing lsass")
+                        Security_events[0]['Detection Domain'].append("Audit")
+                        Security_events[0]['Severity'].append("High")
+                        Security_events[0]['Event Description'].append(Event_desc)
+                        Security_events[0]['Event ID'].append(EventID[0])
+                        Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                except :
+                    pass
+
+
+            # non-system accounts with process requested accessing to object 4656
+            if EventID[0]=="4656" or EventID[0]=="4663" :
+                #try :
+                if 1==1:
+                        if len(Account_Name[0][0])>0:
+                            user        = Account_Name[0][0].strip()
+                            processname = Process_Name[0][0].strip()
+                            objectname  = Object_Name[0][0].strip()
+                            objecttype  = Object_Type[0][0].strip()
+                        if len(Account_Name[0][1])>0:
+                            user        = Account_Name[0][1].strip()
+                            processname = Process_Name[0][1].strip()
+                            objectname  = Object_Name[0][1].strip()
+                            objecttype  = Object_Type[0][1].strip()
+
+
+                            if len(Security_ID[0][0])>30 and objectname.lower().find("lsass.exe")>-1:
+                                try:
+                                    Event_desc ="Non-system account ( %s ) with process ( %s ) got access to object ( %s ) of type ( %s )" % (user,processname,objectname,objecttype)
+                                except:
+                                    Event_desc = "Non-system account with process got access to object"
+                                Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                                Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                                Security_events[0]['Detection Rule'].append("non-system accounts getting a handle to and accessing lsass")
+                                Security_events[0]['Detection Domain'].append("Audit")
+                                Security_events[0]['Severity'].append("High")
+                                Security_events[0]['Event Description'].append(Event_desc)
+                                Security_events[0]['Event ID'].append(EventID[0])
+                                Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                #except Exception as e :
+                    #print("error parsing fields for "+str(record['data']))
 
         else:
             print(record['data'])
@@ -2332,6 +2535,12 @@ def detect_events_Sysmon_log(file_name,input_timzone):
             SourceImage=Sysmon_SourceImage_rex.findall(record['data'])
             TargetImage=Sysmon_TargetImage_rex.findall(record['data'])
 
+            ImageLoaded=Sysmon_ImageLoaded_rex.findall(record['data'])
+            GrantedAccess=Sysmon_GrantedAccess_rex.findall(record['data'])
+            CallTrace=Sysmon_CallTrace_rex.findall(record['data'])
+            Details=Sysmon_Details_rex.findall(record['data'])
+            PipeName=Sysmon_PipeName_rex.findall(record['data'])
+
             temp=[]
             #Powershell with Suspicious Argument covers [ T1086 ,
             if EventID[0]=="1" and Image[0].strip().find("powershell.exe")>-1:
@@ -2548,5 +2757,1894 @@ def detect_events_Sysmon_log(file_name,input_timzone):
                 Sysmon_events[0]['Event Description'].append(Event_desc)
                 Sysmon_events[0]['Event ID'].append(EventID[0])
                 Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T0000] Console History
+            if EventID[0]=="1" and ( CommandLine[0].strip().find("get-history")>-1 or
+                                    CommandLine[0].strip().find("appdata\\roaming\\microsoft\\windows\\powershell\\psreadline\\consolehost_history.txt")>-1 or
+                                    CommandLine[0].strip().find("(get-psreadlineoption).historysavepath")>-1 ):
+
+                Event_desc="Found User (" + User[0].strip() + ") through process name ("+Image[0].strip()+ ") tried accessing powershell history through commandline ( "+CommandLine[0].strip() +" )"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T0000] Console History')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("Medium")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+
+            # [ T0000 ] Remotely Query Login Sessions - Network
+            if EventID[0]=="3" and Image[0].strip().find("qwinsta.exe")>-1:
+
+                Event_desc="Found User (" + User[0].strip() + ") Trying to run query login session through network using Command Line (" + CommandLine[0].strip() + ")"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[  T0000 ] Remotely Query Login Sessions - Network')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [ T0000 ] Remotely Query Login Sessions - Process
+            if EventID[0]=="3" and Image[0].strip().find("qwinsta.exe")>-1:
+
+                Event_desc="Found User (" + User[0].strip() + ") Trying to run query login session Command Line (" + CommandLine[0].strip() + ")"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[  T0000 ] Remotely Query Login Sessions - Process')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [ T0000 ] Suspicious process name detected
+            if EventID[0]=="1":
+
+                #detect suspicious process
+                for sProcessName in Suspicious_executables:
+
+                    if CommandLine[0].lower().find(sProcessName.lower())>-1:
+
+                        Event_desc ="User Name : ( %s ) " % user+"with Command Line : ( " + process_command_line + " ) contain suspicious command ( %s)"%sProcessName
+                        Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                        Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        Sysmon_events[0]['Detection Rule'].append("[ T0000 ] Suspicious process name detected")
+                        Sysmon_events[0]['Detection Domain'].append("Threat")
+                        Sysmon_events[0]['Severity'].append("High")
+                        Sysmon_events[0]['Event Description'].append(Event_desc)
+                        Sysmon_events[0]['Event ID'].append(EventID[0])
+                        Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+
+            #[  T1002 ] Data Compressed
+            if EventID[0]=="1" and ((Image[0].strip().find("powershell.exe")>-1 and CommandLine[0].find("-recurse | compress-archive")>-1) or (Image[0].strip().find("rar.exe")>-1 and CommandLine[0].find("rar*a*")>-1)):
+
+                Event_desc="Found User (" + User[0].strip() + ") trying to compress data using (" + Image[0].strip() + ") with Command Line (" + CommandLine[0].strip() + ")"
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['Detection Rule'].append("[  T1002 ] Data Compressed")
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("Medium")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+
+            #[  T1003 ] Credential Dumping ImageLoad
+            if EventID[0]=="7" and ((ImageLoaded[0].strip().find("\\samlib.dll")>-1 or
+                                     ImageLoaded[0].strip().find("\\winscard.dll")>-1 or
+                                     ImageLoaded[0].strip().find("\\cryptdll.dll")>-1 or
+                                     ImageLoaded[0].strip().find("\\hid.dll")>-1 or
+                                     ImageLoaded[0].strip().find("\\vaultcli.dll")>-1) and
+                                    (Image[0].strip().find("\\sysmon.exe")==-1 and
+                                     Image[0].strip().find("\\svchost.exe")==-1 and
+                                     Image[0].strip().find("\\logonui.exe")==-1)):
+
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") through process name ("+Image[0].strip()+ ") tried loading credential dumping image ( "+ImageLoaded[0].strip() +" )"
+                except:
+                    Event_desc="[  T1003 ] Credential Dumping ImageLoad"
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['Detection Rule'].append("#[  T1003 ] Credential Dumping ImageLoad")
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("Medium")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+
+            # [T1003] Credential Dumping - Process
+            if EventID[0]=="1" and (
+                CommandLine[0].strip().find("Invoke-Mimikatz -DumpCreds")>-1 or
+                CommandLine[0].strip().find("gsecdump -a")>-1 or
+                CommandLine[0].strip().find("wce -o")>-1 or
+                CommandLine[0].strip().find("procdump -ma lsass.exe")>-1 or
+                CommandLine[0].strip().find("ntdsutil*ac i ntds*ifm*create full")>-1):
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") through process name ("+Image[0].strip()+ ") tried dumping credentials through commandline ( "+CommandLine[0].strip() +" )"
+                except:
+                    Event_desc="[T1003] Credential Dumping - Process"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1003] Credential Dumping - Process')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1003] Credential Dumping - Process Access
+
+            if EventID[0]=="10" and TargetImage[0].strip().find("\\lsass.exe")>-1 and (
+                GrantedAccess[0].strip().find("0x1010")>-1 or
+                GrantedAccess[0].strip().find("0x1410")>-1 or
+                GrantedAccess[0].strip().find("0x147a")>-1 or
+                GrantedAccess[0].strip().find("0x143a")>-1 or
+                GrantedAccess[0].strip().find("0x1fffff")>-1) and (
+                CallTrace[0].strip().find("\\ntdll.dll")>-1 and (
+                CallTrace[0].strip().find("\\kernelbase.dll")>-1 or CallTrace[0].strip().find("\\kernel32.dll")>-1)):
+                #print(User[0].strip())
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") accessed target image ("+TargetImage[0].strip()+ ") through source image ( "+ SourceImage[0].strip() +" )"
+                except:
+                    Event_desc="[T1003] Credential Dumping - Process Access"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1003] Credential Dumping - Process Access')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1003] Credential Dumping - Registry
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") and Image[0].strip().find("\\lsass.exe")==-1 and (
+                TargetObject[0].strip().find("\\software\\microsoft\\windows\\currentversion\\authentication\\credential provider\\")>-1 or
+                TargetObject[0].strip().find("\\system\\currentcontrolset\\control\\ssa\\")>-1 or
+                TargetObject[0].strip().find("\\system\\currentcontrolset\\control\\securityproviders\\securityproviders\\")>-1 or
+                TargetObject[0].strip().find("\\control\\securityrroviders\\wdigest\\")>-1):
+                try:
+
+                    Event_desc="Found User (" + User[0].strip() + ") accessed target image ("+TargetImage[0].strip()+ ") through source image ( "+ SourceImage[0].strip() +" )"
+                except:
+                    Event_desc="[T1003] Credential Dumping - Registry"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1003] Credential Dumping - Registry')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1003] Credential Dumping - Registry Save
+            if (EventID[0]=="1") and Image[0].strip().find("reg.exe")==-1 and (
+                CommandLine[0].strip().find("*save*HKLM\\sam*")>-1 or
+                CommandLine[0].strip().find("*save*HKLM\\system*")>-1):
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") Tried to dump registry "+CommandLine[0]+ SourceImage[0].strip() +" )"
+                except:
+                    Event_desc="[T1003] Credential Dumping - Registry Save"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1003] Credential Dumping - Registry Save')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1004] Winlogon Helper DLL
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") and (
+                TargetObject[0].strip().find("\\software\\microsoft\\windows nt\\currentversion\\winlogon\\user_nameinit\\")>-1 or
+                TargetObject[0].strip().find("\\software\\microsoft\\windows nt\\currentversion\\winlogon\\shell\\")>-1 or
+                TargetObject[0].strip().find("\\software\\microsoft\\windows nt\\currentversion\\winlogon\\notify\\")>-1):
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") accessed target image ("+TargetImage[0].strip()+ ") through source image ( "+ SourceImage[0].strip() +" )"
+                except:
+                    Event_desc="[T1004] Winlogon Helper DLL"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1004] Winlogon Helper DLL')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1004] Winlogon Helper DLL
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") and (
+                TargetObject[0].strip().find("\\software\\microsoft\\windows nt\\currentversion\\winlogon\\user_nameinit\\")>-1 or
+                TargetObject[0].strip().find("\\software\\microsoft\\windows nt\\currentversion\\winlogon\\shell\\")>-1 or
+                TargetObject[0].strip().find("\\software\\microsoft\\windows nt\\currentversion\\winlogon\\notify\\")>-1):
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") accessed target image ("+TargetImage[0].strip()+ ") through source image ( "+ SourceImage[0].strip() +" )"
+                except:
+                    Event_desc="[T1004] Winlogon Helper DLL"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1004] Winlogon Helper DLL')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [ T1007 ] System Service Discovery
+            #if EventID[0]=="1" and ((Image[0].strip().find("net.exe")>-1 or
+            #                         Image[0].strip().find("tasklist.exe")>-1 or
+            #                         Image[0].strip().find("sc.exe")>-1 or
+            #                         Image[0].strip().find("wmic.exe")>-1) and
+            #                         CommandLine[0].find("-recurse | compress-archive")>-1) ):
+
+            #    Event_desc="Found User (" + User[0].strip() + ") trying to compress data using (" + Image[0].strip() + ") with Command Line (" + CommandLine[0].strip() + ")"
+            #    Security_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+            #    Security_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+            #    Security_events[0]['Detection Rule'].append("[ T1007 ] System Service Discovery")
+            #    Security_events[0]['Detection Domain'].append("Threat")
+            #    Security_events[0]['Severity'].append("Medium")
+            #    Security_events[0]['Event Description'].append(Event_desc)
+            #    Security_events[0]['Event ID'].append(EventID[0])
+            #    Security_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
+
+            # [T1223] Compiled HTML File
+            if (EventID[0]=="1") and Image[0].strip().find("hh.exe")==-1:
+
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") running image ( "+ Image[0].strip() +" )"
+                except:
+                    Event_desc="[T1223] Compiled HTML File"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1223] Compiled HTML File')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1218] Signed Binary Proxy Execution - Process
+            if (EventID[0]=="1") and (CommandLine[0].strip().find("mavinject*\\/injectrunning")>-1 or
+                                    CommandLine[0].strip().find("mavinject32*\\/injectrunning*")>-1 or
+                                    CommandLine[0].strip().find("*certutil*script\\:http\\[\\:\\]\\/\\/*")>-1 or
+                                    CommandLine[0].strip().find("*certutil*script\\:https\\[\\:\\]\\/\\/*")>-1 or
+                                    CommandLine[0].strip().find("*msiexec*http\\[\\:\\]\\/\\/*")>-1 or
+                                    CommandLine[0].strip().find("*msiexec*https\\[\\:\\]\\/\\/*")>-1):
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                except:
+                    Event_desc="[T1218] Signed Binary Proxy Execution - Process"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1218] Signed Binary Proxy Execution - Process')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1218] Signed Binary Proxy Execution - Process
+            if (EventID[0]=="1") and (CommandLine[0].strip().find("mavinject*\\/injectrunning")>-1 or
+                                    CommandLine[0].strip().find("mavinject32*\\/injectrunning*")>-1 or
+                                    CommandLine[0].strip().find("*certutil*script\\:http\\[\\:\\]\\/\\/*")>-1 or
+                                    CommandLine[0].strip().find("*certutil*script\\:https\\[\\:\\]\\/\\/*")>-1 or
+                                    CommandLine[0].strip().find("*msiexec*http\\[\\:\\]\\/\\/*")>-1 or
+                                    CommandLine[0].strip().find("*msiexec*https\\[\\:\\]\\/\\/*")>-1):
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                except:
+                    Event_desc="[T1218] Signed Binary Proxy Execution - Process"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1218] Signed Binary Proxy Execution - Process')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+
+            # [T1218] Signed Binary Proxy Execution - Network
+            if (EventID[0]=="3") and (Image[0].strip().find("certutil.exe")>-1 or
+                                    CommandLine[0].strip().find("*certutil*script\\:http\\[\\:\\]\\/\\/*")>-1 or
+                                    Image[0].strip().find("*\\replace.exe")>-1):
+
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                except:
+                    Event_desc="[T1218] Signed Binary Proxy Execution - Network"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1218] Signed Binary Proxy Execution - Network')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1216] Signed Script Proxy Execution
+            #if (EventID[0]=="1") and (CommandLine[0].strip().find("*firefox*places.sqlite*")>-1):
+
+            #    Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) trying to discover browser bookmark"
+            #    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+            #    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+            #    Sysmon_events[0]['Detection Rule'].append('[T1216] Signed Script Proxy Execution')
+            #    Sysmon_events[0]['Detection Domain'].append("Threat")
+            #    Sysmon_events[0]['Severity'].append("High")
+            #    Sysmon_events[0]['Event Description'].append(Event_desc)
+            #    Sysmon_events[0]['Event ID'].append(EventID[0])
+            #    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1214] Credentials in Registry
+            if (EventID[0]=="1") and (CommandLine[0].strip().find("*certutil*script\\:http\\[\\:\\]\\/\\/*")>-1 or
+                                    CommandLine[0].strip().find("reg query HKCU \\/f password \\/t REG_SZ \\/s")>-1 or
+                                    CommandLine[0].strip().find("Get-UnattendedInstallFile")>-1 or
+                                    CommandLine[0].strip().find("Get-Webconfig")>-1 or
+                                    CommandLine[0].strip().find("Get-ApplicationHost")>-1 or
+                                    CommandLine[0].strip().find("Get-SiteListPassword")>-1 or
+                                    CommandLine[0].strip().find("Get-CachedGPPPassword")>-1 or
+                                    CommandLine[0].strip().find("Get-RegistryAutoLogon")>-1):
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) to access credentials"
+                except:
+                    Event_desc="[T1214] Credentials in Registry"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1214] Credentials in Registry')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1209] Boot or Logon Autostart Execution: Time Providers
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") and (
+                TargetObject[0].strip().find("\\system\\currentcontrolset\\services\\w32time\\timeproviders\\")>-1):
+                try:
+                    Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) to hijack time provider"
+                except:
+                    Event_desc="[T1209] Boot or Logon Autostart Execution: Time Providers"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1209] Boot or Logon Autostart Execution: Time Providers')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1202] Indirect Command Execution
+            if EventID[0]=="1":
+                if ParentImage[0].strip().find("pcalua.exe")>-1:
+                    Event_desc="Found User (" + User[0].strip() + ") through process name ("+ParentImage[0].strip()+ ") tried indirect command execution through commandline ( "+CommandLine[0].strip() +" )"
+
+                if (Image[0].strip().find("pcalua.exe")>-1 or
+                    Image[0].strip().find("bash.exe")>-1 or
+                    Image[0].strip().find("forfiles.exe")>-1):
+                    Event_desc="Found User (" + User[0].strip() + ") through process name ("+Image[0].strip()+ ") tried accessing powershell history through commandline ( "+CommandLine[0].strip() +" )"
+
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('# [T1202] Indirect Command Execution')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("Medium")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1201] Password Policy Discovery
+            if (EventID[0]=="1") :
+                if (CommandLine[0].strip().find("net accounts")>-1 or CommandLine[0].strip().find("net accounts \\/domain")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) tried discovering password policy through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1201] Password Policy Discovery"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1201] Password Policy Discovery')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1197] BITS Jobs - Process
+            if (EventID[0]=="1") :
+                if (Image[0].strip().find("bitsamin.exe")>-1 or CommandLine[0].strip().find("Start-BitsTransfer")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1197] BITS Jobs - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1197] BITS Jobs - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1197] BITS Jobs - Network
+            if (EventID[0]=="3") :
+                if (Image[0].strip().find("bitsadmin.exe")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1197] BITS Jobs - Network"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1197] BITS Jobs - Network')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1196] Control Panel Items - Registry
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if (
+                TargetObject[0].strip().find("\\software\\microsoft\\windows\\currentversion\\explorer\\controlpanel\\namespace")>-1 or
+                TargetObject[0].strip().find("\\software\\microsoft\\windows\\currentversion\\controls folder\\*\\shellex\\propertysheethandlers\\")>-1 or
+                TargetObject[0].strip().find("\\software\\microsoft\\windows\\currentversion\\control panel\\")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) modifying registry control panel items"
+                    except:
+                        Event_desc="[T1196] Control Panel Items - Registry"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1196] Control Panel Items - Registry')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1196] Control Panel Items - Process
+            if (EventID[0]=="1") :
+                if (CommandLine[0].strip().find("control \\/name")>-1 or
+                                    CommandLine[0].strip().find("rundll32 shell32.dll,Control_RunDLL")):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " to acess control panel)"
+                    except:
+                        Event_desc="[T1196] Control Panel Items - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1196] Control Panel Items - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1191] Signed Binary Proxy Execution: CMSTP
+            if (EventID[0]=="1") :
+                if (Image[0].strip().find("CMSTP.exe")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " )"
+                    except:
+                        Event_desc="[T1191] Signed Binary Proxy Execution: CMSTP"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1191] Signed Binary Proxy Execution: CMSTP')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1183] Image File Execution Options Injection
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if (
+                TargetObject[0].strip().find("\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\")>-1 or
+                TargetObject[0].strip().find("\\wow6432node\\microsoft\\windows nt\\currentversion\\image file execution options\\")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") accessed target image ("+TargetImage[0].strip()+ ") through source image ( "+ SourceImage[0].strip() +" )"
+                    except:
+                        Event_desc="[T1183] Image File Execution Options Injection"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1183] Image File Execution Options Injection')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1182] AppCert DLLs Registry Modification
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if (
+                TargetObject[0].strip().find("\\system\\currentcontrolset\\control\\session manager\\appcertdlls\\")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") accessed target image ("+TargetImage[0].strip()+ ") through source image ( "+ SourceImage[0].strip() +" )"
+                    except:
+                        Event_desc="[T1182] AppCert DLLs Registry Modification"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1182] AppCert DLLs Registry Modification')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1180] Screensaver Hijack
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if (
+                TargetObject[0].strip().find("*\\control panel\\desktop\\scrnsave.exe")>-1) and (
+                    ParentCommandLine[0].strip().find("explorer.exe")==-1 or
+                    Image[0].strip().find("rundll32.exe")==-1 or
+                    CommandLine[0].strip().find("*shell32.dll,Control_RunDLL desk.cpl,ScreenSaver,*")==-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") accessed target image ("+TargetImage[0].strip()+ ")"
+                    except:
+                        Event_desc="[T1180] Screensaver Hijack"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1180] Screensaver Hijack')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("Medium")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1179] Hooking detected
+            if (EventID[0]=="1") :
+                if (Image[0].strip().find("mavinject.exe")>-1 or CommandLine[0].strip().find("/INJECTRUNNING")>-1):
+                    try:
+
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1179] Hooking detected"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1179] Hooking detected')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1170] Detecting  Mshta - Process
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("\\mshta.exe")>-1 or CommandLine[0].strip().find("\\mshta.exe")>-1 ):
+
+                    try:
+
+                        Event_desc="Found User (" + User[0].strip() + ") Trying to run mshta with Command Line (" + CommandLine[0].strip() + ") and Parent Image :"+ ParentImage[0].strip()+" , Parent CommandLine (" + ParentCommandLine[0].strip() + ") " +"in directory : ( "+CurrentDirectory[0].strip() + " )"
+                    except:
+                        Event_desc="[T1170] Detecting Mshta Exection "
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1170] Detecting  Mshta')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1170] Detecting  Mshta - Network
+            if EventID[0]=="3" :
+                if ( ParentCommandLine[0].strip().find("\\mshta.exe")>-1 or CommandLine[0].strip().find("\\mshta.exe")>-1 ):
+
+                    try:
+
+                        Event_desc="Found User (" + User[0].strip() + ") Trying to run mshta with Command Line (" + CommandLine[0].strip() + ") and Parent Image :"+ ParentImage[0].strip()+" , Parent CommandLine (" + ParentCommandLine[0].strip() + ") " +"in directory : ( "+CurrentDirectory[0].strip() + " )"
+                    except:
+                        Event_desc="[T1170] Detecting  Mshta"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1170] Detecting  Mshta')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1158] Hidden Files and Directories - VSS
+            if EventID[0]=="1" and ( Image[0].strip().find("*\\volumeshadowcopy*\\*")>-1 or CommandLine[0].strip().find("*\\volumeshadowcopy*\\*")>-1 ):
+
+                Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) accessing volume shadow copy hidden files and directories"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1158] Hidden Files and Directories - VSS')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1158] Hidden Files and Directories
+            if EventID[0]=="1" and ( Image[0].strip().find("attrib.exe")>-1 and (CommandLine[0].strip().find("+h")>-1 or CommandLine[0].strip().find("+s")>-1) ):
+
+                Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) accessing hidden files and directories"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1158] Hidden Files and Directories')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1146] Clear Command History
+            if EventID[0]=="1" and ( CommandLine[0].strip().find("*rm (Get-PSReadlineOption).HistorySavePath*")>-1 or
+                                    CommandLine[0].strip().find("*del (Get-PSReadlineOption).HistorySavePath*")>-1 or
+                                    CommandLine[0].strip().find("*Set-PSReadlineOption –HistorySaveStyle SaveNothing*")>-1 or
+                                    CommandLine[0].strip().find("*Remove-Item (Get-PSReadlineOption).HistorySavePath*")>-1 ):
+
+                Event_desc="Found User (" + User[0].strip() + ") through process name ("+Image[0].strip()+ ") tried clearing powershell history through commandline ( "+CommandLine[0].strip() +" )"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1146] Clear Command History')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("Medium")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1140] Deobfuscate/Decode Files or Information
+            if EventID[0]=="1" and ( Image[0].strip().find("certutil.exe")>-1 and (CommandLine[0].strip().find("decode")>-1) ):
+
+                Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) tried decoding file or information"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1140] Deobfuscate/Decode Files or Information')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1138] Application Shimming - Registry
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") and (
+                TargetObject[0].strip().find("\\software\\microsoft\\windows nt\\currentversion\\appcompatflags\\installedsdb\\")>-1):
+
+                Event_desc="Found User (" + User[0].strip() + ") accessed target image ("+TargetImage[0].strip()+ ") through source image ( "+ SourceImage[0].strip() +" ) shimming application through registry"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1138] Application Shimming - Registry')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1138] Application Shimming - process
+            if (EventID[0]=="1") and (Image[0].strip().find("sdbinst.exe")>-1):
+
+                Event_desc="Found User (" + User[0].strip() + ") accessed target image ("+TargetImage[0].strip()+ ") through source image ( "+ SourceImage[0].strip() +" ) shimming application through process"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1138] Application Shimming - process')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1136] Create Account
+            if EventID[0]=="1" and ( CommandLine[0].strip().find("New-LocalUser")>-1 or
+                                    CommandLine[0].strip().find("net user add")>-1 ):
+
+                Event_desc="Found User (" + User[0].strip() + ") through process name ("+Image[0].strip()+ ") tried creating user through commandline ( "+CommandLine[0].strip() +" )"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1136] Create Account')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("Medium")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1135] Network Share Discovery - Process
+            if EventID[0]=="1" and ( Image[0].strip().find("net.exe")>-1 and
+                                   ( CommandLine[0].strip().find("net view")>-1 or
+                                     CommandLine[0].strip().find("net share")>-1 or
+                                     CommandLine[0].strip().find("get-smbshare -Name")>-1)):
+
+                Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) tried discovering network share through process"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1135] Network Share Discovery - Process')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1131] Authentication Package
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") and (
+                TargetObject[0].strip().find("*\\system\\currentcontrolset\\control\\lsa\\*")>-1 and (
+                Image[0].strip().find("c:\\windows\\system32\\lsass.exe")==-1 or
+                Image[0].strip().find("c:\\windows\\system32\\svchost.exe")==-1 or
+                Image[0].strip().find("c:\\windows\\system32\\services.exe")==-1)):
+
+                Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) to access authentication services by modifying registry"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1131] Authentication Package')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1130]  Install Root Certificate
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") and (
+                Image[0].strip().find("c:\\windows\\system32\\lsass.exe")==-1 and (
+                TargetObject[0].strip().find("*\\software\\microsoft\\enterprisecertificates\\root\\certificates\\*")>-1 or
+                TargetObject[0].strip().find("*\\microsoft\\systemcertificates\\root\\certificates\\*")>-1)):
+
+                Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) tried to install root certificates"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1130]  Install Root Certificate')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1128] Netsh Helper DLL - Process
+            if EventID[0]=="1" and ( Image[0].strip().find("netsh.exe")>-1 and (CommandLine[0].strip().find("*helper*")>-1) ):
+
+                Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + ") "
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1128] Netsh Helper DLL - Process')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1128] Netsh Helper DLL - Registry
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") and (
+                TargetObject[0].strip().find("*\\software\\microsoft\\netsh\\*")>-1):
+
+                Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + ") "
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1128] Netsh Helper DLL - Registry')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1127] Trusted Developer Utilities
+            if EventID[0]=="1" and ( Image[0].strip().find("msbuild.exe")>-1 or Image[0].strip().find("msxsl.exe")>-1 ):
+
+                Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + ") "
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1127] Trusted Developer Utilities')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+                Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+
+#######################################
+
+            #  [T1126] Network Share Connection Removal
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("net.exe")>-1 and
+                                       ( CommandLine[0].strip().find("net view")>-1 or
+                                         CommandLine[0].strip().find("remove-smbshare")>-1 or
+                                         CommandLine[0].strip().find("remove-fileshare")>-1)):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) to delete network share"
+                    except:
+                        Event_desc="Found User trying to delete network share"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1126] Network Share Connection Removal')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1124] System Time Discovery
+            try:
+                if EventID[0]=="1":
+                    if  ( Image[0].strip().find("*\\net.exe")>-1 and CommandLine[0].strip().find("*net* time*")>-1 ) or (
+                                             Image[0].strip().find("w32tm.exe")>-1 and CommandLine[0].strip().find("*get-date*")>-1 ):
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) to alter system time"
+                        Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                        Sysmon_events[0]['Detection Rule'].append('[T1124] System Time Discovery')
+                        Sysmon_events[0]['Detection Domain'].append("Threat")
+                        Sysmon_events[0]['Severity'].append("High")
+                        Sysmon_events[0]['Event Description'].append(Event_desc)
+                        Sysmon_events[0]['Event ID'].append(EventID[0])
+                        Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+            except:
+                print("issue with event : \n"+str(record['data']))
+            #  [T1115] Audio Capture
+            if EventID[0]=="1" :
+
+                if ( Image[0].strip().find("soundrecorder.exe")>-1 and ( CommandLine[0].strip().find("*get-audiodevice*")>-1 or CommandLine[0].strip().find("*windowsaudiodevice-powershell-cmdlet*")>-1 ) ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) to capture audio"
+                    except:
+                        Event_desc="Found User trying to capture audio"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1115] Audio Capture')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1122] Component Object Model Hijacking
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if TargetObject[0].strip().find("\\Software\\Classes\\CLSID\\")>-1:
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + ") to hijack COM"
+                    except:
+                        Event_desc="Found User trying to hijack COM"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1122] Component Object Model Hijacking')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1121] Regsvcs/Regasm
+            if EventID[0]=="1":
+                if ( Image[0].strip().find("regsvcs.exe")>-1 or Image[0].strip().find("regasm.exe")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1121] Regsvcs/Regasm execution"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1121] Regsvcs/Regasm')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1118] InstallUtil
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("installutil.exe")>-1 and ( CommandLine[0].strip().find("\\/logfile= \\/LogToConsole=false \\/U")>-1 ) ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1118] InstallUtil Execution"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1118] InstallUtil')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1117] Regsvr32
+            if EventID[0]=="1" :
+                if ( ParentImage[0].strip().find("\\regsvr32.exe")>-1 or Image[0].strip().find("\\regsvr32.exe")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1117] Regsvr32 Execution"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1117] Regsvr32')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1117] Bypassing Application Whitelisting
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("regsvr32.exe")>-1 or Image[0].strip().find("rundll32.exe")>-1 or Image[0].strip().find("certutil.exe")>-1 ) or ( CommandLine[0].strip().find("scrobj.dll")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1117] Bypassing Application Whitelisting "
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1117] Bypassing Application Whitelisting with Regsvr32,rundll32,certutil or scrobj ')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1115] Clipboard Data
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("clip.exe")>-1 or CommandLine[0].strip().find("*Get-Clipboard*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1115] Clipboard Data Collection "
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1115] Clipboard Data Collection')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1107] Indicator Removal on Host
+            if (EventID[0]=="1") :
+                if (CommandLine[0].strip().find("*remove-item*")>-1 or
+                                    CommandLine[0].strip().find("vssadmin*Delete Shadows /All /Q*")>-1 or
+                                    CommandLine[0].strip().find("*wmic*shadowcopy delete*")>-1 or
+                                    CommandLine[0].strip().find("*wbdadmin* delete catalog -q*")>-1 or
+                                    CommandLine[0].strip().find("*bcdedit*bootstatuspolicy ignoreallfailures*")>-1 or
+                                    CommandLine[0].strip().find("*bcdedit*recoveryenabled no*")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " ) to delete file"
+                    except:
+                        Event_desc="[T1115] Indicator Removal on Host "
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1107] Indicator Removal on Host')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1103]  AppInit DLLs Usage
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if (
+                TargetObject[0].strip().find("\\software\\microsoft\\windows nt\\currentversion\\windows\\appinit_dlls\\")>-1 or
+                TargetObject[0].strip().find("\\software\\wow6432node\\microsoft\\windows nt\\currentversion\\windows\\appinit_dlls\\")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1103]  AppInit DLLs Usage"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append(' [T1103]  AppInit DLLs Usage')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+##############################################reached
+            #  [T1096] Hide Artifacts: NTFS File Attributes
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("fsutil.exe")>-1 or
+                                     CommandLine[0].strip().find("*usn*deletejournal*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1096] Hide Artifacts: NTFS File Attributes"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1096] Hide Artifacts: NTFS File Attributes')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1088] Bypass User Account Control - Registry
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if (
+                TargetObject[0].strip().find("*\\mscfile\\shell\\open\\command\\*")>-1 or
+                TargetObject[0].strip().find("*\\ms-settings\\shell\\open\\command\\*")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1088] Bypass User Account Control - Registry"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1088] Bypass User Account Control - Registry')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1088] Bypass User Account Control - Process
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("ShellRunas.exe")>-1 or
+                                     ParentCommandLine[0].strip().find("eventvwr.exe")>-1 or
+                                     ParentCommandLine[0].strip().find("fodhelper.exe")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1088] Bypass User Account Control - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1088] Bypass User Account Control - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1087] Account Discovery
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("net.exe")>-1 or
+                                     Image[0].strip().find("powershell.exe")>-1 ) and (
+                                     CommandLine[0].strip().find("*net* user*")>-1 or
+                                     CommandLine[0].strip().find("*net* group*")>-1 or
+                                     CommandLine[0].strip().find("*net* localgroup*")>-1 or
+                                     CommandLine[0].strip().find("cmdkey*\\/list*")>-1 or
+                                     CommandLine[0].strip().find("*get-localgroupmembers*")>-1 or
+                                     CommandLine[0].strip().find("*get-localuser*")>-1 or
+                                     CommandLine[0].strip().find("*get-aduser*")>-1 or
+                                     CommandLine[0].strip().find("query*user*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1087] Account Discovery"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1087] Account Discovery')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1086] PowerShell Downloads - Process
+            if EventID[0]=="1" :
+                if ( ParentCommandLine[0].strip().find("*.Download*")>-1 or
+                                     ParentCommandLine[0].strip().find("*Net.WebClient*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1086] PowerShell Downloads - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1086] PowerShell Downloads - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1086] PowerShell Process found
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("powershell.exe")>-1 or
+                                     Image[0].strip().find("powershell_ise.exe")>-1  ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1086] PowerShell Process found "
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1086] PowerShell Process found')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1085] Rundll32 Execution detected
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("\\rundll32.exe")>-1 or
+                                     Image[0].strip().find("rundll32.exe")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1085] Rundll32 Execution detected"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1085] Rundll32 Execution detected')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1082] System Information Discovery
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("sysinfo.exe")>-1 or
+                                     Image[0].strip().find("reg.exe")>-1 ) and CommandLine[0].strip().find("reg*query HKLM\\SYSTEM\\CurrentControlSet\\Services\\Disk\\Enum")>-1:
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc='[T1082] System Information Discovery'
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1082] System Information Discovery')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1081] Credentials in Files
+            if EventID[0]=="1" :
+                if ( CommandLine[0].strip().find("*findstr* /si pass*")>-1 or
+                                     CommandLine[0].strip().find("*select-string -Pattern pass*")>-1 or
+                                     CommandLine[0].strip().find("*list vdir*/text:password*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1081] Credentials in Files"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1081] Credentials in Files')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1077] Windows Admin Shares - Process - Created
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("net.exe")>-1 or
+                                     CommandLine[0].strip().find("net share")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1077] Windows Admin Shares - Process - Created"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1077] Windows Admin Shares - Process - Created')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1077] Windows Admin Shares - Process
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("net.exe")>-1 or
+                                     Image[0].strip().find("powershell.exe")>-1 ) and  (
+                                     CommandLine[0].strip().find("*net* use*$")>-1 or
+                                     CommandLine[0].strip().find("*net* session*$")>-1 or
+                                     CommandLine[0].strip().find("*net* file*$")>-1 or
+                                     CommandLine[0].strip().find("*New-PSDrive*root*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1077] Windows Admin Shares - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1077] Windows Admin Shares - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1077] Windows Admin Shares - Network
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("net.exe")>-1 ) and  (
+                                     CommandLine[0].strip().find("use")>-1 or
+                                     CommandLine[0].strip().find("session")>-1 or
+                                     CommandLine[0].strip().find("file")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1077] Windows Admin Shares - Network"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1077] Windows Admin Shares - Network')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1076] Remote Desktop Protocol - Process
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if ( Image[0].strip().find("logonui.exe")>-1 or TargetObject[0].strip().find("\\software\\policies\\microsoft\\windows nt\\terminal services\\")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1076] Remote Desktop Protocol - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1076] Remote Desktop Protocol - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1076] Remote Desktop Protocol - Registry
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("tscon.exe")>-1 or
+                                     Image[0].strip().find("mstsc.exe")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1076] Remote Desktop Protocol - Registry"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1076] Remote Desktop Protocol - Registry')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1074] Data Staged - Process
+            if EventID[0]=="1" :
+                if ( CommandLine[0].strip().find("DownloadString")>-1 or
+                                     CommandLine[0].strip().find("Net.WebClient")>-1 ) and (
+                                     CommandLine[0].strip().find("New-Object")>-1 or
+                                     CommandLine[0].strip().find("IEX")>-1 ):
+                    try:
+
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1074] Data Staged - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1074] Data Staged - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1070] Indicator removal on host
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("wevtutil")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1070] Indicator removal on host"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1070] Indicator removal on host')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1069] Permission Groups Discovery - Process
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("net.exe")>-1 ) and  (
+                                     CommandLine[0].strip().find("*net* user*")>-1 or
+                                     CommandLine[0].strip().find("*net* group*")>-1 or
+                                     CommandLine[0].strip().find("*net* localgroup*")>-1 or
+                                     CommandLine[0].strip().find("*get-localgroup*")>-1 or
+                                     CommandLine[0].strip().find("*get-ADPrinicipalGroupMembership*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1069] Permission Groups Discovery - Process"
+
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1069] Permission Groups Discovery - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1063] Security Software Discovery
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("netsh.exe")>-1 or
+                                     Image[0].strip().find("reg.exe")>-1 or
+                                     Image[0].strip().find("tasklist.exe")>-1 ) and  (
+                                     CommandLine[0].strip().find("*reg* query*")>-1 or
+                                     CommandLine[0].strip().find("*tasklist *")>-1 or
+                                     CommandLine[0].strip().find("*netsh*")>-1 or
+                                     CommandLine[0].strip().find("*fltmc*|*findstr*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1063] Security Software Discovery"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1063] Security Software Discovery')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1060] Registry Run Keys or Start Folder
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if (
+                TargetObject[0].strip().find("*\\software\\microsoft\\windows\\currentversion\\run*")>-1 or
+                TargetObject[0].strip().find("*\\software\\microsoft\\windows\\currentversion\\explorer\\*shell folders")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1060] Registry Run Keys or Start Folder"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1060] Registry Run Keys or Start Folder')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("Medium")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1059] Command-Line Interface
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("cmd.exe")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1059] Command-Line Interface"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1059] Command-Line Interface')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("Low")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [1057] Running Process Discovery
+            if EventID[0]=="1" :
+                if ( CommandLine[0].strip().find("tasklist")>-1 or CommandLine[0].strip().find("get-process")>-1  ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[1057] Process Discovery"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[1057] Running Process Discovery')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("Low")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+
+
+            # [T1054] Indicator Blocking - Sysmon registry edited from other source
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if (
+                TargetObject[0].strip().find("hklm\\system\\currentcontrolset\\services\\sysmondrv\\*")>-1 or
+                TargetObject[0].strip().find("*\\software\\microsoft\\windows\\currentversion\\explorer\\*shell folders")>-1 or
+                TargetObject[0].strip().find("hklm\\system\\currentcontrolset\\services\\sysmon\\*")>-1) and (
+                Image[0].strip().find("sysmon64.exe")==-1 and
+                Image[0].strip().find("sysmon.exe")==-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1054] Indicator Blocking - Sysmon registry edited from other source"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1054] Indicator Blocking - Sysmon registry edited from other source')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("Medium")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1054] Indicator Blocking - Driver unloaded
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("fltmc.exe")>-1 or CommandLine[0].strip().find("*fltmc*unload*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1054] Indicator Blocking - Driver unloaded"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1054] Indicator Blocking - Driver unloaded')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1053] Scheduled Task - Process
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("taskeng.exe")>-1 or
+                                     Image[0].strip().find("schtasks.exe")>-1 or (
+                                     Image[0].strip().find("svchost.exe")>-1 and
+                                     ParentCommandLine[0].strip().find("C:\\Windows\\System32\\services.exe")==-1 ) ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1053] Scheduled Task - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1053] Scheduled Task - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("Low")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1050] New Service - Process
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("sc.exe")>-1 or
+                                     Image[0].strip().find("powershell.exe")>-1 or
+                                     Image[0].strip().find("cmd.exe")>-1 ) and  (
+                                     CommandLine[0].strip().find("*new-service*binarypathname*")>-1 or
+                                     CommandLine[0].strip().find("*sc*create*binpath*")>-1 or
+                                     CommandLine[0].strip().find("*get-wmiobject*win32_service*create*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1050] New Service - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1050] New Service - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1049] System Network Connections Discovery
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("net.exe")>-1 or
+                                     Image[0].strip().find("netstat.exe")>-1 ) and  (
+                                     CommandLine[0].strip().find("*net* use*")>-1 or
+                                     CommandLine[0].strip().find("*net* sessions*")>-1 or
+                                     CommandLine[0].strip().find("*net* file*")>-1 or \
+                                     CommandLine[0].strip().find("*netstat*")>-1 or
+                                     CommandLine[0].strip().find("*get-nettcpconnection*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1049] System Network Connections Discovery"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1049] System Network Connections Discovery')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1047] Windows Management Instrumentation - Process
+            if EventID[0]=="1" :
+                if ( ParentCommandLine[0].strip().find("wmiprvse.exe")>-1 or
+                                     Image[0].strip().find("wmic.exe")>-1 or
+                                     CommandLine[0].strip().find("wmic")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1047] Windows Management Instrumentation - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1047] Windows Management Instrumentation - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1047] Windows Management Instrumentation - Network
+            if EventID[0]=="3" :
+                if ( Image[0].strip().find("wmic.exe")>-1 or
+                                     CommandLine[0].strip().find("wmic")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1047] Windows Management Instrumentation - Network"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1047] Windows Management Instrumentation - Network')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1047] Windows Management Instrumentation - Instances of an Active Script Event Consumer - Process
+            if EventID[0]=="1" :
+                if ( ParentCommandLine[0].strip().find("wmiprvse.exe")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1047] Windows Management Instrumentation - Instances of an Active Script Event Consumer - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1047] Windows Management Instrumentation - Instances of an Active Script Event Consumer - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1047] Windows Management Instrumentation - Instances of an Active Script Event Consumer - FileAccess
+            if EventID[0]=="1" :
+                if ( CommandLine[0].strip().find("c:\\windows\\system32\\wbem\\scrcons.exe")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1047] Windows Management Instrumentation - Instances of an Active Script Event Consumer - FileAccess"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1047] Windows Management Instrumentation - Instances of an Active Script Event Consumer - FileAccess')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1040] Network Sniffing
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("tshark.exe")>-1 or
+                                     Image[0].strip().find("windump.exe")>-1 or
+                                     Image[0].strip().find("logman.exe")>-1 or
+                                     Image[0].strip().find("tcpdump.exe")>-1 or
+                                     Image[0].strip().find("wprui.exe")>-1 or
+                                     Image[0].strip().find("wpr.exe")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1040] Network Sniffing Detected"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1040] Network Sniffing Detected')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1037] Boot or Logon Initialization Scripts
+            if EventID[0]=="1" :
+                if ( CommandLine[0].strip().find("*reg*add*hkcu\\environment*userinitmprlogonscript*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1037] Boot or Logon Initialization Scripts"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1037] Boot or Logon Initialization Scripts')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1036] Masquerading - Extension
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find(".doc.")>-1 or
+                                     Image[0].strip().find(".docx.")>-1 or
+                                     Image[0].strip().find(".xls.")>-1 or
+                                     Image[0].strip().find(".xlsx.")>-1 or
+                                     Image[0].strip().find(".pdf.")>-1 or
+                                     Image[0].strip().find(".rtf.")>-1 or
+                                     Image[0].strip().find(".jpg.")>-1 or
+                                     Image[0].strip().find(".png.")>-1 or
+                                     Image[0].strip().find(".jpeg.")>-1 or
+                                     Image[0].strip().find(".zip.")>-1 or
+                                     Image[0].strip().find(".rar.")>-1 or
+                                     Image[0].strip().find(".ppt.")>-1 or
+                                     Image[0].strip().find(".pptx.")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1036] Masquerading - Extension"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1036] Masquerading - Extension')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1031] Modify Existing Service
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("sc.exe")>-1 or
+                                     Image[0].strip().find("powershell.exe")>-1 or
+                                     Image[0].strip().find("cmd.exe")>-1 ) and (
+                                     CommandLine[0].strip().find("*sc*config*binpath*")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1031] Modify Existing Service"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1031] Modify Existing Service')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1028] Windows Remote Management
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("wsmprovhost.exe")>-1 or
+                                     Image[0].strip().find("winrm.cmd")>-1 ) and (
+                                     CommandLine[0].strip().find("Enable-PSRemoting -Force")>-1 or
+                                     CommandLine[0].strip().find("Invoke-Command -computer_name")>-1 or
+                                     CommandLine[0].strip().find("wmic*node*process call create")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1028] Windows Remote Management"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1028] Windows Remote Management')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1027] Obfuscated Files or Information
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("certutil.exe")>-1 and
+                                     CommandLine[0].strip().find("encode")>-1 ) or (
+                                     CommandLine[0].strip().find("tobase64string")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1027] Obfuscated Files or Information"
+                        Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                        Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                        Sysmon_events[0]['Detection Rule'].append('[T1027] Obfuscated Files or Information')
+                        Sysmon_events[0]['Detection Domain'].append("Threat")
+                        Sysmon_events[0]['Severity'].append("High")
+                        Sysmon_events[0]['Event Description'].append(Event_desc)
+                        Sysmon_events[0]['Event ID'].append(EventID[0])
+                        Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1018] Remote System Discovery - Process
+            if EventID[0]=="1" and ( Image[0].strip().find("net.exe")>-1 or
+                                     Image[0].strip().find("ping.exe")>-1 ) and (
+                                     CommandLine[0].strip().find("view")>-1 or
+                                     CommandLine[0].strip().find("png")>-1 ):
+                    try:
+
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1018] Remote System Discovery - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1018] Remote System Discovery - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1018] Remote System Discovery - Network
+            if EventID[0]=="3" :
+                if ( Image[0].strip().find("net.exe")>-1 or
+                                     Image[0].strip().find("ping.exe")>-1 ) and (
+                                     CommandLine[0].strip().find("view")>-1 or
+                                     CommandLine[0].strip().find("png")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1018] Remote System Discovery - Network"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1018] Remote System Discovery - Network')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1015] Accessibility Features - Registry
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if (
+                TargetObject[0].strip().find("hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\*")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") accessed target image ("+TargetImage[0].strip()+ ") through source image ( "+ SourceImage[0].strip() +" )"
+                    except:
+                        Event_desc="[T1015] Accessibility Features - Registry"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1015] Accessibility Features - Registry')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1015] Accessibility features
+            if EventID[0]=="3" :
+                if ParentImage[0].strip().find("winlogon.exe")>-1 and (
+                                     Image[0].strip().find("sethc.exe")>-1 or
+                                     Image[0].strip().find("utilman.exe")>-1 or
+                                     Image[0].strip().find("osk.exe")>-1 or
+                                     Image[0].strip().find("magnify.exe")>-1 or
+                                     Image[0].strip().find("displayswitch.exe")>-1 or
+                                     Image[0].strip().find("narrator.exe")>-1 or
+                                     Image[0].strip().find("atbroker.exe")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1015] Accessibility features"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1015] Accessibility features')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            # [T1013] Local Port Monitor
+            if (EventID[0]=="12" or EventID[0]=="13" or EventID[0]=="14") :
+                if (
+                TargetObject[0].strip().find("\system\\currentcontrolset\\control\\print\\monitors\\")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") accessed target image ("+TargetImage[0].strip()+ ") through source image ( "+ SourceImage[0].strip() +" )"
+                    except:
+                        Event_desc="[T1013] Local Port Monitor"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1013] Local Port Monitor')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1012] Query Registry - Process
+            if EventID[0]=="1" :
+                if ( Image[0].strip().find("reg.exe")>-1 and
+                                     CommandLine[0].strip().find("reg query")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1012] Query Registry - Process"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1012] Query Registry - Process')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1012] Query Registry - Network
+            if EventID[0]=="3" :
+                if ( Image[0].strip().find("reg.exe")>-1 and
+                                     CommandLine[0].strip().find("reg query")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc="[T1012] Query Registry - Network"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1012] Query Registry - Network')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1012] Processes opening handles and accessing Lsass with potential dlls in memory (i.e UNKNOWN in CallTrace)
+            if EventID[0]=="10" :
+                if ( TargetImage[0].strip().find("lsass.exe")>-1 and
+                                      CallTrace[0].strip().find("unknown")>-1 ):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                    except:
+                        Event_desc='[T1012] Processes opening handles and accessing Lsass with potential dlls in memory'
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1012] Processes opening handles and accessing Lsass with potential dlls in memory')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1003] Processes opening handles and accessing Lsass with potential dlls in memory (i.e UNKNOWN in CallTrace)
+            if EventID[0]=="7" :
+                if ( ImageLoaded[0].strip().find("samlib.dll")>-1 or
+                                     ImageLoaded[0].strip().find("vaultcli.dll")>-1 or
+                                     ImageLoaded[0].strip().find("hid.dll")>-1 or
+                                     ImageLoaded[0].strip().find("winscard.dll")>-1 or
+                                     ImageLoaded[0].strip().find("cryptdll.dll")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) opening handles and accessing Lsass with potential dlls in memory ( " + ImageLoaded[0] + " )"
+                    except:
+                        Event_desc="[T1003] Processes opening handles and accessing Lsass with potential dlls in memory"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1003] Processes opening handles and accessing Lsass with potential dlls in memory')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            ##############################################
+            # 18-05-2021 : Addition of new sysmon events #
+            ##############################################
+
+            ##############################################
+            # 19-05-2021 : Addition of new sysmon events #
+            ##############################################
+
+            #  [T1112] process updating fDenyTSConnections or UserAuthentication registry key values
+            if EventID[0]=="13" :
+                if (TargetObject[0].strip().find("DenyTSConnections")>-1 or TargetObject[0].strip().find("UserAuthentication")>-1) and Details[0].strip().find("DWORD (0x00000000)")>-1:
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) opening updating registry key values to enable remote desktop connection."
+                    except:
+                        Event_desc="[T1112] process updating fDenyTSConnections or UserAuthentication registry key values"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1112] process updating fDenyTSConnections or UserAuthentication registry key values')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1059] processes loading PowerShell DLL *system.management.automation*
+            if EventID[0]=="7" :
+                if (Description[0].strip().find("system.management.automation")>-1 or ImageLoaded[0].strip().find("system.management.automation")>-1):
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) loaded ( " + ImageLoaded[0].strip() + " )."
+                    except:
+                        Event_desc="[T1059] processes loading PowerShell DLL *system.management.automation*"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1059] processes loading PowerShell DLL *system.management.automation*')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+            #  [T1059] PSHost* pipes found in PowerShell execution
+            if EventID[0]=="17" :
+                if PipeName[0].strip().find("\\pshost")>-1:
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) started command ( " + PipeName[0].strip() + " )."
+                    except:
+                        Event_desc="[T1059] PSHost* pipes found in PowerShell execution"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1059] PSHost* pipes found in PowerShell execution')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+
+            #  [T1112] process updating UseLogonCredential registry key value
+            if EventID[0]=="13" :
+                if TargetObject[0].strip().find("UseLogonCredential")>-1:
+                    try:
+                        Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) updating ( " + TargetObject[0].strip() + " )."
+                    except:
+                        Event_desc="[T1112] process updating UseLogonCredential registry key value"
+                    Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                    Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                    Sysmon_events[0]['Detection Rule'].append('[T1112] process updating UseLogonCredential registry key value')
+                    Sysmon_events[0]['Detection Domain'].append("Threat")
+                    Sysmon_events[0]['Severity'].append("High")
+                    Sysmon_events[0]['Event Description'].append(Event_desc)
+                    Sysmon_events[0]['Event ID'].append(EventID[0])
+                    Sysmon_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
         else:
             print(record['data'])
+
+
+"""            #  [T1055] Process Injection - Process
+            if EventID[0]=="1" :
+                if ( CommandLine[0].strip().find("*invoke-dllinjection*")>-1 or CommandLine.strip().find("C:\\windows\\sysnative\\")>-1 ):
+                    try:
+
+                Event_desc="Found User (" + User[0].strip() + ") running image ( " + Image[0].strip() + " ) through command line ( " + CommandLine[0].strip() + " )"
+                Sysmon_events[0]['Date and Time'].append(parse(record["timestamp"]).isoformat())
+                Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).isoformat())))
+                Sysmon_events[0]['Detection Rule'].append('[T1055] Process Injection - Process')
+                Sysmon_events[0]['Detection Domain'].append("Threat")
+                Sysmon_events[0]['Severity'].append("High")
+                Sysmon_events[0]['Event Description'].append(Event_desc)
+                Sysmon_events[0]['Event ID'].append(EventID[0])
+"""
