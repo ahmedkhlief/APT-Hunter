@@ -6,6 +6,7 @@ import pandas as pd
 import lib.EvtxDetection as EvtxDetection
 import lib.CSVDetection as CSVDetection
 import lib.EvtxHunt as EvtxHunt
+from evtx import PyEvtxParser
 from sys import exit
 from pytz import timezone
 from dateutil import tz
@@ -24,6 +25,7 @@ winrm_path=""
 sysmon_path=""
 input_timezone=timezone("UTC")
 
+Logon_Events=[{'Date and Time':[],'timestamp':[],'Event ID':[],'Account Name':[],'Account Domain':[],'Logon Type':[],'Logon Process':[],'Source IP':[],'Workstation Name':[],'Original Event Log':[]}]
 Executed_Process_Summary=[{'Process Name':[],'Number of Execution':[]}]
 TerminalServices_Summary=[{'User':[],'Number of Logins':[]}]
 Sysmon_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
@@ -41,7 +43,7 @@ Timesketch_events=[{'message':[],'timestamp':[],'datetime':[],'timestamp_desc':[
 
 
 def evtxdetect():
-    global input_timezone,Executed_Process_Summary,TerminalServices_Summary,Security_Authentication_Summary,Sysmon_events,WinRM_events,Security_events,System_events,ScheduledTask_events,Powershell_events,Powershell_Operational_events,TerminalServices_events,Windows_Defender_events,Timesketch_events,TerminalServices_Summary,Security_Authentication_Summary
+    global input_timezone,Logon_Events,Executed_Process_Summary,TerminalServices_Summary,Security_Authentication_Summary,Sysmon_events,WinRM_events,Security_events,System_events,ScheduledTask_events,Powershell_events,Powershell_Operational_events,TerminalServices_events,Windows_Defender_events,Timesketch_events,TerminalServices_Summary,Security_Authentication_Summary
     try:
         print(Security_path)
         EvtxDetection.detect_events_security_log(Security_path,input_timezone)
@@ -132,6 +134,7 @@ def evtxdetect():
     TerminalServices_Summary=EvtxDetection.TerminalServices_Summary
     Executed_Process_Summary=EvtxDetection.Executed_Process_Summary
     Security_Authentication_Summary =EvtxDetection.Security_Authentication_Summary
+    Logon_Events =EvtxDetection.Logon_Events
 
 def csvdetect(winevent):
     global Executed_Process_Summary,TerminalServices_Summary,Security_Authentication_Summary,Sysmon_events,WinRM_events,Security_events,System_events,ScheduledTask_events,Powershell_events,Powershell_Operational_events,TerminalServices_events,Windows_Defender_events,Timesketch_events,TerminalServices_Summary,Security_Authentication_Summary
@@ -247,6 +250,7 @@ def report():
     global Output
     timesketch=Output+"_TimeSketch.csv"
     Report=Output+"_Report.xlsx"
+    LogonEvents=Output+"_Logon_Events.csv"
     Sysmon = pd.DataFrame(Sysmon_events[0])
     System = pd.DataFrame(System_events[0])
     Powershell = pd.DataFrame(Powershell_events[0])
@@ -259,6 +263,7 @@ def report():
     Terminal_Services_Summary = pd.DataFrame(TerminalServices_Summary[0])
     Authentication_Summary = pd.DataFrame(Security_Authentication_Summary[0])
     ExecutedProcess_Summary=pd.DataFrame(Executed_Process_Summary[0])
+    Logon_Events_pd=pd.DataFrame(Logon_Events[0])
     # allresults=pd.DataFrame([TerminalServices,Powershell_Operational],columns=['Date and Time', 'Detection Rule','Detection Domain','Severity','Event Description','Event ID','Original Event Log'])
     allresults = pd.concat(
         [ScheduledTask, Powershell_Operational, Sysmon, System, Powershell, Security, TerminalServices, WinRM,
@@ -270,6 +275,7 @@ def report():
          'Original Event Log']]
     allresults.to_csv(timesketch, index=False)
     print("Time Sketch Report saved as "+timesketch)
+    Logon_Events_pd.to_csv(LogonEvents, index=False)
     # Sysmon=Sysmon.reset_index()
     # Sysmon=Sysmon.drop(['index'],axis=1)
     writer = pd.ExcelWriter(Report, engine='xlsxwriter', options={'encoding': 'utf-8'})
