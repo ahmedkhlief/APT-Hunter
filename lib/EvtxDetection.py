@@ -18,7 +18,7 @@ Suspicious_powershell_commands=['FromBase64String','DomainPasswordSpray','Passwo
 
 Suspicious_powershell_Arguments=["-EncodedCommand","-enc","-w hidden","[Convert]::FromBase64String","iex(","New-Object","Net.WebClient","-windowstyle hidden","DownloadFile","DownloadString","Invoke-Expression","Net.WebClient","-Exec bypass" ,"-ExecutionPolicy bypass"]
 
-all_suspicious=["\\csc.exe",'whoami.exe','\\pl.exe','\\nc.exe','nmap.exe','psexec.exe','plink.exe','mimikatz','procdump.exe',' dcom.exe',' Inveigh.exe',' LockLess.exe',' Logger.exe',' PBind.exe',' PS.exe',' Rubeus.exe',' RunasCs.exe',' RunAs.exe',' SafetyDump.exe',' SafetyKatz.exe',' Seatbelt.exe',' SExec.exe',' SharpApplocker.exe',' SharpChrome.exe',' SharpCOM.exe',' SharpDPAPI.exe',' SharpDump.exe',' SharpEdge.exe',' SharpEDRChecker.exe',' SharPersist.exe',' SharpHound.exe',' SharpLogger.exe',' SharpPrinter.exe',' SharpRoast.exe',' SharpSC.exe',' SharpSniper.exe',' SharpSocks.exe',' SharpSSDP.exe',' SharpTask.exe',' SharpUp.exe',' SharpView.exe',' SharpWeb.exe',' SharpWMI.exe',' Shhmon.exe',' SweetPotato.exe',' Watson.exe',' WExec.exe','7zip.exe','FromBase64String','DomainPasswordSpray','PasswordSpray','Password','Get-WMIObject','Get-GPPPassword','Get-Keystrokes','Get-TimedScreenshot','Get-VaultCredential','Get-ServiceUnquoted','Get-ServiceEXEPerms','Get-ServicePerms','Get-RegAlwaysInstallElevated','Get-RegAutoLogon','Get-UnattendedInstallFiles','Get-Webconfig','Get-ApplicationHost','Get-PassHashes','Get-LsaSecret','Get-Information','Get-PSADForestInfo','Get-KerberosPolicy','Get-PSADForestKRBTGTInfo','Get-PSADForestInfo','Get-KerberosPolicy','Invoke-Command','Invoke-Expression','iex(','Invoke-Shellcode','Invoke--Shellcode','Invoke-ShellcodeMSIL','Invoke-MimikatzWDigestDowngrade','Invoke-NinjaCopy','Invoke-CredentialInjection','Invoke-TokenManipulation','Invoke-CallbackIEX','Invoke-PSInject','Invoke-DllEncode','Invoke-ServiceUserAdd','Invoke-ServiceCMD','Invoke-ServiceStart','Invoke-ServiceStop','Invoke-ServiceEnable','Invoke-ServiceDisable','Invoke-FindDLLHijack','Invoke-FindPathHijack','Invoke-AllChecks','Invoke-MassCommand','Invoke-MassMimikatz','Invoke-MassSearch','Invoke-MassTemplate','Invoke-MassTokens','Invoke-ADSBackdoor','Invoke-CredentialsPhish','Invoke-BruteForce','Invoke-PowerShellIcmp','Invoke-PowerShellUdp','Invoke-PsGcatAgent','Invoke-PoshRatHttps','Invoke-PowerShellTcp','Invoke-PoshRatHttp','Invoke-PowerShellWmi','Invoke-PSGcat','Invoke-Encode','Invoke-Decode','Invoke-CreateCertificate','Invoke-NetworkRelay','EncodedCommand','New-ElevatedPersistenceOption','wsman','Enter-PSSession','DownloadString','DownloadFile','Out-Word','Out-Excel','Out-Java','Out-Shortcut','Out-CHM','Out-HTA','Out-Minidump','HTTP-Backdoor','Find-AVSignature','DllInjection','ReflectivePEInjection','Base64','System.Reflection','System.Management','Restore-ServiceEXE','Add-ScrnSaveBackdoor','Gupt-Backdoor','Execute-OnTime','DNS_TXT_Pwnage','Write-UserAddServiceBinary','Write-CMDServiceBinary','Write-UserAddMSI','Write-ServiceEXE','Write-ServiceEXECMD','Enable-DuplicateToken','Remove-Update','Execute-DNSTXT-Code','Download-Execute-PS','Execute-Command-MSSQL','Download_Execute','Copy-VSS','Check-VM','Create-MultipleSessions','Run-EXEonRemote','Port-Scan','Remove-PoshRat','TexttoEXE','Base64ToString','StringtoBase64','Do-Exfiltration','Parse_Keys','Add-Exfiltration','Add-Persistence','Remove-Persistence','Find-PSServiceAccounts','Discover-PSMSSQLServers','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Mimikatz','powercat','powersploit','PowershellEmpire','GetProcAddress','ICM','.invoke',' -e ','hidden','-w hidden','Invoke-Obfuscation-master','Out-EncodedWhitespaceCommand','Out-Encoded',"-EncodedCommand","-enc","-w hidden","[Convert]::FromBase64String","iex(","New-Object","Net.WebClient","-windowstyle hidden","DownloadFile","DownloadString","Invoke-Expression","Net.WebClient","-Exec bypass" ,"-ExecutionPolicy bypass","-EncodedCommand","-enc","-w hidden","[Convert]::FromBase64String","iex(","New-Object","Net.WebClient","-windowstyle hidden","DownloadFile","DownloadString","Invoke-Expression","Net.WebClient","-Exec bypass" ,"-ExecutionPolicy bypass"]
+all_suspicious=["\\csc.exe",'whoami.exe','\\pl.exe','\\nc.exe','nmap.exe','psexec.exe','plink.exe','kali','mimikatz','procdump.exe',' dcom.exe',' Inveigh.exe',' LockLess.exe',' Logger.exe',' PBind.exe',' PS.exe',' Rubeus.exe',' RunasCs.exe',' RunAs.exe',' SafetyDump.exe',' SafetyKatz.exe',' Seatbelt.exe',' SExec.exe',' SharpApplocker.exe',' SharpChrome.exe',' SharpCOM.exe',' SharpDPAPI.exe',' SharpDump.exe',' SharpEdge.exe',' SharpEDRChecker.exe',' SharPersist.exe',' SharpHound.exe',' SharpLogger.exe',' SharpPrinter.exe',' SharpRoast.exe',' SharpSC.exe',' SharpSniper.exe',' SharpSocks.exe',' SharpSSDP.exe',' SharpTask.exe',' SharpUp.exe',' SharpView.exe',' SharpWeb.exe',' SharpWMI.exe',' Shhmon.exe',' SweetPotato.exe',' Watson.exe',' WExec.exe','7zip.exe','FromBase64String','DomainPasswordSpray','PasswordSpray','Password','Get-WMIObject','Get-GPPPassword','Get-Keystrokes','Get-TimedScreenshot','Get-VaultCredential','Get-ServiceUnquoted','Get-ServiceEXEPerms','Get-ServicePerms','Get-RegAlwaysInstallElevated','Get-RegAutoLogon','Get-UnattendedInstallFiles','Get-Webconfig','Get-ApplicationHost','Get-PassHashes','Get-LsaSecret','Get-Information','Get-PSADForestInfo','Get-KerberosPolicy','Get-PSADForestKRBTGTInfo','Get-PSADForestInfo','Get-KerberosPolicy','Invoke-Command','Invoke-Expression','iex(','Invoke-Shellcode','Invoke--Shellcode','Invoke-ShellcodeMSIL','Invoke-MimikatzWDigestDowngrade','Invoke-NinjaCopy','Invoke-CredentialInjection','Invoke-TokenManipulation','Invoke-CallbackIEX','Invoke-PSInject','Invoke-DllEncode','Invoke-ServiceUserAdd','Invoke-ServiceCMD','Invoke-ServiceStart','Invoke-ServiceStop','Invoke-ServiceEnable','Invoke-ServiceDisable','Invoke-FindDLLHijack','Invoke-FindPathHijack','Invoke-AllChecks','Invoke-MassCommand','Invoke-MassMimikatz','Invoke-MassSearch','Invoke-MassTemplate','Invoke-MassTokens','Invoke-ADSBackdoor','Invoke-CredentialsPhish','Invoke-BruteForce','Invoke-PowerShellIcmp','Invoke-PowerShellUdp','Invoke-PsGcatAgent','Invoke-PoshRatHttps','Invoke-PowerShellTcp','Invoke-PoshRatHttp','Invoke-PowerShellWmi','Invoke-PSGcat','Invoke-Encode','Invoke-Decode','Invoke-CreateCertificate','Invoke-NetworkRelay','EncodedCommand','New-ElevatedPersistenceOption','wsman','Enter-PSSession','DownloadString','DownloadFile','Out-Word','Out-Excel','Out-Java','Out-Shortcut','Out-CHM','Out-HTA','Out-Minidump','HTTP-Backdoor','Find-AVSignature','DllInjection','ReflectivePEInjection','Base64','System.Reflection','System.Management','Restore-ServiceEXE','Add-ScrnSaveBackdoor','Gupt-Backdoor','Execute-OnTime','DNS_TXT_Pwnage','Write-UserAddServiceBinary','Write-CMDServiceBinary','Write-UserAddMSI','Write-ServiceEXE','Write-ServiceEXECMD','Enable-DuplicateToken','Remove-Update','Execute-DNSTXT-Code','Download-Execute-PS','Execute-Command-MSSQL','Download_Execute','Copy-VSS','Check-VM','Create-MultipleSessions','Run-EXEonRemote','Port-Scan','Remove-PoshRat','TexttoEXE','Base64ToString','StringtoBase64','Do-Exfiltration','Parse_Keys','Add-Exfiltration','Add-Persistence','Remove-Persistence','Find-PSServiceAccounts','Discover-PSMSSQLServers','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Discover-PSMSExchangeServers','Discover-PSInterestingServices','Mimikatz','powercat','powersploit','PowershellEmpire','GetProcAddress','ICM','.invoke',' -e ','hidden','-w hidden','Invoke-Obfuscation-master','Out-EncodedWhitespaceCommand','Out-Encoded',"-EncodedCommand","-enc","-w hidden","[Convert]::FromBase64String","iex(","New-Object","Net.WebClient","-windowstyle hidden","DownloadFile","DownloadString","Invoke-Expression","Net.WebClient","-Exec bypass" ,"-ExecutionPolicy bypass","-EncodedCommand","-enc","-w hidden","[Convert]::FromBase64String","iex(","New-Object","Net.WebClient","-windowstyle hidden","DownloadFile","DownloadString","Invoke-Expression","Net.WebClient","-Exec bypass" ,"-ExecutionPolicy bypass"]
 
 Suspicious_Path=['\\temp\\','//temp//','/temp/','//windows//temp//','/windows/temp/','\\windows\\temp\\','\\appdata\\','/appdata/','//appdata//','//programdata//','\\programdata\\','/programdata/']
 Usual_Path=['\\Windows\\','/Windows/','//Windows//','Program Files','\\Windows\\SysWOW64\\','/Windows/SysWOW64/','//Windows//SysWOW64//','\\Windows\\Cluster\\','/Windows/Cluster/','//Windows//Cluster//']
@@ -39,7 +39,7 @@ System_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity'
 ScheduledTask_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Schedule Task Name':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
 Powershell_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
 Powershell_Operational_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
-TerminalServices_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
+TerminalServices_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'User':[],'Source IP':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
 Windows_Defender_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
 Timesketch_events=[{'message':[],'timestamp':[],'datetime':[],'timestamp_desc':[],'Event Description':[],'Severity':[],'Detection Domain':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
 
@@ -2084,6 +2084,45 @@ def detect_events_system_log(file_name,input_timzone):
                     System_events[0]['Event ID'].append(EventID[0])
                     System_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
+                #detect psexec service
+                if EventID[0].strip()=="7045" or EventID[0].strip()=="601" :
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("Service installed in the system with Name ( %s ) , File Name ( %s ) , Service Type ( %s ) , Service Start Type ( %s ) , Service Account ( %s )"%(Service_Name[0].strip(),Service_File_Name[0].strip(),Service_Type[0].strip(),Service_Start_Type[0].strip(),Service_Account[0]))
+                    try:
+                        if len(Service_Name[0][0])>0:
+                            service_name=Service_Name[0][0].strip()
+                            service_file_name=Service_File_Name[0][0].strip()
+                            service_type=Service_Type[0][0].strip()
+                            service_start_type=Service_Start_Type[0][0].strip()
+                            service_account=Service_Account[0][0].strip()
+                        if len(Service_Name[0][1])>0:
+                            service_name=Service_Name[0][1].strip()
+                            service_file_name=Service_File_Name[0][1].strip()
+                            service_type=Service_Type[0][1].strip()
+                            service_start_type=Service_Start_Type[0][1].strip()
+                            service_account=Service_Account[0][1].strip()
+                        if service_name.lower().find("psexec")>-1 or service_name.lower().find("psexesvc")>-1 or str(record['data']).lower().find("psexec")>-1 or str(record['data']).lower().find("psexesvc")>-1:
+                            Event_desc="psexec service detected installed in the system"
+
+                            System_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                            System_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                            System_events[0]['Computer Name'].append(Computer[0])
+                            System_events[0]['Channel'].append(Channel[0])
+                            System_events[0]['Detection Rule'].append("psexec service detected installed in the system")
+                            System_events[0]['Detection Domain'].append("Threat")
+                            System_events[0]['Severity'].append("Critical")
+                            System_events[0]['Service Name'].append(service_name)
+                            System_events[0]['Event Description'].append(Event_desc)
+                            System_events[0]['Event ID'].append(EventID[0])
+                            System_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+
+
+                    except:
+                        continue
+                        print("issue parsing event : ",str(record['data']).replace("\r"," "))
+                    #System_events[0]['Date and Time'].append(datetime.strptime(record["timestamp"],'%Y-%m-%d %I:%M:%S.%f %Z').isoformat())
+
+
                 # Service start type changed
                 if EventID[0]=="7040" :
                     #print("##### " + record["timestamp"] + " ####  ", end='')
@@ -2155,7 +2194,24 @@ def detect_events_system_log(file_name,input_timzone):
                     System_events[0]['Event ID'].append(EventID[0])
                     System_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
 
-
+                #Zerologon Exploitation Using Well-known Tools
+                if EventID[0]=="5805" or EventID[0]=="5723" :
+                    #print("##### " + record["timestamp"] + " ####  ", end='')
+                    #print("Service with Name ( %s ) entered ( %s ) state "%(Service_and_state.group(1),Service_and_state.group(2)))
+                    for i in all_suspicious:
+                        if record['data'].lower().find(i.lower())>-1:
+                            Event_desc="Zerologon Exploitation Using Well-known Tools "
+                            System_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
+                            System_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
+                            System_events[0]['Computer Name'].append(Computer[0])
+                            System_events[0]['Channel'].append(Channel[0])
+                            System_events[0]['Detection Rule'].append("Zerologon Exploitation Using Well-known Tools ")
+                            System_events[0]['Detection Domain'].append("Threat")
+                            System_events[0]['Severity'].append("High")
+                            System_events[0]['Event Description'].append(Event_desc)
+                            System_events[0]['Event ID'].append(EventID[0])
+                            System_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
+                            break
             else:
                 print(record['data'])
 
@@ -2550,6 +2606,8 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name,input_timzo
                             TerminalServices_events[0]['Detection Rule'].append("User connected RDP from Local host - Possible Socks Proxy being used")
                             TerminalServices_events[0]['Detection Domain'].append("Threat")
                             TerminalServices_events[0]['Severity'].append("Critical")
+                            TerminalServices_events[0]['User'].append(User[0].strip())
+                            TerminalServices_events[0]['Source IP'].append(Source_Network_Address[0][0].strip())
                             TerminalServices_events[0]['Event Description'].append(Event_desc)
                             TerminalServices_events[0]['Event ID'].append(EventID[0])
                             TerminalServices_events[0]['Original Event Log'].append(str(record['data']).replace("\r", " "))
@@ -2565,6 +2623,8 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name,input_timzo
                             TerminalServices_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
                             TerminalServices_events[0]['Detection Rule'].append("User Connecting RDP from Public IP")
                             TerminalServices_events[0]['Detection Domain'].append("Audit")
+                            TerminalServices_events[0]['User'].append(User[0].strip())
+                            TerminalServices_events[0]['Source IP'].append(Source_Network_Address[0][0].strip())
                             TerminalServices_events[0]['Severity'].append("Critical")
                             TerminalServices_events[0]['Event Description'].append(Event_desc)
                             TerminalServices_events[0]['Event ID'].append(EventID[0])
@@ -2580,6 +2640,8 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name,input_timzo
                             TerminalServices_events[0]['Detection Rule'].append(
                                 "User connected RDP to this machine")
                             TerminalServices_events[0]['Detection Domain'].append("Threat")
+                            TerminalServices_events[0]['User'].append(User[0].strip())
+                            TerminalServices_events[0]['Source IP'].append(Source_Network_Address[0][0].strip())
                             TerminalServices_events[0]['Severity'].append("Medium")
                             TerminalServices_events[0]['Event Description'].append(Event_desc)
                             TerminalServices_events[0]['Event ID'].append(EventID[0])
@@ -2597,6 +2659,8 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name,input_timzo
                         TerminalServices_events[0]['Channel'].append(Channel[0])
                         TerminalServices_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
                         TerminalServices_events[0]['Detection Rule'].append("User Loggedon to machine")
+                        TerminalServices_events[0]['User'].append(User[0].strip())
+                        TerminalServices_events[0]['Source IP'].append(Source_Network_Address_Terminal_NotIP[0])
                         TerminalServices_events[0]['Detection Domain'].append("Access")
                         TerminalServices_events[0]['Severity'].append("Low")
                         TerminalServices_events[0]['Event Description'].append(Event_desc)
