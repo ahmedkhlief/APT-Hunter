@@ -160,7 +160,7 @@ def auto_detect(path):
 
 
     if os.path.isdir(path):
-        files=glob.glob(path+"*.evtx")
+        files=glob.glob(path+"/"+"*.evtx")
     elif os.path.isfile(path):
         files=glob.glob(path)
     else:
