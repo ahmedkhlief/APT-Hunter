@@ -4,7 +4,6 @@ from netaddr import *
 import xml.etree.ElementTree as ET
 import pandas as pd
 from datetime import datetime
-
 minlength=1000
 
 account_op={}
@@ -551,7 +550,7 @@ def detect_events_security_log(file_name='deep-blue-secuity.csv',winevent=False)
                     else :
                         Executed_Process_Summary[0]['Number of Execution'][Executed_Process_Summary[0]['Process Name'].index(Process_Command_Line[0].strip())]=Executed_Process_Summary[0]['Number of Execution'][Executed_Process_Summary[0]['Process Name'].index(Process_Command_Line[0].strip())]+1
                 except:
-                    continue 
+                    continue
             if row['Event ID'] == "4625" :
                 try:
                     if Account_Name[1].strip() not in Security_Authentication_Summary[0]['User']:
@@ -765,8 +764,8 @@ def detect_events_security_log(file_name='deep-blue-secuity.csv',winevent=False)
     for user in PasswordSpray:
         if len(PasswordSpray[user])>3:
             Event_desc = "Password Spray Detected by user ( "+user+" )"
-            Security_events[0]['Date and Time'].append(datetime.now(timezone.utc).isoformat())
-            Security_events[0]['timestamp'].append(datetime.timestamp(datetime.now(timezone.utc)))
+            Security_events[0]['Date and Time'].append(datetime.timestamp(datetime.now()))
+            Security_events[0]['timestamp'].append(datetime.timestamp(datetime.now()))
             Security_events[0]['Detection Rule'].append("Password Spray Detected")
             Security_events[0]['Detection Domain'].append("Threat")
             Security_events[0]['Severity'].append("High")
