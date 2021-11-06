@@ -3,7 +3,8 @@ APT-Hunter is Threat Hunting tool for windows event logs which made by purple te
 
 Full information about the tool and how its used in this article : [introducing-apt-hunter-threat-hunting-tool-using-windows-event-log](https://shells.systems/introducing-apt-hunter-threat-hunting-tool-via-windows-event-log/)
 
-[Latest Release](https://github.com/ahmedkhlief/APT-Hunter/releases) 
+New Version Announcement : [APT-Hunter V2.0 : More than 200 use cases and new features](https://shells.systems/apt-hunter-v2-0-more-than-200-use-cases-and-new-features/)
+[Latest Release](https://github.com/ahmedkhlief/APT-Hunter/releases/tag/V2.0-Beta)
 
 Author :
 
@@ -21,7 +22,7 @@ windows-log-collector-full-v3-EVTX.ps1
 To collect the logs in CSV format use :
 windows-log-collector-full-v3-CSV.ps1
 
-**For Windows users please use the latest release :** [Latest Release](https://github.com/ahmedkhlief/APT-Hunter/releases) 
+**For Windows users please use the latest release :** [Latest Release](https://github.com/ahmedkhlief/APT-Hunter/releases)
 
 APT-Hunter built using python3 so in order to use the tool you need to install the required libraries ( **python3.9 is not supported yet**).
 
@@ -81,3 +82,7 @@ The remaining arguments if you want to analyze single type of logs.
 Project1_Report.xlsx : this excel sheet will include all the events detected from every windows logs provided to APT-Hunter
 
 Project1_TimeSketch.csv : This CSV file you can upload it to timesketch in order to have timeline analysis that will help you see the full picture of the attack .
+
+# Exmaples :
+
+I would like to thank [Joe Maccry](https://www.linkedin.com/in/joemccray/) for his amazing contribution in Sysmon use cases ( more than 100 use cases added by Joe )
