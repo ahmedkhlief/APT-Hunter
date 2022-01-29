@@ -336,6 +336,7 @@ def detect_events_security_log(file_name,input_timzone):
                 #User Creation using Net command
                 if EventID[0]=="4688" or EventID[0]=="4648" or EventID[0]=="4673":
                     try:
+                        process_name=''
                         process_command_line=" "
                         if len(Account_Name[0][0])>0:
                             user=Account_Name[0][0].strip()
