@@ -2397,13 +2397,14 @@ def detect_events_powershell_operational_log(files,input_timzone):
                     else:
                         #print("##### " + record["timestamp"] + " #### EventID=4100 #### Executing Pipeline #### ", end='')
                         #print("Found User ("+User[0].strip()+") run PowerShell with Command Name ("+Command_Name[0].strip()+") and full command ("+Host_Application[0].strip()+") ", end='')#, check event details "+record['data'])
-                        Event_desc = "Found User (" + User[0].strip() + ") run PowerShell with Command Name (" + \
-                                     Command_Name[0].strip() + ") and full command (" + host_app + ") "
-                        if len(Error_Message)>0:
-                            #print("Error Message ("+Error_Message[0].strip()+")")
-                            Event_desc = Event_desc + "Error Message ("+Error_Message[0].strip()+")"
-                        #else:
-                            #print("")
+                        try:
+                            Event_desc = "Found User (" + User[0].strip() + ") run PowerShell with Command Name (" + \
+                                         Command_Name[0].strip() + ") and full command (" + host_app + ") "
+                            if len(Error_Message)>0:
+                                #print("Error Message ("+Error_Message[0].strip()+")")
+                                Event_desc = Event_desc + "Error Message ("+Error_Message[0].strip()+")"
+                        except:
+                            Event_desc ="User running Powershell command"
 
                         Powershell_Operational_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
                         Powershell_Operational_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
@@ -3080,7 +3081,7 @@ def detect_events_Sysmon_log(file_name,input_timzone):
 
                         if CommandLine[0].lower().find(sProcessName.lower())>-1:
 
-                            Event_desc ="User Name : ( %s ) " % user+"with Command Line : ( " + process_command_line + " ) contain suspicious command ( %s)"%sProcessName
+                            Event_desc ="User Name : ( %s ) " % User[0].strip()+"with Command Line : ( " + CommandLine[0].strip() + " ) contain suspicious command ( %s)"%sProcessName
                             Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
                             Sysmon_events[0]['Computer Name'].append(Computer[0])
                             Sysmon_events[0]['Channel'].append(Channel[0])
