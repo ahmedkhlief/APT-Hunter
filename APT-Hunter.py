@@ -158,7 +158,7 @@ def auto_detect(path):
     Channel_rex = re.compile('<Channel.*>(.*)<\/Channel>', re.IGNORECASE)
     Computer_rex = re.compile('<Computer.*>(.*)<\/Computer>', re.IGNORECASE)
 
-
+    if path.find
     if os.path.isdir(path):
         files=glob.glob(path+"/"+"*.evtx")
     elif os.path.isfile(path):
@@ -215,7 +215,7 @@ def threat_hunt(path,str_regex):
     import os
 
     if os.path.isdir(path):
-        files=glob.glob(path+"*.evtx")
+        files=glob.glob(path+"/**/"+"*.evtx")
     elif os.path.isfile(path):
         files=glob.glob(path)
 
