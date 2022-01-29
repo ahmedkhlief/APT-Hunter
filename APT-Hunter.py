@@ -13,7 +13,7 @@ from dateutil import tz
 import glob
 import os
 import re
-
+from pathlib import Path as libPath
 
 Output=""
 Path=""
@@ -158,9 +158,10 @@ def auto_detect(path):
     Channel_rex = re.compile('<Channel.*>(.*)<\/Channel>', re.IGNORECASE)
     Computer_rex = re.compile('<Computer.*>(.*)<\/Computer>', re.IGNORECASE)
 
-    
+
     if os.path.isdir(path):
-        files=glob.glob(path+"/"+"*.evtx")
+        files=list(libPath(path).rglob("*.[eE][vV][tT][xX]"))
+        #files=glob.glob(path+"/**/"+"*.evtx")
     elif os.path.isfile(path):
         files=glob.glob(path)
     else:
@@ -169,6 +170,7 @@ def auto_detect(path):
     #print("hunting ( %s ) in files ( %s )"%(str_regex,files))
     #user_string = input('please enter a string to convert to regex: ')
     for file in files:
+        file=str(file)
         print("Analyzing "+file)
         try:
             parser = PyEvtxParser(file)
