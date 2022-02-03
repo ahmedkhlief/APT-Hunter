@@ -217,7 +217,7 @@ def threat_hunt(path,str_regex):
     import os
 
     if os.path.isdir(path):
-        files=glob.glob(path+"/**/"+"*.evtx")
+        files=list(libPath(path).rglob("*.[eE][vV][tT][xX]"))
     elif os.path.isfile(path):
         files=glob.glob(path)
 
