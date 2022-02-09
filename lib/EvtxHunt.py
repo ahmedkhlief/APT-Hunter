@@ -17,6 +17,7 @@ Channel_rex = re.compile('<Channel.*>(.*)<\/Channel>', re.IGNORECASE)
 Computer_rex = re.compile('<Computer.*>(.*)<\/Computer>', re.IGNORECASE)
 def Evtx_hunt(files,str_regex,input_timzone,output):
     for file in files:
+        file=str(file)
         print("Analyzing "+file)
         try:
             parser = PyEvtxParser(file)

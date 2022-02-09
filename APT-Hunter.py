@@ -13,7 +13,7 @@ from dateutil import tz
 import glob
 import os
 import re
-
+from pathlib import Path as libPath
 
 Output=""
 Path=""
@@ -39,21 +39,21 @@ sysmon_path_list=[]
 
 input_timezone=timezone("UTC")
 
-Logon_Events=[{'Date and Time':[],'timestamp':[],'Event ID':[],'Account Name':[],'Account Domain':[],'Logon Type':[],'Logon Process':[],'Source IP':[],'Workstation Name':[],'Original Event Log':[]}]
+Logon_Events=[{'Date and Time':[],'timestamp':[],'Event ID':[],'Account Name':[],'Account Domain':[],'Logon Type':[],'Logon Process':[],'Source IP':[],'Workstation Name':[],'Computer Name':[],'Channel':[],'Original Event Log':[]}]
+
 Executed_Process_Summary=[{'Process Name':[],'Number of Execution':[]}]
 TerminalServices_Summary=[{'User':[],'Number of Logins':[]}]
 Security_Authentication_Summary=[{'User':[],'Number of Failed Logins':[],'Number of Successful Logins':[]}]
-Sysmon_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-WinRM_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-Security_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-System_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Service Name':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-ScheduledTask_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Schedule Task Name':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-Powershell_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-Powershell_Operational_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-TerminalServices_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-Windows_Defender_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[]}]
-Timesketch_events=[{'message':[],'timestamp':[],'datetime':[],'timestamp_desc':[],'Event Description':[],'Severity':[],'Detection Domain':[],'Event ID':[],'Original Event Log':[]}]
-
+Sysmon_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
+WinRM_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
+Security_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
+System_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Service Name':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
+ScheduledTask_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Schedule Task Name':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
+Powershell_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
+Powershell_Operational_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
+TerminalServices_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'User':[],'Source IP':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
+Windows_Defender_events=[{'Date and Time':[],'timestamp':[],'Detection Rule':[],'Severity':[],'Detection Domain':[],'Event Description':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
+Timesketch_events=[{'message':[],'timestamp':[],'datetime':[],'timestamp_desc':[],'Event Description':[],'Severity':[],'Detection Domain':[],'Event ID':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
 
 
 
@@ -160,7 +160,8 @@ def auto_detect(path):
 
 
     if os.path.isdir(path):
-        files=glob.glob(path+"/"+"*.evtx")
+        files=list(libPath(path).rglob("*.[eE][vV][tT][xX]"))
+        #files=glob.glob(path+"/**/"+"*.evtx")
     elif os.path.isfile(path):
         files=glob.glob(path)
     else:
@@ -169,6 +170,7 @@ def auto_detect(path):
     #print("hunting ( %s ) in files ( %s )"%(str_regex,files))
     #user_string = input('please enter a string to convert to regex: ')
     for file in files:
+        file=str(file)
         print("Analyzing "+file)
         try:
             parser = PyEvtxParser(file)
@@ -215,7 +217,7 @@ def threat_hunt(path,str_regex):
     import os
 
     if os.path.isdir(path):
-        files=glob.glob(path+"*.evtx")
+        files=list(libPath(path).rglob("*.[eE][vV][tT][xX]"))
     elif os.path.isfile(path):
         files=glob.glob(path)
 

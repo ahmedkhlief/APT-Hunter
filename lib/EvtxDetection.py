@@ -23,7 +23,7 @@ all_suspicious=["\\csc.exe",'whoami.exe','\\pl.exe','\\nc.exe','nmap.exe','psexe
 Suspicious_Path=['\\temp\\','//temp//','/temp/','//windows//temp//','/windows/temp/','\\windows\\temp\\','\\appdata\\','/appdata/','//appdata//','//programdata//','\\programdata\\','/programdata/']
 Usual_Path=['\\Windows\\','/Windows/','//Windows//','Program Files','\\Windows\\SysWOW64\\','/Windows/SysWOW64/','//Windows//SysWOW64//','\\Windows\\Cluster\\','/Windows/Cluster/','//Windows//Cluster//']
 Pass_the_hash_users=[{'User':[],'Number of Logins':[],'Reached':[]}]
-Logon_Events=[{'Date and Time':[],'timestamp':[],'Event ID':[],'Account Name':[],'Account Domain':[],'Logon Type':[],'Logon Process':[],'Source IP':[],'Workstation Name':[],'Original Event Log':[],'Computer Name':[],'Channel':[]}]
+Logon_Events=[{'Date and Time':[],'timestamp':[],'Event ID':[],'Account Name':[],'Account Domain':[],'Logon Type':[],'Logon Process':[],'Source IP':[],'Workstation Name':[],'Computer Name':[],'Channel':[],'Original Event Log':[]}]
 TerminalServices_Summary=[{'User':[],'Number of Logins':[]}]
 Security_Authentication_Summary=[{'User':[],'Number of Failed Logins':[],'Number of Successful Logins':[]}]
 Executed_Process_Summary=[{'Process Name':[],'Number of Execution':[]}]
@@ -336,6 +336,7 @@ def detect_events_security_log(file_name,input_timzone):
                 #User Creation using Net command
                 if EventID[0]=="4688" or EventID[0]=="4648" or EventID[0]=="4673":
                     try:
+                        process_name=''
                         process_command_line=" "
                         if len(Account_Name[0][0])>0:
                             user=Account_Name[0][0].strip()
@@ -2396,13 +2397,14 @@ def detect_events_powershell_operational_log(files,input_timzone):
                     else:
                         #print("##### " + record["timestamp"] + " #### EventID=4100 #### Executing Pipeline #### ", end='')
                         #print("Found User ("+User[0].strip()+") run PowerShell with Command Name ("+Command_Name[0].strip()+") and full command ("+Host_Application[0].strip()+") ", end='')#, check event details "+record['data'])
-                        Event_desc = "Found User (" + User[0].strip() + ") run PowerShell with Command Name (" + \
-                                     Command_Name[0].strip() + ") and full command (" + host_app + ") "
-                        if len(Error_Message)>0:
-                            #print("Error Message ("+Error_Message[0].strip()+")")
-                            Event_desc = Event_desc + "Error Message ("+Error_Message[0].strip()+")"
-                        #else:
-                            #print("")
+                        try:
+                            Event_desc = "Found User (" + User[0].strip() + ") run PowerShell with Command Name (" + \
+                                         Command_Name[0].strip() + ") and full command (" + host_app + ") "
+                            if len(Error_Message)>0:
+                                #print("Error Message ("+Error_Message[0].strip()+")")
+                                Event_desc = Event_desc + "Error Message ("+Error_Message[0].strip()+")"
+                        except:
+                            Event_desc ="User running Powershell command"
 
                         Powershell_Operational_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
                         Powershell_Operational_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
@@ -3079,7 +3081,7 @@ def detect_events_Sysmon_log(file_name,input_timzone):
 
                         if CommandLine[0].lower().find(sProcessName.lower())>-1:
 
-                            Event_desc ="User Name : ( %s ) " % user+"with Command Line : ( " + process_command_line + " ) contain suspicious command ( %s)"%sProcessName
+                            Event_desc ="User Name : ( %s ) " % User[0].strip()+"with Command Line : ( " + CommandLine[0].strip() + " ) contain suspicious command ( %s)"%sProcessName
                             Sysmon_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
                             Sysmon_events[0]['Computer Name'].append(Computer[0])
                             Sysmon_events[0]['Channel'].append(Channel[0])
