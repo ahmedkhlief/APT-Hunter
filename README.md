@@ -98,7 +98,7 @@ python3 APT-Hunter.py  -hunt "(psexec|psexesvc)" -p /opt/wineventlogs/ -o Projec
 `Project1_TimeSketch.csv` : This CSV file you can upload it to timesketch in order to have timeline analysis that will help you see the full picture of the attack .
 
 `Project1_Logon_Events.csv` : ALl logon events with parsed fields (Date, User , Source IP , Logon Process , Workstation Name , Logon Type , Device Name , Original Log ) as columns . This CSV file you can upload it to timesketch in order to have timeline analysis .
-# Docker Image
+# Docker
 Alternatively you can use run the tool from a docker container.
 - Build the image
 ```bash
