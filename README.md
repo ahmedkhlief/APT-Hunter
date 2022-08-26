@@ -82,14 +82,14 @@ The remaining arguments if you want to analyze single type of logs.
 Analyzing EVTX files ,you can provide directory containg the logs or a single file and APT hunter will detect the type of logs.
 
 ```python
-python3 APT-Hunter.py -p /opt/wineventlogs/ -o Project1
+python3 APT-Hunter.py -p /opt/wineventlog/ -o Project1
 ```
 - Hunting using String or regex :
 
 ```python
-python3 APT-Hunter.py  -hunt "psexec" -p /opt/wineventlogs/ -o Project2`
+python3 APT-Hunter.py  -hunt "psexec" -p /opt/wineventlog/ -o Project2`
 
-python3 APT-Hunter.py  -hunt "(psexec|psexesvc)" -p /opt/wineventlogs/ -o Project2`
+python3 APT-Hunter.py  -hunt "(psexec|psexesvc)" -p /opt/wineventlog/ -o Project2`
 ```
 # The result will be available in two sheets :
 
@@ -111,7 +111,7 @@ docker run --rm  -it -v $PWD:/apt-hunter apt-hunter [OPTIONS...]
 docker run --rm  -it -v $PWD:/apt-hunter apt-hunter -h
 docker run --rm  -it -v $PWD:/apt-hunter apt-hunter -p wineventlog  -o Project2
 ``` 
-Make sure to have wineventlogs in the current directory and the output path to the current directory. 
+> **Note**: Make sure to have the logs directory and the output path in the current directory. 
 # Credits :
 
 I would like to thank [Joe Maccry](https://www.linkedin.com/in/joemccray/) for his amazing contribution in Sysmon use cases ( more than 100 use cases added by Joe )
