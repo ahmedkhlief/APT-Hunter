@@ -1,0 +1,4130 @@
+DateTime,timestamp,EventID,ProcessName,User,ParentProcessName,RawLog
+2021-12-07T21:33:14.919262+04:00,1638898394.919262,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:08.723523Z"">
+    </TimeCreated>
+    <EventRecordID>329925</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""868"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x24e0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-19</Data>
+    <Data Name=""TargetUserName"">LOCAL SERVICE</Data>
+    <Data Name=""TargetDomainName"">NT AUTHORITY</Data>
+    <Data Name=""TargetLogonId"">0x3e5</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680326+04:00,1638898381.680326,4688,C:\Windows\System32\lsass.exe,IEUser,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.680005Z"">
+    </TimeCreated>
+    <EventRecordID>329921</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x1494</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-18</Data>
+    <Data Name=""TargetUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""TargetDomainName"">WORKGROUP</Data>
+    <Data Name=""TargetLogonId"">0x3e7</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680005+04:00,1638898381.680005,4688,C:\Windows\System32\conhost.exe,IEUser,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.641209Z"">
+    </TimeCreated>
+    <EventRecordID>329920</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x11e4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x17b8</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.636384+04:00,1638898381.636384,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,MSEDGEWIN10$,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.619364Z"">
+    </TimeCreated>
+    <EventRecordID>329919</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x17b8</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">IEUser</Data>
+    <Data Name=""TargetDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""TargetLogonId"">0x16e3db3</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.474816+04:00,1638898381.474816,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.462545Z"">
+    </TimeCreated>
+    <EventRecordID>329916</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x1bc4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.409312+04:00,1638898381.409312,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,IEUser,C:\Windows\System32\cmd.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.397814Z"">
+    </TimeCreated>
+    <EventRecordID>329914</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x53ca2</Data>
+    <Data Name=""NewProcessId"">0x21a4</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x2480</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:14.919262+04:00,1638898394.919262,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:08.723523Z"">
+    </TimeCreated>
+    <EventRecordID>329925</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""868"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x24e0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-19</Data>
+    <Data Name=""TargetUserName"">LOCAL SERVICE</Data>
+    <Data Name=""TargetDomainName"">NT AUTHORITY</Data>
+    <Data Name=""TargetLogonId"">0x3e5</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680326+04:00,1638898381.680326,4688,C:\Windows\System32\lsass.exe,IEUser,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.680005Z"">
+    </TimeCreated>
+    <EventRecordID>329921</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x1494</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-18</Data>
+    <Data Name=""TargetUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""TargetDomainName"">WORKGROUP</Data>
+    <Data Name=""TargetLogonId"">0x3e7</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680005+04:00,1638898381.680005,4688,C:\Windows\System32\conhost.exe,IEUser,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.641209Z"">
+    </TimeCreated>
+    <EventRecordID>329920</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x11e4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x17b8</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.636384+04:00,1638898381.636384,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,MSEDGEWIN10$,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.619364Z"">
+    </TimeCreated>
+    <EventRecordID>329919</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x17b8</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">IEUser</Data>
+    <Data Name=""TargetDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""TargetLogonId"">0x16e3db3</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.474816+04:00,1638898381.474816,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.462545Z"">
+    </TimeCreated>
+    <EventRecordID>329916</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x1bc4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.409312+04:00,1638898381.409312,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,IEUser,C:\Windows\System32\cmd.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.397814Z"">
+    </TimeCreated>
+    <EventRecordID>329914</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x53ca2</Data>
+    <Data Name=""NewProcessId"">0x21a4</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x2480</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:14.919262+04:00,1638898394.919262,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:08.723523Z"">
+    </TimeCreated>
+    <EventRecordID>329925</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""868"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x24e0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-19</Data>
+    <Data Name=""TargetUserName"">LOCAL SERVICE</Data>
+    <Data Name=""TargetDomainName"">NT AUTHORITY</Data>
+    <Data Name=""TargetLogonId"">0x3e5</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680326+04:00,1638898381.680326,4688,C:\Windows\System32\lsass.exe,IEUser,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.680005Z"">
+    </TimeCreated>
+    <EventRecordID>329921</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x1494</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-18</Data>
+    <Data Name=""TargetUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""TargetDomainName"">WORKGROUP</Data>
+    <Data Name=""TargetLogonId"">0x3e7</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680005+04:00,1638898381.680005,4688,C:\Windows\System32\conhost.exe,IEUser,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.641209Z"">
+    </TimeCreated>
+    <EventRecordID>329920</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x11e4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x17b8</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.636384+04:00,1638898381.636384,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,MSEDGEWIN10$,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.619364Z"">
+    </TimeCreated>
+    <EventRecordID>329919</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x17b8</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">IEUser</Data>
+    <Data Name=""TargetDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""TargetLogonId"">0x16e3db3</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.474816+04:00,1638898381.474816,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.462545Z"">
+    </TimeCreated>
+    <EventRecordID>329916</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x1bc4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.409312+04:00,1638898381.409312,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,IEUser,C:\Windows\System32\cmd.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.397814Z"">
+    </TimeCreated>
+    <EventRecordID>329914</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x53ca2</Data>
+    <Data Name=""NewProcessId"">0x21a4</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x2480</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:14.919262+04:00,1638898394.919262,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:08.723523Z"">
+    </TimeCreated>
+    <EventRecordID>329925</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""868"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x24e0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-19</Data>
+    <Data Name=""TargetUserName"">LOCAL SERVICE</Data>
+    <Data Name=""TargetDomainName"">NT AUTHORITY</Data>
+    <Data Name=""TargetLogonId"">0x3e5</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680326+04:00,1638898381.680326,4688,C:\Windows\System32\lsass.exe,IEUser,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.680005Z"">
+    </TimeCreated>
+    <EventRecordID>329921</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x1494</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-18</Data>
+    <Data Name=""TargetUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""TargetDomainName"">WORKGROUP</Data>
+    <Data Name=""TargetLogonId"">0x3e7</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680005+04:00,1638898381.680005,4688,C:\Windows\System32\conhost.exe,IEUser,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.641209Z"">
+    </TimeCreated>
+    <EventRecordID>329920</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x11e4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x17b8</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.636384+04:00,1638898381.636384,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,MSEDGEWIN10$,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.619364Z"">
+    </TimeCreated>
+    <EventRecordID>329919</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x17b8</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">IEUser</Data>
+    <Data Name=""TargetDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""TargetLogonId"">0x16e3db3</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.474816+04:00,1638898381.474816,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.462545Z"">
+    </TimeCreated>
+    <EventRecordID>329916</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x1bc4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.409312+04:00,1638898381.409312,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,IEUser,C:\Windows\System32\cmd.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.397814Z"">
+    </TimeCreated>
+    <EventRecordID>329914</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x53ca2</Data>
+    <Data Name=""NewProcessId"">0x21a4</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x2480</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:14.919262+04:00,1638898394.919262,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:08.723523Z"">
+    </TimeCreated>
+    <EventRecordID>329925</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""868"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x24e0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-19</Data>
+    <Data Name=""TargetUserName"">LOCAL SERVICE</Data>
+    <Data Name=""TargetDomainName"">NT AUTHORITY</Data>
+    <Data Name=""TargetLogonId"">0x3e5</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680326+04:00,1638898381.680326,4688,C:\Windows\System32\lsass.exe,IEUser,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.680005Z"">
+    </TimeCreated>
+    <EventRecordID>329921</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x1494</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-18</Data>
+    <Data Name=""TargetUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""TargetDomainName"">WORKGROUP</Data>
+    <Data Name=""TargetLogonId"">0x3e7</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680005+04:00,1638898381.680005,4688,C:\Windows\System32\conhost.exe,IEUser,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.641209Z"">
+    </TimeCreated>
+    <EventRecordID>329920</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x11e4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x17b8</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.636384+04:00,1638898381.636384,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,MSEDGEWIN10$,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.619364Z"">
+    </TimeCreated>
+    <EventRecordID>329919</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x17b8</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">IEUser</Data>
+    <Data Name=""TargetDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""TargetLogonId"">0x16e3db3</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.474816+04:00,1638898381.474816,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.462545Z"">
+    </TimeCreated>
+    <EventRecordID>329916</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x1bc4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.409312+04:00,1638898381.409312,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,IEUser,C:\Windows\System32\cmd.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.397814Z"">
+    </TimeCreated>
+    <EventRecordID>329914</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x53ca2</Data>
+    <Data Name=""NewProcessId"">0x21a4</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x2480</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:14.919262+04:00,1638898394.919262,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:08.723523Z"">
+    </TimeCreated>
+    <EventRecordID>329925</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""868"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x24e0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-19</Data>
+    <Data Name=""TargetUserName"">LOCAL SERVICE</Data>
+    <Data Name=""TargetDomainName"">NT AUTHORITY</Data>
+    <Data Name=""TargetLogonId"">0x3e5</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680326+04:00,1638898381.680326,4688,C:\Windows\System32\lsass.exe,IEUser,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.680005Z"">
+    </TimeCreated>
+    <EventRecordID>329921</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x1494</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-18</Data>
+    <Data Name=""TargetUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""TargetDomainName"">WORKGROUP</Data>
+    <Data Name=""TargetLogonId"">0x3e7</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680005+04:00,1638898381.680005,4688,C:\Windows\System32\conhost.exe,IEUser,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.641209Z"">
+    </TimeCreated>
+    <EventRecordID>329920</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x11e4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x17b8</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.636384+04:00,1638898381.636384,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,MSEDGEWIN10$,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.619364Z"">
+    </TimeCreated>
+    <EventRecordID>329919</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x17b8</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">IEUser</Data>
+    <Data Name=""TargetDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""TargetLogonId"">0x16e3db3</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.474816+04:00,1638898381.474816,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.462545Z"">
+    </TimeCreated>
+    <EventRecordID>329916</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x1bc4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.409312+04:00,1638898381.409312,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,IEUser,C:\Windows\System32\cmd.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.397814Z"">
+    </TimeCreated>
+    <EventRecordID>329914</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x53ca2</Data>
+    <Data Name=""NewProcessId"">0x21a4</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x2480</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:14.919262+04:00,1638898394.919262,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:08.723523Z"">
+    </TimeCreated>
+    <EventRecordID>329925</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""868"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x24e0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-19</Data>
+    <Data Name=""TargetUserName"">LOCAL SERVICE</Data>
+    <Data Name=""TargetDomainName"">NT AUTHORITY</Data>
+    <Data Name=""TargetLogonId"">0x3e5</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680326+04:00,1638898381.680326,4688,C:\Windows\System32\lsass.exe,IEUser,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.680005Z"">
+    </TimeCreated>
+    <EventRecordID>329921</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x1494</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-18</Data>
+    <Data Name=""TargetUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""TargetDomainName"">WORKGROUP</Data>
+    <Data Name=""TargetLogonId"">0x3e7</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680005+04:00,1638898381.680005,4688,C:\Windows\System32\conhost.exe,IEUser,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.641209Z"">
+    </TimeCreated>
+    <EventRecordID>329920</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x11e4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x17b8</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.636384+04:00,1638898381.636384,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,MSEDGEWIN10$,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.619364Z"">
+    </TimeCreated>
+    <EventRecordID>329919</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x17b8</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">IEUser</Data>
+    <Data Name=""TargetDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""TargetLogonId"">0x16e3db3</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.474816+04:00,1638898381.474816,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.462545Z"">
+    </TimeCreated>
+    <EventRecordID>329916</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x1bc4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.409312+04:00,1638898381.409312,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,IEUser,C:\Windows\System32\cmd.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.397814Z"">
+    </TimeCreated>
+    <EventRecordID>329914</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x53ca2</Data>
+    <Data Name=""NewProcessId"">0x21a4</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x2480</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2022-05-01T08:42:06.656542+04:00,1651380126.656542,4688,C:\Windows\System32\notepad.exe,WIND10$,C:\Windows\System32\wbem\WmiPrvSE.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2022-05-01T04:42:06.656542Z"">
+    </TimeCreated>
+    <EventRecordID>21374</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""9832"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>wind10.winlab.local</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-20</Data>
+    <Data Name=""SubjectUserName"">WIND10$</Data>
+    <Data Name=""SubjectDomainName"">WINLAB</Data>
+    <Data Name=""SubjectLogonId"">0x3e4</Data>
+    <Data Name=""NewProcessId"">0x1dc</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\notepad.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0xe8c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">Administrator</Data>
+    <Data Name=""TargetDomainName"">WINLAB.LOCAL</Data>
+    <Data Name=""TargetLogonId"">0x82215a</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\wbem\WmiPrvSE.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:14.919262+04:00,1638898394.919262,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:08.723523Z"">
+    </TimeCreated>
+    <EventRecordID>329925</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""868"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x24e0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-19</Data>
+    <Data Name=""TargetUserName"">LOCAL SERVICE</Data>
+    <Data Name=""TargetDomainName"">NT AUTHORITY</Data>
+    <Data Name=""TargetLogonId"">0x3e5</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680326+04:00,1638898381.680326,4688,C:\Windows\System32\lsass.exe,IEUser,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.680005Z"">
+    </TimeCreated>
+    <EventRecordID>329921</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x1494</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-18</Data>
+    <Data Name=""TargetUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""TargetDomainName"">WORKGROUP</Data>
+    <Data Name=""TargetLogonId"">0x3e7</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680005+04:00,1638898381.680005,4688,C:\Windows\System32\conhost.exe,IEUser,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.641209Z"">
+    </TimeCreated>
+    <EventRecordID>329920</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x11e4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x17b8</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.636384+04:00,1638898381.636384,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,MSEDGEWIN10$,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.619364Z"">
+    </TimeCreated>
+    <EventRecordID>329919</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x17b8</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">IEUser</Data>
+    <Data Name=""TargetDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""TargetLogonId"">0x16e3db3</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.474816+04:00,1638898381.474816,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.462545Z"">
+    </TimeCreated>
+    <EventRecordID>329916</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x1bc4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.409312+04:00,1638898381.409312,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,IEUser,C:\Windows\System32\cmd.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.397814Z"">
+    </TimeCreated>
+    <EventRecordID>329914</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x53ca2</Data>
+    <Data Name=""NewProcessId"">0x21a4</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x2480</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2022-05-01T08:42:06.656542+04:00,1651380126.656542,4688,C:\Windows\System32\notepad.exe,WIND10$,C:\Windows\System32\wbem\WmiPrvSE.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2022-05-01T04:42:06.656542Z"">
+    </TimeCreated>
+    <EventRecordID>21374</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""9832"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>wind10.winlab.local</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-20</Data>
+    <Data Name=""SubjectUserName"">WIND10$</Data>
+    <Data Name=""SubjectDomainName"">WINLAB</Data>
+    <Data Name=""SubjectLogonId"">0x3e4</Data>
+    <Data Name=""NewProcessId"">0x1dc</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\notepad.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0xe8c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">Administrator</Data>
+    <Data Name=""TargetDomainName"">WINLAB.LOCAL</Data>
+    <Data Name=""TargetLogonId"">0x82215a</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\wbem\WmiPrvSE.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:14.919262+04:00,1638898394.919262,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:08.723523Z"">
+    </TimeCreated>
+    <EventRecordID>329925</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""868"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x24e0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-19</Data>
+    <Data Name=""TargetUserName"">LOCAL SERVICE</Data>
+    <Data Name=""TargetDomainName"">NT AUTHORITY</Data>
+    <Data Name=""TargetLogonId"">0x3e5</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680326+04:00,1638898381.680326,4688,C:\Windows\System32\lsass.exe,IEUser,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.680005Z"">
+    </TimeCreated>
+    <EventRecordID>329921</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x1494</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-18</Data>
+    <Data Name=""TargetUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""TargetDomainName"">WORKGROUP</Data>
+    <Data Name=""TargetLogonId"">0x3e7</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680005+04:00,1638898381.680005,4688,C:\Windows\System32\conhost.exe,IEUser,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.641209Z"">
+    </TimeCreated>
+    <EventRecordID>329920</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x11e4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x17b8</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.636384+04:00,1638898381.636384,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,MSEDGEWIN10$,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.619364Z"">
+    </TimeCreated>
+    <EventRecordID>329919</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x17b8</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">IEUser</Data>
+    <Data Name=""TargetDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""TargetLogonId"">0x16e3db3</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.474816+04:00,1638898381.474816,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.462545Z"">
+    </TimeCreated>
+    <EventRecordID>329916</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x1bc4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.409312+04:00,1638898381.409312,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,IEUser,C:\Windows\System32\cmd.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.397814Z"">
+    </TimeCreated>
+    <EventRecordID>329914</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x53ca2</Data>
+    <Data Name=""NewProcessId"">0x21a4</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x2480</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2022-05-01T08:42:06.656542+04:00,1651380126.656542,4688,C:\Windows\System32\notepad.exe,WIND10$,C:\Windows\System32\wbem\WmiPrvSE.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2022-05-01T04:42:06.656542Z"">
+    </TimeCreated>
+    <EventRecordID>21374</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""9832"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>wind10.winlab.local</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-20</Data>
+    <Data Name=""SubjectUserName"">WIND10$</Data>
+    <Data Name=""SubjectDomainName"">WINLAB</Data>
+    <Data Name=""SubjectLogonId"">0x3e4</Data>
+    <Data Name=""NewProcessId"">0x1dc</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\notepad.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0xe8c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">Administrator</Data>
+    <Data Name=""TargetDomainName"">WINLAB.LOCAL</Data>
+    <Data Name=""TargetLogonId"">0x82215a</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\wbem\WmiPrvSE.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+1601-01-01T04:00:00+04:00,-11644473600.0,4688,C:\Windows\System32\conhost.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.904945Z"">
+    </TimeCreated>
+    <EventRecordID>18208</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""44"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x8dc</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x188</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.904945+04:00,1557594610.904945,4688,C:\Windows\System32\cmd.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.889320Z"">
+    </TimeCreated>
+    <EventRecordID>18207</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xc74</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x4f0</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.889320+04:00,1557594610.88932,4688,C:\Windows\System32\wusa.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.826820Z"">
+    </TimeCreated>
+    <EventRecordID>18205</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x5b0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\wusa.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x4f0</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.826820+04:00,1557594610.82682,4688,C:\Windows\System32\dllhost.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.795570Z"">
+    </TimeCreated>
+    <EventRecordID>18204</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x27c</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\dllhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x258</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.795570+04:00,1557594610.79557,4688,C:\Windows\System32\dllhost.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.748695Z"">
+    </TimeCreated>
+    <EventRecordID>18201</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xec8</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\dllhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x258</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.654945+04:00,1557594610.654945,4688,C:\Windows\System32\consent.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.623695Z"">
+    </TimeCreated>
+    <EventRecordID>18198</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x7f0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\consent.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x3c8</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.623695+04:00,1557594610.623695,4688,C:\Windows\System32\wusa.exe,IEUser,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.608070Z"">
+    </TimeCreated>
+    <EventRecordID>18197</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3583694148-1414552638-2922671848-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">IEWIN7</Data>
+    <Data Name=""SubjectLogonId"">0x13765</Data>
+    <Data Name=""NewProcessId"">0x628</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\wusa.exe</Data>
+    <Data Name=""TokenElevationType"">%%1938</Data>
+    <Data Name=""ProcessId"">0x4f0</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.608070+04:00,1557594610.60807,4688,C:\Python27\python.exe,IEUser,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.342445Z"">
+    </TimeCreated>
+    <EventRecordID>18196</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""44"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3583694148-1414552638-2922671848-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">IEWIN7</Data>
+    <Data Name=""SubjectLogonId"">0x13765</Data>
+    <Data Name=""NewProcessId"">0x4f0</Data>
+    <Data Name=""NewProcessName"">C:\Python27\python.exe</Data>
+    <Data Name=""TokenElevationType"">%%1938</Data>
+    <Data Name=""ProcessId"">0x12c</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-03-18T15:06:46.345209+04:00,1552907206.345209,4688,C:\Windows\System32\dllhost.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-03-18T11:06:46.305152Z"">
+    </TimeCreated>
+    <EventRecordID>433078</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""48"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xf6c</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\dllhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x278</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-03-18T15:06:42.139161+04:00,1552907202.139161,4688,C:\Windows\System32\conhost.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-03-18T11:06:29.961651Z"">
+    </TimeCreated>
+    <EventRecordID>432906</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""48"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x370</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x764</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-03-18T15:06:42.139161+04:00,1552907202.139161,4688,C:\Windows\System32\cmd.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-03-18T11:06:29.911579Z"">
+    </TimeCreated>
+    <EventRecordID>432905</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""48"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x440</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x448</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-03-19T02:16:09.458302+04:00,1552947369.458302,4688,C:\Windows\System32\calc.exe,WIN-77LTAPHIQ1R$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-03-18T22:15:49.676748Z"">
+    </TimeCreated>
+    <EventRecordID>563299</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""3696"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>WIN-77LTAPHIQ1R.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-20</Data>
+    <Data Name=""SubjectUserName"">WIN-77LTAPHIQ1R$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e4</Data>
+    <Data Name=""NewProcessId"">0x424</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\calc.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0xae8</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-03-19T02:15:49.692401+04:00,1552947349.692401,4688,C:\Windows\System32\wbem\WmiPrvSE.exe,WIN-77LTAPHIQ1R$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-03-18T22:15:49.645889Z"">
+    </TimeCreated>
+    <EventRecordID>563298</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""3696"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>WIN-77LTAPHIQ1R.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">WIN-77LTAPHIQ1R$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xae8</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\wbem\WmiPrvSE.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x248</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-03-19T04:02:07.445773+04:00,1552953727.445773,4688,C:\Windows\System32\wbem\WmiPrvSE.exe,WIN-77LTAPHIQ1R$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-03-19T00:02:04.398153Z"">
+    </TimeCreated>
+    <EventRecordID>566844</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""1676"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>WIN-77LTAPHIQ1R.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">WIN-77LTAPHIQ1R$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x3b4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\wbem\WmiPrvSE.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x248</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-03-19T04:02:04.367441+04:00,1552953724.367441,4688,C:\Windows\System32\tasklist.exe,WIN-77LTAPHIQ1R$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-03-19T00:02:04.335561Z"">
+    </TimeCreated>
+    <EventRecordID>566839</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""3812"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>WIN-77LTAPHIQ1R.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">WIN-77LTAPHIQ1R$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x970</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\tasklist.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0xbcc</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-03-19T04:02:04.351252+04:00,1552953724.351252,4688,C:\Windows\System32\conhost.exe,WIN-77LTAPHIQ1R$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-03-19T00:02:04.335561Z"">
+    </TimeCreated>
+    <EventRecordID>566838</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""3812"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>WIN-77LTAPHIQ1R.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">WIN-77LTAPHIQ1R$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xebc</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0xbcc</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-03-19T04:02:04.335561+04:00,1552953724.335561,4688,C:\Windows\System32\cmd.exe,WIN-77LTAPHIQ1R$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-03-19T00:02:04.319945Z"">
+    </TimeCreated>
+    <EventRecordID>566837</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""3812"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>WIN-77LTAPHIQ1R.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">WIN-77LTAPHIQ1R$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xbcc</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x33c</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+1601-01-01T04:00:00+04:00,-11644473600.0,4688,C:\Windows\System32\conhost.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.904945Z"">
+    </TimeCreated>
+    <EventRecordID>18208</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""44"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x8dc</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x188</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.904945+04:00,1557594610.904945,4688,C:\Windows\System32\cmd.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.889320Z"">
+    </TimeCreated>
+    <EventRecordID>18207</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xc74</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x4f0</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.889320+04:00,1557594610.88932,4688,C:\Windows\System32\wusa.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.826820Z"">
+    </TimeCreated>
+    <EventRecordID>18205</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x5b0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\wusa.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x4f0</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.826820+04:00,1557594610.82682,4688,C:\Windows\System32\dllhost.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.795570Z"">
+    </TimeCreated>
+    <EventRecordID>18204</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x27c</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\dllhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x258</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.795570+04:00,1557594610.79557,4688,C:\Windows\System32\dllhost.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.748695Z"">
+    </TimeCreated>
+    <EventRecordID>18201</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xec8</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\dllhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x258</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.654945+04:00,1557594610.654945,4688,C:\Windows\System32\consent.exe,IEWIN7$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.623695Z"">
+    </TimeCreated>
+    <EventRecordID>18198</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">IEWIN7$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x7f0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\consent.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x3c8</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.623695+04:00,1557594610.623695,4688,C:\Windows\System32\wusa.exe,IEUser,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.608070Z"">
+    </TimeCreated>
+    <EventRecordID>18197</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""52"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3583694148-1414552638-2922671848-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">IEWIN7</Data>
+    <Data Name=""SubjectLogonId"">0x13765</Data>
+    <Data Name=""NewProcessId"">0x628</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\wusa.exe</Data>
+    <Data Name=""TokenElevationType"">%%1938</Data>
+    <Data Name=""ProcessId"">0x4f0</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-05-11T21:10:10.608070+04:00,1557594610.60807,4688,C:\Python27\python.exe,IEUser,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-05-11T17:10:10.342445Z"">
+    </TimeCreated>
+    <EventRecordID>18196</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""44"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>IEWIN7</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3583694148-1414552638-2922671848-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">IEWIN7</Data>
+    <Data Name=""SubjectLogonId"">0x13765</Data>
+    <Data Name=""NewProcessId"">0x4f0</Data>
+    <Data Name=""NewProcessName"">C:\Python27\python.exe</Data>
+    <Data Name=""TokenElevationType"">%%1938</Data>
+    <Data Name=""ProcessId"">0x12c</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-03-18T15:27:05.455663+04:00,1552908425.455663,4688,C:\Windows\System32\wbem\WMIC.exe,user01,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-03-18T11:27:05.425620Z"">
+    </TimeCreated>
+    <EventRecordID>433308</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""48"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-1587066498-1489273250-1035260531-1106</Data>
+    <Data Name=""SubjectUserName"">user01</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x18a7875</Data>
+    <Data Name=""NewProcessId"">0x44c</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\wbem\WMIC.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x86c</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:05:06.665634+04:00,1550081106.665634,4688,C:\Windows\System32\AtBroker.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:05:06.585519Z"">
+    </TimeCreated>
+    <EventRecordID>227784</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x7f0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\AtBroker.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0xdec</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:05:06.585519+04:00,1550081106.585519,4688,C:\Windows\System32\rdpclip.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:05:06.575504Z"">
+    </TimeCreated>
+    <EventRecordID>227783</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-20</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e4</Data>
+    <Data Name=""NewProcessId"">0xa1c</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\rdpclip.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x500</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:05:05.453892+04:00,1550081105.453892,4688,C:\Windows\System32\TSTheme.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:05:05.253604Z"">
+    </TimeCreated>
+    <EventRecordID>227776</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x9fc</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\TSTheme.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x278</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:05:05.253604+04:00,1550081105.253604,4688,C:\Windows\System32\LogonUI.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:05:05.123416Z"">
+    </TimeCreated>
+    <EventRecordID>227775</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xce0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\LogonUI.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x768</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:05:05.123416+04:00,1550081105.123416,4688,C:\Windows\System32\winlogon.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:05:04.873056Z"">
+    </TimeCreated>
+    <EventRecordID>227774</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x768</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\winlogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x62c</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:05:04.873056+04:00,1550081104.873056,4688,C:\Windows\System32\csrss.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:05:04.802956Z"">
+    </TimeCreated>
+    <EventRecordID>227773</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xadc</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\csrss.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x62c</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:05:04.802956+04:00,1550081104.802956,4688,C:\Windows\System32\smss.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:05:04.802956Z"">
+    </TimeCreated>
+    <EventRecordID>227772</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x62c</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\smss.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x124</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:05:01.037541+04:00,1550081101.037541,4688,C:\Windows\System32\rundll32.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:05:00.997484Z"">
+    </TimeCreated>
+    <EventRecordID>227769</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x410</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\rundll32.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x278</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:04:57.862976+04:00,1550081097.862976,4688,C:\Windows\System32\LogonUI.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:04:57.672703Z"">
+    </TimeCreated>
+    <EventRecordID>227751</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xc70</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\LogonUI.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x4b8</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:04:57.672703+04:00,1550081097.672703,4688,C:\Windows\System32\winlogon.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:04:57.542516Z"">
+    </TimeCreated>
+    <EventRecordID>227750</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x4b8</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\winlogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x38c</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:04:57.542516+04:00,1550081097.542516,4688,C:\Windows\System32\csrss.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:04:57.462400Z"">
+    </TimeCreated>
+    <EventRecordID>227749</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x9d4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\csrss.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x38c</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:04:57.462400+04:00,1550081097.4624,4688,C:\Windows\System32\smss.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:04:57.462400Z"">
+    </TimeCreated>
+    <EventRecordID>227748</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x38c</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\smss.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x124</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:04:01.632120+04:00,1550081041.63212,4688,C:\Windows\System32\UI0Detect.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:03:42.664847Z"">
+    </TimeCreated>
+    <EventRecordID>227726</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x934</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\UI0Detect.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x990</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:03:35.734882+04:00,1550081015.734882,4688,C:\Windows\System32\slui.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:03:35.704839Z"">
+    </TimeCreated>
+    <EventRecordID>227721</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0xa38</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\slui.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x278</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:03:28.338519+04:00,1550081008.338519,4688,C:\Users\user01\Desktop\plink.exe,user01,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:03:28.318440Z"">
+    </TimeCreated>
+    <EventRecordID>227714</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-1587066498-1489273250-1035260531-1106</Data>
+    <Data Name=""SubjectUserName"">user01</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x2ed80</Data>
+    <Data Name=""NewProcessId"">0xcfc</Data>
+    <Data Name=""NewProcessName"">C:\Users\user01\Desktop\plink.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0xe60</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:02:19.518362+04:00,1550080939.518362,4688,C:\Windows\System32\AtBroker.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:02:05.528246Z"">
+    </TimeCreated>
+    <EventRecordID>227712</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x250</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\AtBroker.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x1d0</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2019-02-13T22:01:47.602470+04:00,1550080907.60247,4688,C:\Windows\System32\TSTheme.exe,PC01$,None,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>1</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2019-02-13T18:01:47.562412Z"">
+    </TimeCreated>
+    <EventRecordID>227695</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""56"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>PC01.example.corp</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">PC01$</Data>
+    <Data Name=""SubjectDomainName"">EXAMPLE</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x1fc</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\TSTheme.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x278</Data>
+    <Data Name=""CommandLine""></Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:14.919262+04:00,1638898394.919262,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:08.723523Z"">
+    </TimeCreated>
+    <EventRecordID>329925</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""868"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x24e0</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-19</Data>
+    <Data Name=""TargetUserName"">LOCAL SERVICE</Data>
+    <Data Name=""TargetDomainName"">NT AUTHORITY</Data>
+    <Data Name=""TargetLogonId"">0x3e5</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680326+04:00,1638898381.680326,4688,C:\Windows\System32\lsass.exe,IEUser,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.680005Z"">
+    </TimeCreated>
+    <EventRecordID>329921</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x1494</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-5-18</Data>
+    <Data Name=""TargetUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""TargetDomainName"">WORKGROUP</Data>
+    <Data Name=""TargetLogonId"">0x3e7</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.680005+04:00,1638898381.680005,4688,C:\Windows\System32\conhost.exe,IEUser,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.641209Z"">
+    </TimeCreated>
+    <EventRecordID>329920</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x16e3db3</Data>
+    <Data Name=""NewProcessId"">0x11e4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\conhost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x17b8</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.636384+04:00,1638898381.636384,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,MSEDGEWIN10$,C:\Windows\System32\lsass.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.619364Z"">
+    </TimeCreated>
+    <EventRecordID>329919</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""7648"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x17b8</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x27c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">IEUser</Data>
+    <Data Name=""TargetDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""TargetLogonId"">0x16e3db3</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\lsass.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.474816+04:00,1638898381.474816,4688,C:\Windows\System32\svchost.exe,MSEDGEWIN10$,C:\Windows\System32\services.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.462545Z"">
+    </TimeCreated>
+    <EventRecordID>329916</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-18</Data>
+    <Data Name=""SubjectUserName"">MSEDGEWIN10$</Data>
+    <Data Name=""SubjectDomainName"">WORKGROUP</Data>
+    <Data Name=""SubjectLogonId"">0x3e7</Data>
+    <Data Name=""NewProcessId"">0x1bc4</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\svchost.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0x274</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\services.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-16384</Data>
+  </EventData>
+</Event>"
+2021-12-07T21:33:01.409312+04:00,1638898381.409312,4688,\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe,IEUser,C:\Windows\System32\cmd.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2021-12-07T17:33:01.397814Z"">
+    </TimeCreated>
+    <EventRecordID>329914</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""8692"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>MSEDGEWIN10</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-21-3461203602-4096304019-2269080069-1000</Data>
+    <Data Name=""SubjectUserName"">IEUser</Data>
+    <Data Name=""SubjectDomainName"">MSEDGEWIN10</Data>
+    <Data Name=""SubjectLogonId"">0x53ca2</Data>
+    <Data Name=""NewProcessId"">0x21a4</Data>
+    <Data Name=""NewProcessName"">\Device\Mup\VBoxSvr\Users\bouss\Downloads\MalSeclogon-master\x64\Debug\MalSeclogon.exe</Data>
+    <Data Name=""TokenElevationType"">%%1937</Data>
+    <Data Name=""ProcessId"">0x2480</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">-</Data>
+    <Data Name=""TargetDomainName"">-</Data>
+    <Data Name=""TargetLogonId"">0x0</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\cmd.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
+2022-05-01T08:42:06.656542+04:00,1651380126.656542,4688,C:\Windows\System32\notepad.exe,WIND10$,C:\Windows\System32\wbem\WmiPrvSE.exe,"<?xml version=""1.0"" encoding=""utf-8""?>
+<Event xmlns=""http://schemas.microsoft.com/win/2004/08/events/event"">
+  <System>
+    <Provider Name=""Microsoft-Windows-Security-Auditing"" Guid=""54849625-5478-4994-A5BA-3E3B0328C30D"">
+    </Provider>
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime=""2022-05-01T04:42:06.656542Z"">
+    </TimeCreated>
+    <EventRecordID>21374</EventRecordID>
+    <Correlation>
+    </Correlation>
+    <Execution ProcessID=""4"" ThreadID=""9832"">
+    </Execution>
+    <Channel>Security</Channel>
+    <Computer>wind10.winlab.local</Computer>
+    <Security>
+    </Security>
+  </System>
+  <EventData>
+    <Data Name=""SubjectUserSid"">S-1-5-20</Data>
+    <Data Name=""SubjectUserName"">WIND10$</Data>
+    <Data Name=""SubjectDomainName"">WINLAB</Data>
+    <Data Name=""SubjectLogonId"">0x3e4</Data>
+    <Data Name=""NewProcessId"">0x1dc</Data>
+    <Data Name=""NewProcessName"">C:\Windows\System32\notepad.exe</Data>
+    <Data Name=""TokenElevationType"">%%1936</Data>
+    <Data Name=""ProcessId"">0xe8c</Data>
+    <Data Name=""CommandLine""></Data>
+    <Data Name=""TargetUserSid"">S-1-0-0</Data>
+    <Data Name=""TargetUserName"">Administrator</Data>
+    <Data Name=""TargetDomainName"">WINLAB.LOCAL</Data>
+    <Data Name=""TargetLogonId"">0x82215a</Data>
+    <Data Name=""ParentProcessName"">C:\Windows\System32\wbem\WmiPrvSE.exe</Data>
+    <Data Name=""MandatoryLabel"">S-1-16-12288</Data>
+  </EventData>
+</Event>"
