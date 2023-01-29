@@ -2157,20 +2157,20 @@ def detect_events_security_log(file_name):
             #Security_Authentication.to_csv(temp_dir + '_Security_Authentication_report.csv', mode='a', index=False, header=False)
             #Executed_Process.to_csv(temp_dir + '_Executed_Process_report.csv', mode='a', index=False, header=False)
 
-        # if (processexec==True or allreport==True):
-        #     ExecutedProcess_Events_pd=pd.DataFrame(Executed_Process_Events[0])
-        #     if processinitial.value==1:
-        #         ExecutedProcess_Events_pd.to_csv(output+'_Process_Execution_Events.csv', index=False)
-        #         processinitial.value=0
-        #     else:
-        #         ExecutedProcess_Events_pd.to_csv(output+'_Process_Execution_Events.csv', mode='a', index=False, header=False)
-        # if (logons==True or allreport==True):
-        #     Logon_Events_pd=pd.DataFrame(Logon_Events[0])
-        #     if logoninitial.value==1:
-        #         Logon_Events_pd.to_csv(output+'_Logon_Events.csv', index=False)
-        #         logoninitial.value=0
-        #     else:
-        #         Logon_Events_pd.to_csv(output+'_Logon_Events.csv', mode='a', index=False, header=False)
+        if (processexec==True or allreport==True):
+            ExecutedProcess_Events_pd=pd.DataFrame(Executed_Process_Events[0])
+            if processinitial.value==1:
+                ExecutedProcess_Events_pd.to_csv(output+'_Process_Execution_Events.csv', index=False)
+                processinitial.value=0
+            else:
+                ExecutedProcess_Events_pd.to_csv(output+'_Process_Execution_Events.csv', mode='a', index=False, header=False)
+        if (logons==True or allreport==True):
+            Logon_Events_pd=pd.DataFrame(Logon_Events[0])
+            if logoninitial.value==1:
+                Logon_Events_pd.to_csv(output+'_Logon_Events.csv', index=False)
+                logoninitial.value=0
+            else:
+                Logon_Events_pd.to_csv(output+'_Logon_Events.csv', mode='a', index=False, header=False)
         Process_Execution_dataframes=[]
         lock.acquire()
         if os.path.exists(temp_dir +"Executed_Process_Events.pickle"):
@@ -6755,4 +6755,3 @@ def multiprocess(file_name,function,input_timezone,timestarts,timeends,objectacc
 if __name__ == '__main__':
     if  platform.system().lower()=="windows":
         multiprocessing.freeze_support()
-
