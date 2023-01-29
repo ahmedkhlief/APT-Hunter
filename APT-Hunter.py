@@ -801,16 +801,16 @@ def main():
 
 
         #if args.type is None or args.type=="evtx":
-        # try:
+        try:
         if 1==1:
             create_temp_dir()
             auto_detect(Path)
             #convert_list()
             report()
-            #clean_temp_dir()
-        # except Exception as e:
-        #     print("Error "+str(e))
-        #     #clean_temp_dir()
+            clean_temp_dir()
+        except Exception as e:
+            print("Error "+str(e))
+            clean_temp_dir()
 
         toc = time.time()
         print('Done in {:.4f} seconds'.format(toc-tic))
