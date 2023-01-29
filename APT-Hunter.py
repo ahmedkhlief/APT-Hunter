@@ -18,7 +18,8 @@ from datetime import datetime
 import dateutil.parser
 import multiprocessing
 import time
-
+import pickle
+import platform
 timestart=None
 timeend=None
 Output=""
@@ -30,7 +31,7 @@ defender_path=""
 powershell_path=""
 powershellop_path=""
 terminal_path=""
-
+temp_dir="temp"
 winrm_path=""
 sysmon_path=""
 objectaccess=False
@@ -111,7 +112,7 @@ def evtxdetect_auto():
         logging.error(traceback.format_exc())
     try:
         #print(Security_path)
-        sec=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (Security_path_list,EvtxDetection.detect_events_security_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        sec=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (Security_path_list,EvtxDetection.detect_events_security_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         sec.start()
         process_list.append(sec)
     except IOError :
@@ -122,7 +123,7 @@ def evtxdetect_auto():
         logging.error(traceback.format_exc())
     try:
         #EvtxDetection.multiprocess(system_path_list,EvtxDetection.detect_events_system_log,input_timezone,timestart,timeend)
-        sys=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (system_path_list,EvtxDetection.detect_events_system_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        sys=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (system_path_list,EvtxDetection.detect_events_system_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         sys.start()
         process_list.append(sys)
     except IOError :
@@ -133,7 +134,7 @@ def evtxdetect_auto():
         logging.error(traceback.format_exc())
     try :
         #EvtxDetection.multiprocess(powershellop_path_list,EvtxDetection.detect_events_powershell_operational_log,input_timezone,timestart,timeend)
-        pwshop=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (powershellop_path_list,EvtxDetection.detect_events_powershell_operational_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        pwshop=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (powershellop_path_list,EvtxDetection.detect_events_powershell_operational_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         pwshop.start()
         process_list.append(pwshop)
     except IOError :
@@ -144,7 +145,7 @@ def evtxdetect_auto():
         logging.error(traceback.format_exc())
     try :
         #EvtxDetection.multiprocess(powershell_path_list,EvtxDetection.detect_events_powershell_log,input_timezone,timestart,timeend)
-        pwsh=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (powershell_path_list,EvtxDetection.detect_events_powershell_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        pwsh=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (powershell_path_list,EvtxDetection.detect_events_powershell_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         pwsh.start()
         process_list.append(pwsh)
     except IOError :
@@ -155,7 +156,7 @@ def evtxdetect_auto():
         logging.error(traceback.format_exc())
     try :
         #EvtxDetection.multiprocess(terminal_path_list,EvtxDetection.detect_events_TerminalServices_LocalSessionManager_log,input_timezone,timestart,timeend)
-        terminal=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (terminal_path_list,EvtxDetection.detect_events_TerminalServices_LocalSessionManager_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        terminal=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (terminal_path_list,EvtxDetection.detect_events_TerminalServices_LocalSessionManager_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         terminal.start()
         process_list.append(terminal)
     except IOError :
@@ -166,7 +167,7 @@ def evtxdetect_auto():
         logging.error(traceback.format_exc())
     try :
         #EvtxDetection.multiprocess(terminal_path_list,EvtxDetection.detect_events_TerminalServices_LocalSessionManager_log,input_timezone,timestart,timeend)
-        terminal_client=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (terminal_Client_path_list,EvtxDetection.detect_events_TerminalServices_RDPClient_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        terminal_client=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (terminal_Client_path_list,EvtxDetection.detect_events_TerminalServices_RDPClient_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         terminal_client.start()
         process_list.append(terminal_client)
     except IOError :
@@ -178,7 +179,7 @@ def evtxdetect_auto():
 
     try:
         #EvtxDetection.multiprocess(scheduledtask_path_list,EvtxDetection.detect_events_scheduled_task_log,input_timezone,timestart,timeend)
-        scheduled=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (scheduledtask_path_list,EvtxDetection.detect_events_scheduled_task_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        scheduled=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (scheduledtask_path_list,EvtxDetection.detect_events_scheduled_task_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         scheduled.start()
         process_list.append(scheduled)
     except IOError :
@@ -190,7 +191,7 @@ def evtxdetect_auto():
 
     try:
         #EvtxDetection.multiprocess(defender_path_list,EvtxDetection.detect_events_windows_defender_log,input_timezone,timestart,timeend)
-        defen=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (defender_path_list,EvtxDetection.detect_events_windows_defender_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        defen=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (defender_path_list,EvtxDetection.detect_events_windows_defender_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         defen.start()
         process_list.append(defen)
 
@@ -202,7 +203,7 @@ def evtxdetect_auto():
         logging.error(traceback.format_exc())
     try:
         #EvtxDetection.multiprocess(winrm_path_list,EvtxDetection.detect_events_Microsoft_Windows_WinRM,input_timezone,timestart,timeend)
-        winrm=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (winrm_path_list,EvtxDetection.detect_events_Microsoft_Windows_WinRM,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        winrm=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (winrm_path_list,EvtxDetection.detect_events_Microsoft_Windows_WinRM,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         winrm.start()
         process_list.append(winrm)
 
@@ -215,7 +216,7 @@ def evtxdetect_auto():
 
     try:
         #EvtxDetection.multiprocess(sysmon_path_list,EvtxDetection.detect_events_Sysmon_log,input_timezone,timestart,timeend)
-        sysmon=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (sysmon_path_list,EvtxDetection.detect_events_Sysmon_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        sysmon=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (sysmon_path_list,EvtxDetection.detect_events_Sysmon_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         sysmon.start()
         process_list.append(sysmon)
 
@@ -228,7 +229,7 @@ def evtxdetect_auto():
 
     try:
         #EvtxDetection.multiprocess(group_policy_path_list,EvtxDetection.detect_events_group_policy_log,input_timezone,timestart,timeend)
-        gp=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (group_policy_path_list,EvtxDetection.detect_events_group_policy_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        gp=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (group_policy_path_list,EvtxDetection.detect_events_group_policy_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         gp.start()
         process_list.append(gp)
 
@@ -241,7 +242,7 @@ def evtxdetect_auto():
 
     try:
         #EvtxDetection.multiprocess(SMB_SERVER_path_list,EvtxDetection.detect_events_SMB_Server_log,input_timezone,timestart,timeend)
-        smbserv=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (SMB_SERVER_path_list,EvtxDetection.detect_events_SMB_Server_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        smbserv=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (SMB_SERVER_path_list,EvtxDetection.detect_events_SMB_Server_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         smbserv.start()
         process_list.append(smbserv)
 
@@ -254,7 +255,7 @@ def evtxdetect_auto():
 
     try:
         #EvtxDetection.multiprocess(SMB_CLIENT_path_list,EvtxDetection.detect_events_SMB_Client_log,input_timezone,timestart,timeend)
-        smbcli=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (SMB_CLIENT_path_list,EvtxDetection.detect_events_SMB_Client_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core))
+        smbcli=multiprocessing.Process(target= EvtxDetection.multiprocess, args = (SMB_CLIENT_path_list,EvtxDetection.detect_events_SMB_Client_log,input_timezone,timestart,timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,Output,CPU_Core,temp_dir))
         smbcli.start()
         process_list.append(smbcli)
 
@@ -302,7 +303,13 @@ def evtxdetect_auto():
     Frequency_Analysis_Sysmon=EvtxDetection.Frequency_Analysis_Sysmon
     Frequency_Analysis_SMB_Server=EvtxDetection.Frequency_Analysis_SMB_Server
     Frequency_Analysis_TerminalServices=EvtxDetection.Frequency_Analysis_TerminalServices
-    User_SIDs=EvtxDetection.User_SIDs
+    if os.path.exists(temp_dir + "_User_SIDs_report.csv"):
+        #User_SIDs = pd.DataFrame(pd.read_csv(temp_dir + "_User_SIDs_report.csv"))
+        User_SIDs = pd.DataFrame(pd.read_csv(temp_dir + "_User_SIDs_report.csv")).to_dict(orient='list')
+    else:
+        print(f"{temp_dir + '_User_SIDs_report.csv'} does not exist.")
+        #User_SIDs = pd.DataFrame(User_SIDs)
+    #User_SIDs=EvtxDetection.User_SIDs
     resolveSID()
 def auto_detect(path):
     global input_timezone
@@ -416,40 +423,168 @@ def threat_hunt(path,str_regex,eid,hunt_file):
     #except Exception as e:
     #    print("Error in hunting module ")
 def report():
-    global Output
+    global Output,User_SIDs
     timesketch=Output+"_TimeSketch.csv"
     Report=Output+"_Report.xlsx"
     LogonEvents=Output+"_Logon_Events.csv"
     ObjectAccess=Output+"_Object_Access_Events.csv"
     ProcessEvents=Output+"_Process_Execution_Events.csv"
     Collected_SIDs=Output+"_Collected_SIDs.csv"
-    SIDs=pd.DataFrame(User_SIDs[0])
-    Sysmon = pd.DataFrame(Sysmon_events[0])
-    System = pd.DataFrame(System_events[0])
-    Powershell = pd.DataFrame(Powershell_events[0])
-    Powershell_Operational = pd.DataFrame(Powershell_Operational_events[0])
-    Security = pd.DataFrame(Security_events[0])
-    TerminalServices = pd.DataFrame(TerminalServices_events[0])
+    print("preparing report")
+    if os.path.exists(temp_dir + "_User_SIDs_report.csv"):
+        User_SIDs = pd.DataFrame(pd.read_csv(temp_dir + "_User_SIDs_report.csv"))
+    else:
+        print(f"{temp_dir + '_User_SIDs_report.csv'} does not exist.")
+        User_SIDs = pd.DataFrame(User_SIDs)
+    if os.path.exists(temp_dir + "_Sysmon_report.csv"):
+        Sysmon = pd.DataFrame(pd.read_csv(temp_dir + "_Sysmon_report.csv"))
+    else:
+        print(f"{temp_dir + '_Sysmon_report.csv'} does not exist.")
+        Sysmon = pd.DataFrame(Sysmon_events[0])
+    if os.path.exists(temp_dir + "_System_report.csv"):
+        System = pd.DataFrame(pd.read_csv(temp_dir + "_System_report.csv"))
+    else:
+        print(f"{temp_dir + '_System_report.csv'} does not exist.")
+        System = pd.DataFrame(System_events[0])
+    if os.path.exists(temp_dir + "_Powershell_report.csv"):
+        Powershell = pd.DataFrame(pd.read_csv(temp_dir + "_Powershell_report.csv"))
+    else:
+        print(f"{temp_dir + '_Powershell_report.csv'} does not exist.")
+        Powershell = pd.DataFrame(Powershell_events[0])
+    if os.path.exists(temp_dir + "_Powershell_Operational_report.csv"):
+        Powershell_Operational = pd.DataFrame(pd.read_csv(temp_dir + "_Powershell_Operational_report.csv"))
+    else:
+        print(f"{temp_dir + '_Powershell_Operational_report.csv'} does not exist.")
+        Powershell_Operational = pd.DataFrame(Powershell_Operational_events[0])
+    if os.path.exists(temp_dir + "_Security_report.csv"):
+        Security = pd.DataFrame(pd.read_csv(temp_dir + "_Security_report.csv"))
+    else:
+        print(f"{temp_dir + '_Security_report.csv'} does not exist.")
+        Security = pd.DataFrame(Security_events[0])
+    if os.path.exists(temp_dir + "_TerminalServices_report.csv"):
+        TerminalServices = pd.DataFrame(pd.read_csv(temp_dir + "_TerminalServices_report.csv"))
+    else:
+        print(f"{temp_dir + '_TerminalServices_report.csv'} does not exist.")
+        TerminalServices = pd.DataFrame(TerminalServices_events[0])
+    if os.path.exists(temp_dir + "_WinRM_events_report.csv"):
+        WinRM = pd.DataFrame(pd.read_csv(temp_dir + "_WinRM_events_report.csv"))
+        #print(WinRM_Resolved_User)
+        if len(WinRM_Resolved_User)>0:
+            try:
+                WinRM['Resolved User Name']=WinRM_Resolved_User
+                WinRM=WinRM[['Date and Time','timestamp','Detection Rule','Severity','Detection Domain','Event Description','UserID','Resolved User Name','Event ID','Original Event Log','Computer Name','Channel']]
+            except:
+                print("Error resolving SIDs for WinRM")
+    else:
+        print(f"{temp_dir + '_WinRM_events_report.csv'} does not exist.")
+        WinRM = pd.DataFrame(WinRM_events[0])
+    if os.path.exists(temp_dir + "_TerminalServices_RDPClient_report.csv"):
+        TerminalClient = pd.DataFrame(pd.read_csv(temp_dir + "_TerminalServices_RDPClient_report.csv"))
+        #print(RDPClient_Resolved_User)
+        if len(RDPClient_Resolved_User) > 0:
+            try:
+                TerminalClient['Resolved User Name'] = RDPClient_Resolved_User
+                TerminalClient = TerminalClient[['Date and Time', 'timestamp', 'Detection Rule', 'Severity', 'Detection Domain', 'Event Description','Event ID', 'UserID', 'Resolved User Name', 'Source IP', 'Computer Name', 'Channel', 'Original Event Log']]
+            except:
+                print("Error resolving SIDs for Terminal Client")
+    else:
+        print(f"{temp_dir + '_TerminalServices_RDPClient_report.csv'} does not exist.")
+        TerminalClient = pd.DataFrame(TerminalServices_RDPClient_events[0])
 
-    TerminalClient = pd.DataFrame(TerminalServices_RDPClient_events[0])
-    TerminalClient['Resolved User Name']=RDPClient_Resolved_User
-    TerminalClient=TerminalClient[['Date and Time', 'timestamp', 'Detection Rule', 'Severity', 'Detection Domain','Event Description', 'Event ID', 'UserID','Resolved User Name', 'Source IP', 'Computer Name', 'Channel','Original Event Log']]
-    WinRM = pd.DataFrame(WinRM_events[0])
-    WinRM['Resolved User Name']=WinRM_Resolved_User
-    WinRM=WinRM[['Date and Time','timestamp','Detection Rule','Severity','Detection Domain','Event Description','UserID','Resolved User Name','Event ID','Original Event Log','Computer Name','Channel']]
-    Windows_Defender = pd.DataFrame(Windows_Defender_events[0])
-    ScheduledTask = pd.DataFrame(ScheduledTask_events[0])
-    GroupPolicy = pd.DataFrame(Group_Policy_events[0])
-    SMBServer= pd.DataFrame(SMB_Server_events[0])
-    SMBClient= pd.DataFrame(SMB_Client_events[0])
+    if os.path.exists(temp_dir + "_Defender_report.csv"):
+        Windows_Defender = pd.DataFrame(pd.read_csv(temp_dir + "_Defender_report.csv"))
+    else:
+        print(f"{temp_dir + '_Defender_report.csv'} does not exist.")
+        Windows_Defender = pd.DataFrame(Windows_Defender_events[0])
+    if os.path.exists(temp_dir + "_ScheduledTask_report.csv"):
+        ScheduledTask = pd.DataFrame(pd.read_csv(temp_dir + "_ScheduledTask_report.csv"))
+    else:
+        print(f"{temp_dir + '_ScheduledTask_report.csv'} does not exist.")
+        ScheduledTask = pd.DataFrame(ScheduledTask_events[0])
 
-    Terminal_Services_Summary = pd.DataFrame(TerminalServices_Summary[0])
-    Authentication_Summary = pd.DataFrame(Security_Authentication_Summary[0])
-    ExecutedProcess_Summary=pd.DataFrame(Executed_Process_Summary[0])
-    ExecutedPowershell_Summary=pd.DataFrame(Executed_Powershell_Summary[0])
-    Logon_Events_pd=pd.DataFrame(Logon_Events[0])
-    Object_Access_Events_pd=pd.DataFrame(Object_Access_Events[0])
-    ExecutedProcess_Events_pd=pd.DataFrame(Executed_Process_Events[0])
+    if os.path.exists(temp_dir + "_Group_Policy_report.csv"):
+        GroupPolicy = pd.DataFrame(pd.read_csv(temp_dir + "_Group_Policy_report.csv"))
+    else:
+        print(f"{temp_dir + '_Group_Policy_report.csv'} does not exist.")
+        GroupPolicy = pd.DataFrame(Group_Policy_events[0])
+    if os.path.exists(temp_dir + "_SMB_Server_report.csv"):
+        SMBServer = pd.DataFrame(pd.read_csv(temp_dir + "_SMB_Server_report.csv"))
+    else:
+        print(f"{temp_dir + '_SMB_Server_report.csv'} does not exist.")
+        SMBServer = pd.DataFrame(SMB_Server_events[0])
+    if os.path.exists(temp_dir + "_SMB_Client_report.csv"):
+        SMBClient = pd.DataFrame(pd.read_csv(temp_dir + "_SMB_Client_report.csv"))
+    else:
+        print(f"{temp_dir + '_SMB_Client_report.csv'} does not exist.")
+        SMBClient= pd.DataFrame(SMB_Client_events[0])
+
+    # if os.path.exists(temp_dir + "_Executed_Powershell_report.csv"):
+    #     ExecutedPowershell_Summary = pd.DataFrame(pd.read_csv(temp_dir + "_Executed_Powershell_report.csv"))
+
+    if os.path.exists(temp_dir + "Powershell_Execution_Events.pickle"):
+        with open(temp_dir + "Powershell_Execution_Events.pickle", 'rb') as handle:
+            #Authentication_Summary=pd.DataFrame(pickle.load(handle))
+            Powershell_Execution_dataframes=pickle.load(handle)
+            #print(Security_Authentication_dataframes[0])
+            result=pd.concat(Powershell_Execution_dataframes, axis=0)
+            #ExecutedProcess_Summary=result.groupby('User').agg({'Number of Failed Logins': 'sum', 'Number of Successful Logins': 'sum'})
+            ExecutedPowershell_Summary =result.groupby('Command',as_index=False)['Number of Execution'].sum()
+    else:
+        print(f"{temp_dir + '_Executed_Powershell_report.csv'} does not exist.")
+        ExecutedPowershell_Summary = pd.DataFrame(Executed_Powershell_Summary[0])
+
+
+    if os.path.exists(temp_dir + "Security_Authentication.pickle"):
+        with open(temp_dir + "Security_Authentication.pickle", 'rb') as handle:
+            #Authentication_Summary=pd.DataFrame(pickle.load(handle))
+            Security_Authentication_dataframes=pickle.load(handle)
+            #print(Security_Authentication_dataframes[0])
+            result=pd.concat(Security_Authentication_dataframes, axis=0)
+            Authentication_Summary=result.groupby('User',as_index=False).agg(
+                {'Number of Failed Logins': 'sum', 'Number of Successful Logins': 'sum'})
+            #print(Authentication_Summary)
+
+    #if os.path.exists(temp_dir + "_Security_Authentication_report.csv"):
+        #Authentication_Summary = pd.DataFrame(pd.read_csv(temp_dir + "_Security_Authentication_report.csv"))
+
+    else:
+        print(f"{temp_dir + '_Security_Authentication_report.csv'} does not exist.")
+        Authentication_Summary = pd.DataFrame(Security_Authentication_Summary[0])
+
+    # if os.path.exists(temp_dir + "_Executed_Process_report.csv"):
+    #     ExecutedProcess_Summary = pd.DataFrame(pd.read_csv(temp_dir + "_Executed_Process_report.csv"))
+    if os.path.exists(temp_dir + "Executed_Process_Events.pickle"):
+        with open(temp_dir + "Executed_Process_Events.pickle", 'rb') as handle:
+            #Authentication_Summary=pd.DataFrame(pickle.load(handle))
+            Process_Execution_dataframes=pickle.load(handle)
+            #print(Security_Authentication_dataframes[0])
+            result=pd.concat(Process_Execution_dataframes, axis=0)
+            #ExecutedProcess_Summary=result.groupby('User').agg({'Number of Failed Logins': 'sum', 'Number of Successful Logins': 'sum'})
+            ExecutedProcess_Summary =result.groupby('Process Name',as_index=False)['Number of Execution'].sum()
+            #print(Authentication_Summary)
+    else:
+        print(f"{temp_dir + '_Executed_Process_report.csv'} does not exist.")
+        ExecutedProcess_Summary = pd.DataFrame(Executed_Process_Summary[0])
+
+    # TerminalClient = pd.DataFrame(pd.read_csv(temp_dir+"_TerminalServices_RDPClient_report.csv"))
+    # TerminalClient['Resolved User Name']=RDPClient_Resolved_User
+    # TerminalClient=TerminalClient[['Date and Time', 'timestamp', 'Detection Rule', 'Severity', 'Detection Domain','Event Description', 'Event ID', 'UserID','Resolved User Name', 'Source IP', 'Computer Name', 'Channel','Original Event Log']]
+    # Windows_Defender = pd.DataFrame(pd.read_csv(temp_dir+"_Defender_report.csv"))
+    # ScheduledTask = pd.DataFrame(pd.read_csv(temp_dir+"_ScheduledTask_report.csv"))
+    # GroupPolicy = pd.DataFrame(pd.read_csv(temp_dir+"_Group_Policy_report.csv"))
+    # SMBServer= pd.DataFrame(pd.read_csv(temp_dir+"_SMB_Server_report.csv"))
+    # SMBClient= pd.DataFrame(pd.read_csv(temp_dir+"_SMB_Clientr_report.csv"))
+    # WinRM['Resolved User Name']=WinRM_Resolved_User
+    # WinRM=WinRM[['Date and Time','timestamp','Detection Rule','Severity','Detection Domain','Event Description','UserID','Resolved User Name','Event ID','Original Event Log','Computer Name','Channel']]
+
+
+    Terminal_Services_Summary = TerminalServices['User'].value_counts().reset_index() # pd.DataFrame(TerminalServices_Summary[0])
+    Terminal_Services_Summary.columns = ['User', 'Authentication Counts']
+
+
+    #Logon_Events_pd=pd.DataFrame(Logon_Events[0])
+    #Object_Access_Events_pd=pd.DataFrame(Object_Access_Events[0])
+    #ExecutedProcess_Events_pd=pd.DataFrame(Executed_Process_Events[0])
     # allresults=pd.DataFrame([TerminalServices,Powershell_Operational],columns=['Date and Time', 'Detection Rule','Detection Domain','Severity','Event Description','Event ID','Original Event Log'])
     allresults = pd.concat(
         [ScheduledTask, Powershell_Operational, Sysmon, System, Powershell, Security,TerminalClient, TerminalServices, WinRM,
@@ -464,7 +599,7 @@ def report():
     Result_Summary_Detections=allresults["message"].value_counts().reset_index()
     Result_Summary_Detections.columns = ['Detection', 'Counts']
     allresults.to_csv(timesketch, index=False)
-    SIDs.to_csv(Collected_SIDs, index=False)
+    User_SIDs.to_csv(Collected_SIDs, index=False)
     print("Time Sketch Report saved as "+timesketch)
     #Logon_Events_pd.to_csv(LogonEvents, index=False)
     if (logons==True or allreport==True):
@@ -498,44 +633,44 @@ def report():
     Authentication_Summary.to_excel(writer, sheet_name='Security Authentication Summary', index=False)
     ExecutedProcess_Summary.to_excel(writer, sheet_name='Executed Process Summary', index=False)
     ExecutedPowershell_Summary.to_excel(writer, sheet_name='Executed Powershell Summary', index=False)
-    SIDs.to_excel(writer, sheet_name='Collected User SIDs', index=False)
+    User_SIDs.to_excel(writer, sheet_name='Collected User SIDs', index=False)
     writer.book.use_zip64()
     writer.save()
     print("Report saved as "+Report)
 
 ################################################################################################################
-    if (frequencyanalysis==True or allreport==True):
-        Frequency_Security=pd.DataFrame(list(Frequency_Analysis_Security.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-        Frequency_Defender=pd.DataFrame(list(Frequency_Analysis_Windows_Defender.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-        Frequency_SMB_Client=pd.DataFrame(list(Frequency_Analysis_SMB_Client.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-        Frequency_Group_Policy=pd.DataFrame(list(Frequency_Analysis_Group_Policy.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-        Frequency_Powershell_Operational=pd.DataFrame(list(Frequency_Analysis_Powershell_Operational.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-        Frequency_Powershell=pd.DataFrame(list(Frequency_Analysis_Powershell.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-        Frequency_ScheduledTask=pd.DataFrame(list(Frequency_Analysis_ScheduledTask.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-        Frequency_WinRM=pd.DataFrame(list(Frequency_Analysis_WinRM.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-        Frequency_Sysmon=pd.DataFrame(list(Frequency_Analysis_Sysmon.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-        Frequency_SMB_Server=pd.DataFrame(list(Frequency_Analysis_SMB_Server.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-        Frequency_TerminalServices=pd.DataFrame(list(Frequency_Analysis_TerminalServices.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-        Frequency_System=pd.DataFrame(list(Frequency_Analysis_System.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
-
-        writer = pd.ExcelWriter("EventID_Frequency_Analysis.xls", engine='xlsxwriter', options={'encoding': 'utf-8'})
-        Frequency_System.to_excel(writer, sheet_name='System', index=False)
-        Frequency_Powershell.to_excel(writer, sheet_name='Powershell', index=False)
-        Frequency_Powershell_Operational.to_excel(writer, sheet_name='Powershell_Operational', index=False)
-        Frequency_Sysmon.to_excel(writer, sheet_name='Sysmon', index=False)
-        Frequency_Security.to_excel(writer, sheet_name='Security', index=False)
-        Frequency_TerminalServices.to_excel(writer, sheet_name='TerminalServices', index=False)
-        Frequency_WinRM.to_excel(writer, sheet_name='WinRM', index=False)
-        Frequency_Defender.to_excel(writer, sheet_name='Windows_Defender', index=False)
-        Frequency_ScheduledTask.to_excel(writer, sheet_name='ScheduledTask', index=False)
-        Frequency_Group_Policy.to_excel(writer, sheet_name='Group Policy', index=False)
-        Frequency_SMB_Client.to_excel(writer, sheet_name='SMB Client', index=False)
-        Frequency_SMB_Server.to_excel(writer, sheet_name='SMB Server', index=False)
-
-        writer.book.use_zip64()
-        writer.save()
-
-        print("Frequency Analysis Report saved as "+"EventID_Frequency_Analysis.xls")
+    # if (frequencyanalysis==True or allreport==True):
+    #     Frequency_Security=pd.DataFrame(list(Frequency_Analysis_Security.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #     Frequency_Defender=pd.DataFrame(list(Frequency_Analysis_Windows_Defender.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #     Frequency_SMB_Client=pd.DataFrame(list(Frequency_Analysis_SMB_Client.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #     Frequency_Group_Policy=pd.DataFrame(list(Frequency_Analysis_Group_Policy.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #     Frequency_Powershell_Operational=pd.DataFrame(list(Frequency_Analysis_Powershell_Operational.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #     Frequency_Powershell=pd.DataFrame(list(Frequency_Analysis_Powershell.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #     Frequency_ScheduledTask=pd.DataFrame(list(Frequency_Analysis_ScheduledTask.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #     Frequency_WinRM=pd.DataFrame(list(Frequency_Analysis_WinRM.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #     Frequency_Sysmon=pd.DataFrame(list(Frequency_Analysis_Sysmon.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #     Frequency_SMB_Server=pd.DataFrame(list(Frequency_Analysis_SMB_Server.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #     Frequency_TerminalServices=pd.DataFrame(list(Frequency_Analysis_TerminalServices.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #     Frequency_System=pd.DataFrame(list(Frequency_Analysis_System.items()),columns=["EventID","Count"]).sort_values(by=['Count'],ascending=False)
+    #
+    #     writer = pd.ExcelWriter("EventID_Frequency_Analysis.xls", engine='xlsxwriter', options={'encoding': 'utf-8'})
+    #     Frequency_System.to_excel(writer, sheet_name='System', index=False)
+    #     Frequency_Powershell.to_excel(writer, sheet_name='Powershell', index=False)
+    #     Frequency_Powershell_Operational.to_excel(writer, sheet_name='Powershell_Operational', index=False)
+    #     Frequency_Sysmon.to_excel(writer, sheet_name='Sysmon', index=False)
+    #     Frequency_Security.to_excel(writer, sheet_name='Security', index=False)
+    #     Frequency_TerminalServices.to_excel(writer, sheet_name='TerminalServices', index=False)
+    #     Frequency_WinRM.to_excel(writer, sheet_name='WinRM', index=False)
+    #     Frequency_Defender.to_excel(writer, sheet_name='Windows_Defender', index=False)
+    #     Frequency_ScheduledTask.to_excel(writer, sheet_name='ScheduledTask', index=False)
+    #     Frequency_Group_Policy.to_excel(writer, sheet_name='Group Policy', index=False)
+    #     Frequency_SMB_Client.to_excel(writer, sheet_name='SMB Client', index=False)
+    #     Frequency_SMB_Server.to_excel(writer, sheet_name='SMB Server', index=False)
+    #
+    #     writer.book.use_zip64()
+    #     writer.save()
+    #
+    #     print("Frequency Analysis Report saved as "+"EventID_Frequency_Analysis.xls")
 ##################################################################################################################
     print("Detection Summary :\n############################################\nNumber of incidents by Severity:\n"+allresults["Severity"].value_counts().to_string()+"\n############################################\nNumber of incidents by Detection Rule:\n"+allresults["message"].value_counts().to_string()+"\n\n")
 
@@ -551,19 +686,45 @@ def convert_list():
 
 def resolveSID():
     global TerminalServices_RDPClient_events,WinRM_events,User_SIDs,RDPClient_Resolved_User,WinRM_Resolved_User
+    if os.path.exists(temp_dir + "_WinRM_events_report.csv"):
+        WinRM_events[0] = pd.DataFrame(pd.read_csv(temp_dir + "_WinRM_events_report.csv")).to_dict(orient='list')
+    if os.path.exists(temp_dir + "_TerminalServices_RDPClient_report.csv"):
+        TerminalServices_RDPClient_events[0] = pd.DataFrame(pd.read_csv(temp_dir + "_TerminalServices_RDPClient_report.csv")).to_dict(orient='list')
     RDPClient_Resolved_User=[]
     WinRM_Resolved_User=[]
     for SID in TerminalServices_RDPClient_events[0]["UserID"]:
-        if SID in User_SIDs[0]["SID"]:
-            RDPClient_Resolved_User.append(User_SIDs[0]["User"][User_SIDs[0]["SID"].index(SID)])
+        if SID in User_SIDs["SID"]:
+            RDPClient_Resolved_User.append(User_SIDs["User"][User_SIDs["SID"].index(SID)])
         else:
             RDPClient_Resolved_User.append("Could not be resolved")
 
     for SID in WinRM_events[0]["UserID"]:
-        if SID in User_SIDs[0]["SID"]:
-            WinRM_Resolved_User.append(User_SIDs[0]["User"][User_SIDs[0]["SID"].index(SID)])
+        if SID in User_SIDs["SID"]:
+            WinRM_Resolved_User.append(User_SIDs["User"][User_SIDs["SID"].index(SID)])
         else:
             WinRM_Resolved_User.append("Could not be resolved")
+    #print("user sid"+str(User_SIDs["SID"]))
+    #print("RDPCLient : "+str(RDPClient_Resolved_User))
+    #print("WinRM : " + str(WinRM_Resolved_User))
+def create_temp_dir():
+    global temp_dir
+
+    temp_dir= "temp/"
+
+    if not os.path.exists(temp_dir):
+        os.makedirs(temp_dir)
+        print(f"{temp_dir} has been created")
+    else:
+        print(f"{temp_dir} already exists")
+def clean_temp_dir():
+    global temp_dir
+    if os.path.exists(temp_dir):
+        for root, dirs, files in os.walk(temp_dir, topdown=False):
+            for name in files:
+                os.remove(os.path.join(root, name))
+            for name in dirs:
+                os.rmdir(os.path.join(root, name))
+        os.rmdir(temp_dir)
 
 def main():
     tic = time.time()
@@ -582,7 +743,7 @@ def main():
     parser.add_argument("-logon","--logon", help="Produce Success and faild authentication report",action='store_true')
     parser.add_argument("-objaccess","--objaccess", help="Produce Object Access report",action='store_true')
     parser.add_argument("-allreport","--allreport", help="Produce all reports",action='store_true')
-    parser.add_argument("-evtfreq","--evtfreq", help="Produce event ID frequency analysis report",action='store_true')
+    #parser.add_argument("-evtfreq","--evtfreq", help="Produce event ID frequency analysis report",action='store_true')
     parser.add_argument("-cores","--cores", help="cpu cores to be used in multiprocessing , default is half the number of availble CPU cores")
     args = parser.parse_args()
     if args.out is not None:
@@ -599,7 +760,7 @@ def main():
         objectaccess=args.objaccess
         processexec=args.procexec
         logons=args.logon
-        frequencyanalysis=args.evtfreq
+        #frequencyanalysis=args.evtfreq
         allreport=args.allreport
         CPU_Core=0
         try:
@@ -640,13 +801,25 @@ def main():
 
 
         #if args.type is None or args.type=="evtx":
-        auto_detect(Path)
-        convert_list()
-        report()
+        # try:
+        if 1==1:
+            create_temp_dir()
+            auto_detect(Path)
+            #convert_list()
+            report()
+            #clean_temp_dir()
+        # except Exception as e:
+        #     print("Error "+str(e))
+        #     #clean_temp_dir()
+
         toc = time.time()
         print('Done in {:.4f} seconds'.format(toc-tic))
         return
 
 
 
-main()
+if __name__ == '__main__':
+    if  platform.system().lower()=="windows":
+        multiprocessing.freeze_support()
+
+    main()
