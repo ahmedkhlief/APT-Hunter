@@ -655,25 +655,6 @@ timestart=None
 timeend=None
 def detect_events_security_log(file_name):
 
-
-
-        #try:
-        #Security_Authentication_Summary[0] = pd.DataFrame(pd.read_csv(temp_dir + "_Security_Authentication_report.csv", encoding='iso-8859-1',warn_bad_lines=True, error_bad_lines=False)).to_dict(orient='list')
-        #Security_Authentication_Summary[0]
-        #except Exception as e:
-        #    Security_Authentication_Summary[0]=Security_Authentication_Summary[0]
-            #print(str(e))
-            #exit(0)
-    # if os.path.exists(temp_dir + "_Executed_Process_report.csv"):
-    #     try:
-    #         Executed_Process_Summary[0] = pd.DataFrame(pd.read_csv(temp_dir + "_Executed_Process_report.csv", on_bad_lines='skip')).to_dict(orient='list')
-    #     except:
-    #         Executed_Process_Summary[0]=Executed_Process_Summary[0]
-        #print("process exec loaded to memory ")
-        #print(Executed_Process_Summary[0])
-    # if os.path.exists(temp_dir + "_User_SIDs_report.csv"):
-    #     User_SIDs[0] = pd.DataFrame(pd.read_csv(temp_dir + "_User_SIDs_report.csv")).to_dict(orient='list')
-    #global Logon_Type_rex,Account_Name_rex,Account_Domain_rex,Workstation_Name_rex,Source_Network_Address_rex
     global input_timzone, timestart, timeend,Security_events,initial
     if 1==1:
         #print("in")
@@ -2795,7 +2776,7 @@ def detect_events_scheduled_task_log(file_name):
                 ScheduledTask_events[0]['Detection Domain'].append("Audit")
                 ScheduledTask_events[0]['Severity'].append("High")
                 ScheduledTask_events[0]['Event Description'].append(Event_desc)
-                ScheduledTask_events[0]['Schedule Task Name'].append(task_name)
+                ScheduledTask_events[0]['Schedule Task Name'].append(task_name[0][0])
                 ScheduledTask_events[0]['Event ID'].append(EventID[0])
                 ScheduledTask_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
                 lock.release()
@@ -2822,7 +2803,7 @@ def detect_events_scheduled_task_log(file_name):
                 ScheduledTask_events[0]['Severity'].append("Medium")
                 ScheduledTask_events[0]['Event Description'].append(Event_desc)
                 ScheduledTask_events[0]['Event ID'].append(EventID[0])
-                ScheduledTask_events[0]['Schedule Task Name'].append(task_name)
+                ScheduledTask_events[0]['Schedule Task Name'].append(task_name[0][0])
                 ScheduledTask_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
                 lock.release()
             # schedule task deleted
@@ -2846,7 +2827,7 @@ def detect_events_scheduled_task_log(file_name):
                 ScheduledTask_events[0]['Detection Domain'].append("Audit")
                 ScheduledTask_events[0]['Severity'].append("High")
                 ScheduledTask_events[0]['Event Description'].append(Event_desc)
-                ScheduledTask_events[0]['Schedule Task Name'].append(task_name)
+                ScheduledTask_events[0]['Schedule Task Name'].append(task_name[0][0])
                 ScheduledTask_events[0]['Event ID'].append(EventID[0])
                 ScheduledTask_events[0]['Original Event Log'].append(str(record['data']).replace("\r"," "))
                 lock.release()
@@ -6706,12 +6687,13 @@ def detect_events_UserProfileService_log(file_name):
 
 
     User_SIDs_report = pd.DataFrame(User_SIDs[0])
+    lock.acquire()
     if User_SIDsInitial.value == 1:
         User_SIDs_report.to_csv(temp_dir + '_User_SIDs_report.csv', index=False)
         User_SIDsInitial.value = 0
     else:
         User_SIDs_report.to_csv(temp_dir + '_User_SIDs_report.csv', mode='a', index=False, header=False)
-
+    lock.release()
 def init(l):
     global lock
     lock = l

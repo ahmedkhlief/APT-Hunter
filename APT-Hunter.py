@@ -802,7 +802,6 @@ def main():
 
         #if args.type is None or args.type=="evtx":
         try:
-        if 1==1:
             create_temp_dir()
             auto_detect(Path)
             #convert_list()
