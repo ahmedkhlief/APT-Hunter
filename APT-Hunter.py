@@ -6,6 +6,7 @@ import pandas as pd
 import lib.EvtxDetection as EvtxDetection
 import lib.CSVDetection as CSVDetection
 import lib.EvtxHunt as EvtxHunt
+import lib.SigmaHunter as SigmaHunter
 from evtx import PyEvtxParser
 from sys import exit
 from pytz import timezone
@@ -743,6 +744,8 @@ def main():
     parser.add_argument("-logon","--logon", help="Produce Success and faild authentication report",action='store_true')
     parser.add_argument("-objaccess","--objaccess", help="Produce Object Access report",action='store_true')
     parser.add_argument("-allreport","--allreport", help="Produce all reports",action='store_true')
+    parser.add_argument("-sigma","--sigma", help="use sigma module to search logs using sigma rules",action='store_true')
+    parser.add_argument("-rules","--rules", help="path to sigma rules in json format")
     #parser.add_argument("-evtfreq","--evtfreq", help="Produce event ID frequency analysis report",action='store_true')
     parser.add_argument("-cores","--cores", help="cpu cores to be used in multiprocessing , default is half the number of availble CPU cores")
     args = parser.parse_args()
@@ -782,6 +785,14 @@ def main():
             except:
                 print(f"Error using supplied CPU cores {args.cores}")
                 exit(0)
+        if args.sigma is not False:
+            if args.rules is not None:
+                SigmaHunter.Sigma_Analyze(Path,args.rules,Output)
+            else:
+                print("Please include rules path ex : --rules rules.json")
+            toc = time.time()
+            print('Done in {:.4f} seconds'.format(toc-tic))
+            return
         if args.hunt is not None:
             if args.eid is not None:
                 threat_hunt(Path,args.hunt,args.eid,None)
@@ -812,7 +823,7 @@ def main():
             clean_temp_dir()
 
         toc = time.time()
-        print('Done in {:.4f} seconds'.format(toc-tic))
+        print('Analysis finished in {:.4f} seconds'.format(toc-tic))
         return
 
 

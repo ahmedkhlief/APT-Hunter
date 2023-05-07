@@ -1,0 +1,722 @@
+title: Combination of configs
+order: 15
+# Taken from https://github.com/SigmaHQ/legacy-sigmatools/blob/master/tools/config/
+logsources:
+    ps_module:
+        category: ps_module
+        product: windows
+        conditions:
+            EventID: 4103
+        rewrite:
+            product: windows
+            service: powershell
+    ps_script:
+        category: ps_script
+        product: windows
+        conditions:
+            EventID: 4104
+        rewrite:
+            product: windows
+            service: powershell
+    # for the "classic" channel
+    ps_classic_start:
+        category: ps_classic_start
+        product: windows
+        conditions:
+            EventID: 400
+        rewrite:
+            product: windows
+            service: powershell-classic
+    ps_classic_provider_start:
+        category: ps_classic_provider_start
+        product: windows
+        conditions:
+            EventID: 600
+        rewrite:
+            product: windows
+            service: powershell-classic
+    ps_classic_script:
+        category: ps_classic_script
+        product: windows
+        conditions:
+            EventID: 800
+        rewrite:
+            product: windows
+            service: powershell-classic
+    process_creation:
+            category: process_creation
+            product: windows
+            conditions:
+                EventID: 4688
+            rewrite:
+                product: windows
+                service: security
+    registry_event:
+        category: registry_event
+        product: windows
+        conditions:
+            EventID: 4657
+            OperationType:
+                - 'New registry value created'
+                - 'Existing registry value modified'
+        rewrite:
+            product: windows
+            service: security
+    registry_event_set:
+        category: registry_set
+        product: windows
+        conditions:
+            EventID: 4657
+            OperationType:
+                - 'Existing registry value modified'
+        rewrite:
+            product: windows
+            service: security
+    registry_event_add:
+        category: registry_add
+        product: windows
+        conditions:
+            EventID: 4657
+            OperationType:
+                - 'New registry value created'
+        rewrite:
+            product: windows
+            service: security
+    ps_module:
+        category: ps_module
+        product: windows
+        conditions:
+            EventID: 4103
+        rewrite:
+            product: windows
+            service: powershell
+    ps_script:
+        category: ps_script
+        product: windows
+        conditions:
+            EventID: 4104
+        rewrite:
+            product: windows
+            service: powershell
+    # for the "classic" channel
+    ps_classic_start:
+        category: ps_classic_start
+        product: windows
+        conditions:
+            EventID: 400
+        rewrite:
+            product: windows
+            service: powershell-classic
+    ps_classic_provider_start:
+        category: ps_classic_provider_start
+        product: windows
+        conditions:
+            EventID: 600
+        rewrite:
+            product: windows
+            service: powershell-classic
+    ps_classic_script:
+        category: ps_classic_script
+        product: windows
+        conditions:
+            EventID: 800
+        rewrite:
+            product: windows
+            service: powershell-classic
+    windows-application:
+        product: windows
+        service: application
+        conditions:
+          Channel: Application
+    windows-security:
+        product: windows
+        service: security
+        conditions:
+            Channel: Security
+    windows-system:
+        product: windows
+        service: system
+        conditions:
+            Channel: System
+    windows-sysmon:
+        product: windows
+        service: sysmon
+        conditions:
+            Channel: 'Microsoft-Windows-Sysmon/Operational'
+    windows-powershell:
+        product: windows
+        service: powershell
+        conditions:
+            Channel:
+                - 'Microsoft-Windows-PowerShell/Operational'
+                - 'PowerShellCore/Operational'
+    windows-classicpowershell:
+        product: windows
+        service: powershell-classic
+        conditions:
+            Channel: 'Windows PowerShell'
+    windows-dns-server:
+        product: windows
+        service: dns-server
+        conditions:
+            Channel: 'DNS Server'
+    windows-driver-framework:
+        product: windows
+        service: driver-framework
+        conditions:
+            Channel: 'Microsoft-Windows-DriverFrameworks-UserMode/Operational'
+    windows-dhcp:
+        product: windows
+        service: dhcp
+        conditions:
+            Channel: 'Microsoft-Windows-DHCP-Server/Operational'
+    windows-ntlm:
+        product: windows
+        service: ntlm
+        conditions:
+            Channel: 'Microsoft-Windows-NTLM/Operational'
+    windows-defender:
+        product: windows
+        service: windefend
+        conditions:
+            Channel: 'Microsoft-Windows-Windows Defender/Operational'
+    windows-printservice-admin:
+        product: windows
+        service: printservice-admin
+        conditions:
+            Channel: 'Microsoft-Windows-PrintService/Admin'
+    windows-printservice-operational:
+        product: windows
+        service: printservice-operational
+        conditions:
+            Channel: 'Microsoft-Windows-PrintService/Operational'
+    windows-terminalservices-localsessionmanager-operational:
+        product: windows
+        service: terminalservices-localsessionmanager
+        conditions:
+            Channel: 'Microsoft-Windows-TerminalServices-LocalSessionManager/Operational'
+    windows-smbclient-security:
+        product: windows
+        service: smbclient-security
+        conditions:
+            Channel: 'Microsoft-Windows-SmbClient/Security'
+    windows-applocker:
+        product: windows
+        service: applocker
+        conditions:
+            Channel:
+                - 'Microsoft-Windows-AppLocker/MSI and Script'
+                - 'Microsoft-Windows-AppLocker/EXE and DLL'
+                - 'Microsoft-Windows-AppLocker/Packaged app-Deployment'
+                - 'Microsoft-Windows-AppLocker/Packaged app-Execution'
+    windows-msexchange-management:
+        product: windows
+        service: msexchange-management
+        conditions:
+            Channel: 'MSExchange Management'
+    windows-servicebus-client:
+        product: windows
+        service: microsoft-servicebus-client
+        conditions:
+            Channel: 'Microsoft-ServiceBus-Client'
+    windows-ladp-client-debug:
+        product: windows
+        service: ldap_debug
+        conditions:
+            Channel: 'Microsoft-Windows-LDAP-Client/Debug'
+    windows-taskscheduler-operational:
+        product: windows
+        service: taskscheduler
+        conditions:
+            Channel: 'Microsoft-Windows-TaskScheduler/Operational'
+    windows-wmi-activity-Operational:
+        product: windows
+        service: wmi
+        conditions:
+            Channel: 'Microsoft-Windows-WMI-Activity/Operational'
+    windows-codeintegrity-operational:
+        product: windows
+        service: codeintegrity-operational
+        conditions:
+            Channel: 'Microsoft-Windows-CodeIntegrity/Operational'
+    windows-firewall-advanced-security:
+        product: windows
+        service: firewall-as
+        conditions:
+            Channel: 'Microsoft-Windows-Windows Firewall With Advanced Security/Firewall'
+    windows-bits-client:
+        product: windows
+        service: bits-client
+        conditions:
+            Channel: 'Microsoft-Windows-Bits-Client/Operational'
+    windows-diagnosis-scripted:
+        product: windows
+        service: diagnosis-scripted
+        conditions:
+            Channel: 'Microsoft-Windows-Diagnosis-Scripted/Operational'
+    windows-shell-core:
+        product: windows
+        service: shell-core
+        conditions:
+            Channel: 'Microsoft-Windows-Shell-Core/Operational'
+    windows-security-mitigations:
+        product: windows
+        service: security-mitigations
+        conditions:
+            Channel: 'Microsoft-Windows-Security-Mitigations'
+    windows-openssh:
+        product: windows
+        service: openssh
+        conditions:
+            Channel: 'OpenSSH/Operational'
+    windows-ldap-debug:
+        product: windows
+        service: ldap_debug
+        conditions:
+            Channel: 'Microsoft-Windows-LDAP-Client/Debug'
+    windows-vhdmp-operational:
+        product: windows
+        service: vhdmp
+        conditions:
+            Channel: 'Microsoft-Windows-VHDMP/Operational'
+    windows-appxdeployment-server:
+        product: windows
+        service: appxdeployment-server
+        conditions:
+            Channel: 'Microsoft-Windows-AppXDeploymentServer/Operational'
+    windows-lsa-server:
+        product: windows
+        service: lsa-server
+        conditions:
+            Channel: 'Microsoft-Windows-LSA/Operational'
+    windows-appxpackaging-om:
+        product: windows
+        service: appxpackaging-om
+        conditions:
+            Channel: 'Microsoft-Windows-AppxPackaging/Operational'
+    windows-dns-client:
+        product: windows
+        service: dns-client
+        conditions:
+            Channel: 'Microsoft-Windows-DNS Client Events/Operational'
+    windows-appmodel-runtime:
+        product: windows
+        service: appmodel-runtime
+        conditions:
+            Channel: 'Microsoft-Windows-AppModel-Runtime/Admin'
+    windows-application:
+        product: windows
+        service: application
+        conditions:
+            Channel: Application
+    windows-security:
+        product: windows
+        service: security
+        conditions:
+            Channel: Security
+    windows-system:
+        product: windows
+        service: system
+        conditions:
+            Channel: System
+    windows-sysmon:
+        product: windows
+        service: sysmon
+        conditions:
+            Channel: 'Microsoft-Windows-Sysmon/Operational'
+    windows-powershell:
+        product: windows
+        service: powershell
+        conditions:
+            Channel:
+                - 'Microsoft-Windows-PowerShell/Operational'
+                - 'PowerShellCore/Operational'
+    windows-classicpowershell:
+        product: windows
+        service: powershell-classic
+        conditions:
+            Channel: 'Windows PowerShell'
+    windows-dns-server:
+        product: windows
+        service: dns-server
+        conditions:
+            Channel: 'DNS Server'
+    windows-driver-framework:
+        product: windows
+        service: driver-framework
+        conditions:
+            Provider_Name: 'Microsoft-Windows-DriverFrameworks-UserMode/Operational'
+    windows-dhcp:
+        product: windows
+        service: dhcp
+        conditions:
+            Provider_Name: 'Microsoft-Windows-DHCP-Server/Operational'
+    windows-ntlm:
+        product: windows
+        service: ntlm
+        conditions:
+            Provider_Name: 'Microsoft-Windows-NTLM/Operational'
+    windows-defender:
+        product: windows
+        service: windefend
+        conditions:
+            Channel: 'Microsoft-Windows-Windows Defender/Operational'
+    windows-printservice-admin:
+        product: windows
+        service: printservice-admin
+        conditions:
+            Channel: 'Microsoft-Windows-PrintService/Admin'
+    windows-printservice-operational:
+        product: windows
+        service: printservice-operational
+        conditions:
+            Channel: 'Microsoft-Windows-PrintService/Operational'
+    windows-terminalservices-localsessionmanager-operational:
+        product: windows
+        service: terminalservices-localsessionmanager
+        conditions:
+            Channel: 'Microsoft-Windows-TerminalServices-LocalSessionManager/Operational'
+    windows-codeintegrity-operational:
+        product: windows
+        service: codeintegrity-operational
+        conditions:
+            Channel: 'Microsoft-Windows-CodeIntegrity/Operational'
+    windows-smbclient-security:
+        product: windows
+        service: smbclient-security
+        conditions:
+            Channel: 'Microsoft-Windows-SmbClient/Security'
+    windows-applocker:
+        product: windows
+        service: applocker
+        conditions:
+            Channel:
+                - 'Microsoft-Windows-AppLocker/MSI and Script'
+                - 'Microsoft-Windows-AppLocker/EXE and DLL'
+                - 'Microsoft-Windows-AppLocker/Packaged app-Deployment'
+                - 'Microsoft-Windows-AppLocker/Packaged app-Execution'
+    windows-msexchange-management:
+        product: windows
+        service: msexchange-management
+        conditions:
+            Channel: 'MSExchange Management'
+    microsoft-servicebus-client:
+        product: windows
+        service: microsoft-servicebus-client
+        conditions:
+            Channel: 'Microsoft-ServiceBus-Client'
+    windows-firewall-advanced-security:
+        product: windows
+        service: firewall-as
+        conditions:
+            Channel: 'Microsoft-Windows-Windows Firewall With Advanced Security/Firewall'
+    windows-bits-client:
+        product: windows
+        service: bits-client
+        conditions:
+            Channel: 'Microsoft-Windows-Bits-Client/Operational'
+    windows-vhdmp-Operational:
+        product: windows
+        service: vhdmp
+        conditions:
+            Channel: 'Microsoft-Windows-VHDMP/Operational'
+    windows-appxdeployment-server:
+        product: windows
+        service: appxdeployment-server
+        conditions:
+            Channel: 'Microsoft-Windows-AppXDeploymentServer/Operational'
+    windows-lsa-server:
+        product: windows
+        service: lsa-server
+        conditions:
+            Channel: 'Microsoft-Windows-LSA/Operational'
+    windows-appxpackaging-om:
+        product: windows
+        service: appxpackaging-om
+        conditions:
+            Channel: 'Microsoft-Windows-AppxPackaging/Operational'
+    windows-dns-client:
+        product: windows
+        service: dns-client
+        conditions:
+            Channel: 'Microsoft-Windows-DNS Client Events/Operational'
+    windows-appmodel-runtime:
+        product: windows
+        service: appmodel-runtime
+        conditions:
+            Channel: 'Microsoft-Windows-AppModel-Runtime/Admin'
+    process_creation:
+        category: process_creation
+        product: windows
+        conditions:
+            EventID: 1
+        rewrite:
+            product: windows
+            service: sysmon
+    process_creation_linux:
+        category: process_creation
+        product: linux
+        conditions:
+            EventID: 1
+        rewrite:
+            product: linux
+            service: sysmon
+    file_change:
+        category: file_change
+        product: windows
+        conditions:
+            EventID: 2
+        rewrite:
+            product: windows
+            service: sysmon
+    network_connection:
+        category: network_connection
+        product: windows
+        conditions:
+            EventID: 3
+        rewrite:
+            product: windows
+            service: sysmon
+    network_connection_linux:
+        category: network_connection
+        product: linux
+        conditions:
+            EventID: 3
+        rewrite:
+            product: linux
+            service: sysmon
+    sysmon_status:
+        category: sysmon_status
+        product: windows
+        conditions:
+            EventID:
+                - 4
+                - 16
+        rewrite:
+            product: windows
+            service: sysmon
+    sysmon_status_linux:
+        category: sysmon_status
+        product: linux
+        conditions:
+            EventID: 16
+        rewrite:
+            product: linux
+            service: sysmon
+    process_terminated:
+        category: process_termination
+        product: windows
+        conditions:
+            EventID: 5
+        rewrite:
+            product: windows
+            service: sysmon
+    process_terminated_linux:
+        category: process_termination
+        product: linux
+        conditions:
+            EventID: 5
+        rewrite:
+            product: linux
+            service: sysmon
+    driver_loaded:
+        category: driver_load
+        product: windows
+        conditions:
+            EventID: 6
+        rewrite:
+            product: windows
+            service: sysmon
+    image_loaded:
+        category: image_load
+        product: windows
+        conditions:
+            EventID: 7
+        rewrite:
+            product: windows
+            service: sysmon
+    create_remote_thread:
+        category: create_remote_thread
+        product: windows
+        conditions:
+            EventID: 8
+        rewrite:
+            product: windows
+            service: sysmon
+    raw_access_thread:
+        category: raw_access_thread
+        product: windows
+        conditions:
+            EventID: 9
+        rewrite:
+            product: windows
+            service: sysmon
+    process_access:
+        category: process_access
+        product: windows
+        conditions:
+            EventID: 10
+        rewrite:
+            product: windows
+            service: sysmon
+    raw_access_read_linux:
+        category: raw_access_read
+        product: linux
+        conditions:
+            EventID: 9
+        rewrite:
+            product: linux
+            service: sysmon
+    file_creation:
+        category: file_event
+        product: windows
+        conditions:
+            EventID: 11
+        rewrite:
+            product: windows
+            service: sysmon
+    file_creation_linux:
+        category: file_event
+        product: linux
+        conditions:
+            EventID: 11
+        rewrite:
+            product: linux
+            service: sysmon
+    registry_add:
+        category: registry_add
+        product: windows
+        conditions:
+            EventID: 12
+        rewrite:
+            product: windows
+            service: sysmon
+    registry_delete:
+        category: registry_delete
+        product: windows
+        conditions:
+            EventID: 12
+        rewrite:
+            product: windows
+            service: sysmon
+    registry_set:
+        category: registry_set
+        product: windows
+        conditions:
+            EventID: 13
+        rewrite:
+            product: windows
+            service: sysmon
+    registry_rename:
+        category: registry_rename
+        product: windows
+        conditions:
+            EventID: 14
+        rewrite:
+            product: windows
+            service: sysmon
+    registry_event:
+        category: registry_event
+        product: windows
+        conditions:
+            EventID:
+                - 12
+                - 13
+                - 14
+        rewrite:
+            product: windows
+            service: sysmon
+    create_stream_hash:
+        category: create_stream_hash
+        product: windows
+        conditions:
+            EventID: 15
+        rewrite:
+            product: windows
+            service: sysmon
+    pipe_created:
+        category: pipe_created
+        product: windows
+        conditions:
+            EventID:
+                - 17
+                - 18
+        rewrite:
+            product: windows
+            service: sysmon
+    wmi_event:
+        category: wmi_event
+        product: windows
+        conditions:
+            EventID:
+                - 19
+                - 20
+                - 21
+        rewrite:
+            product: windows
+            service: sysmon
+    dns_query:
+        category: dns_query
+        product: windows
+        conditions:
+            EventID: 22
+        rewrite:
+            product: windows
+            service: sysmon
+    file_delete:
+        category: file_delete
+        product: windows
+        conditions:
+            EventID:
+                - 23
+                - 26
+        rewrite:
+            product: windows
+            service: sysmon
+    file_delete_linux:
+        category: file_delete
+        product: linux
+        conditions:
+            EventID: 23
+        rewrite:
+            product: linux
+            service: sysmon
+    clipboard_capture:
+        category: clipboard_capture
+        product: windows
+        conditions:
+            EventID: 24
+        rewrite:
+            product: windows
+            service: sysmon
+    process_tampering:
+        category: process_tampering
+        product: windows
+        conditions:
+            EventID: 25
+        rewrite:
+            product: windows
+            service: sysmon
+    file_block:
+        category: file_block
+        product: windows
+        conditions:
+            EventID: 27
+        rewrite:
+            product: windows
+            service: sysmon
+    sysmon_error:
+        category: sysmon_error
+        product: windows
+        conditions:
+            EventID: 255
+        rewrite:
+            product: windows
+            service: sysmon
+
+fieldmappings:
+    Image: NewProcessName
+    ParentImage: ParentProcessName
+    Details: NewValue
+    #CommandLine: ProcessCommandLine  # No need to map, as real name of ProcessCommandLine is already CommandLine
+    LogonId: SubjectLogonId
