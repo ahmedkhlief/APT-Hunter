@@ -14,7 +14,7 @@ Full information about the tool and how its used in this article : [introducing-
 
 New Release Info : [APT-HUNTER V3.0 : Rebuilt with Multiprocessing and new cool features](https://shells.systems/apt-hunter-v3-0-rebuilt-with-multiprocessing-and-new-cool-features/)
 
-     
+
 # Author
 
 Twitter : [@ahmed_khlief](https://twitter.com/ahmed_khlief)
@@ -66,6 +66,13 @@ hunting using file that contain list of regex :
 
 `python3 APT-Hunter.py  -huntfile "huntfile.txt)" -p /opt/wineventlogs/ -o Project2`
 
+Hunting using sigma rules :
+
+`python3 APT-Hunter.py -sigma -rules rules.json -p /opt/wineventlogs/ -o Project2`
+
+Getting Latest sigma rules converted for APT-Hunter ( output will be a file with name rules.json that contain the rules from Sigma repository [Sigma](https://github.com/SigmaHQ/sigma)  ):
+
+Get_Latest_Sigma_Rules.sh
 
 # Output Samples
 
