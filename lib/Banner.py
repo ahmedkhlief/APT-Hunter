@@ -9,5 +9,5 @@ Banner="""
 |__/  |__/|__/         |__/           |__/  |__/ \______/ |__/  |__/   \___/   \_______/|__/
 
                                                                 By : Ahmed Khlief , @ahmed_khlief
-                                                                Version : 3.0
+                                                                Version : 3.1-Beta
                                                                                                   """
