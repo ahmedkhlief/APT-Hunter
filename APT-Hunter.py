@@ -737,7 +737,7 @@ def main():
     parser.add_argument("-tz","--timezone", help="default Timezone is Local timezone , you can enter ( 'local' : for local timzone , <Country time zone> : like (Asia/Dubai) )")
     parser.add_argument("-hunt","--hunt", help="String or regex to be searched in evtx log path")
     parser.add_argument("-huntfile","--huntfile", help="file contain Strings or regex to be searched in evtx log path ( strings should be new line separated )")
-    parser.add_argument("-eid","--eid", help="Event ID to search if you chosed the hunt module")
+    parser.add_argument("-eid","--eid", help="Event ID to search if you chose the hunt module")
     parser.add_argument("-start","--start", help="Start time for timeline ( use ISO format Ex:2022-04-03T20:56+04:00 )")
     parser.add_argument("-end","--end", help="End time for timeline ( use ISO format Ex: 2022-04-03T20:56+04:00 or 2022-04-03T20:56 or 2022-04-03 20:56 or 2022-04-03 )")
     parser.add_argument("-procexec","--procexec", help="Produce Process Execution report",action='store_true')
