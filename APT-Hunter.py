@@ -614,7 +614,7 @@ def report():
 
     # Sysmon=Sysmon.reset_index()
     # Sysmon=Sysmon.drop(['index'],axis=1)
-    writer = pd.ExcelWriter(Report, engine='xlsxwriter', options={'encoding': 'utf-8'})
+    writer = pd.ExcelWriter(Report, engine='xlsxwriter', engine_kwargs={'options':{'encoding': 'utf-8'}})
     Result_Summary_Severity.to_excel(writer, sheet_name='Result Summary', index=False)
     Result_Summary_Detections.to_excel(writer, sheet_name='Result Summary' , startrow=len(Result_Summary_Severity)+3, index=False)
     System.to_excel(writer, sheet_name='System Events', index=False)
@@ -636,7 +636,7 @@ def report():
     ExecutedPowershell_Summary.to_excel(writer, sheet_name='Executed Powershell Summary', index=False)
     User_SIDs.to_excel(writer, sheet_name='Collected User SIDs', index=False)
     writer.book.use_zip64()
-    writer.save()
+    writer.close()
     print("Report saved as "+Report)
 
 ################################################################################################################
