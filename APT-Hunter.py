@@ -97,7 +97,7 @@ Frequency_Analysis_TerminalServices={}
 
 
 def evtxdetect_auto():
-    global timestart,timeend,SMB_Server_events,User_SIDs,SMB_Client_events,TerminalServices_RDPClient_events,Frequency_Analysis_TerminalServices,Executed_Process_Events,Group_Policy_events,Object_Access_Events,input_timezone,Logon_Events,Executed_Process_Summary,TerminalServices_Summary,Security_Authentication_Summary,Sysmon_events,WinRM_events,Security_events,System_events,ScheduledTask_events,Powershell_events,Powershell_Operational_events,TerminalServices_events,Windows_Defender_events,Timesketch_events,TerminalServices_Summary,Security_Authentication_Summary,Executed_Powershell_Summary
+    global timestart,timeend,logons,Output,allreport,SMB_Server_events,User_SIDs,SMB_Client_events,TerminalServices_RDPClient_events,Frequency_Analysis_TerminalServices,Executed_Process_Events,Group_Policy_events,Object_Access_Events,input_timezone,Logon_Events,Executed_Process_Summary,TerminalServices_Summary,Security_Authentication_Summary,Sysmon_events,WinRM_events,Security_events,System_events,ScheduledTask_events,Powershell_events,Powershell_Operational_events,TerminalServices_events,Windows_Defender_events,Timesketch_events,TerminalServices_Summary,Security_Authentication_Summary,Executed_Powershell_Summary
     process_list = []
 
     try:
@@ -717,6 +717,21 @@ def create_temp_dir():
         print(f"{temp_dir} has been created")
     else:
         print(f"{temp_dir} already exists")
+
+def create_out_dir(output):
+    global temp_dir
+
+
+
+    if not os.path.exists(output):
+        os.makedirs(output)
+        print(f"output folder {output} has been created")
+    else:
+        print(f"output folder {output} already exists")
+
+
+    return output+"/"+output
+
 def clean_temp_dir():
     global temp_dir
     if os.path.exists(temp_dir):
@@ -750,7 +765,7 @@ def main():
     parser.add_argument("-cores","--cores", help="cpu cores to be used in multiprocessing , default is half the number of availble CPU cores")
     args = parser.parse_args()
     if args.out is not None:
-        Output=args.out
+        Output=create_out_dir(args.out)
     if (args.path is None ):# and args.security is None and args.system is None and args.scheduledtask is None and args.defender is None and args.powershell is None and args.powershellop is None and args.terminal is None and args.winrm is None and args.sysmon is None):
         print("You didn't specify a path for the logs \nuse --help to print help message")
         exit()
@@ -766,6 +781,7 @@ def main():
         #frequencyanalysis=args.evtfreq
         allreport=args.allreport
         CPU_Core=0
+        print(f"all reports value : {allreport}\nlogons value {logons}")
         try:
             if args.start is not None and args.end is not None:
                 timestart=datetime.timestamp(dateutil.parser.isoparse(args.start))
