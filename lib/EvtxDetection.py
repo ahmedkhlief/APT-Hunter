@@ -653,9 +653,21 @@ UserProfile_File_rex = re.compile('<Data Name=\"File\">(.*)</Data>', re.IGNORECA
 input_timzone=timezone("UTC")
 timestart=None
 timeend=None
-def detect_events_security_log(file_name):
+def detect_events_security_log(file_name, shared_data):
 
-    global input_timzone, timestart, timeend,Security_events,initial
+    global input_timzone, timestart, timeend,Security_events,initial,output,logons
+    tic = time.time()
+    input_timzone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
+
+
     if 1==1:
         #print("in")
         #print(file_name)
@@ -2140,6 +2152,7 @@ def detect_events_security_log(file_name):
 
         if (processexec==True or allreport==True):
             ExecutedProcess_Events_pd=pd.DataFrame(Executed_Process_Events[0])
+            #print("Executed process events : " + str(Executed_Process_Events[0]))
             if processinitial.value==1:
                 ExecutedProcess_Events_pd.to_csv(output+'_Process_Execution_Events.csv', index=False)
                 processinitial.value=0
@@ -2147,7 +2160,9 @@ def detect_events_security_log(file_name):
                 ExecutedProcess_Events_pd.to_csv(output+'_Process_Execution_Events.csv', mode='a', index=False, header=False)
         if (logons==True or allreport==True):
             Logon_Events_pd=pd.DataFrame(Logon_Events[0])
+            #print("logon events : "+str(Logon_Events))
             if logoninitial.value==1:
+                #print(f"inside function , output is {output}")
                 Logon_Events_pd.to_csv(output+'_Logon_Events.csv', index=False)
                 logoninitial.value=0
             else:
@@ -2194,11 +2209,22 @@ def detect_events_security_log(file_name):
             else:
                 Object_Access_Events_pd.to_csv(output+'_Object_Access_Events.csv', mode='a', index=False, header=False)
 
+    toc = time.time()
+    print('Security Logs Done in {:.4f} seconds'.format(toc - tic))
 
 
 
-
-def detect_events_windows_defender_log(file_name):
+def detect_events_windows_defender_log(file_name, shared_data):
+    tic = time.time()
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
     if 1==1:
         parser = PyEvtxParser(file_name)
         for record in parser.records():
@@ -2510,9 +2536,20 @@ def detect_events_windows_defender_log(file_name):
         else:
             Windows_Defender.to_csv(temp_dir + '_Defender_report.csv', mode='a', index=False, header=False)
 
+    toc = time.time()
+    print('Windows Defender Logs Done in {:.4f} seconds'.format(toc - tic))
 
-def detect_events_group_policy_log(file_name):
-
+def detect_events_group_policy_log(file_name, shared_data):
+    tic = time.time()
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
     parser = PyEvtxParser(file_name)
     for record in parser.records():
         EventID = EventID_rex.findall(record['data'])
@@ -2605,8 +2642,20 @@ def detect_events_group_policy_log(file_name):
         Group_PolicyInitial.value = 0
     else:
         Group_Policy.to_csv(temp_dir + '_Group_Policy_report.csv', mode='a', index=False, header=False)
+    toc = time.time()
+    print('Group Policy Logs Done in {:.4f} seconds'.format(toc - tic))
 
-def detect_events_SMB_Server_log(file_name):
+def detect_events_SMB_Server_log(file_name, shared_data):
+    tic = time.time()
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
     #print(file_name)
 
     parser = PyEvtxParser(file_name)
@@ -2659,7 +2708,20 @@ def detect_events_SMB_Server_log(file_name):
         SMB_ServerInitial.value = 0
     else:
         SMB_Server.to_csv(temp_dir + '_SMB_Server_report.csv', mode='a', index=False, header=False)
-def detect_events_SMB_Client_log(file_name):
+    toc = time.time()
+    print('SMB Server Logs Done in {:.4f} seconds'.format(toc - tic))
+
+def detect_events_SMB_Client_log(file_name, shared_data):
+    tic = time.time()
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
     #print(file_name)
 
     parser = PyEvtxParser(file_name)
@@ -2705,10 +2767,21 @@ def detect_events_SMB_Client_log(file_name):
         SMB_ClientInitial.value = 0
     else:
         SMB_Client.to_csv(temp_dir + '_SMB_Client_report.csv', mode='a', index=False, header=False)
+    toc = time.time()
+    print('SMB Client Logs Done in {:.4f} seconds'.format(toc - tic))
 
+def detect_events_scheduled_task_log(file_name, shared_data):
 
-def detect_events_scheduled_task_log(file_name):
-
+    tic = time.time()
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
     parser = PyEvtxParser(file_name)
     for record in parser.records():
         EventID = EventID_rex.findall(record['data'])
@@ -2839,8 +2912,20 @@ def detect_events_scheduled_task_log(file_name):
         ScheduledTaskInitial.value = 0
     else:
         ScheduledTask.to_csv(temp_dir + '_ScheduledTask_report.csv', mode='a', index=False, header=False)
-def detect_events_system_log(file_name):
+    toc = time.time()
+    print('ScheduledTask Logs Done in {:.4f} seconds'.format(toc - tic))
 
+def detect_events_system_log(file_name, shared_data):
+    tic = time.time()
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
     parser = PyEvtxParser(file_name)
     for record in parser.records():
         EventID = EventID_rex.findall(record['data'])
@@ -3198,8 +3283,20 @@ def detect_events_system_log(file_name):
     else:
         System.to_csv(temp_dir + '_System_report.csv', mode='a', index=False, header=False)
 
-def detect_events_powershell_operational_log(file_name):
+    toc = time.time()
+    print('System Logs Done in {:.4f} seconds'.format(toc - tic))
 
+def detect_events_powershell_operational_log(file_name, shared_data):
+    tic = time.time()
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
     #if os.path.exists(temp_dir + "_Executed_Powershell_report.csv"):
     #    Executed_Powershell_Summary[0] = pd.DataFrame(pd.read_csv(temp_dir + "_Executed_Powershell_report.csv")).to_dict(orient='list')
 
@@ -3368,6 +3465,7 @@ def detect_events_powershell_operational_log(file_name):
 
             #Executing Pipeline
             if EventID[0]=="4100":
+                print(record['data'])
                 if len(Host_Application) == 0:
                     host_app = ""
                 else:
@@ -3378,16 +3476,24 @@ def detect_events_powershell_operational_log(file_name):
                 if len(Suspicious)>0:
                     #print("##### " + record["timestamp"] + " #### EventID=4100 #### Executing Pipeline ####", end='')
                     #print("Found User ("+User[0].strip()+") run Suspicious PowerShell commands that include ("+",".join(Suspicious)+") in event with Command Name ("+Command_Name[0].strip()+") and full command ("+Host_Application[0].strip()+") ", end='')#, check event details "+record['data'])
-                    Event_desc = "Found User (" + User[
-                        0].strip() + ") run Suspicious PowerShell commands that include (" + ",".join(
-                        Suspicious) + ") in event with Command Name (" + Command_Name[
-                                     0].strip() + ") and full command (" + host_app + ") "
+                    try:
+                        if len(User)==0:
+                            User=" "
+                        else:
+                            User=User[0].strip()
 
-                    if len(Error_Message)>0:
-                        #print(Error_Message[0].strip())
-                        Event_desc = Event_desc + "Error Message (" + Error_Message[0].strip() + ")"
-                    #else:
-                        #print("")
+                        Event_desc = "Found User (" + User + ") run Suspicious PowerShell commands that include (" + ",".join(
+                            Suspicious) + ") in event with Command Name (" + Command_Name[
+                                         0].strip() + ") and full command (" + host_app + ") "
+
+                        if len(Error_Message)>0:
+                            #print(Error_Message[0].strip())
+                            Event_desc = Event_desc + "Error Message (" + Error_Message[0].strip() + ")"
+                        #else:
+                            #print("")
+                    except:
+                        Event_desc= "Found Suspicious PowerShell commands that include (" + ",".join(
+                            Suspicious) + ")"
                     Powershell_Operational_events[0]['Date and Time'].append(parse(record["timestamp"]).astimezone(input_timzone).isoformat())
                     Powershell_Operational_events[0]['timestamp'].append(datetime.timestamp(isoparse(parse(record["timestamp"]).astimezone(input_timzone).isoformat())))
                     Powershell_Operational_events[0]['Computer Name'].append(Computer[0])
@@ -3492,8 +3598,19 @@ def detect_events_powershell_operational_log(file_name):
     else:
         Powershell_Operational.to_csv(temp_dir + '_Powershell_Operational_report.csv', mode='a', index=False, header=False)
         #Executed_Powershell.to_csv(temp_dir + '_Executed_Powershell_report.csv', mode='a', index=False, header=False)
-def detect_events_powershell_log(file_name):
 
+    toc = time.time()
+    print('Powershell Operational Done in {:.4f} seconds'.format(toc - tic))
+def detect_events_powershell_log(file_name, shared_data):
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
 
     parser = PyEvtxParser(file_name)
     for record in parser.records():
@@ -3660,7 +3777,7 @@ def detect_events_powershell_log(file_name):
             Suspicious = []
 
             #Detect any log that contain suspicious process name or argument
-            for i in all_suspicious_powershell:
+            """for i in all_suspicious_powershell:
                 if record['data'].lower().find(i.lower())>-1:
                     Suspicious.append(i)
 
@@ -3689,7 +3806,7 @@ def detect_events_powershell_log(file_name):
                         Powershell_events[0]['Severity'].append("High")
                     if len(Suspicious)>5:
                         Powershell_events[0]['Severity'].append("Critical")
-                    continue
+                    continue"""
 
         else:
             print(record['data'])
@@ -3700,8 +3817,16 @@ def detect_events_powershell_log(file_name):
         PowershellInitial.value = 0
     else:
         Powershell.to_csv(temp_dir + '_Powershell_report.csv', mode='a', index=False, header=False)
-def detect_events_TerminalServices_RDPClient_log(file_name):
-
+def detect_events_TerminalServices_RDPClient_log(file_name, shared_data):
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
 
     parser = PyEvtxParser(file_name)
     for record in parser.records():
@@ -3762,8 +3887,16 @@ def detect_events_TerminalServices_RDPClient_log(file_name):
     else:
         TerminalServices_RDPClient.to_csv(temp_dir + '_TerminalServices_RDPClient_report.csv', mode='a', index=False, header=False)
 
-def detect_events_TerminalServices_LocalSessionManager_log(file_name):
-
+def detect_events_TerminalServices_LocalSessionManager_log(file_name, shared_data):
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
 
     parser = PyEvtxParser(file_name)
     for record in parser.records():
@@ -3931,8 +4064,16 @@ def detect_events_TerminalServices_LocalSessionManager_log(file_name):
     else:
         TerminalServices.to_csv(temp_dir + '_TerminalServices_report.csv', mode='a', index=False, header=False)
 
-def detect_events_Microsoft_Windows_WinRM(file_name):
-
+def detect_events_Microsoft_Windows_WinRM(file_name, shared_data):
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
     parser = PyEvtxParser(file_name)
     for record in parser.records():
         EventID = EventID_rex.findall(record['data'])
@@ -4014,8 +4155,16 @@ def detect_events_Microsoft_Windows_WinRM(file_name):
     else:
         WinRM.to_csv(temp_dir + '_WinRM_events_report.csv', mode='a', index=False, header=False)
 
-def detect_events_Sysmon_log(file_name):
-
+def detect_events_Sysmon_log(file_name, shared_data):
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
     parser = PyEvtxParser(file_name)
     for record in parser.records():
         EventID = EventID_rex.findall(record['data'])
@@ -6657,8 +6806,16 @@ def detect_events_Sysmon_log(file_name):
     else:
         Sysmon.to_csv(temp_dir + '_Sysmon_report.csv', mode='a', index=False, header=False)
 
-def detect_events_UserProfileService_log(file_name):
-
+def detect_events_UserProfileService_log(file_name, shared_data):
+    input_timezone = shared_data["input_timezone"]
+    timestart = shared_data["timestart"]
+    timeend = shared_data["timeend"]
+    objectaccess = shared_data["objectaccess"]
+    processexec = shared_data["processexec"]
+    logons = shared_data["logons"]
+    frequencyanalysis = shared_data["frequencyanalysis"]
+    allreport = shared_data["allreport"]
+    output = shared_data["output"]
     # if os.path.exists(temp_dir + "_User_SIDs_report.csv"):
     #     User_SIDs[0] = pd.DataFrame(pd.read_csv(temp_dir + "_User_SIDs_report.csv")).to_dict(orient='list')
 
@@ -6698,14 +6855,16 @@ def init(l):
     global lock
     lock = l
 
-def multiprocess(file_name,function,input_timezone,timestarts,timeends,objectacces=False,processexe=False,logon=False,frequencyanalysi=False,allreports=False,Output='',CpuCount=0,temp="temp/"):
+def multiprocess(file_names,function,input_timezone,timestarts,timeends,objectacces=False,processexe=False,logon=False,frequencyanalysi=False,allreports=False,Output='',CpuCount=0,temp="temp/"):
     multiprocessing.freeze_support()
     #try:
-    global temp_dir
+    global input_timzone, timestart, timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,output,temp_dir
     temp_dir=temp
+    #print("allreports values is " +str(allreports))
+    #print("filename values is " + str(file_names))
     #print("in multiprocess")
     if 1==1:
-        global input_timzone, timestart, timeend,objectaccess,processexec,logons,frequencyanalysis,allreport,output
+
         input_timzone=input_timezone
         timestart=timestarts
         timeend=timeends
@@ -6715,6 +6874,19 @@ def multiprocess(file_name,function,input_timezone,timestarts,timeends,objectacc
         frequencyanalysis=frequencyanalysi
         allreport=allreports
         output=Output
+
+        shared_data = {
+            "input_timezone": input_timezone,
+            "timestart": timestarts,
+            "timeend": timeends,
+            "objectaccess": objectacces,
+            "processexec": processexe,
+            "logons": logon,
+            "frequencyanalysis": frequencyanalysi,
+            "allreport": allreports,
+            "output": Output
+        }
+        #print(f"output value is {output}")
         CPU_Count=0
         if CpuCount!=0:
             CPU_Count=CpuCount
@@ -6727,8 +6899,9 @@ def multiprocess(file_name,function,input_timezone,timestarts,timeends,objectacc
         l = multiprocessing.Lock()
         pool = multiprocessing.Pool(CPU_Count,initializer=init, initargs=(l,))
 
-
-        pool.map(function,file_name )
+        tasks = [(file_name, shared_data) for file_name in file_names]
+        #print(f" tasks is {tasks}")
+        pool.starmap(function,tasks )
         pool.close()
 
     #except Exception as e:
