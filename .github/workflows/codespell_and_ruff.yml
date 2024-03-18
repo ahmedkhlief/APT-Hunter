@@ -15,9 +15,5 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: pip install --user codespell[toml] ruff
-    - run: codespell || true  # --ignore-words-list="" --skip="*.css,*.js,*.lock,*.po"
-    - run: ruff check --output-format=github --select=E9,F63,F7 --target-version=py38 .
-    - run: ruff check --output-format=github --select=E9,F63,F7,F82 --target-version=py38 .
+    - run: codespell --skip="*.css,*.json" || true  # --ignore-words-list=""
     - run: ruff check --output-format=github --line-length=200 --target-version=py38 .
-    - run: ruff check --output-format=github --target-version=py38 .
-    - run: ruff check --output-format=github
