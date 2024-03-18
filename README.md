@@ -21,17 +21,17 @@ Twitter : [@ahmed_khlief](https://twitter.com/ahmed_khlief)
 
 Linkedin : [Ahmed Khlief](https://www.linkedin.com/in/ahmed-khlief-499321a7)
 
-# Donwload APT-Hunter :
+# Download APT-Hunter :
 
 Download the latest stable version of APT-Hunter with compiled binaries from [Releases](https://github.com/ahmedkhlief/APT-Hunter/releases) page.
 
 # How to Use APT-Hunter
 
-APT-Hunter built using python3 so in order to use the tool you need to install the required libraries.
+APT-Hunter is built using python3 so in order to use the tool you need to install the required libraries.
 
 `python3 -m pip install -r requirements.txt`
 
-APT-Hunter is easy to use you just use the argument -h to print help to see the options needed .
+APT-Hunter is easy to use you just use the argument -h to print help to see the options needed.
 
 ` python3 APT-Hunter.py -h`
 
@@ -46,13 +46,13 @@ APT-Hunter is easy to use you just use the argument -h to print help to see the 
 ![APT-Hunter CSV Output with Time Sketch](screenshots/APTHunter-Timeline-Explorer.png)
 
 
-# Exmaples :
+# Examples :
 
-Analyzing EVTX files , you can provide directory containing the logs or single file , APT hunter will detect the type of logs .
+Analyzing EVTX files, you can provide a directory containing the logs or a single file, APT hunter will detect the type of logs.
 
 `python3 APT-Hunter.py    -p /opt/wineventlogs/ -o Project1 -allreport`
 
-Adding time frame to focus on specific timeline :
+Adding time frame to focus on a specific timeline :
 
 `python3 APT-Hunter.py    -p /opt/wineventlogs/ -o Project1 -allreport -start 2022-04-03 -end 2022-04-05T20:56`
 
@@ -62,7 +62,7 @@ Hunting using String or regex :
 
 `python3 APT-Hunter.py  -huntfile "(psexec|psexesvc)" -p /opt/wineventlogs/ -o Project2`
 
-hunting using file that contain list of regex :
+hunting using a file that contains a list of regex :
 
 `python3 APT-Hunter.py  -huntfile "huntfile.txt)" -p /opt/wineventlogs/ -o Project2`
 
@@ -70,14 +70,14 @@ Hunting using sigma rules :
 
 `python3 APT-Hunter.py -sigma -rules rules.json -p /opt/wineventlogs/ -o Project2`
 
-Getting Latest sigma rules converted for APT-Hunter ( output will be a file with name rules.json that contain the rules from Sigma repository [Sigma](https://github.com/SigmaHQ/sigma)  ):
+Getting the latest Sigma rules converted for APT-Hunter ( output will be a file with name rules.json that contains the rules from Sigma repository [Sigma](https://github.com/SigmaHQ/sigma)  ):
 
 Get_Latest_Sigma_Rules.sh
 
 # Output Samples
 
 
-![APT-Hunter CSV Output](Samples/Sample_TimeSketch.csv) : This CSV file you can upload it to timesketch in order to have timeline analysis that will help you see the full picture of the attack .
+![APT-Hunter CSV Output](Samples/Sample_TimeSketch.csv) : This CSV file you can upload it to timesketch in order to have timeline analysis that will help you see the full picture of the attack.
 
 ![APT-Hunter Excel Output](Samples/Sample_Report.xlsx) : this excel sheet will include all the events detected from every windows logs provided to APT-Hunter.
 
