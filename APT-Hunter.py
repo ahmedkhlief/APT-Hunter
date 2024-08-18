@@ -4,6 +4,7 @@ from lib.Banner import *
 import argparse
 import pandas as pd
 import lib.EvtxDetection as EvtxDetection
+import lib.O365Hunter as O365Hunter
 import lib.CSVDetection as CSVDetection
 import lib.EvtxHunt as EvtxHunt
 import lib.SigmaHunter as SigmaHunter
@@ -750,6 +751,9 @@ def main():
     parser.add_argument("-p","--path", help="path to folder containing windows event logs , APT-Hunter will detect each log type automatically")
     parser.add_argument("-o", "--out",help="output file name")
     parser.add_argument("-tz","--timezone", help="default Timezone is Local timezone , you can enter ( 'local' : for local timzone , <Country time zone> : like (Asia/Dubai) )")
+    parser.add_argument("-o365hunt", "--o365hunt", help="office365 audit log hunting",action='store_true')
+    parser.add_argument("-o365rules", "--o365rules", help="detection rules for office365 hunt , if not provided default rules will be used")
+    parser.add_argument("-o365raw", "--o365raw", help="include office365 flattened raw data",action='store_true')
     parser.add_argument("-hunt","--hunt", help="String or regex to be searched in evtx log path")
     parser.add_argument("-huntfile","--huntfile", help="file contain Strings or regex to be searched in evtx log path ( strings should be new line separated )")
     parser.add_argument("-eid","--eid", help="Event ID to search if you chosed the hunt module")
@@ -763,6 +767,7 @@ def main():
     parser.add_argument("-rules","--rules", help="path to sigma rules in json format")
     #parser.add_argument("-evtfreq","--evtfreq", help="Produce event ID frequency analysis report",action='store_true')
     parser.add_argument("-cores","--cores", help="cpu cores to be used in multiprocessing , default is half the number of availble CPU cores")
+
     args = parser.parse_args()
     if args.out is not None:
         Output=create_out_dir(args.out)
@@ -781,7 +786,7 @@ def main():
         #frequencyanalysis=args.evtfreq
         allreport=args.allreport
         CPU_Core=0
-        print(f"all reports value : {allreport}\nlogons value {logons}")
+        #print(f"all reports value : {allreport}\nlogons value {logons}")
         try:
             if args.start is not None and args.end is not None:
                 timestart=datetime.timestamp(dateutil.parser.isoparse(args.start))
@@ -816,6 +821,14 @@ def main():
                 threat_hunt(Path,args.hunt,None,None)
             toc = time.time()
             print('Done in {:.4f} seconds'.format(toc-tic))
+            return
+        if args.o365hunt is not None:
+            if args.o365rules is not None:
+                O365Hunter.analyzeoff365(Path, args.o365rules,Output,input_timezone,args.o365raw)
+            else:
+                O365Hunter.analyzeoff365(Path, None,Output,input_timezone,args.o365raw)
+            #toc = time.time()
+            #print('Done in {:.4f} seconds'.format(toc-tic))
             return
         if args.hunt is None and args.huntfile is not None:
             if args.eid is not None:

@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Suspicious User Agent",
+        "severity": "High",
+        "query": "SELECT * FROM events WHERE UserAgent LIKE '%python%' OR UserAgent LIKE '%ruler%' OR UserAgent LIKE '%curl%' OR UserAgent LIKE '%Wget%' OR UserAgent LIKE '%python-requests%' OR UserAgent LIKE '%AADInternals%' OR UserAgent LIKE '%azurehound%' OR UserAgent LIKE '%axios%' OR UserAgent LIKE '%BAV2ROPC%' "
+    },
+    {
+        "name": "User adding or removing Inbox Rule",
+        "severity": "Medium",
+        "query": "SELECT * FROM events WHERE Operation LIKE '%InboxRule%' OR Operation LIKE '%Set-Mailbox%' OR Operation LIKE '%DeliverToMailboxAndForward%' OR Operation LIKE '%ForwardingAddress%' OR Operation LIKE '%ForwardingAddress%'  "
+    },
+    {
+        "name": "After Hours Activity",
+        "severity": "Medium",
+        "query": "SELECT * FROM events WHERE ( strftime('%H:%M', CreationTime) >= '20:00' OR strftime('%H:%M', CreationTime) < '06:00' ) AND NOT ( Operation LIKE 'File%' OR Operation LIKE 'List%'  OR Operation LIKE 'Page%'  OR Operation LIKE '%UserLogin%' ) "
+    },
+    {
+        "name": "Possible file exfiltration",
+        "severity": "Low",
+        "query": "SELECT * FROM events WHERE Operation LIKE '%FileUploaded%' "
+    },
+    {
+        "name": "Admin searching in emails of other users",
+        "severity": "Low",
+        "query": "SELECT * FROM events WHERE Operation LIKE '%SearchStarted%' OR  Operation LIKE '%SearchExportDownloaded%' OR  Operation LIKE '%ViewedSearchExported%' "
+    },
+    {
+        "name": "Strong Authentication Disabled",
+        "severity": "medium",
+        "query": "SELECT * FROM events WHERE Operation LIKE '%disable strong authentication%'"
+    },
+    {
+        "name": "User added to admin group",
+        "severity": "High",
+        "query": "SELECT * FROM events WHERE ( Operation LIKE '%add member to group%' AND ModifiedProperties Like '%admin%') OR ( Operation LIKE '%AddedToGroup%' AND TargetUserOrGroupName Like '%admin%')  "
+    },
+    {
+        "name": "New Policy created",
+        "severity": "Medium",
+        "query": "SELECT * FROM events WHERE ( Operation LIKE '%add policy%' ) "
+    },
+    {
+        "name": "Security Alert triggered",
+        "severity": "Medium",
+        "query": "SELECT * FROM events WHERE ( Operation LIKE '%AlertTriggered%' AND NOT Severity Like '%Low%') "
+    },
+    {
+        "name": "Transport rules ( mail flow rules ) modified",
+        "severity": "High",
+        "query": "SELECT * FROM events WHERE ( Operation LIKE '%TransportRule%') "
+    },
+    {
+        "name": "An application was registered in Azure AD",
+        "severity": "Medium",
+        "query": "SELECT * FROM events WHERE ( Operation LIKE '%Add service principal.%') "
+    },
+    {
+        "name": "Add app role assignment grant to user",
+        "severity": "Medium",
+        "query": "SELECT * FROM events WHERE ( Operation LIKE '%Add app role assignment grant to user.%') "
+    },
+    {
+        "name": "eDiscovery Abuse",
+        "severity": "High",
+        "query": "SELECT * FROM events WHERE ( Operation LIKE '%New-ComplianceSearch%') "
+    },
+    {
+        "name": "Operations affecting OAuth Applications",
+        "severity": "Medium",
+        "query": "SELECT * FROM events WHERE ( Operation = 'Add application.' OR Operation = 'Update application' OR Operation = 'Add service principal.' OR Operation = 'Update application Certificates and secrets management' OR Operation = 'Update applicationUpdate service principal.' OR Operation = 'Add app role assignment grant to user.' OR Operation = 'Add delegated permission grant.' OR Operation = 'Add owner to application.' OR Operation = 'Add owner to service principal.') "
+    },
+    {
+        "name": "Suspicious Operations affecting Mailbox ",
+        "severity": "Medium",
+        "query": "SELECT * FROM events WHERE ( Operation = 'Set-MailboxJunkEmailConfiguration' OR Operation = 'SoftDelete' OR Operation = 'SendAs' OR Operation = 'HardDelete' OR Operation = 'MoveToDeletedItems' ) "
+    },
+    {
+        "name": "Suspicious Operations affecting SharePoint ",
+        "severity": "Medium",
+        "query": "SELECT * FROM events WHERE ( Operation = 'AddedToSecureLink' OR Operation = 'SearchQueryPerformed' OR Operation = 'SecureLinkCreated' OR Operation = 'SecureLinkUpdated' OR Operation = 'SharingInvitationCreated' ) "
+    },
+    {
+        "name": "User Modifying RetentionPolicy ",
+        "severity": "Medium",
+        "query": "SELECT * FROM events WHERE ( Operation LIKE '%UnifiedAuditLogRetentionPolicy%' ) "
+    },
+    {
+        "name": "User Modifying Audit Logging ",
+        "severity": "Medium",
+        "query": "SELECT * FROM events WHERE ( Operation LIKE '%AdminAuditLogConfig%' ) "
+    }
+]
