@@ -49,7 +49,7 @@ SELECT
     date(CreationTime) AS LoginDate,
     COUNT(*) AS TotalLoginAttempts,
     SUM(CASE WHEN Operation = 'UserLoggedIn' THEN 1 ELSE 0 END) AS SuccessfulLogins,
-    SUM(CASE WHEN ResultStatus = 'UserLoginFailed' THEN 1 ELSE 0 END) AS FailedLogins
+    SUM(CASE WHEN Operation = 'UserLoginFailed' THEN 1 ELSE 0 END) AS FailedLogins
     FROM 
         events
     where 
@@ -61,6 +61,35 @@ SELECT
         LoginDate, 
         UserId;
 '''
+
+User_operations_query = '''
+SELECT 
+    UserId,
+    COUNT(DISTINCT Operation) AS OperationCount,
+    GROUP_CONCAT(Operation, ', ') AS UniqueOperations
+FROM 
+    (SELECT DISTINCT UserId, Operation FROM events)
+GROUP BY 
+    UserId
+ORDER BY 
+    OperationCount DESC;
+'''
+
+user_operation_by_day_query = '''
+SELECT 
+    UserId,
+    DATE(CreationTime) AS OperationDate,
+    COUNT(DISTINCT Operation) AS OperationCount,
+    GROUP_CONCAT( Operation, ', ') AS UniqueOperations
+FROM 
+    events
+GROUP BY 
+    UserId, 
+    OperationDate
+ORDER BY 
+    OperationCount DESC
+'''
+
 
 def convert_csv(input_file,temp):
     with open(input_file, 'r', encoding='utf-8') as csv_file:
@@ -81,6 +110,7 @@ def convert_csv(input_file,temp):
 
     return json_file
 
+
 def flatten_json_file(input_file, timezone, chunk_size=10000):
     # Read the JSON file in chunks
     chunks = []
@@ -92,8 +122,15 @@ def flatten_json_file(input_file, timezone, chunk_size=10000):
             # Convert the CreationTime to the desired timezone
             for record in chunk:
                 if 'CreationTime' in record:
-                    # Parse the CreationTime, convert to the provided timezone, and format
+                    # Parse the CreationTime
                     creation_time = parser.parse(record['CreationTime'])
+
+                    # Check if the datetime object is timezone aware
+                    if creation_time.tzinfo is None:
+                        # Assume the original time is in UTC if no timezone info is present
+                        creation_time = creation_time.replace(tzinfo=tz.tzutc())
+
+                    # Convert the CreationTime to the desired timezone
                     record['CreationTime'] = creation_time.astimezone(timezone).isoformat()
 
             chunks.append(pd.json_normalize(chunk))
@@ -223,6 +260,8 @@ def analyzeoff365(auditfile, rule_file, output, timezone, include_flattened_data
         try:
             user_login_tracker_df = pd.read_sql_query(user_logon_query, conn)
             password_spray_df = pd.read_sql_query(password_spray_query, conn)
+            user_operations_df = pd.read_sql_query(User_operations_query, conn)
+            user_operation_by_day_df = pd.read_sql_query(user_operation_by_day_query, conn)
         finally:
             conn.close()
 
@@ -243,6 +282,8 @@ def analyzeoff365(auditfile, rule_file, output, timezone, include_flattened_data
             detected_events.to_excel(writer, sheet_name='Detection Results', index=False)
             user_login_tracker_df.to_excel(writer, sheet_name='User Login Tracker', index=False)
             password_spray_df.to_excel(writer, sheet_name='Password Spray Attacks', index=False)
+            user_operations_df.to_excel(writer, sheet_name='User Operations', index=False)
+            user_operation_by_day_df.to_excel(writer, sheet_name='User Operations by Day', index=False)
             flattened_df['Operation'].value_counts().to_frame().to_excel(writer, sheet_name='Operation Stats')
             flattened_df['ClientIP'].value_counts().to_frame().to_excel(writer, sheet_name='ClientIP Stats')
             flattened_df['Country'].value_counts().to_frame().to_excel(writer, sheet_name='Country Stats')
@@ -259,11 +300,12 @@ def analyzeoff365(auditfile, rule_file, output, timezone, include_flattened_data
         print(f"An error occurred during the analysis: {e}")
 
     finally:
-        # Clean up the temporary directory
+        #Clean up the temporary directory
         if os.path.exists(temp_dir):
             for file in Path(temp_dir).glob('*'):
                 file.unlink()  # Delete the file
             os.rmdir(temp_dir)  # Remove the directory
+
 
         # Write the User Login Tracker results to a new sheet
 

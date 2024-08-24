@@ -7,12 +7,12 @@
     {
         "name": "User adding or removing Inbox Rule",
         "severity": "Medium",
-        "query": "SELECT * FROM events WHERE Operation LIKE '%InboxRule%' OR Operation LIKE '%Set-Mailbox%' OR Operation LIKE '%DeliverToMailboxAndForward%' OR Operation LIKE '%ForwardingAddress%' OR Operation LIKE '%ForwardingAddress%'  "
+        "query": "SELECT * FROM events WHERE Operation LIKE '%InboxRule%' OR Operation LIKE 'Set-Mailbox' OR Operation LIKE '%DeliverToMailboxAndForward%' OR Operation LIKE '%ForwardingAddress%' OR Operation LIKE '%ForwardingAddress%'  "
     },
     {
         "name": "After Hours Activity",
         "severity": "Medium",
-        "query": "SELECT * FROM events WHERE ( strftime('%H:%M', CreationTime) >= '20:00' OR strftime('%H:%M', CreationTime) < '06:00' ) AND NOT ( Operation LIKE 'File%' OR Operation LIKE 'List%'  OR Operation LIKE 'Page%'  OR Operation LIKE '%UserLogin%' ) "
+        "query": "SELECT * FROM events WHERE (CASE WHEN CAST(substr(CreationTime, 12, 2) AS INTEGER) < 0 THEN 24 + (CAST(substr(CreationTime, 12, 2) AS INTEGER)) ELSE CAST(substr(CreationTime, 12, 2) AS INTEGER) END >= 20 OR CASE WHEN CAST(substr(CreationTime, 12, 2) AS INTEGER) < 0 THEN 24 + (CAST(substr(CreationTime, 12, 2) AS INTEGER)) ELSE CAST(substr(CreationTime, 12, 2) AS INTEGER) END < 6) AND NOT (Operation LIKE 'File%' OR Operation LIKE 'List%' OR Operation LIKE 'Page%' OR Operation LIKE '%UserLogin%');"
     },
     {
         "name": "Possible file exfiltration",
@@ -81,12 +81,19 @@
     },
     {
         "name": "User Modifying RetentionPolicy ",
-        "severity": "Medium",
+        "severity": "High",
         "query": "SELECT * FROM events WHERE ( Operation LIKE '%UnifiedAuditLogRetentionPolicy%' ) "
     },
     {
         "name": "User Modifying Audit Logging ",
-        "severity": "Medium",
+        "severity": "High",
         "query": "SELECT * FROM events WHERE ( Operation LIKE '%AdminAuditLogConfig%' ) "
+    },
+    {
+        "name": "String Authentication Disabled ",
+        "severity": "High",
+        "query": "SELECT * FROM events WHERE ( Operation LIKE '%Disable Strong Authentication.%' ) "
     }
+
+
 ]

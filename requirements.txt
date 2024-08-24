@@ -7,3 +7,5 @@ pytz
 six
 XlsxWriter
 flatten_json
+geoip2
+requests
