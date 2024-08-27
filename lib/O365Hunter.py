@@ -12,6 +12,8 @@ import json
 import csv
 from pathlib import Path
 
+start_time=0
+end_time=0
 password_spray_query = '''
         WITH FailedLogins AS (
 
@@ -96,7 +98,7 @@ def convert_csv(input_file,temp):
         # Create a CSV reader
         reader = csv.DictReader(csv_file)
 
-        json_file =  'audit_data3.json'
+        json_file =  'audit_data.json'
         json_file=os.path.join(temp, json_file)
         with open(json_file, 'w', encoding='utf-8') as jsonl_file:
             # Extract and write the AuditData column to a file as JSON Lines
@@ -205,8 +207,10 @@ def get_country_from_ip(ip, reader):
 
 def analyzeoff365(auditfile, rule_file, output, timezone, include_flattened_data=False,
                   geolite_db_path='GeoLite2-Country.mmdb'):
+    start_time = time.time()
     temp_dir = ".temp"
-
+    if output is None or output == "":
+        output = os.path.splitext(auditfile)[0]
     try:
         # Create necessary directories
         os.makedirs(output, exist_ok=True)
@@ -224,11 +228,11 @@ def analyzeoff365(auditfile, rule_file, output, timezone, include_flattened_data
         db_name = os.path.join(temp_dir, 'audit_data.db')
 
         if rule_file is None:
-            rule_file = 'lib/O365_detection_rules.json'
+            rule_file = 'O365_detection_rules.json'
         output_file = f"{output}_o365_report.xlsx"
 
         # Measure the start time
-        start_time = time.time()
+
 
         # Flatten the JSON file
         flattened_df = flatten_json_file(input_file, timezone)
