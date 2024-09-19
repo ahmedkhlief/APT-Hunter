@@ -822,7 +822,7 @@ def main():
             toc = time.time()
             print('Done in {:.4f} seconds'.format(toc-tic))
             return
-        if args.o365hunt is not None:
+        if args.o365hunt is not False:
             if args.o365rules is not None:
                 O365Hunter.analyzeoff365(Path, args.o365rules,Output,input_timezone,args.o365raw)
             else:
