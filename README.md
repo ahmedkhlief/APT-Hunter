@@ -46,7 +46,7 @@ APT-Hunter is easy to use you just use the argument -h to print help to see the 
 ![APT-Hunter CSV Output with Time Sketch](screenshots/APTHunter-Timeline-Explorer.png)
 
 
-# Exmaples :
+# Examples :
 
 Analyzing EVTX files , you can provide directory containing the logs or single file , APT hunter will detect the type of logs .
 
