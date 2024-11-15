@@ -793,9 +793,10 @@ def detect_events_security_log(file_name, shared_data):
                         elif len(Process_Name[0])>0:
                             process_name=Process_Name[0][0].strip()
                         """
+                        process_name = ''
                         for i in Process_Name[0]:
-                            if len(i)>0:
-                                process_name=i
+                            if len(i) > 0:
+                                process_name = i
 
                         if len(re.findall('.*user.*/add.*',record['data']))>0:
                             #print("test")
