@@ -46,7 +46,7 @@ Results are written as a timeline that can be analysed directly in Excel, Timeli
 - **Office 365** audit log hunting.
 - **Timeline output** as Excel, CSV (Timesketch-ready) and dedicated logon, process-execution and object-access reports.
 - **Web dashboard** with filtering, charts, an incident timeline and IR report export (Markdown / .docx).
-- **Local LLM analysis** through any OpenAI-compatible server (Ollama, LM Studio, llama.cpp). Nothing leaves your machine.
+- **LLM analysis** through an OpenAI-compatible endpoint (Ollama, LM Studio, llama.cpp). Event data is sent to the configured endpoint; use a trusted local endpoint for sensitive logs.
 - **Agentic triage** that clusters thousands of alerts into a short, reviewable list of findings.
 
 ## Installation
@@ -165,7 +165,7 @@ Score detected events for maliciousness using a local model, from the command li
 python3 APT-Hunter.py -p <logs> -o <Output> -llm -llm-provider ollama -llm-model llama3 -llm-severity High
 ```
 
-Or per event from the dashboard (check, explain, correlate). Configure provider (Ollama / LM Studio / llama.cpp), model, URL and timeout on the dashboard's **Settings** page. Any OpenAI-compatible local server works; no data is sent to a cloud service.
+Or per event from the dashboard (check, explain, correlate). Configure provider (Ollama / LM Studio / llama.cpp), model, URL and timeout on the dashboard's **Settings** page. The default providers use local endpoints, but a custom URL may point elsewhere: event data included in prompts is sent to that endpoint. Review its privacy and retention terms before using it with sensitive logs.
 
 ## Agentic Triage
 
